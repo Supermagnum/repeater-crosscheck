@@ -1,5 +1,6 @@
 # Local / operator-known facts. Not uploaded to OSM.
-# Each [callsign] table may set lat, lon, qth, portable, qrt, url, note.
+# Each [callsign] table may set lat, lon, qth, portable, qrt, url, note, osm_id.
+# osm_id (node/…, way/…, or OSM URL) merges review tags onto that existing object.
 
 [LA2LRR]
 portable = true
@@ -9,6 +10,7 @@ note = "NRRL QTH is Mjøsa portabel; not a fixed site."
 qth = "Rong, Øygarden"
 lat = 60.512071
 lon = 4.913333
+osm_id = "node/5583842945"
 url = "https://www.la1b.no/la5lrr/"
 note = "Crossband link. Club page: Rong i Øygarden. OSM mast node/5583842945."
 
@@ -26,6 +28,13 @@ note = "Lønahorgi."
 lat = 59.93086
 lon = 9.92940
 note = "Norefjell. NRRL locator JP49XW plots in the 69N band and is likely wrong."
+
+[JW9SRR]
+qth = "Svalbard/Skolten"
+lat = 78.1494045
+lon = 16.6582591
+osm_id = "node/13003985929"
+note = "OSM mast node/13003985929 (Skolten)."
 
 [LA3SRR]
 lat = 59.17920
@@ -54,7 +63,17 @@ note = "Mistberget."
 
 [LD2HJ]
 qrt = true
-note = "QRT."
+lat = 60.9416531
+lon = 11.1914161
+osm_id = "node/3733814134"
+note = "QRT. OSM node/3733814134."
+
+[LD2GN]
+qth = "Nordhue"
+lat = 60.9937379
+lon = 11.3393806
+osm_id = "node/5331403754"
+note = "OSM mast node/5331403754 (also hosts LD2WA; OSM already had LA5MR)."
 
 [LD9MM]
 lat = 68.874608
@@ -62,6 +81,7 @@ lon = 18.415761
 tx = 434.6125
 rx = 432.6125
 qth = "Holtet, Bardu"
+osm_id = "node/5588495799"
 on_air = true
 status = "on-air"
 qrt = false
@@ -73,6 +93,7 @@ lon = 18.517556
 tx = 144.8000
 rx = 144.8000
 qth = "Andsfjellet"
+osm_id = "node/5588496689"
 url = "https://www.la6m.no/andsfjell/"
 note = "APRS digi on Andsfjell. OSM tower https://www.openstreetmap.org/node/5588496689. Source: https://www.la6m.no/andsfjell/"
 
@@ -83,6 +104,7 @@ tx = 145.7250
 rx = 145.1250
 tone = "123"
 qth = "Andsfjellet"
+osm_id = "node/5588496689"
 url = "https://www.la6m.no/andsfjell/"
 note = "RV58 VHF FM on Andsfjell. CTCSS 123 Hz. Source: https://www.la6m.no/andsfjell/"
 
@@ -93,6 +115,7 @@ tx = 434.6500
 rx = 432.6500
 tone = "123"
 qth = "Andsfjellet"
+osm_id = "node/5588496689"
 qrt = true
 status = "likely QRT"
 url = "https://www.la6m.no/andsfjell/"
@@ -104,6 +127,7 @@ lon = 18.517556
 tx = 144.9250
 rx = 144.9250
 qth = "Andsfjellet"
+osm_id = "node/5588496689"
 url = "https://www.la6m.no/andsfjell/"
 note = "Winlink node on Andsfjell. Source: https://www.la6m.no/andsfjell/"
 
@@ -114,6 +138,7 @@ tx = 145.6125
 rx = 145.0125
 tone = "123"
 qth = "Andsfjellet"
+osm_id = "node/5588496689"
 group = "Midt-Troms"
 url = "https://www.la6m.no/andsfjell/"
 note = "FM repeater on Andsfjell (Midt-Troms). TX 145.6125 / RX 145.0125, CTCSS 123. Same site as LA9ZR/LA8ZR/LD9AF/LD9AB."
@@ -136,4 +161,100 @@ rx = 432.8250
 type = "DMR Repeater"
 qth = "Mosjøen/Vardefjell"
 group = "Mosjøen"
-note = "DMR repeater. Position 65.8784833, 13.3027111. DMR ID 242902."
+osm_id = "node/5587511477"
+note = "DMR repeater. Position 65.8784833, 13.3027111. DMR ID 242902. OSM mast node/5587511477 (not peak Vardefjell)."
+
+[LA5WR]
+qth = "Narvik/Ankenes"
+lat = 68.4211439
+lon = 17.4809228
+osm_id = "node/1199576872"
+note = "Narvik hovedsender. OSM node/1199576872."
+
+[LD6FF]
+qth = "Storåsen"
+lat = 61.592373
+lon = 5.0262273
+osm_id = "node/3655921327"
+note = "OSM tower node/3655921327 (Storåsen)."
+
+[LD6FR]
+qth = "Hafstadfjellet"
+lat = 61.4369702
+lon = 5.8577037
+osm_id = "node/5578772892"
+note = "OSM mast node/5578772892 (Hafstadfjellet)."
+
+[LA6QR]
+qth = "Karmøy/Sandve"
+lat = 59.35420
+lon = 5.29167
+qrt = true
+status = "possible QRT"
+note = "Possible QRT. Operator position 59.35420, 5.29167."
+
+[LD5HH]
+qth = "Karmøy/Helgelandsfjellet"
+lat = 59.3685879
+lon = 5.3266895
+osm_id = "node/5582173874"
+note = "OSM mast node/5582173874."
+
+[LA9LR]
+qth = "Ravnafjell"
+lat = 59.6125778
+lon = 6.2058077
+osm_id = "node/5582173868"
+note = "OSM mast node/5582173868."
+
+[LA4WRR]
+qth = "Bogafjell"
+lat = 58.810062
+lon = 5.744967
+osm_id = "way/628543477"
+note = "OSM way/628543477 (Bogafjell)."
+
+[LA8DR]
+qth = "Laland"
+lat = 58.7622588
+lon = 5.6677555
+note = "Operator position 58.7622588, 5.6677555."
+
+[LD4LA]
+qth = "Voreknuten"
+lat = 58.52480
+lon = 6.54670
+note = "Operator position 58.52480, 6.54670."
+
+[LD4FH]
+qth = "Fjæreheia/Grimstad"
+lat = 58.3783147
+lon = 8.5893918
+osm_id = "node/5415066172"
+note = "OSM tower node/5415066172 (Fjæreheia)."
+
+[LD3KR]
+qth = "Haus Sachsen"
+lat = 59.6710302
+lon = 9.5765838
+osm_id = "node/5576440532"
+note = "OSM mast node/5576440532."
+
+[LA1KRR]
+qth = "Kolsås"
+lat = 59.9188886
+lon = 10.5160766
+osm_id = "node/912390742"
+note = "OSM tower node/912390742 (Kolsås Bærum)."
+
+[LA5YR]
+qth = "Svartåsen/Enebakk"
+lat = 59.7802919
+lon = 11.0038215
+osm_id = "node/5574482764"
+note = "OSM mast node/5574482764."
+
+[LA9AR]
+qth = "Tronfjell"
+osm_id = "way/1005486272"
+note = "Tron hovedsender. OSM way/1005486272 (not peak node/26864970)."

@@ -24,6 +24,7 @@ class LocalOverride:
     status: str = ""
     url: str = ""
     note: str = ""
+    osm_id: str = ""  # e.g. node/5588495799 — merge review tags onto this object
 
 
 def _optional_float(value) -> float | None:
@@ -57,6 +58,7 @@ def load_overrides(path: Path | None) -> dict[str, LocalOverride]:
         else:
             qrt = None
         tone = str(val.get("tone") or val.get("ctcss") or "").strip()
+        osm_raw = str(val.get("osm_id") or val.get("osm") or "").strip()
         out[call] = LocalOverride(
             callsign=call,
             lat=lat_f,
@@ -77,5 +79,6 @@ def load_overrides(path: Path | None) -> dict[str, LocalOverride]:
             status=str(val.get("status") or "").strip(),
             url=str(val.get("url") or "").strip(),
             note=str(val.get("note") or "").strip(),
+            osm_id=osm_raw,
         )
     return out

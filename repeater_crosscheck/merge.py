@@ -9,7 +9,16 @@ from .models import (
     Position,
     SourceRecord,
 )
-from .osm import match_qth_landmark, pick_osm_callsign_match
+from .osm import (
+    is_bare_peak,
+    match_qth_landmark,
+    nearest_landmark,
+    pick_osm_callsign_match,
+    record_has_callsign,
+    retarget_peak_to_transmitter,
+    source_records_as_landmarks,
+)
+from .osm_objects import format_osm_ref, parse_osm_ref
 from .overrides import LocalOverride
 from .nrrl_groups import NrrlGroup, match_gruppe
 from .util import haversine_m, point_in_bbox
@@ -88,10 +97,12 @@ def choose_best_position(
     osm_call: SourceRecord | None,
     near_m: float,
     portable: bool,
+    dedicated_osm_call: bool = False,
 ) -> tuple[float | None, float | None, str]:
     """
     Priority:
       0) local / operator override with coordinates
+      a0) OSM feature already tagged with this callsign
       a) OSM mast/tower/peak matching QTH inside locator square
       a2) OSM member of a same-callsign network relation inside/near the square
       b) radioid or RepeaterBook if inside/near locator square
@@ -101,6 +112,15 @@ def choose_best_position(
 
     if local_pos is not None:
         return local_pos.lat, local_pos.lon, "local"
+
+    # Callsign-tagged OSM wins over QTH landmark (avoids wrong summit vs mast).
+    if (
+        dedicated_osm_call
+        and osm_call is not None
+        and osm_call.lat is not None
+        and osm_call.lon is not None
+    ):
+        return osm_call.lat, osm_call.lon, "osm"
 
     if osm_qth_pos is not None:
         return osm_qth_pos.lat, osm_qth_pos.lon, "osm"
@@ -251,7 +271,14 @@ def build_merged(
             row.local_lon = ov.lon
             positions.append(local_pos)
 
-        landmarks = landmarks_by_locator.get(rep.locator, [])
+        landmarks = list(landmarks_by_locator.get(rep.locator, []))
+        # Include amateur-tagged OSM objects (e.g. communications_tower) so QTH
+        # matching can prefer "Tron hovedsender" over the bare peak "Tron".
+        if rep.locator_bbox:
+            south, west, north, east = rep.locator_bbox
+            for el in source_records_as_landmarks(osm_records):
+                if point_in_bbox(el["lat"], el["lon"], south, west, north, east, margin_m=near_m):
+                    landmarks.append(el)
         osm_qth_pos, osm_match_label = match_qth_landmark(
             match_rep, landmarks, fuzzy_min=fuzzy_min
         )
@@ -282,7 +309,47 @@ def build_merged(
                     },
                 )
 
-        if osm_qth_pos:
+        # Explicit override OSM object wins (merge tags onto that mast/node/way).
+        ov_osm_ref = None
+        if ov and ov.osm_id:
+            parsed = parse_osm_ref(ov.osm_id)
+            if parsed:
+                ov_osm_ref = format_osm_ref(*parsed)
+
+        # Prefer a feature already tagged with this callsign over a QTH name guess
+        # (avoids peak "Tron" beating tower "Tron hovedsender" for LA9AR).
+        dedicated_call = (
+            osm_call is not None
+            and osm_call.lat is not None
+            and record_has_callsign(osm_call, rep.callsign)
+        )
+
+        if dedicated_call:
+            row.osm_lat = osm_call.lat
+            row.osm_lon = osm_call.lon
+            row.osm_id = osm_call.source_id
+            rel = osm_call.extra.get("relation_id")
+            if rel:
+                row.osm_match = (
+                    f"relation_member:relation/{rel};{osm_call.source_id}"
+                )
+                row.match_methods["osm"] = "relation_member"
+                row.flags.append(
+                    f"osm_network:{osm_call.extra.get('relation_name') or rel}"
+                )
+            else:
+                row.osm_match = f"callsign:{osm_call.source_id}"
+                row.match_methods["osm"] = "callsign"
+            positions.append(
+                Position(
+                    lat=osm_call.lat,
+                    lon=osm_call.lon,
+                    source_kind="osm",
+                    source_id=osm_call.source_id,
+                    extra=osm_call.extra,
+                )
+            )
+        elif osm_qth_pos:
             row.osm_lat = osm_qth_pos.lat
             row.osm_lon = osm_qth_pos.lon
             row.osm_id = osm_qth_pos.source_id
@@ -313,8 +380,81 @@ def build_merged(
                 )
             )
         else:
-            unmatched_notes.append(f"{rep.callsign}: not found in OSM")
-            row.flags.append("missing_osm")
+            # Nearby mast/tower when operator coords pin the site.
+            near_lat = local_pos.lat if local_pos else None
+            near_lon = local_pos.lon if local_pos else None
+            if near_lat is not None and near_lon is not None:
+                near_pos, near_label = nearest_landmark(
+                    near_lat,
+                    near_lon,
+                    landmarks,
+                    max_m=150.0,
+                    transmitters_only=True,
+                )
+                if not near_pos:
+                    near_pos, near_label = nearest_landmark(
+                        near_lat, near_lon, landmarks, max_m=75.0
+                    )
+                if near_pos:
+                    row.osm_lat = near_pos.lat
+                    row.osm_lon = near_pos.lon
+                    row.osm_id = near_pos.source_id
+                    row.osm_match = near_label
+                    row.match_methods["osm"] = "nearest"
+                    positions.append(near_pos)
+            if not row.osm_id:
+                unmatched_notes.append(f"{rep.callsign}: not found in OSM")
+                row.flags.append("missing_osm")
+
+        # Peak -> nearby mast/tower (Tron-class): never treat a bare summit as the site.
+        if row.osm_id and not ov_osm_ref:
+            for i, p in enumerate(list(positions)):
+                if p.source_kind != "osm" or p.source_id != row.osm_id:
+                    continue
+                new_p = retarget_peak_to_transmitter(p, landmarks, max_m=250.0)
+                if new_p.source_id == p.source_id:
+                    break
+                positions[i] = new_p
+                row.osm_id = new_p.source_id
+                row.osm_lat = new_p.lat
+                row.osm_lon = new_p.lon
+                dist = new_p.extra.get("distance_m")
+                dist_s = f"{dist:.0f}m" if isinstance(dist, (int, float)) else "?"
+                row.osm_match = (
+                    f"retarget:{new_p.extra.get('osm_name') or new_p.source_id} "
+                    f"from {p.source_id} ({dist_s})"
+                )
+                row.match_methods["osm"] = "retarget_peak"
+                break
+
+        if ov_osm_ref:
+            row.osm_id = ov_osm_ref
+            row.osm_match = f"override:{ov_osm_ref}"
+            row.match_methods["osm"] = "override"
+            if "missing_osm" in row.flags:
+                row.flags.remove("missing_osm")
+            # Ensure an osm position exists so JOSM fetch/merge can target it.
+            if not any(
+                p.source_kind == "osm" and p.source_id == ov_osm_ref for p in positions
+            ):
+                plat = row.osm_lat if row.osm_lat is not None else (
+                    local_pos.lat if local_pos else rep.locator_lat
+                )
+                plon = row.osm_lon if row.osm_lon is not None else (
+                    local_pos.lon if local_pos else rep.locator_lon
+                )
+                if plat is not None and plon is not None:
+                    row.osm_lat = plat
+                    row.osm_lon = plon
+                    positions.append(
+                        Position(
+                            lat=plat,
+                            lon=plon,
+                            source_kind="osm",
+                            source_id=ov_osm_ref,
+                            extra={"osm_match": "override"},
+                        )
+                    )
 
         # Multi-site OSM networks (e.g. LA5MR) even when this QTH is not a member.
         net_hits = [
@@ -402,6 +542,7 @@ def build_merged(
             osm_call=osm_call_for_best,
             near_m=near_m,
             portable=portable,
+            dedicated_osm_call=bool(dedicated_call),
         )
         row.best_lat = best_lat
         row.best_lon = best_lon

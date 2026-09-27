@@ -92,13 +92,25 @@ def _freq_mhz(text: str) -> float | None:
 
 
 def _format_mhz(value: float) -> str:
-    # Match common Norwegian OSM style: MHz with up to 4 decimals, trimmed.
+    # OSM Map Features/Units: number, space, unit; '.' as decimal separator.
     s = f"{value:.4f}".rstrip("0").rstrip(".")
     return f"{s} MHz"
 
 
+def _format_shift(tx_mhz: float, rx_mhz: float) -> str:
+    """
+    communication:amateur_radio:repeater:shift=*
+
+    Offset added to frequency_out to get the repeater input (can be negative).
+    Wiki allows bare Hz or SI units; we use MHz SI form, e.g. '-0.6 MHz'.
+    """
+    shift_mhz = rx_mhz - tx_mhz
+    s = f"{shift_mhz:.6f}".rstrip("0").rstrip(".")
+    return f"{s} MHz"
+
+
 def osm_amateur_tags(row: MergedRepeater) -> dict[str, str]:
-    """OSM keys/values for JOSM review nodes (never for upload)."""
+    """OSM keys/values for JOSM review (upload only after local verification)."""
     tags: dict[str, str] = {
         "communication:amateur_radio": "yes",
         "communication:amateur_radio:callsign": row.callsign,
@@ -122,8 +134,7 @@ def osm_amateur_tags(row: MergedRepeater) -> dict[str, str]:
     if tx is not None:
         tags["communication:amateur_radio:repeater:frequency_out"] = _format_mhz(tx)
         if rx is not None and abs(rx - tx) > 1e-6:
-            shift_hz = int(round((rx - tx) * 1_000_000))
-            tags["communication:amateur_radio:repeater:shift"] = str(shift_hz)
+            tags["communication:amateur_radio:repeater:shift"] = _format_shift(tx, rx)
 
     tone = (row.tone or "").strip()
     if tone.upper().startswith("DCS"):

@@ -97,7 +97,12 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
                 f"  {len(grouped)} callsign networks, "
                 f"{len(member_recs)} member positions"
             )
+        except Exception as exc:
+            print(f"OSM amateur/network Overpass failed: {exc}", file=sys.stderr)
+            traceback.print_exc()
+            print("Continuing with whatever OSM data was loaded.", file=sys.stderr)
 
+        try:
             locator_bboxes = {
                 rep.locator: rep.locator_bbox
                 for rep in nrrl
@@ -125,9 +130,9 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
                 f"(raw features summed {sum(len(v) for v in landmarks_by_locator.values())})"
             )
         except Exception as exc:
-            print(f"OSM/Overpass failed: {exc}", file=sys.stderr)
+            print(f"OSM landmark Overpass failed: {exc}", file=sys.stderr)
             traceback.print_exc()
-            print("Continuing without OSM data.", file=sys.stderr)
+            print("Continuing without landmark QTH matching.", file=sys.stderr)
     else:
         print("Skipping OSM (--skip-osm)")
 
@@ -214,10 +219,12 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
         osm_path,
         merged,
         disagreement_m=float(cfg["thresholds"]["disagreement_m"]),
+        session=session,
+        cache=cache,
     )
     write_unmatched(unmatched_path, unmatched)
 
     print(f"Wrote {csv_path}")
-    print(f"Wrote {osm_path} (upload=never — local JOSM review only)")
+    print(f"Wrote {osm_path} (upload=never until verified — check tags + local knowledge before upload)")
     print(f"Wrote {unmatched_path} ({len(unmatched)} notes)")
     return 0

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from rapidfuzz import fuzz
@@ -203,7 +204,8 @@ def fetch_osm_landmarks_for_locators(
 
     for start in range(0, len(items), batch_size):
         batch = items[start : start + batch_size]
-        batch_key = "osm_landmarks_batch_" + "_".join(loc for loc, _ in batch)
+        batch_key = "osm_landmarks_v2_batch_" + "_".join(loc for loc, _ in batch)
+        legacy_key = "osm_landmarks_batch_" + "_".join(loc for loc, _ in batch)
         cached = cache.get_json(batch_key)
         if cached is not None:
             elements = cached
@@ -214,6 +216,7 @@ def fetch_osm_landmarks_for_locators(
                 parts.append(
                     f'  nwr["man_made"="mast"]({s},{w},{n},{e});\n'
                     f'  nwr["man_made"="tower"]({s},{w},{n},{e});\n'
+                    f'  nwr["man_made"="communications_tower"]({s},{w},{n},{e});\n'
                     f'  nwr["natural"="peak"]({s},{w},{n},{e});\n'
                     f'  nwr["natural"="hill"]({s},{w},{n},{e});'
                 )
@@ -222,15 +225,23 @@ def fetch_osm_landmarks_for_locators(
                 + "\n".join(parts)
                 + "\n);\nout center tags;"
             )
-            resp = session.request(
-                "POST",
-                endpoint,
-                data={"data": query},
-                min_interval_s=min_interval_s,
-            )
-            resp.raise_for_status()
-            elements = (resp.json() or {}).get("elements") or []
-            cache.put_json(batch_key, elements)
+            try:
+                resp = session.request(
+                    "POST",
+                    endpoint,
+                    data={"data": query},
+                    min_interval_s=min_interval_s,
+                )
+                resp.raise_for_status()
+                elements = (resp.json() or {}).get("elements") or []
+                cache.put_json(batch_key, elements)
+            except Exception:
+                # Fall back to previous landmark cache (may lack communications_tower).
+                legacy = cache.get_json(legacy_key)
+                if legacy is None:
+                    raise
+                elements = legacy
+                cache.put_json(batch_key, elements)
 
         # Assign each element to every locator square that contains it.
         for el in elements:
@@ -304,6 +315,204 @@ def amateur_elements_to_records(elements: list[dict]) -> list[SourceRecord]:
     return records
 
 
+def nearest_landmark(
+    lat: float,
+    lon: float,
+    landmarks: list[dict],
+    *,
+    max_m: float = 75.0,
+    transmitters_only: bool = False,
+) -> tuple[Position | None, str]:
+    """Pick the closest mast/tower/peak/hill within max_m of a known coordinate."""
+    best: tuple[float, float, Position] | None = None  # dist, -pref, pos
+    for el in landmarks:
+        ll = _element_lat_lon(el)
+        if not ll:
+            continue
+        elat, elon = ll
+        dist = haversine_m(lat, lon, elat, elon)
+        if dist > max_m:
+            continue
+        tags = el.get("tags") or {}
+        if transmitters_only and not is_transmitter_site(tags):
+            continue
+        name = tags.get("name") or tags.get("name:no") or ""
+        pref = _landmark_site_bonus(tags, name)
+        # Strongly prefer transmitters when both are in range.
+        if is_transmitter_site(tags):
+            pref += 100.0
+        elif is_bare_peak(tags):
+            pref -= 50.0
+        pos = Position(
+            lat=elat,
+            lon=elon,
+            source_kind="osm",
+            source_id=_osm_id(el),
+            extra={
+                "osm_match": "nearest",
+                "osm_name": name,
+                "distance_m": dist,
+                "tags": tags,
+            },
+        )
+        key = (dist, -pref)
+        if best is None or key < (best[0], best[1]):
+            best = (dist, -pref, pos)
+    if best is None:
+        return None, ""
+    dist, _, pos = best
+    label = f"nearest:{pos.extra.get('osm_name') or pos.source_id} ({dist:.0f}m)"
+    return pos, label
+
+
+TRANSMITTER_MAN_MADE = frozenset({"mast", "tower", "communications_tower", "antenna"})
+
+
+def is_transmitter_site(tags: dict | None) -> bool:
+    """True for masts/towers / hovedsender sites (not bare peaks)."""
+    tags = tags or {}
+    man = (tags.get("man_made") or "").lower()
+    if man in TRANSMITTER_MAN_MADE:
+        return True
+    name = (tags.get("name") or tags.get("name:no") or "").casefold()
+    return "hovedsender" in name
+
+
+def is_bare_peak(tags: dict | None) -> bool:
+    """Natural peak/hill with no transmitter tagging — do not merge amateur tags onto these."""
+    tags = tags or {}
+    natural = (tags.get("natural") or "").lower()
+    if natural not in {"peak", "hill", "ridge", "saddle"}:
+        return False
+    return not is_transmitter_site(tags)
+
+
+def retarget_peak_to_transmitter(
+    pos: Position,
+    landmarks: list[dict],
+    *,
+    max_m: float = 250.0,
+) -> Position:
+    """
+    If pos is a bare peak/hill, retarget to a nearby mast/tower/communications_tower.
+
+    This is the Tron-class fix: QTH 'Tronfjell' must not land on peak 'Tron' when
+    'Tron hovedsender' sits beside it.
+    """
+    tags = pos.extra.get("tags") or {}
+    if not is_bare_peak(tags):
+        return pos
+
+    best: tuple[tuple[float, float], Position, float] | None = None
+    for el in landmarks:
+        el_tags = el.get("tags") or {}
+        if not is_transmitter_site(el_tags):
+            continue
+        ll = _element_lat_lon(el)
+        if not ll:
+            continue
+        dist = haversine_m(pos.lat, pos.lon, ll[0], ll[1])
+        if dist > max_m:
+            continue
+        name = el_tags.get("name") or el_tags.get("name:no") or ""
+        pref = _landmark_site_bonus(el_tags, name)
+        cand = Position(
+            lat=ll[0],
+            lon=ll[1],
+            source_kind="osm",
+            source_id=_osm_id(el),
+            extra={
+                "osm_match": "retarget_peak",
+                "osm_name": name,
+                "distance_m": dist,
+                "retargeted_from": pos.source_id,
+                "tags": el_tags,
+            },
+        )
+        key = (dist, -pref)
+        if best is None or key < best[0]:
+            best = (key, cand, dist)
+
+    if best is None:
+        return pos
+    _, cand, dist = best
+    return cand
+
+
+def _landmark_site_bonus(tags: dict, name: str) -> float:
+    """Prefer communications towers / hovedsender over bare natural peaks."""
+    bonus = 0.0
+    man = (tags.get("man_made") or "").lower()
+    if man in TRANSMITTER_MAN_MADE:
+        bonus += 50.0
+    if (tags.get("tower:type") or "").lower() == "communication":
+        bonus += 20.0
+    if tags.get("communication:amateur_radio") or tags.get(
+        "communication:amateur_radio:callsign"
+    ):
+        bonus += 35.0
+    lname = (name or "").casefold()
+    if "hovedsender" in lname:
+        bonus += 45.0
+    elif re.search(r"\bsender\b", lname):
+        bonus += 25.0
+    if is_bare_peak(tags):
+        bonus -= 40.0
+    return bonus
+
+
+def _qth_stems(target: str) -> list[str]:
+    """QTH plus shorter stems (tronfjell -> tron) for matching 'Tron hovedsender'."""
+    stems = [target]
+    for suf in (
+        "fjellet",
+        "fjell",
+        "aasen",
+        "asen",
+        "toppen",
+        "berget",
+        "kampen",
+        "vola",
+        "heia",
+        "høyen",
+        "hoyen",
+    ):
+        if target.endswith(suf) and len(target) > len(suf) + 2:
+            stem = target[: -len(suf)].rstrip()
+            if stem and stem not in stems:
+                stems.append(stem)
+    return stems
+
+
+def _qth_name_overlap_score(target: str, norm_name: str) -> float:
+    """
+    Score how specifically an OSM name matches a QTH.
+
+    Substring hits like QTH 'tronfjell' vs peak 'tron' score lower than
+    'tron hovedsender' / full equality.
+    """
+    if not target or not norm_name:
+        return 0.0
+    if target == norm_name:
+        return 100.0
+    if target in norm_name:
+        # Name contains the full QTH (e.g. 'tronfjell toppen').
+        return 90.0 + min(10.0, len(target) / max(len(norm_name), 1) * 10.0)
+    # Stem match: QTH Tronfjell vs "Tron hovedsender".
+    padded = f" {norm_name} "
+    for stem in _qth_stems(target):
+        if not stem or stem == target:
+            continue
+        if padded.startswith(f" {stem} ") or f" {stem} " in padded or norm_name == stem:
+            # Prefer names that add site words (hovedsender) over bare peak stem.
+            extra = len(norm_name) - len(stem)
+            return 70.0 + min(15.0, extra * 2.0)
+    if norm_name in target:
+        # Shorter OSM name inside QTH (e.g. bare 'tron' peak) — weak.
+        return 55.0 + 25.0 * (len(norm_name) / len(target))
+    return float(fuzz.ratio(target, norm_name))
+
+
 def match_qth_landmark(
     repeater: NrrlRepeater,
     landmarks: list[dict],
@@ -337,15 +546,15 @@ def match_qth_landmark(
         if not norm:
             continue
 
-        if target == norm or target in norm or norm in target:
-            score = 100.0
+        overlap = _qth_name_overlap_score(target, norm)
+        if overlap >= 90.0:
             method = "qth_exact"
-        else:
-            score = float(fuzz.ratio(target, norm))
+        elif overlap >= float(fuzzy_min):
             method = "qth_fuzzy"
-            if score < fuzzy_min:
-                continue
+        else:
+            continue
 
+        score = overlap + _landmark_site_bonus(tags, name)
         pos = Position(
             lat=lat,
             lon=lon,
@@ -367,6 +576,50 @@ def match_qth_landmark(
     best_score, best_pos, method = candidates[0]
     match_label = f"{method}:{best_pos.extra.get('osm_name')} ({best_pos.source_id})"
     return best_pos, match_label
+
+
+def record_has_callsign(rec: SourceRecord, callsign: str) -> bool:
+    """True when the OSM feature is tagged/named with this callsign."""
+    tags = rec.extra.get("tags") or {}
+    tagged = extract_callsigns(
+        str(tags.get("communication:amateur_radio:callsign") or tags.get("callsign") or "")
+    )
+    named = extract_callsigns(str(tags.get("name") or ""))
+    return callsign in tagged or callsign in named
+
+
+def source_records_as_landmarks(records: list[SourceRecord]) -> list[dict]:
+    """Project amateur OSM SourceRecords into landmark-shaped dicts for QTH matching."""
+    out: list[dict] = []
+    seen: set[str] = set()
+    for rec in records:
+        if rec.lat is None or rec.lon is None or not rec.source_id:
+            continue
+        if rec.source_id in seen:
+            continue
+        seen.add(rec.source_id)
+        parsed = None
+        text = str(rec.source_id)
+        if "/" in text:
+            kind, _, rest = text.partition("/")
+            if rest.isdigit():
+                parsed = (kind, int(rest))
+        if not parsed:
+            continue
+        kind, eid = parsed
+        tags = dict(rec.extra.get("tags") or {})
+        if rec.qth and "name" not in tags:
+            tags = {**tags, "name": rec.qth}
+        out.append(
+            {
+                "type": kind,
+                "id": eid,
+                "lat": rec.lat,
+                "lon": rec.lon,
+                "tags": tags,
+            }
+        )
+    return out
 
 
 def pick_osm_callsign_match(
