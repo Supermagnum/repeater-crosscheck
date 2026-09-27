@@ -84,6 +84,13 @@ lat = 60.3764211
 lon = 11.1581135
 note = "Mistberget."
 
+[LD2KR]
+qth = "Rafjellet"
+lat = 60.3242222
+lon = 12.1383250
+osm_id = "node/5576656337"
+note = "Same mast as LA2KRR/LA2XRR. OSM node/5576656337."
+
 [LD2HJ]
 qrt = true
 lat = 60.9416531

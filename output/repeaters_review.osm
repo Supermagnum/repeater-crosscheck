@@ -4959,29 +4959,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la7v.org/" />
   </node>
-  <node id="-253" visible="true" lat="60.312500" lon="12.125000">
-    <tag k="best_source" v="nrrl_locator" />
-    <tag k="callsign" v="LD2KR" />
-    <tag k="communication:amateur_radio" v="yes" />
-    <tag k="communication:amateur_radio:callsign" v="LD2KR" />
-    <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="71.9" />
-    <tag k="communication:amateur_radio:repeater:frequency_out" v="434.5625 MHz" />
-    <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
-    <tag k="flags" v="missing_osm" />
-    <tag k="frequency" v="434.5625" />
-    <tag k="group" v="Kongsvinger" />
-    <tag k="locator" v="JP60BH" />
-    <tag k="name" v="LD2KR" />
-    <tag k="note" v="best position from nrrl_locator" />
-    <tag k="nrrl:group_page" v="https://nrrl.no/grupper/innlandet/kongsvingergruppen/" />
-    <tag k="qth" v="Rafjellet" />
-    <tag k="review" v="repeater_crosscheck" />
-    <tag k="source_kind" v="best" />
-    <tag k="website" v="https://www.la7v.org/" />
-  </node>
-  <node id="-254" visible="true" lat="60.229167" lon="12.041667">
+  <node id="-253" visible="true" lat="60.229167" lon="12.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD2KS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5001,7 +4979,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la7v.org/" />
   </node>
-  <node id="-255" visible="true" lat="61.145833" lon="10.541667">
+  <node id="-254" visible="true" lat="61.145833" lon="10.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD2LH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5021,7 +4999,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la2l.no/" />
   </node>
-  <node id="-256" visible="true" lat="61.007556" lon="10.191800">
+  <node id="-255" visible="true" lat="61.007556" lon="10.191800">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD2LK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5039,7 +5017,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-257" visible="true" lat="60.812500" lon="11.375000">
+  <node id="-256" visible="true" lat="60.812500" lon="11.375000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD2LT" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5058,7 +5036,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-258" visible="true" lat="60.354167" lon="11.041667">
+  <node id="-257" visible="true" lat="60.354167" lon="11.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD2OH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5078,7 +5056,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la2g.no/" />
   </node>
-  <node id="-259" visible="true" lat="60.391022" lon="10.618917">
+  <node id="-258" visible="true" lat="60.391022" lon="10.618917">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD2RI" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5097,7 +5075,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-260" visible="true" lat="60.229167" lon="11.291667">
+  <node id="-259" visible="true" lat="60.229167" lon="11.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD2RK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5117,7 +5095,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la2g.no/" />
   </node>
-  <node id="-261" visible="true" lat="62.174185" lon="10.695426">
+  <node id="-260" visible="true" lat="62.174185" lon="10.695426">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD2TR" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5135,7 +5113,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-262" visible="true" lat="60.391022" lon="10.618917">
+  <node id="-261" visible="true" lat="60.391022" lon="10.618917">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD2VR" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5153,7 +5131,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-263" visible="true" lat="60.979167" lon="11.375000">
+  <node id="-262" visible="true" lat="60.979167" lon="11.375000">
     <tag k="callsign" v="LD2WA" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD2WA" />
@@ -5172,7 +5150,7 @@
     <tag k="source_kind" v="nrrl_locator" />
     <tag k="website" v="https://www.la5g.no/" />
   </node>
-  <node id="-264" visible="true" lat="60.993738" lon="11.339381">
+  <node id="-263" visible="true" lat="60.993738" lon="11.339381">
     <tag k="callsign" v="LD2WA" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD2WA" />
@@ -5191,7 +5169,7 @@
     <tag k="source_kind" v="osm" />
     <tag k="website" v="https://www.la5g.no/" />
   </node>
-  <node id="-265" visible="true" lat="60.994015" lon="11.338900">
+  <node id="-264" visible="true" lat="60.994015" lon="11.338900">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD2WA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5211,17 +5189,17 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la5g.no/" />
   </node>
-  <way id="-266" visible="true">
+  <way id="-265" visible="true">
+    <nd ref="-262" />
     <nd ref="-263" />
     <nd ref="-264" />
-    <nd ref="-265" />
-    <nd ref="-263" />
+    <nd ref="-262" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD2WA" />
     <tag k="max_disagreement_m" v="2513.1" />
     <tag k="flags" v="disagreement" />
   </way>
-  <node id="-267" visible="true" lat="61.895833" lon="9.291667">
+  <node id="-266" visible="true" lat="61.895833" lon="9.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD2WB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5241,7 +5219,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la5g.no/" />
   </node>
-  <node id="-268" visible="true" lat="62.174185" lon="10.695426">
+  <node id="-267" visible="true" lat="62.174185" lon="10.695426">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD2WC" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5260,7 +5238,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la5g.no/" />
   </node>
-  <node id="-269" visible="true" lat="60.569600" lon="10.937985">
+  <node id="-268" visible="true" lat="60.569600" lon="10.937985">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD2WD" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5279,7 +5257,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la5g.no/" />
   </node>
-  <node id="-270" visible="true" lat="59.221984" lon="8.977644">
+  <node id="-269" visible="true" lat="59.221984" lon="8.977644">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3BD" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5297,7 +5275,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-271" visible="true" lat="59.479167" lon="9.041667">
+  <node id="-270" visible="true" lat="59.479167" lon="9.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3BL" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5316,7 +5294,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-272" visible="true" lat="59.812500" lon="10.208333">
+  <node id="-271" visible="true" lat="59.812500" lon="10.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3DD" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5336,7 +5314,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-273" visible="true" lat="59.850941" lon="8.655423">
+  <node id="-272" visible="true" lat="59.850941" lon="8.655423">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3DG" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5358,7 +5336,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la1t.no/" />
   </node>
-  <node id="-274" visible="true" lat="59.837795" lon="10.289262">
+  <node id="-273" visible="true" lat="59.837795" lon="10.289262">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3DW" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5377,7 +5355,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-275" visible="true" lat="59.145833" lon="8.708333">
+  <node id="-274" visible="true" lat="59.145833" lon="8.708333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3GB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5396,7 +5374,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-276" visible="true" lat="60.432951" lon="8.424546">
+  <node id="-275" visible="true" lat="60.432951" lon="8.424546">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3GD" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5414,7 +5392,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-277" visible="true" lat="60.520833" lon="8.208333">
+  <node id="-276" visible="true" lat="60.520833" lon="8.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3GE" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5433,7 +5411,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-278" visible="true" lat="58.867788" lon="9.380104">
+  <node id="-277" visible="true" lat="58.867788" lon="9.380104">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3GK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5451,7 +5429,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-279" visible="true" lat="59.235970" lon="9.699394">
+  <node id="-278" visible="true" lat="59.235970" lon="9.699394">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3GL" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5471,7 +5449,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-280" visible="true" lat="60.713786" lon="8.968239">
+  <node id="-279" visible="true" lat="60.713786" lon="8.968239">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3GO" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5489,7 +5467,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-281" visible="true" lat="59.850941" lon="8.655423">
+  <node id="-280" visible="true" lat="59.850941" lon="8.655423">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3GT" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5508,7 +5486,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la1t.no/" />
   </node>
-  <node id="-282" visible="true" lat="60.520833" lon="9.041667">
+  <node id="-281" visible="true" lat="60.520833" lon="9.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3HN" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5527,7 +5505,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-283" visible="true" lat="60.520833" lon="8.208333">
+  <node id="-282" visible="true" lat="60.520833" lon="8.208333">
     <tag k="callsign" v="LD3HR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD3HR" />
@@ -5547,7 +5525,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="nrrl_locator" />
   </node>
-  <node id="-284" visible="true" lat="60.720678" lon="7.635442">
+  <node id="-283" visible="true" lat="60.720678" lon="7.635442">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3HS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5565,7 +5543,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-285" visible="true" lat="59.546468" lon="10.196356">
+  <node id="-284" visible="true" lat="59.546468" lon="10.196356">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3HV" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5584,7 +5562,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la1t.no/" />
   </node>
-  <node id="-286" visible="true" lat="59.025925" lon="10.201758">
+  <node id="-285" visible="true" lat="59.025925" lon="10.201758">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3KF" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5602,7 +5580,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-287" visible="true" lat="59.201761" lon="9.967203">
+  <node id="-286" visible="true" lat="59.201761" lon="9.967203">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3KJ" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5621,7 +5599,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la3l.no/" />
   </node>
-  <node id="-288" visible="true" lat="59.687500" lon="9.541667">
+  <node id="-287" visible="true" lat="59.687500" lon="9.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3KS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5641,7 +5619,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la8z.com" />
   </node>
-  <node id="-289" visible="true" lat="59.479167" lon="9.041667">
+  <node id="-288" visible="true" lat="59.479167" lon="9.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3LL" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5660,7 +5638,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-290" visible="true" lat="60.229167" lon="9.541667">
+  <node id="-289" visible="true" lat="60.229167" lon="9.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3NF" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5679,7 +5657,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-291" visible="true" lat="60.229167" lon="9.541667">
+  <node id="-290" visible="true" lat="60.229167" lon="9.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3NM" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5701,7 +5679,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://la7m.com/" />
   </node>
-  <node id="-292" visible="true" lat="60.187500" lon="10.375000">
+  <node id="-291" visible="true" lat="60.187500" lon="10.375000">
     <tag k="callsign" v="LD3RI" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD3RI" />
@@ -5722,7 +5700,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="nrrl_locator" />
   </node>
-  <node id="-293" visible="true" lat="60.207439" lon="10.366112">
+  <node id="-292" visible="true" lat="60.207439" lon="10.366112">
     <tag k="callsign" v="LD3RI" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD3RI" />
@@ -5743,15 +5721,15 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="radioid" />
   </node>
-  <way id="-294" visible="true">
+  <way id="-293" visible="true">
+    <nd ref="-291" />
     <nd ref="-292" />
-    <nd ref="-293" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD3RI" />
     <tag k="max_disagreement_m" v="2270.9" />
     <tag k="flags" v="disagreement|missing_osm" />
   </way>
-  <node id="-295" visible="true" lat="59.979167" lon="10.375000">
+  <node id="-294" visible="true" lat="59.979167" lon="10.375000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3SA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5770,7 +5748,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-296" visible="true" lat="59.546468" lon="10.196356">
+  <node id="-295" visible="true" lat="59.546468" lon="10.196356">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3SH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5789,7 +5767,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la1t.no/" />
   </node>
-  <node id="-297" visible="true" lat="59.270833" lon="9.625000">
+  <node id="-296" visible="true" lat="59.270833" lon="9.625000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3SK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5808,7 +5786,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-298" visible="true" lat="59.282500" lon="10.406670">
+  <node id="-297" visible="true" lat="59.282500" lon="10.406670">
     <tag k="callsign" v="LD3ST" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD3ST" />
@@ -5830,7 +5808,7 @@
     <tag k="source_kind" v="local" />
     <tag k="website" v="http://la1t.no/" />
   </node>
-  <node id="-299" visible="true" lat="59.354167" lon="10.208333">
+  <node id="-298" visible="true" lat="59.354167" lon="10.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3TB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5850,7 +5828,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la1t.no/" />
   </node>
-  <node id="-300" visible="true" lat="59.187500" lon="10.458333">
+  <node id="-299" visible="true" lat="59.187500" lon="10.458333">
     <tag k="callsign" v="LD3TD" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD3TD" />
@@ -5870,7 +5848,7 @@
     <tag k="source_kind" v="nrrl_locator" />
     <tag k="website" v="http://la1t.no/" />
   </node>
-  <node id="-301" visible="true" lat="59.176645" lon="10.427891">
+  <node id="-300" visible="true" lat="59.176645" lon="10.427891">
     <tag k="callsign" v="LD3TD" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD3TD" />
@@ -5890,15 +5868,15 @@
     <tag k="source_kind" v="osm" />
     <tag k="website" v="http://la1t.no/" />
   </node>
-  <way id="-302" visible="true">
+  <way id="-301" visible="true">
+    <nd ref="-299" />
     <nd ref="-300" />
-    <nd ref="-301" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD3TD" />
     <tag k="max_disagreement_m" v="2112.9" />
     <tag k="flags" v="disagreement|missing_radioid" />
   </way>
-  <node id="-303" visible="true" lat="59.479167" lon="8.125000">
+  <node id="-302" visible="true" lat="59.479167" lon="8.125000">
     <tag k="callsign" v="LD3TE" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD3TE" />
@@ -5916,7 +5894,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="nrrl_locator" />
   </node>
-  <node id="-304" visible="true" lat="59.489697" lon="8.090134">
+  <node id="-303" visible="true" lat="59.489697" lon="8.090134">
     <tag k="callsign" v="LD3TE" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD3TE" />
@@ -5934,15 +5912,15 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="osm" />
   </node>
-  <way id="-305" visible="true">
+  <way id="-304" visible="true">
+    <nd ref="-302" />
     <nd ref="-303" />
-    <nd ref="-304" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD3TE" />
     <tag k="max_disagreement_m" v="2290.5" />
     <tag k="flags" v="disagreement" />
   </way>
-  <node id="-306" visible="true" lat="60.395833" lon="9.958333">
+  <node id="-305" visible="true" lat="60.395833" lon="9.958333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3TO" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5961,7 +5939,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-307" visible="true" lat="59.235970" lon="9.699394">
+  <node id="-306" visible="true" lat="59.235970" lon="9.699394">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD3VL" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5979,7 +5957,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-308" visible="true" lat="59.979167" lon="9.958333">
+  <node id="-307" visible="true" lat="59.979167" lon="9.958333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD3VM" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -5999,7 +5977,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://la7m.com/" />
   </node>
-  <node id="-309" visible="true" lat="58.770833" lon="8.541667">
+  <node id="-308" visible="true" lat="58.770833" lon="8.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4AA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6018,7 +5996,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-310" visible="true" lat="58.395833" lon="8.541667">
+  <node id="-309" visible="true" lat="58.395833" lon="8.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4AI" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6037,7 +6015,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-311" visible="true" lat="58.562500" lon="8.958333">
+  <node id="-310" visible="true" lat="58.562500" lon="8.958333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4AK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6056,7 +6034,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-312" visible="true" lat="58.562500" lon="8.958333">
+  <node id="-311" visible="true" lat="58.562500" lon="8.958333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4AR" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6076,7 +6054,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-313" visible="true" lat="58.437500" lon="8.791667">
+  <node id="-312" visible="true" lat="58.437500" lon="8.791667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4AT" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6095,7 +6073,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-314" visible="true" lat="58.354167" lon="8.208333">
+  <node id="-313" visible="true" lat="58.354167" lon="8.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4BO" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6114,7 +6092,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-315" visible="true" lat="58.604167" lon="6.291667">
+  <node id="-314" visible="true" lat="58.604167" lon="6.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4EG" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6134,7 +6112,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1j.no/" />
   </node>
-  <node id="-316" visible="true" lat="58.437500" lon="5.958333">
+  <node id="-315" visible="true" lat="58.437500" lon="5.958333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4EI" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6154,7 +6132,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1j.no/" />
   </node>
-  <node id="-317" visible="true" lat="58.604167" lon="6.291667">
+  <node id="-316" visible="true" lat="58.604167" lon="6.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4ER" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6175,7 +6153,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1j.no/" />
   </node>
-  <node id="-318" visible="true" lat="58.312500" lon="6.625000">
+  <node id="-317" visible="true" lat="58.312500" lon="6.625000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4FF" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6195,7 +6173,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://la4k.no/" />
   </node>
-  <node id="-319" visible="true" lat="58.620079" lon="6.293778">
+  <node id="-318" visible="true" lat="58.620079" lon="6.293778">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD4GA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6217,7 +6195,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1j.no/" />
   </node>
-  <node id="-320" visible="true" lat="58.395833" lon="8.541667">
+  <node id="-319" visible="true" lat="58.395833" lon="8.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4GF" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6236,7 +6214,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-321" visible="true" lat="58.776819" lon="5.858822">
+  <node id="-320" visible="true" lat="58.776819" lon="5.858822">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD4GJ" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6258,7 +6236,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1j.no/" />
   </node>
-  <node id="-322" visible="true" lat="58.604167" lon="6.291667">
+  <node id="-321" visible="true" lat="58.604167" lon="6.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4GL" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6278,7 +6256,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1j.no/" />
   </node>
-  <node id="-323" visible="true" lat="58.453941" lon="8.460413">
+  <node id="-322" visible="true" lat="58.453941" lon="8.460413">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD4GS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6296,7 +6274,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-324" visible="true" lat="59.187500" lon="5.208333">
+  <node id="-323" visible="true" lat="59.187500" lon="5.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4HS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6315,7 +6293,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-325" visible="true" lat="58.145833" lon="7.958333">
+  <node id="-324" visible="true" lat="58.145833" lon="7.958333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4KA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6335,7 +6313,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la9k.net/" />
   </node>
-  <node id="-326" visible="true" lat="58.305801" lon="7.103300">
+  <node id="-325" visible="true" lat="58.305801" lon="7.103300">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD4KH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6357,7 +6335,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://la9s.no/" />
   </node>
-  <node id="-327" visible="true" lat="58.179449" lon="7.974986">
+  <node id="-326" visible="true" lat="58.179449" lon="7.974986">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD4KO" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6378,7 +6356,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la9k.net/" />
   </node>
-  <node id="-328" visible="true" lat="59.187500" lon="5.208333">
+  <node id="-327" visible="true" lat="59.187500" lon="5.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4KS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6397,7 +6375,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-329" visible="true" lat="58.524800" lon="6.546700">
+  <node id="-328" visible="true" lat="58.524800" lon="6.546700">
     <tag k="callsign" v="LD4LA" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD4LA" />
@@ -6418,7 +6396,7 @@
     <tag k="source_kind" v="local" />
     <tag k="website" v="https://la9s.no/" />
   </node>
-  <node id="-330" visible="true" lat="58.187500" lon="8.375000">
+  <node id="-329" visible="true" lat="58.187500" lon="8.375000">
     <tag k="callsign" v="LD4LF" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD4LF" />
@@ -6436,7 +6414,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="nrrl_locator" />
   </node>
-  <node id="-331" visible="true" lat="58.920141" lon="5.789153">
+  <node id="-330" visible="true" lat="58.920141" lon="5.789153">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD4LI" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6458,7 +6436,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://la9s.no/" />
   </node>
-  <node id="-332" visible="true" lat="58.312500" lon="7.125000">
+  <node id="-331" visible="true" lat="58.312500" lon="7.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4LK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6479,7 +6457,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://la9s.no/" />
   </node>
-  <node id="-333" visible="true" lat="58.645833" lon="5.708333">
+  <node id="-332" visible="true" lat="58.645833" lon="5.708333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4NB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6499,7 +6477,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1j.no/" />
   </node>
-  <node id="-334" visible="true" lat="58.767592" lon="9.105796">
+  <node id="-333" visible="true" lat="58.767592" lon="9.105796">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD4RH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6518,7 +6496,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-335" visible="true" lat="59.500000" lon="7.000000">
+  <node id="-334" visible="true" lat="59.500000" lon="7.000000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4RP" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6537,7 +6515,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-336" visible="true" lat="58.770833" lon="9.125000">
+  <node id="-335" visible="true" lat="58.770833" lon="9.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4SH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6556,7 +6534,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-337" visible="true" lat="58.854167" lon="5.708333">
+  <node id="-336" visible="true" lat="58.854167" lon="5.708333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4SJ" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6576,7 +6554,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1j.no/" />
   </node>
-  <node id="-338" visible="true" lat="59.062500" lon="5.958333">
+  <node id="-337" visible="true" lat="59.062500" lon="5.958333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4ST" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6596,7 +6574,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1j.no/" />
   </node>
-  <node id="-339" visible="true" lat="58.937500" lon="5.791667">
+  <node id="-338" visible="true" lat="58.937500" lon="5.791667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4VF" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6617,7 +6595,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://la9s.no/" />
   </node>
-  <node id="-340" visible="true" lat="58.354167" lon="6.291667">
+  <node id="-339" visible="true" lat="58.354167" lon="6.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4VK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6637,7 +6615,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://la9s.no/" />
   </node>
-  <node id="-341" visible="true" lat="58.687500" lon="8.791667">
+  <node id="-340" visible="true" lat="58.687500" lon="8.791667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD4VS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6656,7 +6634,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-342" visible="true" lat="60.479167" lon="5.291667">
+  <node id="-341" visible="true" lat="60.479167" lon="5.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5AG" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6676,7 +6654,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-343" visible="true" lat="59.437500" lon="5.291667">
+  <node id="-342" visible="true" lat="59.437500" lon="5.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5AV" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6695,7 +6673,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-344" visible="true" lat="60.354167" lon="5.125000">
+  <node id="-343" visible="true" lat="60.354167" lon="5.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5BE" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6715,7 +6693,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-345" visible="true" lat="60.604167" lon="7.541667">
+  <node id="-344" visible="true" lat="60.604167" lon="7.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5BF" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6735,7 +6713,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-346" visible="true" lat="60.354167" lon="5.125000">
+  <node id="-345" visible="true" lat="60.354167" lon="5.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5BG" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6756,7 +6734,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-347" visible="true" lat="60.549123" lon="7.452408">
+  <node id="-346" visible="true" lat="60.549123" lon="7.452408">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD5BH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6775,7 +6753,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-348" visible="true" lat="60.410900" lon="5.361190">
+  <node id="-347" visible="true" lat="60.410900" lon="5.361190">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD5BR" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6797,7 +6775,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-349" visible="true" lat="60.812500" lon="6.125000">
+  <node id="-348" visible="true" lat="60.812500" lon="6.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5ED" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6819,7 +6797,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-350" visible="true" lat="61.020833" lon="5.125000">
+  <node id="-349" visible="true" lat="61.020833" lon="5.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5GU" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6839,7 +6817,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-351" visible="true" lat="60.270833" lon="5.208333">
+  <node id="-350" visible="true" lat="60.270833" lon="5.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5HJ" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6859,7 +6837,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-352" visible="true" lat="59.354167" lon="5.291667">
+  <node id="-351" visible="true" lat="59.354167" lon="5.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5KH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6878,7 +6856,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-353" visible="true" lat="60.562500" lon="5.291667">
+  <node id="-352" visible="true" lat="60.562500" lon="5.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5KN" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6898,7 +6876,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-354" visible="true" lat="60.187500" lon="6.125000">
+  <node id="-353" visible="true" lat="60.187500" lon="6.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5KS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6918,7 +6896,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-355" visible="true" lat="60.395833" lon="6.208333">
+  <node id="-354" visible="true" lat="60.395833" lon="6.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5MT" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6938,7 +6916,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-356" visible="true" lat="59.854167" lon="5.458333">
+  <node id="-355" visible="true" lat="59.854167" lon="5.458333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5SK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6958,7 +6936,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-357" visible="true" lat="60.687500" lon="6.375000">
+  <node id="-356" visible="true" lat="60.687500" lon="6.375000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD5VO" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6976,7 +6954,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-358" visible="true" lat="62.270833" lon="7.125000">
+  <node id="-357" visible="true" lat="62.270833" lon="7.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6BE" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -6996,7 +6974,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1z.no/" />
   </node>
-  <node id="-359" visible="true" lat="67.187500" lon="15.041667">
+  <node id="-358" visible="true" lat="67.187500" lon="15.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6BK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7015,7 +6993,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-360" visible="true" lat="61.854167" lon="5.041667">
+  <node id="-359" visible="true" lat="61.854167" lon="5.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6BS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7034,7 +7012,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-361" visible="true" lat="61.437500" lon="5.875000">
+  <node id="-360" visible="true" lat="61.437500" lon="5.875000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6FD" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7054,7 +7032,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la6f.blogspot.com/" />
   </node>
-  <node id="-362" visible="true" lat="61.604167" lon="5.041667">
+  <node id="-361" visible="true" lat="61.604167" lon="5.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6FL" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7072,7 +7050,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-363" visible="true" lat="61.937500" lon="6.541667">
+  <node id="-362" visible="true" lat="61.937500" lon="6.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6HO" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7092,7 +7070,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
-  <node id="-364" visible="true" lat="63.104167" lon="7.791667">
+  <node id="-363" visible="true" lat="63.104167" lon="7.791667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6KN" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7111,7 +7089,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-365" visible="true" lat="62.437500" lon="6.291667">
+  <node id="-364" visible="true" lat="62.437500" lon="6.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6LB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7131,7 +7109,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1z.no/" />
   </node>
-  <node id="-366" visible="true" lat="62.516092" lon="6.872648">
+  <node id="-365" visible="true" lat="62.516092" lon="6.872648">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD6LF" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7150,7 +7128,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1z.no/" />
   </node>
-  <node id="-367" visible="true" lat="62.770833" lon="7.291667">
+  <node id="-366" visible="true" lat="62.770833" lon="7.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6MD" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7170,7 +7148,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://qsl.net/la9m/" />
   </node>
-  <node id="-368" visible="true" lat="62.354167" lon="5.625000">
+  <node id="-367" visible="true" lat="62.354167" lon="5.625000">
     <tag k="callsign" v="LD6NT" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD6NT" />
@@ -7188,7 +7166,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="nrrl_locator" />
   </node>
-  <node id="-369" visible="true" lat="62.352719" lon="5.585796">
+  <node id="-368" visible="true" lat="62.352719" lon="5.585796">
     <tag k="callsign" v="LD6NT" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD6NT" />
@@ -7206,15 +7184,15 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="osm" />
   </node>
-  <way id="-370" visible="true">
+  <way id="-369" visible="true">
+    <nd ref="-367" />
     <nd ref="-368" />
-    <nd ref="-369" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD6NT" />
     <tag k="max_disagreement_m" v="2029.2" />
     <tag k="flags" v="disagreement" />
   </way>
-  <node id="-371" visible="true" lat="62.931077" lon="7.927292">
+  <node id="-370" visible="true" lat="62.931077" lon="7.927292">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD6RF" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7232,7 +7210,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-372" visible="true" lat="61.895833" lon="6.125000">
+  <node id="-371" visible="true" lat="61.895833" lon="6.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6SA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7252,7 +7230,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la6f.blogspot.com/" />
   </node>
-  <node id="-373" visible="true" lat="62.729167" lon="8.458333">
+  <node id="-372" visible="true" lat="62.729167" lon="8.458333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6SB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7272,7 +7250,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://qsl.net/la9m/" />
   </node>
-  <node id="-374" visible="true" lat="62.354167" lon="7.041667">
+  <node id="-373" visible="true" lat="62.354167" lon="7.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6SD" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7292,7 +7270,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1z.no/" />
   </node>
-  <node id="-375" visible="true" lat="62.604167" lon="8.875000">
+  <node id="-374" visible="true" lat="62.604167" lon="8.875000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6SG" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7312,7 +7290,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://qsl.net/la9m/" />
   </node>
-  <node id="-376" visible="true" lat="62.437500" lon="6.375000">
+  <node id="-375" visible="true" lat="62.437500" lon="6.375000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6SH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7332,7 +7310,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la1z.no/" />
   </node>
-  <node id="-377" visible="true" lat="61.187500" lon="7.125000">
+  <node id="-376" visible="true" lat="61.187500" lon="7.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6SO" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7352,7 +7330,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la6f.blogspot.com/" />
   </node>
-  <node id="-378" visible="true" lat="61.895833" lon="6.625000">
+  <node id="-377" visible="true" lat="61.895833" lon="6.625000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6ST" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7372,7 +7350,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la6f.blogspot.com/" />
   </node>
-  <node id="-379" visible="true" lat="62.145833" lon="6.125000">
+  <node id="-378" visible="true" lat="62.145833" lon="6.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD6VS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7391,7 +7369,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-380" visible="true" lat="64.229167" lon="10.375000">
+  <node id="-379" visible="true" lat="64.229167" lon="10.375000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD7FB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7410,7 +7388,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-381" visible="true" lat="63.526921" lon="10.887306">
+  <node id="-380" visible="true" lat="63.526921" lon="10.887306">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD7FF" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7430,7 +7408,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-382" visible="true" lat="63.770833" lon="9.375000">
+  <node id="-381" visible="true" lat="63.770833" lon="9.375000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD7FO" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7449,7 +7427,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-383" visible="true" lat="63.520833" lon="9.958333">
+  <node id="-382" visible="true" lat="63.520833" lon="9.958333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD7FS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7468,7 +7446,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-384" visible="true" lat="64.395833" lon="12.208333">
+  <node id="-383" visible="true" lat="64.395833" lon="12.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD7GG" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7488,7 +7466,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la7n-namdal.blogspot.com/" />
   </node>
-  <node id="-385" visible="true" lat="64.479167" lon="11.458333">
+  <node id="-384" visible="true" lat="64.479167" lon="11.458333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD7NA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7508,7 +7486,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la7n-namdal.blogspot.com/" />
   </node>
-  <node id="-386" visible="true" lat="63.979167" lon="11.541667">
+  <node id="-385" visible="true" lat="63.979167" lon="11.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD7ST" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7527,7 +7505,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-387" visible="true" lat="63.064016" lon="11.146492">
+  <node id="-386" visible="true" lat="63.064016" lon="11.146492">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD7TB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7546,7 +7524,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la2t.no/" />
   </node>
-  <node id="-388" visible="true" lat="63.437500" lon="10.291667">
+  <node id="-387" visible="true" lat="63.437500" lon="10.291667">
     <tag k="callsign" v="LD7TG" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD7TG" />
@@ -7565,7 +7543,7 @@
     <tag k="source_kind" v="nrrl_locator" />
     <tag k="website" v="http://www.la2t.no/" />
   </node>
-  <node id="-389" visible="true" lat="63.421108" lon="10.260369">
+  <node id="-388" visible="true" lat="63.421108" lon="10.260369">
     <tag k="callsign" v="LD7TG" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD7TG" />
@@ -7584,15 +7562,15 @@
     <tag k="source_kind" v="osm" />
     <tag k="website" v="http://www.la2t.no/" />
   </node>
-  <way id="-390" visible="true">
+  <way id="-389" visible="true">
+    <nd ref="-387" />
     <nd ref="-388" />
-    <nd ref="-389" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD7TG" />
     <tag k="max_disagreement_m" v="2396.9" />
     <tag k="flags" v="disagreement" />
   </way>
-  <node id="-391" visible="true" lat="63.437500" lon="10.458333">
+  <node id="-390" visible="true" lat="63.437500" lon="10.458333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD7TH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7612,7 +7590,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la2t.no/" />
   </node>
-  <node id="-392" visible="true" lat="63.437500" lon="10.291667">
+  <node id="-391" visible="true" lat="63.437500" lon="10.291667">
     <tag k="callsign" v="LD7TL" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD7TL" />
@@ -7631,7 +7609,7 @@
     <tag k="source_kind" v="nrrl_locator" />
     <tag k="website" v="http://www.la2t.no/" />
   </node>
-  <node id="-393" visible="true" lat="63.421108" lon="10.260369">
+  <node id="-392" visible="true" lat="63.421108" lon="10.260369">
     <tag k="callsign" v="LD7TL" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD7TL" />
@@ -7650,15 +7628,15 @@
     <tag k="source_kind" v="osm" />
     <tag k="website" v="http://www.la2t.no/" />
   </node>
-  <way id="-394" visible="true">
+  <way id="-393" visible="true">
+    <nd ref="-391" />
     <nd ref="-392" />
-    <nd ref="-393" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD7TL" />
     <tag k="max_disagreement_m" v="2396.9" />
     <tag k="flags" v="disagreement" />
   </way>
-  <node id="-395" visible="true" lat="62.562500" lon="9.708333">
+  <node id="-394" visible="true" lat="62.562500" lon="9.708333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD7TO" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7678,7 +7656,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la2t.no/" />
   </node>
-  <node id="-396" visible="true" lat="63.173157" lon="9.143630">
+  <node id="-395" visible="true" lat="63.173157" lon="9.143630">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD7TR" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7697,7 +7675,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la2t.no/" />
   </node>
-  <node id="-397" visible="true" lat="63.020833" lon="10.291667">
+  <node id="-396" visible="true" lat="63.020833" lon="10.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD7TS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7717,7 +7695,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la2t.no/" />
   </node>
-  <node id="-398" visible="true" lat="63.437500" lon="10.458333">
+  <node id="-397" visible="true" lat="63.437500" lon="10.458333">
     <tag k="callsign" v="LD7TT" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD7TT" />
@@ -7736,7 +7714,7 @@
     <tag k="source_kind" v="nrrl_locator" />
     <tag k="website" v="http://www.la2t.no/" />
   </node>
-  <node id="-399" visible="true" lat="63.422356" lon="10.431941">
+  <node id="-398" visible="true" lat="63.422356" lon="10.431941">
     <tag k="callsign" v="LD7TT" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD7TT" />
@@ -7755,15 +7733,15 @@
     <tag k="source_kind" v="osm" />
     <tag k="website" v="http://www.la2t.no/" />
   </node>
-  <way id="-400" visible="true">
+  <way id="-399" visible="true">
+    <nd ref="-397" />
     <nd ref="-398" />
-    <nd ref="-399" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD7TT" />
     <tag k="max_disagreement_m" v="2135.1" />
     <tag k="flags" v="disagreement" />
   </way>
-  <node id="-401" visible="true" lat="63.262107" lon="10.356234">
+  <node id="-400" visible="true" lat="63.262107" lon="10.356234">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD7TV" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7782,7 +7760,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la2t.no/" />
   </node>
-  <node id="-402" visible="true" lat="63.854167" lon="11.541667">
+  <node id="-401" visible="true" lat="63.854167" lon="11.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD7VD" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7801,7 +7779,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-403" visible="true" lat="63.860939" lon="11.524469">
+  <node id="-402" visible="true" lat="63.860939" lon="11.524469">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD7VM" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7822,7 +7800,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-404" visible="true" lat="69.270833" lon="16.041667">
+  <node id="-403" visible="true" lat="69.270833" lon="16.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8AR" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7842,7 +7820,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la3t.no/" />
   </node>
-  <node id="-405" visible="true" lat="67.187500" lon="15.041667">
+  <node id="-404" visible="true" lat="67.187500" lon="15.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8BK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7861,7 +7839,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-406" visible="true" lat="65.479167" lon="12.208333">
+  <node id="-405" visible="true" lat="65.479167" lon="12.208333">
     <tag k="callsign" v="LD8BS" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD8BS" />
@@ -7881,7 +7859,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="nrrl_locator" />
   </node>
-  <node id="-407" visible="true" lat="65.496941" lon="12.245410">
+  <node id="-406" visible="true" lat="65.496941" lon="12.245410">
     <tag k="callsign" v="LD8BS" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD8BS" />
@@ -7901,15 +7879,15 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="radioid" />
   </node>
-  <way id="-408" visible="true">
+  <way id="-407" visible="true">
+    <nd ref="-405" />
     <nd ref="-406" />
-    <nd ref="-407" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD8BS" />
     <tag k="max_disagreement_m" v="2613.8" />
     <tag k="flags" v="disagreement|missing_osm" />
   </way>
-  <node id="-409" visible="true" lat="66.187500" lon="12.541667">
+  <node id="-408" visible="true" lat="66.187500" lon="12.541667">
     <tag k="callsign" v="LD8DF" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD8DF" />
@@ -7927,7 +7905,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="nrrl_locator" />
   </node>
-  <node id="-410" visible="true" lat="66.187500" lon="12.541667">
+  <node id="-409" visible="true" lat="66.187500" lon="12.541667">
     <tag k="callsign" v="LD8DN" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD8DN" />
@@ -7945,7 +7923,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="nrrl_locator" />
   </node>
-  <node id="-411" visible="true" lat="66.203411" lon="12.570000">
+  <node id="-410" visible="true" lat="66.203411" lon="12.570000">
     <tag k="callsign" v="LD8DN" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD8DN" />
@@ -7963,7 +7941,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="osm" />
   </node>
-  <node id="-412" visible="true" lat="66.202901" lon="12.568288">
+  <node id="-411" visible="true" lat="66.202901" lon="12.568288">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD8DN" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7982,17 +7960,17 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <way id="-413" visible="true">
+  <way id="-412" visible="true">
+    <nd ref="-409" />
     <nd ref="-410" />
     <nd ref="-411" />
-    <nd ref="-412" />
-    <nd ref="-410" />
+    <nd ref="-409" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD8DN" />
     <tag k="max_disagreement_m" v="2178.8" />
     <tag k="flags" v="disagreement|qrt" />
   </way>
-  <node id="-414" visible="true" lat="67.437500" lon="15.458333">
+  <node id="-413" visible="true" lat="67.437500" lon="15.458333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8FS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8011,7 +7989,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-415" visible="true" lat="67.264333" lon="15.383000">
+  <node id="-414" visible="true" lat="67.264333" lon="15.383000">
     <tag k="callsign" v="LD8FT" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD8FT" />
@@ -8031,7 +8009,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="local" />
   </node>
-  <node id="-416" visible="true" lat="65.437500" lon="13.375000">
+  <node id="-415" visible="true" lat="65.437500" lon="13.375000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8GS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8051,7 +8029,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la2w.no/" />
   </node>
-  <node id="-417" visible="true" lat="65.854167" lon="13.791667">
+  <node id="-416" visible="true" lat="65.854167" lon="13.791667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8HB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8071,7 +8049,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la2w.no/" />
   </node>
-  <node id="-418" visible="true" lat="66.187500" lon="13.708333">
+  <node id="-417" visible="true" lat="66.187500" lon="13.708333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8HV" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8091,7 +8069,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la3m.no/" />
   </node>
-  <node id="-419" visible="true" lat="67.229167" lon="15.291667">
+  <node id="-418" visible="true" lat="67.229167" lon="15.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8LF" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8110,7 +8088,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-420" visible="true" lat="68.145543" lon="13.628170">
+  <node id="-419" visible="true" lat="68.145543" lon="13.628170">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD8LK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8130,7 +8108,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-421" visible="true" lat="68.395833" lon="15.958333">
+  <node id="-420" visible="true" lat="68.395833" lon="15.958333">
     <tag k="callsign" v="LD8LR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD8LR" />
@@ -8150,7 +8128,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="nrrl_locator" />
   </node>
-  <node id="-422" visible="true" lat="68.411870" lon="15.984600">
+  <node id="-421" visible="true" lat="68.411870" lon="15.984600">
     <tag k="callsign" v="LD8LR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD8LR" />
@@ -8170,15 +8148,15 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="radioid" />
   </node>
-  <way id="-423" visible="true">
+  <way id="-422" visible="true">
+    <nd ref="-420" />
     <nd ref="-421" />
-    <nd ref="-422" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD8LR" />
     <tag k="max_disagreement_m" v="2082.2" />
     <tag k="flags" v="disagreement|missing_osm" />
   </way>
-  <node id="-424" visible="true" lat="65.770833" lon="13.291667">
+  <node id="-423" visible="true" lat="65.770833" lon="13.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8MB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8198,7 +8176,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la2w.no/" />
   </node>
-  <node id="-425" visible="true" lat="65.314089" lon="13.449027">
+  <node id="-424" visible="true" lat="65.314089" lon="13.449027">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD8MK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8220,7 +8198,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la2w.no/" />
   </node>
-  <node id="-426" visible="true" lat="66.895833" lon="13.708333">
+  <node id="-425" visible="true" lat="66.895833" lon="13.708333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8MM" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8241,7 +8219,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-427" visible="true" lat="66.316101" lon="14.147500">
+  <node id="-426" visible="true" lat="66.316101" lon="14.147500">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD8MR" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8263,7 +8241,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la3m.no/" />
   </node>
-  <node id="-428" visible="true" lat="68.450127" lon="17.459959">
+  <node id="-427" visible="true" lat="68.450127" lon="17.459959">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD8NA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8283,7 +8261,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la1n.no/" />
   </node>
-  <node id="-429" visible="true" lat="68.437500" lon="18.041667">
+  <node id="-428" visible="true" lat="68.437500" lon="18.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8NB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8303,7 +8281,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la1n.no/" />
   </node>
-  <node id="-430" visible="true" lat="66.229167" lon="13.041667">
+  <node id="-429" visible="true" lat="66.229167" lon="13.041667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8NK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8323,7 +8301,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la3m.no/" />
   </node>
-  <node id="-431" visible="true" lat="66.212502" lon="13.053500">
+  <node id="-430" visible="true" lat="66.212502" lon="13.053500">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD8NN" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8344,7 +8322,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la3m.no/" />
   </node>
-  <node id="-432" visible="true" lat="68.479167" lon="17.208333">
+  <node id="-431" visible="true" lat="68.479167" lon="17.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8NO" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8363,7 +8341,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la1n.no/" />
   </node>
-  <node id="-433" visible="true" lat="68.479167" lon="17.458333">
+  <node id="-432" visible="true" lat="68.479167" lon="17.458333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8NV" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8383,7 +8361,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la1n.no/" />
   </node>
-  <node id="-434" visible="true" lat="66.425891" lon="15.216682">
+  <node id="-433" visible="true" lat="66.425891" lon="15.216682">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD8RA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8402,7 +8380,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la3m.no/" />
   </node>
-  <node id="-435" visible="true" lat="66.187500" lon="14.458333">
+  <node id="-434" visible="true" lat="66.187500" lon="14.458333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8RH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8422,7 +8400,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la3m.no/" />
   </node>
-  <node id="-436" visible="true" lat="67.229167" lon="15.458333">
+  <node id="-435" visible="true" lat="67.229167" lon="15.458333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8RS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8441,7 +8419,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-437" visible="true" lat="66.006241" lon="12.618011">
+  <node id="-436" visible="true" lat="66.006241" lon="12.618011">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD8SA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8462,7 +8440,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-438" visible="true" lat="67.145833" lon="16.125000">
+  <node id="-437" visible="true" lat="67.145833" lon="16.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8SH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8481,7 +8459,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-439" visible="true" lat="66.020833" lon="12.625000">
+  <node id="-438" visible="true" lat="66.020833" lon="12.625000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8SS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8500,7 +8478,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-440" visible="true" lat="68.229167" lon="16.041667">
+  <node id="-439" visible="true" lat="68.229167" lon="16.041667">
     <tag k="callsign" v="LD8TB" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD8TB" />
@@ -8519,7 +8497,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="nrrl_locator" />
   </node>
-  <node id="-441" visible="true" lat="68.214241" lon="16.070158">
+  <node id="-440" visible="true" lat="68.214241" lon="16.070158">
     <tag k="callsign" v="LD8TB" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD8TB" />
@@ -8538,15 +8516,15 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="radioid" />
   </node>
-  <way id="-442" visible="true">
+  <way id="-441" visible="true">
+    <nd ref="-439" />
     <nd ref="-440" />
-    <nd ref="-441" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD8TB" />
     <tag k="max_disagreement_m" v="2033.7" />
     <tag k="flags" v="disagreement|missing_osm|qrt" />
   </way>
-  <node id="-443" visible="true" lat="68.687500" lon="15.375000">
+  <node id="-442" visible="true" lat="68.687500" lon="15.375000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD8VR" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8566,7 +8544,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-444" visible="true" lat="70.112915" lon="22.933847">
+  <node id="-443" visible="true" lat="70.112915" lon="22.933847">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD9AD" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8588,7 +8566,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la5a.no/" />
   </node>
-  <node id="-445" visible="true" lat="70.479167" lon="22.125000">
+  <node id="-444" visible="true" lat="70.479167" lon="22.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9AH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8609,7 +8587,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la5a.no/" />
   </node>
-  <node id="-446" visible="true" lat="70.020833" lon="23.125000">
+  <node id="-445" visible="true" lat="70.020833" lon="23.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9AT" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8629,7 +8607,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la5a.no/" />
   </node>
-  <node id="-447" visible="true" lat="68.581333" lon="19.362500">
+  <node id="-446" visible="true" lat="68.581333" lon="19.362500">
     <tag k="callsign" v="LD9AV" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD9AV" />
@@ -8649,7 +8627,7 @@
     <tag k="source_kind" v="local" />
     <tag k="website" v="http://www.la6m.no/" />
   </node>
-  <node id="-448" visible="true" lat="69.229167" lon="19.375000">
+  <node id="-447" visible="true" lat="69.229167" lon="19.375000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9BA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8669,7 +8647,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la6m.no/" />
   </node>
-  <node id="-449" visible="true" lat="69.062500" lon="16.541667">
+  <node id="-448" visible="true" lat="69.062500" lon="16.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9BK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8688,7 +8666,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-450" visible="true" lat="70.312500" lon="31.125000">
+  <node id="-449" visible="true" lat="70.312500" lon="31.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9DM" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8707,7 +8685,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-451" visible="true" lat="68.770833" lon="16.541667">
+  <node id="-450" visible="true" lat="68.770833" lon="16.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9HA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8726,7 +8704,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-452" visible="true" lat="68.770833" lon="16.541667">
+  <node id="-451" visible="true" lat="68.770833" lon="16.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9HB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8745,7 +8723,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-453" visible="true" lat="68.770833" lon="16.541667">
+  <node id="-452" visible="true" lat="68.770833" lon="16.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9HH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8764,7 +8742,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-454" visible="true" lat="68.770833" lon="16.208333">
+  <node id="-453" visible="true" lat="68.770833" lon="16.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9HK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8783,7 +8761,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-455" visible="true" lat="68.761410" lon="16.519510">
+  <node id="-454" visible="true" lat="68.761410" lon="16.519510">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD9HM" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8804,7 +8782,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-456" visible="true" lat="70.680122" lon="23.675731">
+  <node id="-455" visible="true" lat="70.680122" lon="23.675731">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD9HN" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8822,7 +8800,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-457" visible="true" lat="68.803576" lon="16.369273">
+  <node id="-456" visible="true" lat="68.803576" lon="16.369273">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD9HO" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8840,7 +8818,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-458" visible="true" lat="68.809536" lon="16.525714">
+  <node id="-457" visible="true" lat="68.809536" lon="16.525714">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD9HR" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8860,7 +8838,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-459" visible="true" lat="70.479167" lon="22.125000">
+  <node id="-458" visible="true" lat="70.479167" lon="22.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9HS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8880,7 +8858,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la5a.no/" />
   </node>
-  <node id="-460" visible="true" lat="69.312500" lon="17.708333">
+  <node id="-459" visible="true" lat="69.312500" lon="17.708333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9HT" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8899,7 +8877,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-461" visible="true" lat="69.012697" lon="23.043220">
+  <node id="-460" visible="true" lat="69.012697" lon="23.043220">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD9KA" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8918,7 +8896,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la5a.no/" />
   </node>
-  <node id="-462" visible="true" lat="68.770833" lon="16.125000">
+  <node id="-461" visible="true" lat="68.770833" lon="16.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9KB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8939,7 +8917,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-463" visible="true" lat="68.770833" lon="16.125000">
+  <node id="-462" visible="true" lat="68.770833" lon="16.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9KK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8958,7 +8936,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-464" visible="true" lat="69.012697" lon="23.043220">
+  <node id="-463" visible="true" lat="69.012697" lon="23.043220">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD9KR" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8977,7 +8955,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la5a.no/" />
   </node>
-  <node id="-465" visible="true" lat="70.354167" lon="25.541667">
+  <node id="-464" visible="true" lat="70.354167" lon="25.541667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9KS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -8997,7 +8975,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la5a.no/" />
   </node>
-  <node id="-466" visible="true" lat="69.645833" lon="20.291667">
+  <node id="-465" visible="true" lat="69.645833" lon="20.291667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9LY" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9017,7 +8995,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la3t.no/" />
   </node>
-  <node id="-467" visible="true" lat="69.145833" lon="18.541667">
+  <node id="-466" visible="true" lat="69.145833" lon="18.541667">
     <tag k="callsign" v="LD9MB" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD9MB" />
@@ -9035,7 +9013,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="nrrl_locator" />
   </node>
-  <node id="-468" visible="true" lat="69.127806" lon="18.517556">
+  <node id="-467" visible="true" lat="69.127806" lon="18.517556">
     <tag k="callsign" v="LD9MB" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD9MB" />
@@ -9053,15 +9031,15 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="osm" />
   </node>
-  <way id="-469" visible="true">
+  <way id="-468" visible="true">
+    <nd ref="-466" />
     <nd ref="-467" />
-    <nd ref="-468" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD9MB" />
     <tag k="max_disagreement_m" v="2220.4" />
     <tag k="flags" v="disagreement" />
   </way>
-  <node id="-470" visible="true" lat="68.721389" lon="17.851111">
+  <node id="-469" visible="true" lat="68.721389" lon="17.851111">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LD9MS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9083,7 +9061,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la6m.no/" />
   </node>
-  <node id="-471" visible="true" lat="68.645833" lon="17.791667">
+  <node id="-470" visible="true" lat="68.645833" lon="17.791667">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9NG" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9103,7 +9081,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la1n.no/" />
   </node>
-  <node id="-472" visible="true" lat="70.984564" lon="25.899981">
+  <node id="-471" visible="true" lat="70.984564" lon="25.899981">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD9NK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9121,7 +9099,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-473" visible="true" lat="70.312500" lon="25.208333">
+  <node id="-472" visible="true" lat="70.312500" lon="25.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9PS" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9140,7 +9118,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-474" visible="true" lat="68.520833" lon="15.208333">
+  <node id="-473" visible="true" lat="68.520833" lon="15.208333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9SH" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9159,7 +9137,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-475" visible="true" lat="69.312500" lon="17.708333">
+  <node id="-474" visible="true" lat="69.312500" lon="17.708333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9SJ" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9179,7 +9157,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la6m.no/" />
   </node>
-  <node id="-476" visible="true" lat="69.812500" lon="20.875000">
+  <node id="-475" visible="true" lat="69.812500" lon="20.875000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9SK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9199,7 +9177,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la3t.no/" />
   </node>
-  <node id="-477" visible="true" lat="68.687500" lon="18.125000">
+  <node id="-476" visible="true" lat="68.687500" lon="18.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9SM" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9219,7 +9197,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://www.la6m.no/" />
   </node>
-  <node id="-478" visible="true" lat="68.187500" lon="14.625000">
+  <node id="-477" visible="true" lat="68.187500" lon="14.625000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9SV" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9238,7 +9216,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-479" visible="true" lat="69.656930" lon="18.926890">
+  <node id="-478" visible="true" lat="69.656930" lon="18.926890">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD9TB" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9256,7 +9234,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-480" visible="true" lat="69.645833" lon="18.958333">
+  <node id="-479" visible="true" lat="69.645833" lon="18.958333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9TD" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9276,7 +9254,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la3t.no/" />
   </node>
-  <node id="-481" visible="true" lat="69.437500" lon="20.125000">
+  <node id="-480" visible="true" lat="69.437500" lon="20.125000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9TF" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9296,7 +9274,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la3t.no/" />
   </node>
-  <node id="-482" visible="true" lat="69.733722" lon="18.787253">
+  <node id="-481" visible="true" lat="69.733722" lon="18.787253">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD9TK" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9315,7 +9293,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la3t.no/" />
   </node>
-  <node id="-483" visible="true" lat="69.645833" lon="19.041667">
+  <node id="-482" visible="true" lat="69.645833" lon="19.041667">
     <tag k="callsign" v="LD9TN" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD9TN" />
@@ -9336,7 +9314,7 @@
     <tag k="source_kind" v="nrrl_locator" />
     <tag k="website" v="https://www.la3t.no/" />
   </node>
-  <node id="-484" visible="true" lat="69.633400" lon="18.848640">
+  <node id="-483" visible="true" lat="69.633400" lon="18.848640">
     <tag k="callsign" v="LD9TN" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD9TN" />
@@ -9357,15 +9335,15 @@
     <tag k="source_kind" v="radioid" />
     <tag k="website" v="https://www.la3t.no/" />
   </node>
-  <way id="-485" visible="true">
+  <way id="-484" visible="true">
+    <nd ref="-482" />
     <nd ref="-483" />
-    <nd ref="-484" />
     <tag k="review" v="disagreement" />
     <tag k="callsign" v="LD9TN" />
     <tag k="max_disagreement_m" v="7594.6" />
     <tag k="flags" v="disagreement|missing_osm|outside_locator:radioid" />
   </way>
-  <node id="-486" visible="true" lat="69.718169" lon="19.129153">
+  <node id="-485" visible="true" lat="69.718169" lon="19.129153">
     <tag k="best_source" v="osm" />
     <tag k="callsign" v="LD9TT" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9384,7 +9362,7 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://www.la3t.no/" />
   </node>
-  <node id="-487" visible="true" lat="69.729167" lon="29.875000">
+  <node id="-486" visible="true" lat="69.729167" lon="29.875000">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9VG" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -9403,7 +9381,7 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-488" visible="true" lat="70.187500" lon="19.708333">
+  <node id="-487" visible="true" lat="70.187500" lon="19.708333">
     <tag k="best_source" v="nrrl_locator" />
     <tag k="callsign" v="LD9VN" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -10476,9 +10454,9 @@
   </node>
   <node id="5576656337" version="7" visible="true" action="modify" changeset="174673638" timestamp="2025-11-15T05:05:30Z" user="roleohibachi" uid="10076920" lat="60.3242222" lon="12.1383250">
     <tag k="best_source" v="local" />
-    <tag k="callsign" v="LA2KRR;LA2XRR" />
+    <tag k="callsign" v="LA2KRR;LA2XRR;LD2KR" />
     <tag k="communication:amateur_radio" v="yes" />
-    <tag k="communication:amateur_radio:callsign" v="LA2KRR;LA2XRR" />
+    <tag k="communication:amateur_radio:callsign" v="LA2KRR;LA2XRR;LD2KR" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.625000" />
@@ -10488,20 +10466,20 @@
     <tag k="description" v="Rafjell RL-repeater" />
     <tag k="ele" v="577" />
     <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="434.65;145.7125" />
+    <tag k="frequency" v="434.65;145.7125;434.5625" />
     <tag k="group" v="Kongsvinger" />
     <tag k="height" v="15" />
     <tag k="locator" v="JP60BH" />
     <tag k="man_made" v="mast" />
     <tag k="network" v="LA5MR" />
-    <tag k="note" v="best position from osm;Same mast as LA2KRR. OSM node/5576656337.;operator override position" />
+    <tag k="note" v="best position from osm;Same mast as LA2KRR. OSM node/5576656337.;operator override position;Same mast as LA2KRR/LA2XRR. OSM node/5576656337." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/innlandet/kongsvingergruppen/" />
     <tag k="osm_relation" v="relation/18780801" />
     <tag k="qth" v="Rafjellet" />
     <tag k="ref:hinder" v="54399" />
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Kartverket Luftfartshindre" />
-    <tag k="source_kind" v="osm_network" />
+    <tag k="source_kind" v="osm" />
     <tag k="tower:type" v="communication" />
     <tag k="website" v="https://www.la7v.org/" />
   </node>
