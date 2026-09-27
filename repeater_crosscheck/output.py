@@ -361,7 +361,11 @@ def write_josm_osm(
         primary_el = osm_elements.get(primary_ref) if primary_ref else None
         if primary_el is not None and not _mergeable_osm_element(primary_el):
             # Peak/hill only — keep coords via synthetic nodes, do not modify the peak.
-            primary_el = None
+            # Explicit osm_id overrides may still pin onto a peak (operator choice).
+            match = row.osm_match or ""
+            method = (row.match_methods or {}).get("osm") or ""
+            if not (match.startswith("override:") or method == "override"):
+                primary_el = None
         if primary_el is not None and primary_ref:
             if not _may_merge_review_onto_osm(
                 row,

@@ -167,6 +167,27 @@ lon = 10.937981
 osm_id = "node/1640276661"
 note = "Torseterkampen. OSM node/1640276661 (LA6GR, LD2GU, LD2WD)."
 
+[LA5HRR]
+qth = "Storhorta"
+lat = 61.3320012
+lon = 11.0941649
+osm_id = "node/5576657770"
+note = "Storhorta / Horta. OSM node/5576657770 (LA5HRR, LD2GP)."
+
+[LD2GP]
+qth = "Storhorta"
+lat = 61.3320012
+lon = 11.0941649
+osm_id = "node/5576657770"
+note = "Storhorta / Horta. OSM node/5576657770 (LA5HRR, LD2GP)."
+
+[LD2GT]
+qth = "Rånåkollen"
+lat = 62.2497917
+lon = 8.1803318
+osm_id = "node/5576501719"
+note = "Rånåkollen. OSM node/5576501719."
+
 [LD2GN]
 qth = "Nordhue"
 lat = 60.9937379
