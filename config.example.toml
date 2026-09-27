@@ -1,0 +1,53 @@
+# Copy to config.toml and edit. Do not commit secrets.
+
+[paths]
+nrrl_csv = "/home/haaken/anytone/export/Relestasjoner.csv"
+channel_csv = "/home/haaken/anytone/export/channel.csv"
+zone_csv = "/home/haaken/anytone/export/zone.csv"
+overrides = "./overrides.toml"
+cache_dir = "./cache"
+output_dir = "./output"
+
+[thresholds]
+# Flag when any two source positions disagree by more than this (metres).
+disagreement_m = 2000
+# radioid / RepeaterBook counts as "near" the locator square within this margin.
+locator_near_m = 500
+# Frequency match tolerance (MHz) when falling back from callsign matching.
+freq_tolerance_mhz = 0.001
+# Max distance (m) for frequency+distance fallback matching.
+freq_match_max_m = 5000
+# Fuzzy QTH vs OSM name match threshold (0-100, rapidfuzz.ratio).
+qth_fuzzy_min = 80
+
+[http]
+# REQUIRED: put a reachable contact address in the User-Agent.
+user_agent = "repeater-crosscheck/1.0 (+https://localhost; you@example.com)"
+# Minimum seconds between requests to the same host.
+min_interval_s = 1.5
+# Overpass can be slow; allow a longer gap after each query.
+overpass_min_interval_s = 5.0
+timeout_s = 120
+retries = 3
+
+[radioid]
+# Optional; recommended for future-proofing. Leave empty if unused.
+api_token = ""
+base_url = "https://radioid.net"
+# Query country value used by radioid (try "Norway").
+country = "Norway"
+
+[repeaterbook]
+# Required for exportROW once your app/token is approved.
+# Prefer X-RB-App-Token (app_... or rbuapp_...). Leave empty to skip this source.
+api_token = ""
+base_url = "https://www.repeaterbook.com"
+country = "Norway"
+# Must match the User-Agent approved for your token when bound.
+# Falls back to [http].user_agent when empty.
+user_agent = ""
+
+[overpass]
+endpoint = "https://overpass-api.de/api/interpreter"
+# Norway mainland + Svalbard / Jan Mayen rough bbox (south,west,north,east).
+bbox = [57.5, 4.0, 81.0, 35.0]

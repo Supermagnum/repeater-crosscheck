@@ -1,0 +1,139 @@
+# Local / operator-known facts. Not uploaded to OSM.
+# Each [callsign] table may set lat, lon, qth, portable, qrt, url, note.
+
+[LA2LRR]
+portable = true
+note = "NRRL QTH is Mjøsa portabel; not a fixed site."
+
+[LA5LRR]
+qth = "Rong, Øygarden"
+lat = 60.512071
+lon = 4.913333
+url = "https://www.la1b.no/la5lrr/"
+note = "Crossband link. Club page: Rong i Øygarden. OSM mast node/5583842945."
+
+[LA9QR]
+lat = 69.7337219
+lon = 18.7872526
+note = "Kjølen / Kvaløya."
+
+[LA6WR]
+lat = 60.69400
+lon = 6.41400
+note = "Lønahorgi."
+
+[LA7CR]
+lat = 59.93086
+lon = 9.92940
+note = "Norefjell. NRRL locator JP49XW plots in the 69N band and is likely wrong."
+
+[LA3SRR]
+lat = 59.17920
+lon = 10.20830
+
+[LD3ST]
+lat = 59.28250
+lon = 10.40667
+note = "Frodeåsen."
+
+[LD3DV]
+lat = 59.75602
+lon = 10.20446
+note = "Vardåsen / Drammen."
+
+[LA7KR]
+lat = 60.16710
+lon = 11.99560
+qrt = true
+note = "Holtberget. NRRL already marks QRT."
+
+[LA8ER]
+lat = 60.3764211
+lon = 11.1581135
+note = "Mistberget."
+
+[LD2HJ]
+qrt = true
+note = "QRT."
+
+[LD9MM]
+lat = 68.874608
+lon = 18.415761
+tx = 434.6125
+rx = 432.6125
+qth = "Holtet, Bardu"
+on_air = true
+status = "on-air"
+qrt = false
+note = "DMR repeater on air. OSM mast https://www.openstreetmap.org/node/5588495799 (Holtet Bardu). TX 434.6125 / RX 432.6125. DMR ID 242014. NRRL still says planlagt/QRT."
+
+[LD9AF]
+lat = 69.127806
+lon = 18.517556
+tx = 144.8000
+rx = 144.8000
+qth = "Andsfjellet"
+url = "https://www.la6m.no/andsfjell/"
+note = "APRS digi on Andsfjell. OSM tower https://www.openstreetmap.org/node/5588496689. Source: https://www.la6m.no/andsfjell/"
+
+[LA9ZR]
+lat = 69.127806
+lon = 18.517556
+tx = 145.7250
+rx = 145.1250
+tone = "123"
+qth = "Andsfjellet"
+url = "https://www.la6m.no/andsfjell/"
+note = "RV58 VHF FM on Andsfjell. CTCSS 123 Hz. Source: https://www.la6m.no/andsfjell/"
+
+[LA8ZR]
+lat = 69.127806
+lon = 18.517556
+tx = 434.6500
+rx = 432.6500
+tone = "123"
+qth = "Andsfjellet"
+qrt = true
+status = "likely QRT"
+url = "https://www.la6m.no/andsfjell/"
+note = "Likely QRT: not in NRRL list dated 2025-11-10 (still present in local Relestasjoner.csv export). Was RU2 UHF on Andsfjell, CTCSS 123. Club page https://www.la6m.no/andsfjell/ may be outdated."
+
+[LD9AB]
+lat = 69.127806
+lon = 18.517556
+tx = 144.9250
+rx = 144.9250
+qth = "Andsfjellet"
+url = "https://www.la6m.no/andsfjell/"
+note = "Winlink node on Andsfjell. Source: https://www.la6m.no/andsfjell/"
+
+[LA9FRR]
+lat = 69.127806
+lon = 18.517556
+tx = 145.6125
+rx = 145.0125
+tone = "123"
+qth = "Andsfjellet"
+group = "Midt-Troms"
+url = "https://www.la6m.no/andsfjell/"
+note = "FM repeater on Andsfjell (Midt-Troms). TX 145.6125 / RX 145.0125, CTCSS 123. Same site as LA9ZR/LA8ZR/LD9AF/LD9AB."
+
+[LD8FT]
+lat = 67.264333
+lon = 15.383000
+tx = 144.8000
+rx = 144.8000
+type = "APRS"
+qth = "Bjørnmoveien"
+group = "Fauske"
+note = "APRS digi. Position 67°15.86'N 15°22.98'E. NRRL still lists this callsign as DMR UHF."
+
+[LD8MV]
+lat = 65.8784833
+lon = 13.3027111
+tx = 434.8250
+rx = 432.8250
+type = "DMR Repeater"
+qth = "Mosjøen/Vardefjell"
+group = "Mosjøen"
+note = "DMR repeater. Position 65.8784833, 13.3027111. DMR ID 242902."

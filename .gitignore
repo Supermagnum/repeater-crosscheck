@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+config.toml
+cache/
+unmatched.txt
+.DS_Store
+
+# Keep published review artefacts; ignore other output.
+output/*
+!output/repeaters_merged.csv
+!output/repeaters_review.osm
