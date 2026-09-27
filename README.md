@@ -136,15 +136,25 @@ every object that still has it. It records which source the tool preferred and
 must not be stored in OpenStreetMap. Do not upload until tags and positions
 have been verified.
 
+When a site position is uncertain, consult the NRRL list
+(`Relestasjoner.csv` — the `QTH`, `Lokator`, and frequency columns) and move the
+object in JOSM to the position that fits best given local knowledge, imagery,
+and other sources. Do not upload a guess you cannot defend.
+
 ### What is `repeaters.joz`?
 
 A `.joz` file is a **compressed JOSM session** (zip), not a plain `.jos` XML
 session. Open it with JOSM from the `output/` directory. This bundle includes:
 
-1. **repeaters_review.osm** — the generated review data
-2. **Fylker-linjer** — Norwegian county boundary lines (embedded), so you can
-   work fylke by fylke
+1. **One data layer per fylkesnavn** (e.g. `Innlandet`, `Akershus`, `Nordland`)
+   — review objects for that county only. **Innlandet** is visible by default;
+   other fylke layers start hidden (enable them in the Layers panel).
+2. **Fylker-linjer** — Norwegian county boundary lines (embedded)
 3. **Kartverket topo** — topographic background imagery for Norway
+
+Fylke assignment follows the NRRL group directory region (same as the coverage
+table). The monolithic [`repeaters_review.osm`](output/repeaters_review.osm)
+file is still written for tools that want everything in one layer.
 
 Opening the same session as a `.jos` file fails (SAX “Content is not allowed in
 prolog”) because the archive is zip-compressed.
@@ -155,7 +165,7 @@ Outputs (under `paths.output_dir`, default `./output/`):
 |------|---------|
 | `repeaters_merged.csv` | One row per NRRL repeater, all source coords + flags, plus `elevation_m` (ground ASL from Mapterhorn; for tools such as [SPLAT!](https://github.com/hoche/splat)) |
 | `repeaters_review.osm` | JOSM review: existing OSM masts get merged tags; otherwise synthetic nodes + disagreement ways. Portables omitted. Verify tags and local knowledge before upload. Delete `best_source` before upload. |
-| `repeaters.joz` | Compressed JOSM session: review layer + Fylker boundaries + Kartverket topo. Open from `output/`. |
+| `repeaters.joz` | Compressed JOSM session: one review layer per fylkesnavn + Fylker boundaries + Kartverket topo. Open from `output/`. |
 | `unmatched.txt` | Callsigns / codeplug channels that could not be matched |
 
 Coordinates for radioid.net come from the published `map.json` dump (the

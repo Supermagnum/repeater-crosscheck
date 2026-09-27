@@ -18,6 +18,7 @@ from .osm import (
 )
 from .nrrl_groups import build_group_lookup, load_nrrl_groups
 from .elevation import enrich_elevations
+from .joz_session import write_repeaters_joz
 from .output import write_josm_osm, write_merged_csv, write_unmatched
 from .overrides import load_overrides
 from .sources_local import (
@@ -246,6 +247,18 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
         cache=cache,
     )
     write_unmatched(unmatched_path, unmatched)
+
+    joz_path = output_dir / "repeaters.joz"
+    try:
+        fylke_layers = write_repeaters_joz(joz_path, osm_path, merged)
+        print(
+            f"Wrote {joz_path} ({len(fylke_layers)} fylke layers: "
+            + ", ".join(fylke_layers)
+            + ")"
+        )
+    except Exception as exc:
+        print(f"repeaters.joz failed: {exc}", file=sys.stderr)
+        traceback.print_exc()
 
     print(f"Wrote {csv_path}")
     print(f"Wrote {osm_path}")
