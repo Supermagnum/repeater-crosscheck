@@ -273,8 +273,7 @@ def write_josm_osm(
     """
     Write a JOSM review file.
 
-    Tagged upload='never' as a safeguard. Sources are public; upload only after
-    tags and local knowledge have been checked.
+    Sources are public; verify tags and local knowledge before uploading to OSM.
 
     When an OSM mast/tower/node/way is known, download that object and merge
     amateur-radio / review tags onto it instead of inventing a duplicate node.
@@ -284,7 +283,6 @@ def write_josm_osm(
         "osm",
         {
             "version": "0.6",
-            "upload": "never",
             "generator": f"repeater-crosscheck/{__version__}",
         },
     )

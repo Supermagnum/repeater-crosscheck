@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<osm version="0.6" upload="never" generator="repeater-crosscheck/1.0.0">
+<osm version="0.6" generator="repeater-crosscheck/1.0.0">
   <node id="-1" visible="true" lat="59.104167" lon="11.375000">
     <tag k="callsign" v="LA1HRR" />
     <tag k="communication:amateur_radio" v="yes" />

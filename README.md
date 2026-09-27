@@ -3,9 +3,8 @@
 Cross-check Norwegian amateur radio repeater positions and write a merged CSV
 plus a JOSM review file.
 
-Sources used here are public data. The review `.osm` is tagged `upload="never"`
-so JOSM will not upload it by accident. **Only upload after you have checked that
-tags are not broken and that the data matches local knowledge.**
+Sources used here are public data. Before uploading any changes to OSM, check that
+tags are not broken and that the data matches local knowledge.
 
 ## Source data
 
@@ -29,7 +28,7 @@ Additional online sources used for position cross-checks:
 Published review artefacts in this repository:
 
 - [`output/repeaters_merged.csv`](output/repeaters_merged.csv)
-- [`output/repeaters_review.osm`](output/repeaters_review.osm) (JOSM review; `upload=never` until verified)
+- [`output/repeaters_review.osm`](output/repeaters_review.osm) (JOSM review layer)
 - [`output/LA-repeaters.jos`](output/LA-repeaters.jos) (JOSM session: opens the review layer over OSM Carto)
 
 ## Setup
@@ -67,7 +66,7 @@ Outputs (under `paths.output_dir`, default `./output/`):
 | File | Purpose |
 |------|---------|
 | `repeaters_merged.csv` | One row per NRRL repeater, all source coords + flags |
-| `repeaters_review.osm` | JOSM review (`upload=never` safeguard): existing OSM masts get merged tags; otherwise synthetic nodes + disagreement ways. Upload only after tag and local-knowledge checks. |
+| `repeaters_review.osm` | JOSM review: existing OSM masts get merged tags; otherwise synthetic nodes + disagreement ways. Verify tags and local knowledge before upload. |
 | `LA-repeaters.jos` | JOSM session file that loads `repeaters_review.osm` with an OSM Carto background (open from the `output/` directory) |
 | `unmatched.txt` | Callsigns / codeplug channels that could not be matched |
 
@@ -99,9 +98,8 @@ JOSM still shows other source nodes for comparison, but does not draw a
 disagreement way for that callsign. When an OSM mast/tower/node/way is known
 (from Overpass match, nearest landmark within ~75 m, or an explicit `osm_id`
 override), the review file downloads that object and merges amateur-radio /
-review tags onto it instead of inventing a duplicate node. The file ships with
-`upload="never"`; enable upload in JOSM only after tags and local knowledge
-have been checked.
+review tags onto it instead of inventing a duplicate node. Verify tags and local
+knowledge before uploading to OSM.
 
 Gruppe names are mapped via [nrrl.no/grupper](https://nrrl.no/grupper/) to each
 group's NRRL page and (when present) the club `Nettside`. JOSM nodes get
@@ -118,8 +116,8 @@ codes (e.g. `11K2F3E` FM, `7K60FXE` DMR, `6K00F7W` D-STAR, `9K36F7W` C4FM,
 - **NRRL / club sites**: respect NRRL and local group terms when redistributing
   derived lists.
 - **OSM / Overpass**: cache responses, rate-limit, do not hammer public instances.
-  Review data is derived from public sources; upload to OSM only after verifying
-  tags and checking against local knowledge (`upload="never"` is a safeguard).
+  Review data is derived from public sources; verify tags and local knowledge
+  before uploading to OSM.
 - **radioid.net**: personal lookup use; do not mirror as a public directory. Send a
   clear User-Agent. See their [API policy](https://radioid.net/api/).
 - **RepeaterBook**: approved clients only; token + User-Agent with contact email.

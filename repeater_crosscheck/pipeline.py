@@ -225,6 +225,6 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
     write_unmatched(unmatched_path, unmatched)
 
     print(f"Wrote {csv_path}")
-    print(f"Wrote {osm_path} (upload=never until verified — check tags + local knowledge before upload)")
+    print(f"Wrote {osm_path}")
     print(f"Wrote {unmatched_path} ({len(unmatched)} notes)")
     return 0
