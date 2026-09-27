@@ -29,6 +29,7 @@ Published review artefacts in this repository:
 
 - [`output/repeaters_merged.csv`](output/repeaters_merged.csv)
 - [`output/repeaters_review.osm`](output/repeaters_review.osm) (JOSM review layer)
+- [`output/repeaters.joz`](output/repeaters.joz) (JOSM session bundle)
 
 ## OSM coverage
 
@@ -97,8 +98,9 @@ python -m repeater_crosscheck -c config.toml --refresh   # re-download caches
 python -m repeater_crosscheck -c config.toml --skip-osm  # offline-ish debug
 ```
 
-Open [`output/repeaters_review.osm`](output/repeaters_review.osm) in JOSM.
-Portable stations are omitted from this layer (they are not fixed sites).
+Open [`output/repeaters.joz`](output/repeaters.joz) in JOSM (from the `output/`
+folder), or open [`output/repeaters_review.osm`](output/repeaters_review.osm)
+alone. Portable stations are omitted from this layer (they are not fixed sites).
 
 ### Reviewing in JOSM
 
@@ -112,25 +114,43 @@ Portable stations are omitted from this layer (they are not fixed sites).
    (or **Connection settings**) and authorize with that account (OAuth
    recommended). See
    [JOSM connection help](https://josm.openstreetmap.de/wiki/Help/Preferences/Connection).
-3. **Open the review file** — **File → Open…** and choose
-   `output/repeaters_review.osm`.
-4. **Show the OpenStreetMap map as a background layer** —
-   **Imagery → OpenStreetMap Carto (Standard)**.
-   Toggle layer visibility in the **Layers** panel (right side). You can add
-   other imagery the same way if needed.
+3. **Open the review session or file** — from the `output/` folder, open
+   [`repeaters.joz`](output/repeaters.joz) (preferred) or
+   [`repeaters_review.osm`](output/repeaters_review.osm).
+4. **Show a map background** — the `.joz` session already includes
+   **Kartverket topo**. Otherwise use **Imagery → OpenStreetMap Carto
+   (Standard)** (or another imagery source). Toggle layers in the **Layers**
+   panel.
 5. **Optional: download existing OSM data** for the area you are reviewing —
    **File → Download data…** (or the download button), select the bbox on the
    slippy map, and download. Keep the review layer and the downloaded OSM data
    as separate layers; copy tags only after checking local knowledge.
 
-Do not upload until tags and positions have been verified.
+Before upload, delete the review-only tag `best_source` (and its value) from
+every object that still has it. It records which source the tool preferred and
+must not be stored in OpenStreetMap. Do not upload until tags and positions
+have been verified.
+
+### What is `repeaters.joz`?
+
+A `.joz` file is a **compressed JOSM session** (zip), not a plain `.jos` XML
+session. Open it with JOSM from the `output/` directory. This bundle includes:
+
+1. **repeaters_review.osm** — the generated review data
+2. **Fylker-linjer** — Norwegian county boundary lines (embedded), so you can
+   work fylke by fylke
+3. **Kartverket topo** — topographic background imagery for Norway
+
+Opening the same session as a `.jos` file fails (SAX “Content is not allowed in
+prolog”) because the archive is zip-compressed.
 
 Outputs (under `paths.output_dir`, default `./output/`):
 
 | File | Purpose |
 |------|---------|
 | `repeaters_merged.csv` | One row per NRRL repeater, all source coords + flags |
-| `repeaters_review.osm` | JOSM review: existing OSM masts get merged tags; otherwise synthetic nodes + disagreement ways. Portables omitted. Verify tags and local knowledge before upload. |
+| `repeaters_review.osm` | JOSM review: existing OSM masts get merged tags; otherwise synthetic nodes + disagreement ways. Portables omitted. Verify tags and local knowledge before upload. Delete `best_source` before upload. |
+| `repeaters.joz` | Compressed JOSM session: review layer + Fylker boundaries + Kartverket topo. Open from `output/`. |
 | `unmatched.txt` | Callsigns / codeplug channels that could not be matched |
 
 Coordinates for radioid.net come from the published `map.json` dump (the

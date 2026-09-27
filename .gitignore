@@ -13,3 +13,4 @@ unmatched.txt
 output/*
 !output/repeaters_merged.csv
 !output/repeaters_review.osm
+!output/repeaters.joz
