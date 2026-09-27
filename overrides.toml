@@ -2,6 +2,7 @@
 # Each [callsign] table may set lat, lon, qth, portable, qrt, url, note, osm_id, skip_osm.
 # osm_id (node/…, way/…, or OSM URL) merges review tags onto that existing object.
 # skip_osm = true ignores OSM callsign/QTH matches (use when OSM tags are wrong).
+# skip = true omits the callsign from CSV/JOSM outputs.
 
 [LA2LRR]
 portable = true
@@ -146,6 +147,18 @@ lon = 10.937981
 osm_id = "node/1640276661"
 qrt = true
 note = "Torseterkampen. OSM node/1640276661 (LA6GR, LD2GU, LD2WD). QRT."
+
+[LD4KD]
+skip = true
+qrt = true
+note = "No aprs.fi activity (https://aprs.fi/info/?call=LD4KD); treat as QRT and omit."
+
+[LD2WB]
+qth = "Kråkhugukampen"
+lat = 61.007556
+lon = 10.191800
+osm_id = "node/5576506182"
+note = "Kråkhugukampen (NRRL locator JP41PV is wrong). OSM node/5576506182 with LA2TRR/LD2LK."
 
 [LD2WD]
 qth = "Torseterkampen"

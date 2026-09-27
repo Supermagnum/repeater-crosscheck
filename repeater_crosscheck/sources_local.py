@@ -37,14 +37,19 @@ def load_nrrl(path: Path) -> list[NrrlRepeater]:
             info = (raw.get("Info") or "").strip()
             tone, dmr_id = parse_nrrl_info(info)
             loc = maidenhead_to_bbox(locator)
+            tx_mhz = _parse_mhz(raw.get("Freq TX"))
+            rx_mhz = _parse_mhz(raw.get("Freq RX"))
+            # Placeholder rows with no usable frequency (e.g. LA9NRR).
+            if tx_mhz is None or tx_mhz <= 0:
+                continue
             rows.append(
                 NrrlRepeater(
                     callsign=call,
                     callsign_raw=call_raw,
                     type=(raw.get("Type") or "").strip(),
                     qth=(raw.get("QTH") or "").strip(),
-                    tx_mhz=_parse_mhz(raw.get("Freq TX")),
-                    rx_mhz=_parse_mhz(raw.get("Freq RX")),
+                    tx_mhz=tx_mhz,
+                    rx_mhz=rx_mhz,
                     group=(raw.get("Gruppe") or "").strip(),
                     locator=locator.upper() if locator else "",
                     info=info,

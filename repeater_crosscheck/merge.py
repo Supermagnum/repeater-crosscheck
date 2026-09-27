@@ -199,6 +199,8 @@ def build_merged(
 
     for rep in nrrl:
         ov = overrides.get(rep.callsign)
+        if ov and ov.skip:
+            continue
         portable = bool(ov and ov.portable) or _is_portable_qth(rep.qth)
         status_u = (rep.status or "").upper()
         info_u = (rep.info or "").upper()
