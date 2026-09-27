@@ -298,10 +298,16 @@ def write_josm_osm(
     # Accumulate merged tags per existing OSM object (multi-callsign sites).
     pending_osm: dict[str, dict[str, str]] = {}
     member_nodes_emitted: set[int] = set()
+    # D-STAR -A/-B/-C (etc.) normalize to one callsign — emit one review feature per site.
+    emitted_sites: set[str] = set()
 
     next_id = -1
 
     for row in rows:
+        # Portables are not fixed OSM candidates — omit from the review layer.
+        if "portable" in row.flags:
+            continue
+
         primary_ref = _primary_osm_ref(row)
         primary_el = osm_elements.get(primary_ref) if primary_ref else None
         if primary_el is not None and not _mergeable_osm_element(primary_el):
@@ -318,6 +324,14 @@ def write_josm_osm(
             # Fall back to row osm coords.
             if primary_lat is None and row.osm_lat is not None:
                 primary_lat, primary_lon = row.osm_lat, row.osm_lon
+
+        if primary_ref and primary_el is not None:
+            site_key = f"osm:{primary_ref}"
+        elif row.best_lat is not None and row.best_lon is not None:
+            site_key = f"{row.callsign}:{row.best_lat:.5f}:{row.best_lon:.5f}"
+        else:
+            site_key = f"{row.callsign}:none"
+        site_already_emitted = site_key in emitted_sites
 
         kind_order = ["nrrl_locator", "osm", "radioid", "repeaterbook", "local", "best"]
         by_kind: dict[str, Position] = {}
@@ -348,27 +362,68 @@ def write_josm_osm(
             existing = pending_osm.get(primary_ref) or dict(primary_el.get("tags") or {})
             pending_osm[primary_ref] = merged_osm_tags(existing, review)
 
-        synthetic_ids: list[tuple[str, int]] = []  # kind, id for disagreement way
-        for kind in kind_order:
-            pos = by_kind.get(kind)
-            if not pos:
-                continue
-            if primary_el is not None:
-                # Real OSM object already carries the review tags — no synthetic
-                # osm/best/local clones (was creating triple LA5TRR-style nodes).
-                if kind in {"osm", "best", "local"}:
-                    continue
-                # Keep locator/radioid/RB only when they disagree with the site.
-                if kind in {"nrrl_locator", "radioid", "repeaterbook"}:
-                    if "disagreement" not in row.flags:
+        # Merge onto mergeable network members first (no bare-peak synthetic clones).
+        network_merged = 0
+        for pos in sorted(network, key=lambda p: p.source_id or ""):
+            ref = None
+            parsed = parse_osm_ref(pos.source_id)
+            if parsed:
+                ref = format_osm_ref(*parsed)
+            el = osm_elements.get(ref) if ref else None
+            if el is not None and ref and _mergeable_osm_element(el):
+                existing = pending_osm.get(ref) or dict(el.get("tags") or {})
+                review = _network_merge_tags(row, pos, existing)
+                pending_osm[ref] = merged_osm_tags(existing, review)
+                network_merged += 1
+
+        # Duplicate band/mode rows at the same site: tags already merged; no more nodes.
+        if site_already_emitted:
+            continue
+        emitted_sites.add(site_key)
+
+        # Decide which synthetic kinds to emit (avoid coincident clones).
+        kinds_to_emit: list[str] = []
+        if primary_el is not None or network_merged:
+            # Real OSM object(s) already carry review tags — only comparison nodes
+            # when sources disagree with the site.
+            if "disagreement" in row.flags:
+                for kind in ("nrrl_locator", "radioid", "repeaterbook"):
+                    pos = by_kind.get(kind)
+                    if not pos:
                         continue
                     if primary_lat is not None and _coincident(
                         pos, primary_lat, primary_lon, max_m=2000.0
                     ):
                         continue
+                    kinds_to_emit.append(kind)
+        elif "disagreement" in row.flags:
+            # Show distinct source positions for comparison.
+            for kind in kind_order:
+                if by_kind.get(kind):
+                    kinds_to_emit.append(kind)
+        else:
+            # One review node at the resolved site (no stack of locator+best clones).
+            prefer = ["local", "best", "osm", "radioid", "repeaterbook", "nrrl_locator"]
+            for kind in prefer:
+                if by_kind.get(kind):
+                    kinds_to_emit.append(kind)
+                    break
+
+        synthetic_ids: list[tuple[str, int]] = []  # kind, id for disagreement way
+        emitted_coords: list[tuple[float, float]] = []
+        for kind in kinds_to_emit:
+            pos = by_kind.get(kind)
+            if not pos:
+                continue
+            # Drop later kinds that sit on the same spot as an earlier emit.
+            if any(
+                _coincident(pos, lat, lon, max_m=35.0) for lat, lon in emitted_coords
+            ):
+                continue
             nid = next_id
             next_id -= 1
             synthetic_ids.append((kind, nid))
+            emitted_coords.append((pos.lat, pos.lon))
             node = ET.SubElement(
                 root,
                 "node",
@@ -380,35 +435,6 @@ def write_josm_osm(
                 },
             )
             _append_tags(node, _review_tags(row, kind=kind, pos=pos))
-
-        for pos in sorted(network, key=lambda p: p.source_id):
-            ref = None
-            parsed = parse_osm_ref(pos.source_id)
-            if parsed:
-                ref = format_osm_ref(*parsed)
-            el = osm_elements.get(ref) if ref else None
-            if el is not None and ref and _mergeable_osm_element(el):
-                existing = pending_osm.get(ref) or dict(el.get("tags") or {})
-                review = _network_merge_tags(row, pos, existing)
-                pending_osm[ref] = merged_osm_tags(existing, review)
-                continue
-            # Fallback synthetic network node (also used for bare peaks).
-            nid = next_id
-            next_id -= 1
-            node = ET.SubElement(
-                root,
-                "node",
-                {
-                    "id": str(nid),
-                    "visible": "true",
-                    "lat": f"{pos.lat:.6f}",
-                    "lon": f"{pos.lon:.6f}",
-                },
-            )
-            tags = _review_tags(row, kind="osm_network", pos=pos)
-            if pos.source_id:
-                tags["osm_id"] = pos.source_id
-            _append_tags(node, tags)
 
         # Disagreement ways among synthetic review nodes only.
         primary_ids = [nid for kind, nid in synthetic_ids if kind != "osm_network"]

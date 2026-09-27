@@ -29,7 +29,6 @@ Published review artefacts in this repository:
 
 - [`output/repeaters_merged.csv`](output/repeaters_merged.csv)
 - [`output/repeaters_review.osm`](output/repeaters_review.osm) (JOSM review layer)
-- [`output/LA-repeaters.joz`](output/LA-repeaters.joz) (JOSM session for fylke-by-fylke review)
 
 ## Setup
 
@@ -58,29 +57,15 @@ python -m repeater_crosscheck -c config.toml --refresh   # re-download caches
 python -m repeater_crosscheck -c config.toml --skip-osm  # offline-ish debug
 ```
 
-Open [`output/LA-repeaters.joz`](output/LA-repeaters.joz) in JOSM (from the `output/` folder).
-It is a compressed JOSM session (`.joz`, not `.jos`) with these layers:
-
-1. **Fylker** — Norwegian county (`admin_level=4`) boundaries (plus Svalbard), so you can
-   zoom to and work on one fylke at a time
-2. **repeaters_review.osm** — the generated review data (merged tags on existing masts /
-   towers, plus synthetic review nodes where needed)
-3. **OpenStreetMap Carto (Standard)** — background imagery / map tiles
-
-Toggle or filter on the Fylker layer to concentrate on one county, then review and
-upload only after tags and local knowledge have been checked.
-
-Note: a plain `.jos` file is XML. This session embeds the Fylker OSM data, so it must
-be opened as `.joz` (zip). Opening it as `.jos` causes a SAX “Content is not allowed
-in prolog” error.
+Open [`output/repeaters_review.osm`](output/repeaters_review.osm) in JOSM.
+Portable stations are omitted from this layer (they are not fixed sites).
 
 Outputs (under `paths.output_dir`, default `./output/`):
 
 | File | Purpose |
 |------|---------|
 | `repeaters_merged.csv` | One row per NRRL repeater, all source coords + flags |
-| `repeaters_review.osm` | JOSM review: existing OSM masts get merged tags; otherwise synthetic nodes + disagreement ways. Verify tags and local knowledge before upload. |
-| `LA-repeaters.joz` | Compressed JOSM session (`.joz`): Fylker boundaries + `repeaters_review.osm` + OSM Carto. Use the Fylker layer to work one county at a time. Open from `output/`. |
+| `repeaters_review.osm` | JOSM review: existing OSM masts get merged tags; otherwise synthetic nodes + disagreement ways. Portables omitted. Verify tags and local knowledge before upload. |
 | `unmatched.txt` | Callsigns / codeplug channels that could not be matched |
 
 Coordinates for radioid.net come from the published `map.json` dump (the
