@@ -262,6 +262,48 @@ def _mergeable_osm_element(el: dict | None) -> bool:
     return not is_bare_peak(el.get("tags") or {})
 
 
+def _may_merge_review_onto_osm(
+    row: MergedRepeater,
+    el: dict,
+    *,
+    pending_tags: dict[str, str] | None,
+) -> bool:
+    """
+    Only rewrite a real OSM object when this callsign already belongs there
+    (or an override / nearest / callsign match pinned it).
+
+    QTH name hits on commercial towers (e.g. Gausta hovedsender) must not
+    invent ``callsign=LD3DG;LD3GT`` on an untagged mast — emit synthetics.
+    Never attach a second NRRL callsign onto an object already claimed by another.
+    """
+    cs = (row.callsign or "").upper()
+    if not cs:
+        return False
+    tags = dict(el.get("tags") or {})
+    if pending_tags:
+        tags = {**tags, **pending_tags}
+    on_object = _member_callsigns(tags)
+    if cs in on_object:
+        return True
+    if on_object and cs not in on_object:
+        return False
+
+    match = row.osm_match or ""
+    method = (row.match_methods or {}).get("osm") or ""
+    if match.startswith("override:") or method == "override":
+        return True
+    if method in {"callsign", "relation_member"}:
+        return True
+    if match.startswith("callsign:") or match.startswith("relation_member:"):
+        return True
+    if method in {"nearest", "retarget_peak"}:
+        return True
+    if match.startswith("nearest") or "retarget_peak" in match:
+        return True
+    # qth_exact / qth_fuzzy alone on an untagged object: coords only, no merge.
+    return False
+
+
 def write_josm_osm(
     path: Path,
     rows: list[MergedRepeater],
@@ -313,6 +355,14 @@ def write_josm_osm(
         if primary_el is not None and not _mergeable_osm_element(primary_el):
             # Peak/hill only — keep coords via synthetic nodes, do not modify the peak.
             primary_el = None
+        if primary_el is not None and primary_ref:
+            if not _may_merge_review_onto_osm(
+                row,
+                primary_el,
+                pending_tags=pending_osm.get(primary_ref),
+            ):
+                # Keep coordinates from the landmark match; do not rewrite the object.
+                primary_el = None
         primary_lat = primary_lon = None
         if primary_el is not None:
             if primary_el.get("lat") is not None:
@@ -325,8 +375,9 @@ def write_josm_osm(
             if primary_lat is None and row.osm_lat is not None:
                 primary_lat, primary_lon = row.osm_lat, row.osm_lon
 
+        # One feature per callsign (+ site). Never key only by osm_id across callsigns.
         if primary_ref and primary_el is not None:
-            site_key = f"osm:{primary_ref}"
+            site_key = f"{row.callsign}|osm:{primary_ref}"
         elif row.best_lat is not None and row.best_lon is not None:
             site_key = f"{row.callsign}:{row.best_lat:.5f}:{row.best_lon:.5f}"
         else:
