@@ -24,6 +24,107 @@ from .nrrl_groups import NrrlGroup, match_gruppe
 from .util import haversine_m, point_in_bbox
 
 
+def _norm_tx_key(tx: str | None) -> str:
+    text = (tx or "").strip()
+    if not text:
+        return ""
+    try:
+        return f"{float(text):.6f}"
+    except ValueError:
+        return text
+
+
+def _row_has_best_position(row: MergedRepeater) -> bool:
+    return row.best_lat is not None and row.best_lon is not None
+
+
+def _merge_duplicate_row(keep: MergedRepeater, other: MergedRepeater) -> MergedRepeater:
+    """Fill empty fields on keep from other (same callsign / TX duplicate)."""
+    for attr in (
+        "type",
+        "qth",
+        "rx",
+        "tone",
+        "dmr_id",
+        "group",
+        "status",
+        "locator",
+        "notes",
+        "group_nrrl_url",
+        "group_website",
+    ):
+        cur = getattr(keep, attr, None)
+        alt = getattr(other, attr, None)
+        if (cur is None or cur == "") and alt not in (None, ""):
+            setattr(keep, attr, alt)
+    if not keep.codeplug_channels and other.codeplug_channels:
+        keep.codeplug_channels = list(other.codeplug_channels)
+    if not keep.codeplug_zones and other.codeplug_zones:
+        keep.codeplug_zones = list(other.codeplug_zones)
+    if keep.locator_lat is None and other.locator_lat is not None:
+        keep.locator_lat = other.locator_lat
+        keep.locator_lon = other.locator_lon
+        keep.locator_precision_m = other.locator_precision_m
+    for attr in (
+        "osm_lat",
+        "osm_lon",
+        "osm_id",
+        "osm_match",
+        "radioid_lat",
+        "radioid_lon",
+        "repeaterbook_lat",
+        "repeaterbook_lon",
+        "local_lat",
+        "local_lon",
+        "elevation_m",
+    ):
+        cur = getattr(keep, attr, None)
+        alt = getattr(other, attr, None)
+        if cur in (None, "") and alt not in (None, ""):
+            setattr(keep, attr, alt)
+    for flag in other.flags:
+        if flag not in keep.flags:
+            keep.flags.append(flag)
+    for key, val in other.match_methods.items():
+        keep.match_methods.setdefault(key, val)
+    if other.notes and other.notes not in (keep.notes or ""):
+        keep.notes = (keep.notes + " " + other.notes).strip() if keep.notes else other.notes
+    return keep
+
+
+def collapse_positionless_duplicates(rows: list[MergedRepeater]) -> list[MergedRepeater]:
+    """
+    Merge duplicate CSV rows for the same callsign+TX when one lacks a position
+    (e.g. LD8SH listed under two NRRL groups).
+    """
+    groups: dict[tuple[str, str], list[MergedRepeater]] = {}
+    order: list[tuple[str, str]] = []
+    for row in rows:
+        key = ((row.callsign or "").upper(), _norm_tx_key(row.tx))
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append(row)
+
+    out: list[MergedRepeater] = []
+    for key in order:
+        bucket = groups[key]
+        if len(bucket) == 1:
+            out.append(bucket[0])
+            continue
+        with_pos = [r for r in bucket if _row_has_best_position(r)]
+        without = [r for r in bucket if not _row_has_best_position(r)]
+        if with_pos and without:
+            keep = with_pos[0]
+            for other in with_pos[1:] + without:
+                keep = _merge_duplicate_row(keep, other)
+            out.append(keep)
+        else:
+            # Different bands or all positioned — keep as separate rows.
+            out.extend(bucket)
+    return out
+
+
 def _looks_dmr(rep: NrrlRepeater) -> bool:
     blob = f"{rep.type} {rep.info} {rep.dmr_id}".upper()
     return "DMR" in blob or bool(rep.dmr_id)
@@ -651,5 +752,6 @@ def build_merged(
             )
 
     merged.sort(key=lambda r: r.callsign)
+    merged = collapse_positionless_duplicates(merged)
     unmatched_notes = sorted(set(unmatched_notes))
     return merged, unmatched_notes

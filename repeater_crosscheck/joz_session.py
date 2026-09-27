@@ -47,11 +47,16 @@ def _callsigns_on(el: ET.Element) -> list[str]:
     return [p.strip().upper() for p in raw.split(";") if p.strip()]
 
 
-def _fylker_for_element(el: ET.Element, cs_fylke: dict[str, str]) -> set[str]:
+def _primary_fylke_for_element(el: ET.Element, cs_fylke: dict[str, str]) -> str | None:
+    """One layer per feature so stacked copies do not reappear when all layers are on."""
     calls = _callsigns_on(el)
     if not calls:
-        return set()
-    return {cs_fylke.get(c, "Unknown") for c in calls}
+        return None
+    counts: dict[str, int] = defaultdict(int)
+    for c in calls:
+        counts[cs_fylke.get(c, "Unknown")] += 1
+    order = {name: i for i, name in enumerate(FYLKE_LAYER_ORDER)}
+    return min(counts, key=lambda f: (-counts[f], order.get(f, 999), f))
 
 
 def _pretty_osm(root: ET.Element) -> bytes:
@@ -84,38 +89,24 @@ def split_review_osm_by_fylke(
         elif el.tag == "relation":
             relations.append(el)
 
-    # Primary features (have callsign) -> fylke set
-    feature_fylker: dict[str, set[str]] = defaultdict(set)
-    # id -> element for ways/relations/nodes that are primary
-    for nid, node in nodes_by_id.items():
-        fset = _fylker_for_element(node, cs_fylke)
-        if fset:
-            feature_fylker[f"node:{nid}"] = fset
-    for way in ways:
-        wid = way.get("id", "")
-        fset = _fylker_for_element(way, cs_fylke)
-        if fset:
-            feature_fylker[f"way:{wid}"] = fset
-    for rel in relations:
-        rid = rel.get("id", "")
-        fset = _fylker_for_element(rel, cs_fylke)
-        if fset:
-            feature_fylker[f"relation:{rid}"] = fset
-
-    # Collect per-fylke element ids
     fylke_nodes: dict[str, set[str]] = defaultdict(set)
     fylke_ways: dict[str, set[str]] = defaultdict(set)
     fylke_rels: dict[str, set[str]] = defaultdict(set)
 
-    for key, fset in feature_fylkers.items() if False else feature_fylker.items():
-        kind, eid = key.split(":", 1)
-        for fylke in fset:
-            if kind == "node":
-                fylke_nodes[fylke].add(eid)
-            elif kind == "way":
-                fylke_ways[fylke].add(eid)
-            else:
-                fylke_rels[fylke].add(eid)
+    for nid, node in nodes_by_id.items():
+        fylke = _primary_fylke_for_element(node, cs_fylke)
+        if fylke:
+            fylke_nodes[fylke].add(nid)
+    for way in ways:
+        wid = way.get("id", "")
+        fylke = _primary_fylke_for_element(way, cs_fylke)
+        if fylke:
+            fylke_ways[fylke].add(wid)
+    for rel in relations:
+        rid = rel.get("id", "")
+        fylke = _primary_fylke_for_element(rel, cs_fylke)
+        if fylke:
+            fylke_rels[fylke].add(rid)
 
     # Ways need member nodes
     ways_by_id = {w.get("id", ""): w for w in ways}

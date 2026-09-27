@@ -166,7 +166,7 @@ Outputs (under `paths.output_dir`, default `./output/`):
 | File | Purpose |
 |------|---------|
 | `repeaters_merged.csv` | One row per NRRL repeater, all source coords + flags, plus `elevation_m` (ground ASL from Mapterhorn; for tools such as [SPLAT!](https://github.com/hoche/splat)) |
-| `repeaters_review.osm` | JOSM review: existing OSM masts get merged tags; otherwise synthetic nodes + disagreement ways. Portables omitted. Verify tags and local knowledge before upload. Delete `best_source` before upload. |
+| `repeaters_review.osm` | JOSM review: existing OSM masts get merged tags; otherwise synthetic nodes + disagreement ways. Rows with the `portable` flag are omitted even when they have coordinates (e.g. LA2LRR, LD3DP). Verify tags and local knowledge before upload. Delete `best_source` before upload. |
 | `repeaters.joz` | Compressed JOSM session: one review layer per fylkesnavn + Fylker boundaries + Kartverket topo. Open from `output/`. |
 | `unmatched.txt` | Callsigns / codeplug channels that could not be matched |
 

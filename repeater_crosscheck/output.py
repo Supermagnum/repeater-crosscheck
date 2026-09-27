@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import xml.etree.ElementTree as ET
+from collections import defaultdict
 from pathlib import Path
 
 from . import __version__
@@ -10,11 +11,12 @@ from .models import MergedRepeater, Position
 from .modulation import osm_amateur_tags
 from .osm import is_bare_peak
 from .osm_objects import (
+    align_multi_callsign_tags,
     collect_osm_refs_from_rows,
     fetch_osm_elements,
     format_osm_ref,
-    merged_osm_tags,
     parse_osm_ref,
+    strip_per_callsign_tags,
 )
 from .util import fmt_coord, haversine_m
 
@@ -205,6 +207,7 @@ def _review_tags(row: MergedRepeater, *, kind: str, pos: Position | None = None)
     }
     if kind == "local":
         tags["fixme"] = "operator_override"
+        tags["best_source"] = row.best_source or "local"
     if kind == "best":
         tags["best_source"] = row.best_source
     if kind == "osm_network" and pos is not None:
@@ -246,6 +249,102 @@ def _append_tags(elem: ET.Element, tags: dict[str, str]) -> None:
 
 def _coincident(pos: Position, lat: float, lon: float, *, max_m: float = 35.0) -> bool:
     return haversine_m(pos.lat, pos.lon, lat, lon) <= max_m
+
+
+_SYNTHETIC_KIND_RANK = {
+    "local": 0,
+    "osm": 1,
+    "radioid": 2,
+    "repeaterbook": 3,
+    "best": 4,
+    "nrrl_locator": 5,
+}
+
+
+def _elem_tags(el: ET.Element) -> dict[str, str]:
+    return {t.get("k", ""): t.get("v", "") for t in el.findall("tag") if t.get("k")}
+
+
+def _set_elem_tags(el: ET.Element, tags: dict[str, str]) -> None:
+    for child in list(el.findall("tag")):
+        el.remove(child)
+    _append_tags(el, tags)
+
+
+def _merge_coincident_synthetics(root: ET.Element, *, max_m: float = 10.0) -> None:
+    """Stack per-callsign review nodes that share a locator/site into one node."""
+    synthetics = [
+        el
+        for el in list(root)
+        if el.tag == "node"
+        and el.get("id")
+        and int(el.get("id")) < 0
+        and el.get("lat") is not None
+        and el.get("lon") is not None
+        and _elem_tags(el).get("callsign")
+    ]
+    n = len(synthetics)
+    parent = list(range(n))
+
+    def find(i: int) -> int:
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    def union(i: int, j: int) -> None:
+        ri, rj = find(i), find(j)
+        if ri != rj:
+            parent[rj] = ri
+
+    for i in range(n):
+        lat_i = float(synthetics[i].get("lat"))
+        lon_i = float(synthetics[i].get("lon"))
+        for j in range(i + 1, n):
+            d = haversine_m(
+                lat_i,
+                lon_i,
+                float(synthetics[j].get("lat")),
+                float(synthetics[j].get("lon")),
+            )
+            if d <= max_m:
+                union(i, j)
+
+    clusters: dict[int, list[ET.Element]] = defaultdict(list)
+    for i, el in enumerate(synthetics):
+        clusters[find(i)].append(el)
+
+    id_map: dict[str, str] = {}
+    for members in clusters.values():
+        if len(members) < 2:
+            continue
+        members.sort(
+            key=lambda e: (
+                _SYNTHETIC_KIND_RANK.get(_elem_tags(e).get("source_kind", ""), 9),
+                int(e.get("id")),
+            )
+        )
+        survivor = members[0]
+        member_tags = [_elem_tags(el) for el in members]
+        tags = align_multi_callsign_tags(member_tags)
+        for other in members[1:]:
+            id_map[other.get("id", "")] = survivor.get("id", "")
+            root.remove(other)
+        _set_elem_tags(survivor, tags)
+
+    if not id_map:
+        return
+    for way in list(root):
+        if way.tag != "way":
+            continue
+        refs: list[str] = []
+        for nd in way.findall("nd"):
+            ref = id_map.get(nd.get("ref", ""), nd.get("ref", ""))
+            nd.set("ref", ref)
+            refs.append(ref)
+        unique = {r for r in refs if r}
+        if len(unique) < 2:
+            root.remove(way)
 
 
 def _primary_osm_ref(row: MergedRepeater) -> str | None:
@@ -311,6 +410,25 @@ def _may_merge_review_onto_osm(
     return False
 
 
+def _element_center(el: dict) -> tuple[float, float] | None:
+    if el.get("lat") is not None and el.get("lon") is not None:
+        return float(el["lat"]), float(el["lon"])
+    if el.get("center"):
+        return float(el["center"]["lat"]), float(el["center"]["lon"])
+    members = el.get("_members") or []
+    coords = [
+        (float(m["lat"]), float(m["lon"]))
+        for m in members
+        if m.get("lat") is not None and m.get("lon") is not None
+    ]
+    if not coords:
+        return None
+    return (
+        sum(c[0] for c in coords) / len(coords),
+        sum(c[1] for c in coords) / len(coords),
+    )
+
+
 def write_josm_osm(
     path: Path,
     rows: list[MergedRepeater],
@@ -344,16 +462,50 @@ def write_josm_osm(
             osm_elements = fetch_osm_elements(session, cache, refs)
             print(f"  loaded {len(osm_elements)} objects")
 
-    # Accumulate merged tags per existing OSM object (multi-callsign sites).
-    pending_osm: dict[str, dict[str, str]] = {}
+    # osm_id overrides without local coords: snap CSV best_* onto the fetched object
+    # so CSV and review geometry agree (e.g. LA9AR on Tron hovedsender way).
+    for row in rows:
+        if "portable" in row.flags:
+            continue
+        if not (row.osm_match or "").startswith("override:"):
+            continue
+        if row.best_source == "local" and row.local_lat is not None:
+            continue
+        ref = _primary_osm_ref(row)
+        el = osm_elements.get(ref) if ref else None
+        center = _element_center(el) if el else None
+        if not center:
+            continue
+        clat, clon = center
+        if row.best_lat is not None and row.best_lon is not None:
+            if haversine_m(row.best_lat, row.best_lon, clat, clon) <= 75.0:
+                continue
+        row.best_lat, row.best_lon = clat, clon
+        row.best_source = "osm"
+        row.osm_lat, row.osm_lon = clat, clon
+
+    # Base OSM tags (site/infrastructure) + per-callsign review members.
+    pending_osm_base: dict[str, dict[str, str]] = {}
+    pending_osm_members: dict[str, list[dict[str, str]]] = defaultdict(list)
+    pending_osm_move: dict[str, tuple[float, float]] = {}
     member_nodes_emitted: set[int] = set()
-    # D-STAR -A/-B/-C (etc.) normalize to one callsign — emit one review feature per site.
+    # One review feature per callsign+band (+ site). Multi-band rows get one slot each.
     emitted_sites: set[str] = set()
 
     next_id = -1
 
+    def _pending_preview(ref: str | None) -> dict[str, str] | None:
+        if not ref:
+            return None
+        members = pending_osm_members.get(ref)
+        if not members:
+            return None
+        return align_multi_callsign_tags(members)
+
     for row in rows:
         # Portables are not fixed OSM candidates — omit from the review layer.
+        # Exclusion is based on the portable flag only (not on missing coordinates):
+        # LA2LRR / LD3DP have positions but must still be excluded.
         if "portable" in row.flags:
             continue
 
@@ -370,7 +522,7 @@ def write_josm_osm(
             if not _may_merge_review_onto_osm(
                 row,
                 primary_el,
-                pending_tags=pending_osm.get(primary_ref),
+                pending_tags=_pending_preview(primary_ref),
             ):
                 # Keep coordinates from the landmark match; do not rewrite the object.
                 primary_el = None
@@ -386,13 +538,15 @@ def write_josm_osm(
             if primary_lat is None and row.osm_lat is not None:
                 primary_lat, primary_lon = row.osm_lat, row.osm_lon
 
-        # One feature per callsign (+ site). Never key only by osm_id across callsigns.
+        # One feature per callsign+band (+ site). Band key keeps multi-TX rows distinct
+        # so coincident merge can build one slot per band.
+        band = (row.tx or "").strip() or "none"
         if primary_ref and primary_el is not None:
-            site_key = f"{row.callsign}|osm:{primary_ref}"
+            site_key = f"{row.callsign}|{band}|osm:{primary_ref}"
         elif row.best_lat is not None and row.best_lon is not None:
-            site_key = f"{row.callsign}:{row.best_lat:.5f}:{row.best_lon:.5f}"
+            site_key = f"{row.callsign}|{band}:{row.best_lat:.5f}:{row.best_lon:.5f}"
         else:
-            site_key = f"{row.callsign}:none"
+            site_key = f"{row.callsign}|{band}:none"
         site_already_emitted = site_key in emitted_sites
 
         kind_order = ["nrrl_locator", "osm", "radioid", "repeaterbook", "local", "best"]
@@ -421,21 +575,25 @@ def write_josm_osm(
                 review["best_source"] = row.best_source
             # Do not invent a review "Name (best)" on real OSM objects.
             review.pop("name", None)
-            if primary_ref in pending_osm:
-                existing = pending_osm[primary_ref]
+            # OSM note: operator site note only — no "operator override position" stack.
+            if row.notes:
+                review["note"] = row.notes
             else:
-                # Do not keep possibly-wrong callsign tags from OSM; review rows
+                review.pop("note", None)
+            if primary_ref not in pending_osm_base:
+                # Drop stale per-repeater / callsign tags from OSM; review members
                 # redefine who is on this object (e.g. Rafjellet LD2KF/LD2KR).
-                existing = {
-                    k: v
-                    for k, v in dict(primary_el.get("tags") or {}).items()
-                    if k
-                    not in {
-                        "callsign",
-                        "communication:amateur_radio:callsign",
-                    }
-                }
-            pending_osm[primary_ref] = merged_osm_tags(existing, review)
+                pending_osm_base[primary_ref] = strip_per_callsign_tags(
+                    {str(k): str(v) for k, v in dict(primary_el.get("tags") or {}).items()}
+                )
+            pending_osm_members[primary_ref].append(review)
+            # Operator-local best position: move the OSM node to that coordinate.
+            if (
+                row.best_source == "local"
+                and row.local_lat is not None
+                and row.local_lon is not None
+            ):
+                pending_osm_move[primary_ref] = (row.local_lat, row.local_lon)
 
         # Merge onto mergeable network members first (no bare-peak synthetic clones).
         network_merged = 0
@@ -446,9 +604,14 @@ def write_josm_osm(
                 ref = format_osm_ref(*parsed)
             el = osm_elements.get(ref) if ref else None
             if el is not None and ref and _mergeable_osm_element(el):
-                existing = pending_osm.get(ref) or dict(el.get("tags") or {})
-                review = _network_merge_tags(row, pos, existing)
-                pending_osm[ref] = merged_osm_tags(existing, review)
+                if ref not in pending_osm_base:
+                    pending_osm_base[ref] = strip_per_callsign_tags(
+                        {str(k): str(v) for k, v in dict(el.get("tags") or {}).items()}
+                    )
+                review = _network_merge_tags(
+                    row, pos, _pending_preview(ref) or pending_osm_base[ref]
+                )
+                pending_osm_members[ref].append(review)
                 network_merged += 1
 
         # Duplicate band/mode rows at the same site: tags already merged; no more nodes.
@@ -535,15 +698,30 @@ def write_josm_osm(
                 ET.SubElement(way, "tag", {"k": k, "v": v})
 
     # Emit merged OSM objects (nodes / ways + member nodes).
-    for ref in sorted(pending_osm):
+    for ref in sorted(set(pending_osm_base) | set(pending_osm_members)):
         el = osm_elements.get(ref)
         if not el:
             continue
-        tags = pending_osm[ref]
+        base = dict(pending_osm_base.get(ref) or {})
+        members = pending_osm_members.get(ref) or []
+        if members:
+            aligned = align_multi_callsign_tags(members)
+            # Keep existing OSM name (e.g. Horta); synthetics still get callsign names.
+            if base.get("name"):
+                aligned.pop("name", None)
+            tags = {**base, **aligned}
+        else:
+            tags = base
         parsed_ref = parse_osm_ref(ref)
         etype = el.get("type") or (parsed_ref[0] if parsed_ref else "node")
         if etype == "node":
-            node = ET.SubElement(root, "node", _element_attrs(el))
+            attrs = _element_attrs(el)
+            if ref in pending_osm_move:
+                mlat, mlon = pending_osm_move[ref]
+                attrs["lat"] = f"{mlat:.7f}"
+                attrs["lon"] = f"{mlon:.7f}"
+                attrs["action"] = "modify"
+            node = ET.SubElement(root, "node", attrs)
             _append_tags(node, tags)
         elif etype == "way":
             for member in el.get("_members") or []:
@@ -574,6 +752,8 @@ def write_josm_osm(
                     },
                 )
             _append_tags(rel, tags)
+
+    _merge_coincident_synthetics(root)
 
     tree = ET.ElementTree(root)
     ET.indent(tree, space="  ")

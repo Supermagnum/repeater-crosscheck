@@ -14,7 +14,7 @@ qth = "Rafjellet"
 lat = 60.3242222
 lon = 12.1383250
 osm_id = "node/5576656337"
-note = "Rafjellet. OSM node/5576656337 (with LA2XRR, LD2KF, LD2KR)."
+note = "Rafjellet"
 
 
 [LA2XRR]
@@ -22,7 +22,7 @@ qth = "Rafjellet"
 lat = 60.3242222
 lon = 12.1383250
 osm_id = "node/5576656337"
-note = "Rafjellet. OSM node/5576656337 (with LA2KRR, LD2KF, LD2KR)."
+note = "Rafjellet"
 
 
 [LA2RRR]
@@ -30,7 +30,7 @@ qth = "Holtberget"
 lat = 60.1676114
 lon = 11.994392
 osm_id = "node/471110617"
-note = "Holtberget. OSM node/471110617 (LA2RRR, LA5KR, LA7KR, LD2KS)."
+note = "Holtberget"
 
 
 [LA5KR]
@@ -38,14 +38,14 @@ qth = "Holtberget"
 lat = 60.1676114
 lon = 11.994392
 osm_id = "node/471110617"
-note = "Holtberget. OSM node/471110617 (LA2RRR, LA5KR, LA7KR, LD2KS)."
+note = "Holtberget"
 
 [LD2KS]
 qth = "Holtberget"
 lat = 60.1676114
 lon = 11.994392
 osm_id = "node/471110617"
-note = "Holtberget. OSM node/471110617 (LA2RRR, LA5KR, LA7KR, LD2KS)."
+note = "Holtberget"
 
 [LA5LRR]
 qth = "Rong, Øygarden"
@@ -102,7 +102,7 @@ lat = 60.1676114
 lon = 11.994392
 osm_id = "node/471110617"
 qrt = true
-note = "Holtberget. OSM node/471110617 (LA2RRR, LA5KR, LA7KR, LD2KS). QRT."
+note = "Holtberget. QRT."
 
 
 [LA8ER]
@@ -115,7 +115,7 @@ qth = "Rafjellet"
 lat = 60.3242222
 lon = 12.1383250
 osm_id = "node/5576656337"
-note = "Rafjellet. OSM node/5576656337 (with LA2KRR, LA2XRR, LD2KR)."
+note = "Rafjellet"
 
 
 [LD2KR]
@@ -123,7 +123,7 @@ qth = "Rafjellet"
 lat = 60.3242222
 lon = 12.1383250
 osm_id = "node/5576656337"
-note = "Rafjellet. OSM node/5576656337 (with LA2KRR, LA2XRR, LD2KF)."
+note = "Rafjellet"
 
 
 [LD2HJ]
@@ -131,14 +131,14 @@ qrt = true
 lat = 60.9416531
 lon = 11.1914161
 osm_id = "node/3733814134"
-note = "QRT. OSM node/3733814134."
+note = "QRT."
 
 [LA6GR]
 qth = "Torseterkampen"
 lat = 60.569583
 lon = 10.937981
 osm_id = "node/1640276661"
-note = "Torseterkampen. OSM node/1640276661 (LA6GR, LD2GU, LD2WD)."
+note = "Torseterkampen"
 
 [LD2GU]
 qth = "Torseterkampen"
@@ -146,47 +146,62 @@ lat = 60.569583
 lon = 10.937981
 osm_id = "node/1640276661"
 qrt = true
-note = "Torseterkampen. OSM node/1640276661 (LA6GR, LD2GU, LD2WD). QRT."
+note = "Torseterkampen. QRT."
 
 [LD4KD]
 skip = true
 qrt = true
 note = "No aprs.fi activity (https://aprs.fi/info/?call=LD4KD); treat as QRT and omit."
 
+[LA2TRR]
+qth = "Kråkhugukampen"
+lat = 61.007556
+lon = 10.191800
+osm_id = "node/5576506182"
+qrt = true
+note = "Kråkhugukampen. QRT."
+
+[LD2LK]
+qth = "Kråkhugukampen"
+lat = 61.007556
+lon = 10.191800
+osm_id = "node/5576506182"
+note = "Kråkhugukampen"
+
 [LD2WB]
 qth = "Kråkhugukampen"
 lat = 61.007556
 lon = 10.191800
 osm_id = "node/5576506182"
-note = "Kråkhugukampen (NRRL locator JP41PV is wrong). OSM node/5576506182 with LA2TRR/LD2LK."
+note = "Kråkhugukampen"
 
 [LD2WD]
 qth = "Torseterkampen"
 lat = 60.569583
 lon = 10.937981
 osm_id = "node/1640276661"
-note = "Torseterkampen. OSM node/1640276661 (LA6GR, LD2GU, LD2WD)."
+note = "Torseterkampen"
 
 [LA5HRR]
 qth = "Storhorta"
 lat = 61.3320012
 lon = 11.0941649
 osm_id = "node/5576657770"
-note = "Storhorta / Horta. OSM node/5576657770 (LA5HRR, LD2GP)."
+note = "Storhorta / Horta"
 
 [LD2GP]
 qth = "Storhorta"
 lat = 61.3320012
 lon = 11.0941649
 osm_id = "node/5576657770"
-note = "Storhorta / Horta. OSM node/5576657770 (LA5HRR, LD2GP)."
+note = "Storhorta / Horta"
 
 [LD2GT]
 qth = "Rånåkollen"
 lat = 62.2497917
 lon = 8.1803318
 osm_id = "node/5576501719"
-note = "Rånåkollen. OSM node/5576501719."
+note = "Rånåkollen"
 
 [LD2GN]
 qth = "Nordhue"
@@ -329,8 +344,8 @@ note = "OSM mast node/5582173868."
 
 [LA4WRR]
 qth = "Bogafjell"
-lat = 58.810062
-lon = 5.744967
+lat = 58.8101403
+lon = 5.7447815
 osm_id = "way/628543477"
 note = "OSM way/628543477 (Bogafjell)."
 
@@ -376,6 +391,8 @@ note = "OSM mast node/5574482764."
 
 [LA9AR]
 qth = "Tronfjell"
+lat = 62.1741649
+lon = 10.6952741
 osm_id = "way/1005486272"
 note = "Tron hovedsender. OSM way/1005486272 (not peak node/26864970)."
 

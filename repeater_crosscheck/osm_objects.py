@@ -183,9 +183,252 @@ def merge_tag_values(existing: str | None, new: str | None, *, sep: str = ";") -
     return sep.join(parts)
 
 
+# One slot per callsign/band (callsign order, then frequency ascending).
+# Inner multi-values use "," so ";" remains the slot delimiter.
+PER_CALLSIGN_TAG_KEYS: tuple[str, ...] = (
+    "frequency",
+    "communication:amateur_radio:repeater:frequency_out",
+    "communication:amateur_radio:repeater:shift",
+    "communication:amateur_radio:repeater:ctcss",
+    "communication:amateur_radio:repeater:dcs",
+    "communication:amateur_radio:repeater:toneburst",
+    "communication:amateur_radio:repeater:modulation",
+    "dmr_id",
+    "flags",
+    "qth",
+    "locator",
+    "group",
+    "nrrl:group_page",
+    "website",
+)
+
+# Also positional on multi-member nodes (collapse only when every slot matches).
+PER_MEMBER_META_KEYS: tuple[str, ...] = (
+    "source_kind",
+    "best_source",
+    "note",
+)
+
+_PER_CALLSIGN_KEY_SET = set(PER_CALLSIGN_TAG_KEYS) | {
+    "callsign",
+    "communication:amateur_radio:callsign",
+}
+
+
+def _slot_value(raw: str | None) -> str:
+    """Normalize a single slot value; use comma for within-slot multi-values."""
+    if not raw:
+        return ""
+    parts = [p.strip() for p in str(raw).replace(",", ";").split(";") if p.strip()]
+    return ",".join(parts)
+
+
+def _primary_callsign(tags: dict[str, str]) -> str:
+    raw = tags.get("callsign") or tags.get("communication:amateur_radio:callsign") or ""
+    return raw.split(";")[0].strip().upper()
+
+
+def _freq_sort_key(tags: dict[str, str]) -> float:
+    raw = tags.get("frequency") or tags.get(
+        "communication:amateur_radio:repeater:frequency_out"
+    ) or ""
+    m = re.search(r"[-+]?\d+(?:\.\d+)?", str(raw))
+    if not m:
+        return 1e99
+    try:
+        return float(m.group(0))
+    except ValueError:
+        return 1e99
+
+
+def _member_note_slot(tags: dict[str, str]) -> str:
+    """Keep per-member review notes; avoid ';' inside a slot (slot delimiter)."""
+    text = (tags.get("note") or "").strip()
+    # _review_tags joins parts with "; " — normalise to ". " for positional notes.
+    text = re.sub(r"\s*;\s*", ". ", text).strip()
+    text = re.sub(r"\.\s*\.", ".", text)
+    return text.strip()
+
+
+def _member_best_source_slot(tags: dict[str, str]) -> str:
+    """
+    Locator-end disagreement nodes use source_kind=nrrl_locator and no best_source
+    (the radioid/other end holds the best position).
+    """
+    flags = tags.get("flags") or ""
+    if tags.get("source_kind") == "nrrl_locator" and "disagreement" in flags:
+        return ""
+    return _slot_value(tags.get("best_source"))
+
+
+def _collapse_or_join(slots: list[str]) -> str | None:
+    if not any(slots):
+        return None
+    nonempty = [s for s in slots if s]
+    if len(nonempty) == len(slots) and len(set(slots)) == 1:
+        return slots[0]
+    return ";".join(slots)
+
+
+def align_multi_callsign_tags(members: list[dict[str, str]]) -> dict[str, str]:
+    """
+    Build tags for a multi-callsign / multi-band review node.
+
+    One semicolon slot per member, ordered by callsign then frequency ascending.
+    Multi-band callsigns repeat the callsign once per band. Missing values are
+    empty slots. Within a slot, multiple values use commas. Identical values
+    across every slot collapse to a single value.
+    """
+    cleaned: list[dict[str, str]] = []
+    for tags in members:
+        cs = _primary_callsign(tags)
+        if not cs:
+            continue
+        cleaned.append(dict(tags))
+    cleaned.sort(key=lambda t: (_primary_callsign(t), _freq_sort_key(t), t.get("flags") or ""))
+    if not cleaned:
+        return {}
+
+    callsigns = [_primary_callsign(t) for t in cleaned]
+    joined = ";".join(callsigns)
+    out: dict[str, str] = {
+        "callsign": joined,
+        "communication:amateur_radio:callsign": joined,
+        "name": joined,
+        "communication:amateur_radio": "yes",
+        "communication:amateur_radio:repeater": "yes",
+        "review": "repeater_crosscheck",
+    }
+    for key in PER_CALLSIGN_TAG_KEYS:
+        slots = [_slot_value(t.get(key)) for t in cleaned]
+        joined_val = _collapse_or_join(slots)
+        if joined_val is not None:
+            out[key] = joined_val
+
+    sk_slots = [_slot_value(t.get("source_kind")) for t in cleaned]
+    sk_joined = _collapse_or_join(sk_slots)
+    if sk_joined is not None:
+        out["source_kind"] = sk_joined
+
+    bs_slots = [_member_best_source_slot(t) for t in cleaned]
+    bs_joined = _collapse_or_join(bs_slots)
+    if bs_joined is not None:
+        out["best_source"] = bs_joined
+
+    note_slots = [_member_note_slot(t) for t in cleaned]
+    # Prefix with callsign when notes differ so QRT/override belong to a member.
+    if any(note_slots):
+        if len(set(note_slots)) == 1 and all(note_slots):
+            out["note"] = note_slots[0]
+        else:
+            parts: list[str] = []
+            for cs, note in zip(callsigns, note_slots):
+                if note:
+                    parts.append(f"{cs}: {note}")
+                else:
+                    parts.append(f"{cs}:")
+            out["note"] = "; ".join(parts)
+
+    for key in ("fixme",):
+        for t in cleaned:
+            if t.get(key):
+                out[key] = t[key]
+                break
+    return out
+
+
+def strip_per_callsign_tags(tags: dict[str, str]) -> dict[str, str]:
+    """Keep site/infrastructure tags; drop amateur per-repeater / callsign keys."""
+    return {k: v for k, v in tags.items() if k not in _PER_CALLSIGN_KEY_SET}
+
+
+_NOTE_META_PREFIXES = (
+    "operator override position",
+    "best position from ",
+    "position from ",
+    "nrrl locator ",
+    "osm network member",
+)
+
+
+def _normalize_note_part(part: str) -> str:
+    """Collapse sibling-list / osm_id boilerplate so near-duplicate notes match."""
+    text = part.strip()
+    text = re.sub(
+        r"\s*\((?:with\s+)?[A-Z]{1,2}\d[A-Z0-9]{0,4}"
+        r"(?:\s*[/;,]\s*[A-Z]{1,2}\d[A-Z0-9]{0,4})*\)\.?",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"\s*\bOSM\s+(?:node|way|relation)/\d+\b\.?",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"https?://(?:www\.)?openstreetmap\.org/(?:node|way|relation)/\d+",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(r"\s*\.?\s*\bQRT\b\.?\s*$", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"\s+", " ", text).strip(" .;")
+    return text.casefold()
+
+
+def merge_osm_notes(existing: str | None, new: str | None) -> str:
+    """
+    Merge OSM note tags without stacking per-callsign override boilerplate.
+
+    Drops review-process chatter and near-duplicates that only differ by
+    sibling callsign lists, QRT suffixes, or repeated osm_id mentions.
+    """
+    parts: list[str] = []
+    seen: set[str] = set()
+    had_qrt = False
+    for blob in (existing, new):
+        if not blob:
+            continue
+        for part in str(blob).split(";"):
+            part = part.strip()
+            if not part:
+                continue
+            low = part.casefold()
+            if any(low == p or low.startswith(p) for p in _NOTE_META_PREFIXES):
+                continue
+            if re.search(r"\bQRT\b", part, flags=re.IGNORECASE):
+                had_qrt = True
+            norm = _normalize_note_part(part)
+            if not norm or norm in seen:
+                continue
+            seen.add(norm)
+            # Store without trailing QRT; re-append once at the end if needed.
+            clean = re.sub(r"\s*\.?\s*\bQRT\b\.?\s*$", "", part, flags=re.IGNORECASE)
+            clean = clean.strip(" .;") or part
+            parts.append(clean)
+    # Drop shorter parts that are prefixes of a longer part (same site).
+    kept: list[str] = []
+    norms = [_normalize_note_part(p) for p in parts]
+    for i, part in enumerate(parts):
+        if any(
+            i != j and norms[i] != norms[j] and norms[j].startswith(norms[i])
+            for j in range(len(parts))
+        ):
+            continue
+        kept.append(part)
+    parts = kept
+    if had_qrt and parts:
+        parts[-1] = parts[-1].rstrip(".") + ". QRT."
+    return "; ".join(parts)
+
+
 def merged_osm_tags(
     existing_tags: dict[str, str],
     review_tags: dict[str, str],
+    *,
+    union_site_keys: bool = False,
 ) -> dict[str, str]:
     """
     Merge review/amateur-radio tags into existing OSM tags.
@@ -193,6 +436,8 @@ def merged_osm_tags(
     Existing non-conflicting tags are kept. For callsign and modulation,
     values are unioned. Review-only keys (source_kind, review, flags, …)
     are always set from the review payload.
+
+    union_site_keys: also union qth/locator/group (stacked synthetic review nodes).
     """
     out = {str(k): str(v) for k, v in existing_tags.items() if v is not None}
     union_keys = {
@@ -203,10 +448,14 @@ def merged_osm_tags(
         "frequency",
         "dmr_id",
         "flags",
-        "note",
     }
+    if union_site_keys:
+        union_keys.update({"qth", "locator", "group", "name"})
     for key, value in review_tags.items():
         if not value:
+            continue
+        if key == "note":
+            out[key] = merge_osm_notes(out.get(key), value)
             continue
         if key in union_keys and key in out:
             out[key] = merge_tag_values(out[key], value)
@@ -230,7 +479,7 @@ def merged_osm_tags(
         }:
             # Prefer review amateur-radio tags over stale OSM values in this export.
             # Site identity: keep the first QTH/locator/group already on the object.
-            if key in {"qth", "locator", "group"} and out.get(key):
+            if key in {"qth", "locator", "group"} and out.get(key) and not union_site_keys:
                 continue
             out[key] = value
         elif key not in out:

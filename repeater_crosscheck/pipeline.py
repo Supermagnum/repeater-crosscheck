@@ -238,7 +238,7 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
     osm_path = output_dir / "repeaters_review.osm"
     unmatched_path = output_dir / "unmatched.txt"
 
-    write_merged_csv(csv_path, merged)
+    # OSM first: may snap override best_* onto fetched geometry; CSV must match.
     write_josm_osm(
         osm_path,
         merged,
@@ -246,6 +246,7 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
         session=session,
         cache=cache,
     )
+    write_merged_csv(csv_path, merged)
     write_unmatched(unmatched_path, unmatched)
 
     joz_path = output_dir / "repeaters.joz"
