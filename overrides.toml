@@ -1,10 +1,19 @@
 # Local / operator-known facts. Not uploaded to OSM.
-# Each [callsign] table may set lat, lon, qth, portable, qrt, url, note, osm_id.
+# Each [callsign] table may set lat, lon, qth, portable, qrt, url, note, osm_id, skip_osm.
 # osm_id (node/…, way/…, or OSM URL) merges review tags onto that existing object.
+# skip_osm = true ignores OSM callsign/QTH matches (use when OSM tags are wrong).
 
 [LA2LRR]
 portable = true
 note = "NRRL QTH is Mjøsa portabel; not a fixed site."
+
+
+[LA2KRR]
+qth = "Rafjellet"
+lat = 60.3242222
+lon = 12.1383250
+osm_id = "node/5576656337"
+note = "Rafjellet. OSM node/5576656337 (with LA2XRR, LD2KF, LD2KR)."
 
 
 [LA2XRR]
@@ -12,7 +21,7 @@ qth = "Rafjellet"
 lat = 60.3242222
 lon = 12.1383250
 osm_id = "node/5576656337"
-note = "Same mast as LA2KRR. OSM node/5576656337."
+note = "Rafjellet. OSM node/5576656337 (with LA2KRR, LD2KF, LD2KR)."
 
 
 [LA2RRR]
@@ -20,7 +29,22 @@ qth = "Holtberget"
 lat = 60.1676114
 lon = 11.994392
 osm_id = "node/471110617"
-note = "Holtberget. OSM node/471110617 (also LA7KR)."
+note = "Holtberget. OSM node/471110617 (LA2RRR, LA5KR, LA7KR, LD2KS)."
+
+
+[LA5KR]
+qth = "Holtberget"
+lat = 60.1676114
+lon = 11.994392
+osm_id = "node/471110617"
+note = "Holtberget. OSM node/471110617 (LA2RRR, LA5KR, LA7KR, LD2KS)."
+
+[LD2KS]
+qth = "Holtberget"
+lat = 60.1676114
+lon = 11.994392
+osm_id = "node/471110617"
+note = "Holtberget. OSM node/471110617 (LA2RRR, LA5KR, LA7KR, LD2KS)."
 
 [LA5LRR]
 qth = "Rong, Øygarden"
@@ -77,19 +101,29 @@ lat = 60.1676114
 lon = 11.994392
 osm_id = "node/471110617"
 qrt = true
-note = "Holtberget. QRT. OSM node/471110617 (also LA2RRR)."
+note = "Holtberget. OSM node/471110617 (LA2RRR, LA5KR, LA7KR, LD2KS). QRT."
+
 
 [LA8ER]
 lat = 60.3764211
 lon = 11.1581135
 note = "Mistberget."
 
+[LD2KF]
+qth = "Rafjellet"
+lat = 60.3242222
+lon = 12.1383250
+osm_id = "node/5576656337"
+note = "Rafjellet. OSM node/5576656337 (with LA2KRR, LA2XRR, LD2KR)."
+
+
 [LD2KR]
 qth = "Rafjellet"
 lat = 60.3242222
 lon = 12.1383250
 osm_id = "node/5576656337"
-note = "Same mast as LA2KRR/LA2XRR. OSM node/5576656337."
+note = "Rafjellet. OSM node/5576656337 (with LA2KRR, LA2XRR, LD2KF)."
+
 
 [LD2HJ]
 qrt = true

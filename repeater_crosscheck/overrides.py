@@ -25,6 +25,7 @@ class LocalOverride:
     url: str = ""
     note: str = ""
     osm_id: str = ""  # e.g. node/5588495799 — merge review tags onto this object
+    skip_osm: bool = False  # do not attach / match any OSM object for this callsign
 
 
 def _optional_float(value) -> float | None:
@@ -80,5 +81,6 @@ def load_overrides(path: Path | None) -> dict[str, LocalOverride]:
             url=str(val.get("url") or "").strip(),
             note=str(val.get("note") or "").strip(),
             osm_id=osm_raw,
+            skip_osm=bool(val.get("skip_osm")),
         )
     return out

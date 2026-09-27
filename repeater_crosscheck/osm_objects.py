@@ -228,12 +228,7 @@ def merged_osm_tags(
             "network",
             "osm_relation",
         }:
-            # Prefer new amateur-radio / review tags for this export.
-            if key in out and key.startswith("communication:amateur_radio:repeater:"):
-                # Keep existing frequency/ctcss if already present.
-                if key.endswith(("frequency_out", "shift", "ctcss", "toneburst", "dcs")):
-                    if out[key]:
-                        continue
+            # Prefer review amateur-radio tags over stale OSM values in this export.
             # Site identity: keep the first QTH/locator/group already on the object.
             if key in {"qth", "locator", "group"} and out.get(key):
                 continue

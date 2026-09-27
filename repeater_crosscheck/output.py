@@ -417,7 +417,20 @@ def write_josm_osm(
                 review["best_source"] = row.best_source
             # Do not invent a review "Name (best)" on real OSM objects.
             review.pop("name", None)
-            existing = pending_osm.get(primary_ref) or dict(primary_el.get("tags") or {})
+            if primary_ref in pending_osm:
+                existing = pending_osm[primary_ref]
+            else:
+                # Do not keep possibly-wrong callsign tags from OSM; review rows
+                # redefine who is on this object (e.g. Rafjellet LD2KF/LD2KR).
+                existing = {
+                    k: v
+                    for k, v in dict(primary_el.get("tags") or {}).items()
+                    if k
+                    not in {
+                        "callsign",
+                        "communication:amateur_radio:callsign",
+                    }
+                }
             pending_osm[primary_ref] = merged_osm_tags(existing, review)
 
         # Merge onto mergeable network members first (no bare-peak synthetic clones).
