@@ -132,6 +132,28 @@ lon = 11.1914161
 osm_id = "node/3733814134"
 note = "QRT. OSM node/3733814134."
 
+[LA6GR]
+qth = "Torseterkampen"
+lat = 60.569583
+lon = 10.937981
+osm_id = "node/1640276661"
+note = "Torseterkampen. OSM node/1640276661 (LA6GR, LD2GU, LD2WD)."
+
+[LD2GU]
+qth = "Torseterkampen"
+lat = 60.569583
+lon = 10.937981
+osm_id = "node/1640276661"
+qrt = true
+note = "Torseterkampen. OSM node/1640276661 (LA6GR, LD2GU, LD2WD). QRT."
+
+[LD2WD]
+qth = "Torseterkampen"
+lat = 60.569583
+lon = 10.937981
+osm_id = "node/1640276661"
+note = "Torseterkampen. OSM node/1640276661 (LA6GR, LD2GU, LD2WD)."
+
 [LD2GN]
 qth = "Nordhue"
 lat = 60.9937379

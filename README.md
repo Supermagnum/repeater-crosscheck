@@ -156,6 +156,8 @@ Fylke assignment follows the NRRL group directory region (same as the coverage
 table). The monolithic [`repeaters_review.osm`](output/repeaters_review.osm)
 file is still written for tools that want everything in one layer.
 
+Some repeater positions in **Innlandet** have been corrected in `overrides.toml` (operator / mast pins) and are reflected in the published review artefacts. Re-open `repeaters.joz` after pulling to load those updates.
+
 Opening the same session as a `.jos` file fails (SAX “Content is not allowed in
 prolog”) because the archive is zip-compressed.
 
