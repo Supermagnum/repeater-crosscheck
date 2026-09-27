@@ -118,3 +118,21 @@ class ResponseCache:
             encoding="utf-8",
         )
         return path
+
+    def get_bytes(self, key: str, *, suffix: str = ".bin") -> bytes | None:
+        if self.refresh:
+            return None
+        path = self._path(key, suffix)
+        if path.is_file():
+            return path.read_bytes()
+        return None
+
+    def put_bytes(self, key: str, data: bytes, *, suffix: str = ".bin") -> Path:
+        path = self._path(key, suffix)
+        path.write_bytes(data)
+        meta = self.cache_dir / (path.stem + ".meta.json")
+        meta.write_text(
+            json.dumps({"key": key, "saved_at": time.time()}, indent=2),
+            encoding="utf-8",
+        )
+        return path

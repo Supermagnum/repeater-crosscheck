@@ -46,6 +46,12 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "endpoint": "https://overpass-api.de/api/interpreter",
         "bbox": [57.5, 4.0, 81.0, 35.0],
     },
+    "mapterhorn": {
+        # Ground elevation (m ASL) for CSV via Terrarium tiles.
+        "enabled": True,
+        "zoom": 14,
+        "tile_url": "https://tiles.mapterhorn.com/{z}/{x}/{y}.webp",
+    },
 }
 
 
@@ -139,6 +145,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--skip-repeaterbook",
         action="store_true",
         help="Skip RepeaterBook",
+    )
+    p.add_argument(
+        "--skip-elevation",
+        action="store_true",
+        help="Skip Mapterhorn ground elevation (CSV elevation_m)",
     )
     return p
 

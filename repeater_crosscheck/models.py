@@ -90,6 +90,7 @@ class MergedRepeater:
     best_lat: float | None = None
     best_lon: float | None = None
     best_source: str = ""
+    elevation_m: float | None = None  # ground ASL (m) from Mapterhorn DEM
     max_disagreement_m: float | None = None
     flags: list[str] = field(default_factory=list)
     codeplug_channels: list[str] = field(default_factory=list)

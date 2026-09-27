@@ -46,6 +46,7 @@ CSV_FIELDS = [
     "best_lat",
     "best_lon",
     "best_source",
+    "elevation_m",
     "max_disagreement_m",
     "flags",
     "codeplug_channels",
@@ -100,6 +101,11 @@ def write_merged_csv(path: Path, rows: list[MergedRepeater]) -> None:
                     "best_lat": _coord_cell(row.best_lat),
                     "best_lon": _coord_cell(row.best_lon),
                     "best_source": row.best_source,
+                    "elevation_m": (
+                        f"{row.elevation_m:.1f}"
+                        if row.elevation_m is not None
+                        else ""
+                    ),
                     "max_disagreement_m": (
                         f"{row.max_disagreement_m:.1f}"
                         if row.max_disagreement_m is not None

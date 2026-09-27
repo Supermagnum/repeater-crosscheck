@@ -51,3 +51,12 @@ user_agent = ""
 endpoint = "https://overpass-api.de/api/interpreter"
 # Norway mainland + Svalbard / Jan Mayen rough bbox (south,west,north,east).
 bbox = [57.5, 4.0, 81.0, 35.0]
+
+[mapterhorn]
+# Ground elevation in metres ASL for repeaters_merged.csv (Mapterhorn Terrarium).
+# Useful as site altitude input for RF path tools such as SPLAT!
+# https://github.com/hoche/splat
+enabled = true
+zoom = 14
+tile_url = "https://tiles.mapterhorn.com/{z}/{x}/{y}.webp"
+

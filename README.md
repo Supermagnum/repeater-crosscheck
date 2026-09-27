@@ -24,6 +24,10 @@ Additional online sources used for position cross-checks:
 - **OpenStreetMap** via the Overpass API (amateur-radio tags, callsigns, and
   mast/tower/peak landmarks)
 - **[radioid.net](https://radioid.net/api/)** — Norwegian DMR repeater map data
+- **[Mapterhorn](https://mapterhorn.com/)** — ground elevation (metres ASL) at the
+  best site position, written only to `repeaters_merged.csv` as `elevation_m`
+  (Terrarium DEM tiles). Suitable as site altitude for RF path simulations with
+  [SPLAT!](https://github.com/hoche/splat).
 
 Published review artefacts in this repository:
 
@@ -96,6 +100,7 @@ Edit `config.toml`:
 python -m repeater_crosscheck -c config.toml
 python -m repeater_crosscheck -c config.toml --refresh   # re-download caches
 python -m repeater_crosscheck -c config.toml --skip-osm  # offline-ish debug
+python -m repeater_crosscheck -c config.toml --skip-elevation  # skip Mapterhorn ASL
 ```
 
 Open [`output/repeaters.joz`](output/repeaters.joz) in JOSM (from the `output/`
@@ -148,7 +153,7 @@ Outputs (under `paths.output_dir`, default `./output/`):
 
 | File | Purpose |
 |------|---------|
-| `repeaters_merged.csv` | One row per NRRL repeater, all source coords + flags |
+| `repeaters_merged.csv` | One row per NRRL repeater, all source coords + flags, plus `elevation_m` (ground ASL from Mapterhorn; for tools such as [SPLAT!](https://github.com/hoche/splat)) |
 | `repeaters_review.osm` | JOSM review: existing OSM masts get merged tags; otherwise synthetic nodes + disagreement ways. Portables omitted. Verify tags and local knowledge before upload. Delete `best_source` before upload. |
 | `repeaters.joz` | Compressed JOSM session: review layer + Fylker boundaries + Kartverket topo. Open from `output/`. |
 | `unmatched.txt` | Callsigns / codeplug channels that could not be matched |
@@ -169,6 +174,13 @@ dump under `./cache/`.
    3. OSM member of a same-callsign network/site relation inside/near the square
    4. radioid or RepeaterBook if inside/near the locator square
    5. locator square centre
+
+After positions are resolved, ground elevation at `best_lat`/`best_lon` is
+sampled from [Mapterhorn](https://mapterhorn.com/) Terrarium tiles
+(`elevation_m` in the CSV only — not written to the JOSM/OSM layer). Values are
+metres above mean sea level and can feed path-loss tools such as
+[SPLAT!](https://github.com/hoche/splat). Attribution:
+[mapterhorn.com/attribution](https://mapterhorn.com/attribution).
 
 Flags include `disagreement` (default > 2 km; suppressed when a local
 coordinate override is set), `outside_locator:*`, `qrt`,
@@ -198,6 +210,8 @@ codes (e.g. `11K2F3E` FM, `7K60FXE` DMR, `6K00F7W` D-STAR, `9K36F7W` C4FM,
 
 - **NRRL / club sites**: respect NRRL and local group terms when redistributing
   derived lists.
+- **Mapterhorn**: terrain tiles for elevation; respect their
+  [attribution](https://mapterhorn.com/attribution) when redistributing derived data.
 - **OSM / Overpass**: cache responses, rate-limit, do not hammer public instances.
   Review data is derived from public sources; verify tags and local knowledge
   before uploading to OSM.

@@ -17,6 +17,7 @@ from .osm import (
     relation_members_by_callsign,
 )
 from .nrrl_groups import build_group_lookup, load_nrrl_groups
+from .elevation import enrich_elevations
 from .output import write_josm_osm, write_merged_csv, write_unmatched
 from .overrides import load_overrides
 from .sources_local import (
@@ -209,6 +210,28 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
         overrides=overrides,
         group_lookup=group_lookup,
     )
+
+    mh = cfg.get("mapterhorn") or {}
+    if not args.skip_elevation and mh.get("enabled", True):
+        print("Looking up ground elevation (Mapterhorn Terrarium tiles)...")
+        try:
+            ok, fail = enrich_elevations(
+                merged,
+                session,
+                cache,
+                zoom=int(mh.get("zoom") or 14),
+                tile_url_template=str(
+                    mh.get("tile_url")
+                    or "https://tiles.mapterhorn.com/{z}/{x}/{y}.webp"
+                ),
+            )
+            print(f"  elevation_m set for {ok} rows ({fail} failed / no coords)")
+        except Exception as exc:
+            print(f"Mapterhorn elevation failed: {exc}", file=sys.stderr)
+            traceback.print_exc()
+            print("Continuing without elevation_m.", file=sys.stderr)
+    elif args.skip_elevation:
+        print("Skipping elevation (--skip-elevation)")
 
     csv_path = output_dir / "repeaters_merged.csv"
     osm_path = output_dir / "repeaters_review.osm"
