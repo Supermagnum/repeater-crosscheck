@@ -288,16 +288,17 @@ def _may_merge_review_onto_osm(
     tags = dict(el.get("tags") or {})
     if pending_tags:
         tags = {**tags, **pending_tags}
+    match = row.osm_match or ""
+    method = (row.match_methods or {}).get("osm") or ""
+    # Explicit osm_id override may share a mast with another callsign.
+    if match.startswith("override:") or method == "override":
+        return True
+
     on_object = _member_callsigns(tags)
     if cs in on_object:
         return True
     if on_object and cs not in on_object:
         return False
-
-    match = row.osm_match or ""
-    method = (row.match_methods or {}).get("osm") or ""
-    if match.startswith("override:") or method == "override":
-        return True
     if method in {"callsign", "relation_member"}:
         return True
     if match.startswith("callsign:") or match.startswith("relation_member:"):

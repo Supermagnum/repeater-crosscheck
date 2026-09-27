@@ -6,6 +6,22 @@
 portable = true
 note = "NRRL QTH is Mjøsa portabel; not a fixed site."
 
+
+[LA2XRR]
+qth = "Rafjellet"
+lat = 60.3242222
+lon = 12.1383250
+osm_id = "node/5576656337"
+note = "Same mast as LA2KRR. OSM node/5576656337."
+
+
+[LA2RRR]
+qth = "Holtberget"
+lat = 60.1676114
+lon = 11.994392
+osm_id = "node/471110617"
+note = "Holtberget. OSM node/471110617 (also LA7KR)."
+
 [LA5LRR]
 qth = "Rong, Øygarden"
 lat = 60.512071
@@ -50,11 +66,18 @@ lat = 59.75602
 lon = 10.20446
 note = "Vardåsen / Drammen."
 
+[LA7XR]
+lat = 59.9609046
+lon = 12.0953198
+note = "Operator position."
+
 [LA7KR]
-lat = 60.16710
-lon = 11.99560
+qth = "Holtberget"
+lat = 60.1676114
+lon = 11.994392
+osm_id = "node/471110617"
 qrt = true
-note = "Holtberget. NRRL already marks QRT."
+note = "Holtberget. QRT. OSM node/471110617 (also LA2RRR)."
 
 [LA8ER]
 lat = 60.3764211
