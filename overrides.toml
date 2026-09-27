@@ -258,3 +258,10 @@ note = "OSM mast node/5574482764."
 qth = "Tronfjell"
 osm_id = "way/1005486272"
 note = "Tron hovedsender. OSM way/1005486272 (not peak node/26864970)."
+
+[LD9AV]
+qth = "Altevann/Slåttmoberget"
+lat = 68.581333
+lon = 19.362500
+type = "APRS"
+note = "Position 68°34.88'N 19°21.75'E."

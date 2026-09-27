@@ -13937,39 +13937,40 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="http://la5a.no/" />
   </node>
-  <node id="-702" visible="true" lat="68.354167" lon="19.208333">
+  <node id="-702" visible="true" lat="68.581333" lon="19.362500">
     <tag k="callsign" v="LD9AV" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD9AV" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="20K0F2D" />
-    <tag k="flags" v="missing_osm" />
+    <tag k="fixme" v="operator_override" />
+    <tag k="flags" v="locator_mismatch|missing_osm" />
     <tag k="frequency" v="144.8" />
     <tag k="group" v="Midt-Troms" />
     <tag k="locator" v="JP98OI" />
     <tag k="name" v="LD9AV" />
-    <tag k="note" v="NRRL locator JP98OI" />
+    <tag k="note" v="Position 68°34.88'N 19°21.75'E.; operator override position" />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/troms/midt-tromsgruppen/" />
     <tag k="qth" v="Altevann/Slåttmoberget" />
     <tag k="review" v="repeater_crosscheck" />
-    <tag k="source_kind" v="nrrl_locator" />
+    <tag k="source_kind" v="local" />
     <tag k="website" v="http://www.la6m.no/" />
   </node>
-  <node id="-703" visible="true" lat="68.354167" lon="19.208333">
-    <tag k="best_source" v="nrrl_locator" />
+  <node id="-703" visible="true" lat="68.581333" lon="19.362500">
+    <tag k="best_source" v="local" />
     <tag k="callsign" v="LD9AV" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD9AV" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="20K0F2D" />
-    <tag k="flags" v="missing_osm" />
+    <tag k="flags" v="locator_mismatch|missing_osm" />
     <tag k="frequency" v="144.8" />
     <tag k="group" v="Midt-Troms" />
     <tag k="locator" v="JP98OI" />
     <tag k="name" v="LD9AV" />
-    <tag k="note" v="best position from nrrl_locator" />
+    <tag k="note" v="Position 68°34.88'N 19°21.75'E.; best position from local" />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/troms/midt-tromsgruppen/" />
     <tag k="qth" v="Altevann/Slåttmoberget" />
     <tag k="review" v="repeater_crosscheck" />
