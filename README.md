@@ -30,6 +30,46 @@ Published review artefacts in this repository:
 - [`output/repeaters_merged.csv`](output/repeaters_merged.csv)
 - [`output/repeaters_review.osm`](output/repeaters_review.osm) (JOSM review layer)
 
+## OSM coverage
+
+Counts from the current NRRL list (fixed sites only; portables excluded) versus
+callsigns already present on OpenStreetMap amateur-radio features (Overpass).
+Fylke is taken from the NRRL group directory region.
+
+| | Count |
+|--|------:|
+| NRRL fixed callsigns | 471 |
+| Already in OSM | 18 |
+| Missing from OSM | 453 |
+| Distinct callsigns tagged in OSM (Norway extract) | 33 |
+
+Per fylke:
+
+| Fylke | NRRL | In OSM | Missing |
+|-------|-----:|-------:|--------:|
+| Østfold | 11 | 0 | 11 |
+| Akershus | 37 | 1 | 36 |
+| Oslo | 8 | 0 | 8 |
+| Innlandet | 53 | 8 | 45 |
+| Buskerud | 22 | 1 | 21 |
+| Vestfold | 22 | 3 | 19 |
+| Telemark | 16 | 0 | 16 |
+| Agder | 30 | 0 | 30 |
+| Rogaland | 50 | 2 | 48 |
+| Vestland | 36 | 3 | 33 |
+| Møre og Romsdal | 21 | 0 | 21 |
+| Trøndelag | 38 | 0 | 38 |
+| Nordland | 56 | 0 | 56 |
+| Troms | 50 | 0 | 50 |
+| Finnmark | 19 | 0 | 19 |
+| Svalbard og Jan Mayen | 1 | 0 | 1 |
+| Unknown | 1 | 0 | 1 |
+| **Total** | **471** | **18** | **453** |
+
+“In OSM” means the NRRL callsign appears on an OSM object in the amateur-radio
+extract (dedicated callsign tag or name/ref). Landmark/QTH matches that are not
+yet tagged with the callsign still count as missing.
+
 ## Setup
 
 ```bash
@@ -59,6 +99,31 @@ python -m repeater_crosscheck -c config.toml --skip-osm  # offline-ish debug
 
 Open [`output/repeaters_review.osm`](output/repeaters_review.osm) in JOSM.
 Portable stations are omitted from this layer (they are not fixed sites).
+
+### Reviewing in JOSM
+
+1. **Install JOSM** — download from the official page:
+   [https://josm.openstreetmap.de/wiki/Download](https://josm.openstreetmap.de/wiki/Download)
+   (Java Web Start, `.jar`, or OS packages / installers).
+2. **Create an OpenStreetMap account** (needed to download OSM data with your
+   identity and to upload edits) at
+   [https://www.openstreetmap.org/user/new](https://www.openstreetmap.org/user/new).
+   Confirm the email, then in JOSM open **Edit → Preferences → OSM Server**
+   (or **Connection settings**) and authorize with that account (OAuth
+   recommended). See
+   [JOSM connection help](https://josm.openstreetmap.de/wiki/Help/Preferences/Connection).
+3. **Open the review file** — **File → Open…** and choose
+   `output/repeaters_review.osm`.
+4. **Show the OpenStreetMap map as a background layer** —
+   **Imagery → OpenStreetMap Carto (Standard)**.
+   Toggle layer visibility in the **Layers** panel (right side). You can add
+   other imagery the same way if needed.
+5. **Optional: download existing OSM data** for the area you are reviewing —
+   **File → Download data…** (or the download button), select the bbox on the
+   slippy map, and download. Keep the review layer and the downloaded OSM data
+   as separate layers; copy tags only after checking local knowledge.
+
+Do not upload until tags and positions have been verified.
 
 Outputs (under `paths.output_dir`, default `./output/`):
 
