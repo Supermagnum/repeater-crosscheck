@@ -6,7 +6,22 @@ plus a JOSM review file.
 Sources used here are public data. Before uploading any changes to OSM, check that
 tags are not broken and that the data matches local knowledge.
 
+## Table of contents
+
+- [Source data](#source-data)
+- [OSM coverage](#osm-coverage)
+- [Setup](#setup)
+- [Usage](#usage)
+  - [Reviewing in JOSM](#reviewing-in-josm)
+  - [OSM tagging: one feature per repeater (Norway)](#osm-tagging-one-feature-per-repeater-norway)
+  - [What is `repeaters.joz`?](#what-is-repeatersjoz)
+- [Matching and best position](#matching-and-best-position)
+- [Terms of use](#terms-of-use)
+- [NRRL CSV columns](#nrrl-csv-columns)
+
 ## Source data
+
+As far as the author knows, these sources are dated **28 September 2026**.
 
 Primary inputs and comparison sources:
 
