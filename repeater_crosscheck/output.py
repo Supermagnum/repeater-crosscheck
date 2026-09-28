@@ -16,6 +16,7 @@ from .osm_objects import (
     fetch_osm_elements,
     format_osm_ref,
     parse_osm_ref,
+    sanitize_existing_osm_tags,
     strip_per_callsign_tags,
 )
 from .util import fmt_coord, haversine_m
@@ -709,9 +710,9 @@ def write_josm_osm(
             # Keep existing OSM name (e.g. Horta); synthetics still get callsign names.
             if base.get("name"):
                 aligned.pop("name", None)
-            tags = {**base, **aligned}
+            tags = sanitize_existing_osm_tags({**base, **aligned})
         else:
-            tags = base
+            tags = sanitize_existing_osm_tags(base)
         parsed_ref = parse_osm_ref(ref)
         etype = el.get("type") or (parsed_ref[0] if parsed_ref else "node")
         if etype == "node":

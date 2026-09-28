@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <osm version="0.6" generator="repeater-crosscheck/1.0.0">
   <node id="-3" visible="true" lat="58.937500" lon="11.625000">
     <tag k="best_source" v="nrrl_locator" />
@@ -6615,7 +6615,6 @@
     <tag k="aeroway:light" v="obstacle" />
     <tag k="aeroway:light:character" v="fixed" />
     <tag k="aeroway:light:colour" v="red" />
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LA5WR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5WR" />
@@ -6629,26 +6628,19 @@
     <tag k="communication:television" v="yes" />
     <tag k="dmr_id" v="242950" />
     <tag k="ele" v="1015" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="434.75" />
     <tag k="group" v="Narvik" />
     <tag k="height" v="65" />
-    <tag k="locator" v="JP88QJ" />
     <tag k="man_made" v="communications_tower" />
     <tag k="name" v="Narvik hovedsender" />
     <tag k="note" v="Narvik hovedsender. OSM node/1199576872." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/nordland/narvikgruppen/" />
-    <tag k="qth" v="Narvik/Ankenes" />
     <tag k="ref:hinder" v="1386" />
-    <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Kartverket Luftfartshindre" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:construction" v="freestanding" />
     <tag k="tower:type" v="communication" />
     <tag k="website" v="http://la1n.no/" />
   </node>
   <node id="13003985929" version="1" visible="true" action="modify" changeset="169005461" timestamp="2025-07-16T10:18:05Z" user="Branite" uid="19770772" lat="78.1494045" lon="16.6582591">
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="JW9SRR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="JW9SRR" />
@@ -6657,17 +6649,11 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.6 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="145.6" />
     <tag k="group" v="Svalbard" />
-    <tag k="locator" v="JQ88HD" />
     <tag k="man_made" v="mast" />
     <tag k="name" v="JW9SRR" />
     <tag k="note" v="OSM mast node/13003985929 (Skolten)." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/svalbard-og-jan-mayen/svalbardgruppen/" />
-    <tag k="qth" v="Svalbard/Skolten" />
-    <tag k="review" v="repeater_crosscheck" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:type" v="communication" />
     <tag k="website" v="http://jw5e.com/" />
   </node>
@@ -6768,7 +6754,6 @@
     <tag k="aeroway:light" v="obstacle" />
     <tag k="aeroway:light:character" v="fixed" />
     <tag k="aeroway:light:colour" v="red" />
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LD6FF" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD6FF" />
@@ -6781,20 +6766,14 @@
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="dmr_id" v="242013" />
     <tag k="ele" v="84" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="434.875" />
     <tag k="group" v="Firda" />
     <tag k="height" v="52" />
-    <tag k="locator" v="JP21MO" />
     <tag k="man_made" v="tower" />
     <tag k="name" v="Storåsen" />
     <tag k="note" v="OSM tower node/3655921327 (Storåsen)." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/vestland/firdagruppen/" />
-    <tag k="qth" v="Storåsen" />
     <tag k="ref:hinder" v="5059" />
-    <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Kartverket Luftfartshindre" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:construction" v="lattice" />
     <tag k="tower:type" v="communication" />
     <tag k="website" v="http://la6f.blogspot.com/" />
@@ -6892,7 +6871,6 @@
     <tag k="website" v="https://www.la5g.no/" />
   </node>
   <node id="5415066172" version="6" visible="true" action="modify" changeset="67518866" timestamp="2019-02-24T14:56:14Z" user="NKA" uid="3497659" lat="58.3783147" lon="8.5893918">
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LD4FH" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD4FH" />
@@ -6904,25 +6882,18 @@
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="dmr_id" v="242702" />
     <tag k="ele" v="161" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="434.7" />
     <tag k="group" v="Arendal" />
     <tag k="height" v="57" />
-    <tag k="locator" v="JO48GJ" />
     <tag k="man_made" v="tower" />
     <tag k="name" v="Fjæreheia" />
     <tag k="note" v="OSM tower node/5415066172 (Fjæreheia)." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/agder/arendalsgruppen/" />
-    <tag k="qth" v="Fjæreheia/Grimstad" />
     <tag k="ref:hinder" v="3493" />
-    <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Kartverket Luftfartshindre" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:construction" v="lattice" />
     <tag k="tower:type" v="communication" />
   </node>
   <node id="5574482764" version="3" visible="true" action="modify" changeset="67518866" timestamp="2019-02-24T14:58:17Z" user="NKA" uid="3497659" lat="59.7802919" lon="11.0038215">
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LA5YR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5YR" />
@@ -6935,24 +6906,17 @@
     <tag k="description" v="Andersrudåsen" />
     <tag k="dmr_id" v="242102" />
     <tag k="ele" v="328" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="434.9" />
     <tag k="group" v="Follo" />
     <tag k="height" v="15" />
-    <tag k="locator" v="JO59MS" />
     <tag k="man_made" v="mast" />
     <tag k="name" v="LA5YR" />
     <tag k="note" v="OSM mast node/5574482764." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/akershus/follogruppen/" />
-    <tag k="qth" v="Svartåsen/Enebakk" />
     <tag k="ref:hinder" v="2985" />
-    <tag k="review" v="repeater_crosscheck" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:type" v="communication" />
     <tag k="website" v="https://la3f.no/" />
   </node>
   <node id="5576440532" version="3" visible="true" action="modify" changeset="87611046" timestamp="2020-07-06T16:31:55Z" user="km2bp" uid="3610826" lat="59.6710302" lon="9.5765838">
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LD3KR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD3KR" />
@@ -6963,20 +6927,14 @@
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="dmr_id" v="242606" />
     <tag k="ele" v="596" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="434.8375" />
     <tag k="group" v="Kongsberg" />
     <tag k="height" v="19" />
-    <tag k="locator" v="JO49SQ" />
     <tag k="man_made" v="mast" />
     <tag k="name" v="LD3KR" />
     <tag k="note" v="OSM mast node/5576440532." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/buskerud/kongsberggruppen/" />
-    <tag k="qth" v="Haus Sachsen" />
     <tag k="ref:hinder" v="72089" />
-    <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Kartverket Luftfartshindre" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:type" v="communication" />
     <tag k="website" v="https://www.la8z.com" />
   </node>
@@ -7164,7 +7122,6 @@
   </node>
   <node id="5578772892" version="6" visible="true" action="modify" changeset="110466719" timestamp="2021-08-30T15:02:06Z" user="NKA" uid="3497659" lat="61.4369702" lon="5.8577037">
     <tag k="aeroway:light" v="obstacle" />
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LD6FR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD6FR" />
@@ -7176,26 +7133,19 @@
     <tag k="communication:television" v="yes" />
     <tag k="dmr_id" v="242012" />
     <tag k="ele" v="705" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="434.65" />
     <tag k="group" v="Firda" />
     <tag k="height" v="124" />
-    <tag k="locator" v="JP21WK" />
     <tag k="man_made" v="mast" />
     <tag k="name" v="LD6FR" />
     <tag k="note" v="OSM mast node/5578772892 (Hafstadfjellet)." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/vestland/firdagruppen/" />
-    <tag k="qth" v="Hafstadfjellet" />
     <tag k="ref:hinder" v="5041" />
-    <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Kartverket Luftfartshindre" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:construction" v="guyed_lattice" />
     <tag k="tower:type" v="communication" />
     <tag k="website" v="http://la6f.blogspot.com/" />
   </node>
   <node id="5582173868" version="3" visible="true" action="modify" changeset="67518866" timestamp="2019-02-24T15:02:37Z" user="NKA" uid="3497659" lat="59.6125778" lon="6.2058077">
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LA9LR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA9LR" />
@@ -7208,23 +7158,16 @@
     <tag k="description" v="Ramnafjell" />
     <tag k="dmr_id" v="242302" />
     <tag k="ele" v="982" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="145.7" />
     <tag k="group" v="STF Sauda" />
     <tag k="height" v="30" />
-    <tag k="locator" v="JO39CO" />
     <tag k="man_made" v="mast" />
     <tag k="name" v="LA9LR" />
     <tag k="note" v="OSM mast node/5582173868." />
-    <tag k="qth" v="Ravnafjell" />
     <tag k="ref:hinder" v="67980" />
-    <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Kartverket Luftfartshindre" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:type" v="communication" />
   </node>
   <node id="5582173874" version="3" visible="true" action="modify" changeset="177844521" timestamp="2026-01-29T12:08:58Z" user="_nikita" uid="20028978" lat="59.3685879" lon="5.3266895">
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LD5HH" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD5HH" />
@@ -7235,27 +7178,20 @@
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="dmr_id" v="242323" />
     <tag k="ele" v="127" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="434.75" />
     <tag k="group" v="Haugaland" />
     <tag k="height" v="24" />
-    <tag k="locator" v="JO29PI" />
     <tag k="man_made" v="mast" />
     <tag k="name" v="LD5HH" />
     <tag k="note" v="OSM mast node/5582173874." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/rogaland/haugalandgruppen/" />
-    <tag k="qth" v="Karmøy/Helgelandsfjellet" />
     <tag k="ref:hinder" v="68045" />
-    <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Kartverket Luftfartshindre" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:type" v="communication" />
   </node>
   <node id="5583842945" version="6" visible="true" action="modify" changeset="174673638" timestamp="2025-11-15T05:05:30Z" user="roleohibachi" uid="10076920" lat="60.5120710" lon="4.9133330">
     <tag k="aeroway:light" v="obstacle" />
     <tag k="aeroway:light:character" v="fixed" />
     <tag k="aeroway:light:colour" v="red" />
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LA5LRR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5LRR" />
@@ -7268,25 +7204,18 @@
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="description" v="Rong" />
     <tag k="ele" v="42" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="145.125" />
     <tag k="group" v="Bergen" />
     <tag k="height" v="30" />
-    <tag k="locator" v="JP20LI" />
     <tag k="man_made" v="mast" />
     <tag k="name" v="LA5LRR" />
     <tag k="note" v="Crossband link. Club page: Rong i Øygarden. OSM mast node/5583842945. https://www.la1b.no/la5lrr/" />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/vestland/bergensgruppen/" />
-    <tag k="qth" v="Rong,Øygarden" />
     <tag k="ref:hinder" v="4243" />
-    <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Kartverket Luftfartshindre" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:type" v="communication" />
     <tag k="website" v="https://www.la1b.no/" />
   </node>
   <node id="5587511477" version="2" visible="true" action="modify" changeset="67520228" timestamp="2019-02-24T15:46:27Z" user="NKA" uid="3497659" lat="65.8784833" lon="13.3027111">
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LD8MV" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD8MV" />
@@ -7297,20 +7226,14 @@
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="dmr_id" v="242902" />
     <tag k="ele" v="630" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="434.825" />
     <tag k="group" v="Mosjøen" />
     <tag k="height" v="16" />
-    <tag k="locator" v="JP65OU" />
     <tag k="man_made" v="mast" />
     <tag k="name" v="LD8MV" />
     <tag k="note" v="DMR repeater. Position 65.8784833, 13.3027111. DMR ID 242902. OSM mast node/5587511477 (not peak Vardefjell)." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/nordland/mosjoengruppen/" />
-    <tag k="qth" v="Mosjøen/Vardefjell" />
     <tag k="ref:hinder" v="71448" />
-    <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Kartverket Luftfartshindre" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:type" v="communication" />
     <tag k="website" v="http://www.la2w.no/" />
   </node>
@@ -7318,7 +7241,6 @@
     <tag k="aeroway:light" v="obstacle" />
     <tag k="aeroway:light:character" v="fixed" />
     <tag k="aeroway:light:colour" v="red" />
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LD9MM" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD9MM" />
@@ -7330,20 +7252,14 @@
     <tag k="description" v="Holtet Bardu" />
     <tag k="dmr_id" v="242014" />
     <tag k="ele" v="533" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="434.6125" />
     <tag k="group" v="Midt-Troms" />
     <tag k="height" v="41" />
-    <tag k="locator" v="JP98FV" />
     <tag k="man_made" v="mast" />
     <tag k="name" v="LD9MM" />
     <tag k="note" v="DMR repeater on air. OSM mast https://www.openstreetmap.org/node/5588495799 (Holtet Bardu). TX 434.6125 / RX 432.6125. DMR ID 242014. NRRL still says planlagt/QRT." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/troms/midt-tromsgruppen/" />
-    <tag k="qth" v="Holtet,Bardu" />
     <tag k="ref:hinder" v="995" />
-    <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Kartverket Luftfartshindre" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:type" v="communication" />
     <tag k="website" v="http://www.la6m.no/" />
   </node>
@@ -7351,31 +7267,23 @@
     <tag k="aeroway:light" v="obstacle" />
     <tag k="aeroway:light:character" v="fixed" />
     <tag k="aeroway:light:colour" v="red" />
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LA8ZR;LA9FRR;LA9ZR;LD9AB;LD9AF" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA8ZR;LA9FRR;LA9ZR;LD9AB;LD9AF" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;123;123;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.65 MHz;145.6125 MHz;145.725 MHz;144.925 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E,7K60FXE;11K2F3E;11K2F3E;20K0F2D;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-0.6 MHz;-0.6 MHz;;" />
-    <tag k="dmr_id" v="242920;;;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-0.6 MHz;-0.6 MHz" />
+    <tag k="dmr_id" v="242920" />
     <tag k="ele" v="650" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="flags" v="qrt;;;;" />
-    <tag k="frequency" v="434.65;145.6125;145.725;144.925;144.8" />
     <tag k="group" v="Midt-Troms" />
     <tag k="height" v="33" />
-    <tag k="locator" v="JP99GC;JP99GC;JP99GC;JP99GD;JP99GD" />
     <tag k="man_made" v="tower" />
     <tag k="name" v="Andsfjellet" />
     <tag k="note" v="LA8ZR: Likely QRT: not in NRRL list dated 2025-11-10 (still present in local Relestasjoner.csv export). Was RU2 UHF on Andsfjell, CTCSS 123. Club page https://www.la6m.no/andsfjell/ may be outdated.; LA9FRR: FM repeater on Andsfjell (Midt-Troms). TX 145.6125 / RX 145.0125, CTCSS 123. Same site as LA9ZR/LA8ZR/LD9AF/LD9AB. https://www.la6m.no/andsfjell/; LA9ZR: RV58 VHF FM on Andsfjell. CTCSS 123 Hz. Source: https://www.la6m.no/andsfjell/; LD9AB: Winlink node on Andsfjell. Source: https://www.la6m.no/andsfjell/; LD9AF: APRS digi on Andsfjell. OSM tower https://www.openstreetmap.org/node/5588496689. Source: https://www.la6m.no/andsfjell/" />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/troms/midt-tromsgruppen/" />
-    <tag k="qth" v="Andsfjellet" />
-    <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Kartverket Luftfartshindre" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:construction" v="dome" />
     <tag k="tower:type" v="radar" />
     <tag k="website" v="http://www.la6m.no/" />
@@ -7406,7 +7314,6 @@
   </node>
   <node id="912390742" version="7" visible="true" action="modify" changeset="67518866" timestamp="2019-02-24T14:54:52Z" user="NKA" uid="3497659" lat="59.9188886" lon="10.5160766">
     <tag k="aeroway:light" v="obstacle" />
-    <tag k="best_source" v="local" />
     <tag k="callsign" v="LA1KRR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA1KRR" />
@@ -7418,20 +7325,14 @@
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="dmr_id" v="242101" />
     <tag k="ele" v="342" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="434.925" />
     <tag k="group" v="Asker og Bærum" />
     <tag k="height" v="35" />
-    <tag k="locator" v="JO59GW" />
     <tag k="man_made" v="tower" />
     <tag k="name" v="Kolsås Bærum" />
     <tag k="note" v="OSM tower node/912390742 (Kolsås Bærum)." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/akershus/asker-og-baerumgruppen/" />
-    <tag k="qth" v="Kolsås" />
     <tag k="ref:hinder" v="3364" />
-    <tag k="review" v="repeater_crosscheck" />
     <tag k="source" v="Norkring" />
-    <tag k="source_kind" v="osm" />
     <tag k="tower:type" v="communication" />
     <tag k="website" v="http://www.la2ab.net/" />
   </node>
@@ -7516,7 +7417,6 @@
     <nd ref="5933925632" />
     <nd ref="3594659819" />
     <tag k="amenity" v="shelter" />
-    <tag k="best_source" v="local" />
     <tag k="building" v="yes" />
     <tag k="callsign" v="LA4WRR" />
     <tag k="communication:amateur_radio" v="yes" />
@@ -7526,16 +7426,10 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.85 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="frequency" v="434.85" />
     <tag k="group" v="Sandnes" />
-    <tag k="locator" v="JO28UT" />
     <tag k="name" v="LA4WRR" />
     <tag k="note" v="OSM way/628543477 (Bogafjell)." />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/rogaland/sandnesgruppen/" />
-    <tag k="qth" v="Bogafjell" />
-    <tag k="review" v="repeater_crosscheck" />
-    <tag k="source_kind" v="osm" />
     <tag k="website" v="https://la9s.no/" />
   </way>
 </osm>

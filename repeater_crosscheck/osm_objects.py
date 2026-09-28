@@ -269,8 +269,9 @@ def _collapse_or_join(slots: list[str]) -> str | None:
     if not any(slots):
         return None
     nonempty = [s for s in slots if s]
-    if len(nonempty) == len(slots) and len(set(slots)) == 1:
-        return slots[0]
+    # Collapse when every non-empty slot is the same (drop trailing/gap empties).
+    if nonempty and len(set(nonempty)) == 1:
+        return nonempty[0]
     return ";".join(slots)
 
 
@@ -283,6 +284,54 @@ def _unique_nonempty(slots: list[str]) -> str | None:
             if part and part not in parts:
                 parts.append(part)
     return ";".join(parts) if parts else None
+
+
+# Review-only keys must not be left on existing OSM objects destined for upload.
+REVIEW_ONLY_TAG_KEYS: frozenset[str] = frozenset(
+    {
+        "review",
+        "best_source",
+        "source_kind",
+        "frequency",
+        "locator",
+        "qth",
+        "flags",
+        "fixme",
+    }
+)
+
+# Semicolon-slot keys cleaned on existing OSM objects (drop empties; collapse equals).
+_OSM_SLOT_CLEAN_KEYS: frozenset[str] = frozenset(
+    {
+        "communication:amateur_radio:repeater:ctcss",
+        "communication:amateur_radio:repeater:shift",
+        "communication:amateur_radio:repeater:dcs",
+        "communication:amateur_radio:repeater:toneburst",
+        "communication:amateur_radio:repeater:modulation",
+        "communication:amateur_radio:repeater:frequency_out",
+        "dmr_id",
+    }
+)
+
+
+def sanitize_existing_osm_tags(tags: dict[str, str]) -> dict[str, str]:
+    """
+    Prepare tags for an existing OSM node/way: drop review-only keys and clean
+    empty multi-callsign slots (matching manual JOSM upload cleanup).
+    """
+    out: dict[str, str] = {}
+    for key, val in tags.items():
+        if key in REVIEW_ONLY_TAG_KEYS:
+            continue
+        if not val:
+            continue
+        if key in _OSM_SLOT_CLEAN_KEYS:
+            parts = [p.strip() for p in str(val).split(";") if p.strip()]
+            if not parts:
+                continue
+            val = parts[0] if len(set(parts)) == 1 else ";".join(parts)
+        out[key] = val
+    return out
 
 
 def align_multi_callsign_tags(members: list[dict[str, str]]) -> dict[str, str]:
