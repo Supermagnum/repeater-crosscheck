@@ -273,7 +273,13 @@ def _set_elem_tags(el: ET.Element, tags: dict[str, str]) -> None:
 
 
 def _merge_coincident_synthetics(root: ET.Element, *, max_m: float = 10.0) -> None:
-    """Stack per-callsign review nodes that share a locator/site into one node."""
+    """
+    Collapse duplicate synthetic nodes for the *same* callsign and band only.
+
+    Co-located different callsigns (or bands) stay as separate nodes — matching
+    common OSM practice outside Norway (one feature per repeater/band even on a
+    shared mast).
+    """
     synthetics = [
         el
         for el in list(root)
@@ -298,10 +304,24 @@ def _merge_coincident_synthetics(root: ET.Element, *, max_m: float = 10.0) -> No
         if ri != rj:
             parent[rj] = ri
 
+    def _identity(tags: dict[str, str]) -> tuple[str, str]:
+        cs = (tags.get("callsign") or "").split(";")[0].strip().upper()
+        band = (
+            tags.get("frequency")
+            or tags.get("communication:amateur_radio:repeater:frequency_out")
+            or ""
+        ).strip()
+        return cs, band
+
     for i in range(n):
+        id_i = _identity(_elem_tags(synthetics[i]))
+        if not id_i[0]:
+            continue
         lat_i = float(synthetics[i].get("lat"))
         lon_i = float(synthetics[i].get("lon"))
         for j in range(i + 1, n):
+            if _identity(_elem_tags(synthetics[j])) != id_i:
+                continue
             d = haversine_m(
                 lat_i,
                 lon_i,
@@ -326,8 +346,8 @@ def _merge_coincident_synthetics(root: ET.Element, *, max_m: float = 10.0) -> No
             )
         )
         survivor = members[0]
-        member_tags = [_elem_tags(el) for el in members]
-        tags = align_multi_callsign_tags(member_tags)
+        # Same callsign+band duplicates: keep the preferred kind's tags.
+        tags = _elem_tags(survivor)
         for other in members[1:]:
             id_map[other.get("id", "")] = survivor.get("id", "")
             root.remove(other)
@@ -346,6 +366,13 @@ def _merge_coincident_synthetics(root: ET.Element, *, max_m: float = 10.0) -> No
         unique = {r for r in refs if r}
         if len(unique) < 2:
             root.remove(way)
+
+
+def _osm_mast_merge_priority(row: MergedRepeater) -> tuple:
+    """Prefer voice repeaters over APRS/packet digis when claiming a shared mast."""
+    blob = (row.type or "").upper()
+    digi = any(x in blob for x in ("APRS", "PACKET", "WINLINK", "BPQ", "LORA"))
+    return (1 if digi else 0, (row.callsign or "").upper(), (row.tx or "").strip())
 
 
 def _primary_osm_ref(row: MergedRepeater) -> str | None:
@@ -485,13 +512,26 @@ def write_josm_osm(
         row.best_source = "osm"
         row.osm_lat, row.osm_lon = clat, clon
 
-    # Base OSM tags (site/infrastructure) + per-callsign review members.
+    # Base OSM tags (site/infrastructure) + at most one repeater per mast object.
     pending_osm_base: dict[str, dict[str, str]] = {}
     pending_osm_members: dict[str, list[dict[str, str]]] = defaultdict(list)
     pending_osm_move: dict[str, tuple[float, float]] = {}
     member_nodes_emitted: set[int] = set()
-    # One review feature per callsign+band (+ site). Multi-band rows get one slot each.
+    # One review feature per callsign+band (+ site). Multi-band rows get one node each.
     emitted_sites: set[str] = set()
+
+    # Shared Norwegian masts: only one callsign+band may rewrite the existing OSM
+    # object; siblings get co-located synthetic nodes (OSM one-feature-per-repeater).
+    mast_owner: dict[str, MergedRepeater] = {}
+    for row in rows:
+        if "portable" in row.flags:
+            continue
+        ref = _primary_osm_ref(row)
+        if not ref:
+            continue
+        prev = mast_owner.get(ref)
+        if prev is None or _osm_mast_merge_priority(row) < _osm_mast_merge_priority(prev):
+            mast_owner[ref] = row
 
     next_id = -1
 
@@ -501,7 +541,8 @@ def write_josm_osm(
         members = pending_osm_members.get(ref)
         if not members:
             return None
-        return align_multi_callsign_tags(members)
+        # Single-owner merge: one member's tags (no multi-callsign semicolon stack).
+        return dict(members[0]) if len(members) == 1 else align_multi_callsign_tags(members)
 
     for row in rows:
         # Portables are not fixed OSM candidates — omit from the review layer.
@@ -512,6 +553,13 @@ def write_josm_osm(
 
         primary_ref = _primary_osm_ref(row)
         primary_el = osm_elements.get(primary_ref) if primary_ref else None
+        owns_mast = (
+            primary_ref is not None
+            and mast_owner.get(primary_ref) is row
+        )
+        if primary_el is not None and primary_ref and not owns_mast:
+            # Another callsign/band already claims this mast — synthetic at site.
+            primary_el = None
         if primary_el is not None and not _mergeable_osm_element(primary_el):
             # Peak/hill only — keep coords via synthetic nodes, do not modify the peak.
             # Explicit osm_id overrides may still pin onto a peak (operator choice).
@@ -538,9 +586,11 @@ def write_josm_osm(
             # Fall back to row osm coords.
             if primary_lat is None and row.osm_lat is not None:
                 primary_lat, primary_lon = row.osm_lat, row.osm_lon
+        elif primary_ref and row.osm_lat is not None:
+            # Sibling on a shared mast: still know the site coordinates.
+            primary_lat, primary_lon = row.osm_lat, row.osm_lon
 
-        # One feature per callsign+band (+ site). Band key keeps multi-TX rows distinct
-        # so coincident merge can build one slot per band.
+        # One feature per callsign+band (+ site). Band key keeps multi-TX rows distinct.
         band = (row.tx or "").strip() or "none"
         if primary_ref and primary_el is not None:
             site_key = f"{row.callsign}|{band}|osm:{primary_ref}"
@@ -597,6 +647,7 @@ def write_josm_osm(
                 pending_osm_move[primary_ref] = (row.local_lat, row.local_lon)
 
         # Merge onto mergeable network members first (no bare-peak synthetic clones).
+        # Only the mast owner callsign+band may rewrite a shared network member.
         network_merged = 0
         for pos in sorted(network, key=lambda p: p.source_id or ""):
             ref = None
@@ -605,6 +656,11 @@ def write_josm_osm(
                 ref = format_osm_ref(*parsed)
             el = osm_elements.get(ref) if ref else None
             if el is not None and ref and _mergeable_osm_element(el):
+                owner = mast_owner.get(ref)
+                if owner is not None and owner is not row:
+                    continue
+                if ref not in mast_owner:
+                    mast_owner[ref] = row
                 if ref not in pending_osm_base:
                     pending_osm_base[ref] = strip_per_callsign_tags(
                         {str(k): str(v) for k, v in dict(el.get("tags") or {}).items()}
@@ -647,6 +703,16 @@ def write_josm_osm(
                 if by_kind.get(kind):
                     kinds_to_emit.append(kind)
                     break
+            # Shared-mast sibling with no merge: still need a site node even if
+            # by_kind lacks an entry (coords only on row.best_*).
+            if not kinds_to_emit and row.best_lat is not None and row.best_lon is not None:
+                by_kind["best"] = Position(
+                    lat=row.best_lat,
+                    lon=row.best_lon,
+                    source_kind="best",
+                    source_id=row.best_source or "best",
+                )
+                kinds_to_emit.append("best")
 
         synthetic_ids: list[tuple[str, int]] = []  # kind, id for disagreement way
         emitted_coords: list[tuple[float, float]] = []
@@ -706,7 +772,11 @@ def write_josm_osm(
         base = dict(pending_osm_base.get(ref) or {})
         members = pending_osm_members.get(ref) or []
         if members:
-            aligned = align_multi_callsign_tags(members)
+            # Prefer a single callsign+band on the object (no semicolon stacks).
+            if len(members) == 1:
+                aligned = dict(members[0])
+            else:
+                aligned = align_multi_callsign_tags(members)
             # Keep existing OSM name (e.g. Horta); synthetics still get callsign names.
             if base.get("name"):
                 aligned.pop("name", None)

@@ -136,6 +136,27 @@ every object that still has it. It records which source the tool preferred and
 must not be stored in OpenStreetMap. Do not upload until tags and positions
 have been verified.
 
+### OSM tagging: one feature per repeater (Norway)
+
+Clubs in Norway often mount several services on the **same physical mast**
+(for example an FM repeater and an APRS digipeater). That co-location is real,
+but OpenStreetMap practice outside Norway is still **one mapped feature per
+callsign/band**, not a semicolon stack of callsigns on a single object.
+
+This tool follows that convention:
+
+- Each NRRL callsign (and each TX band of that callsign) gets its **own** review
+  node, even when `overrides.toml` pins several callsigns to the same mast
+  coordinates or `osm_id`.
+- At most **one** callsign/band may have its tags merged onto an existing OSM
+  mast/tower object (voice repeaters preferred over APRS/packet digis). The
+  others are emitted as co-located synthetic nodes at the same site.
+- Do **not** upload `callsign=LA7GR;LD2GG`-style multi-value callsign tags.
+  Semicolon lists remain appropriate only where the OSM wiki already uses them
+  (for example multi-mode `modulation`).
+
+Shared mast → same coordinates; separate OSM elements → separate callsigns.
+
 When a site position is uncertain, consult the NRRL list
 (`Relestasjoner.csv` — the `QTH`, `Lokator`, and frequency columns) and move the
 object in JOSM to the position that fits best given local knowledge, imagery,
@@ -166,7 +187,7 @@ Outputs (under `paths.output_dir`, default `./output/`):
 | File | Purpose |
 |------|---------|
 | `repeaters_merged.csv` | One row per NRRL repeater, all source coords + flags, plus `elevation_m` (ground ASL from Mapterhorn; for tools such as [SPLAT!](https://github.com/hoche/splat)) |
-| `repeaters_review.osm` | JOSM review: existing OSM masts get merged tags; otherwise synthetic nodes + disagreement ways. Rows with the `portable` flag are omitted even when they have coordinates (e.g. LA2LRR, LD3DP). Verify tags and local knowledge before upload. Delete `best_source` before upload. |
+| `repeaters_review.osm` | JOSM review: at most one callsign/band merged onto an existing OSM mast; co-located siblings are separate nodes. Disagreement ways when sources diverge. Rows with the `portable` flag are omitted. Verify before upload; delete `best_source`. |
 | `repeaters.joz` | Compressed JOSM session: one review layer per fylkesnavn + Fylker boundaries + Kartverket topo. Open from `output/`. |
 | `unmatched.txt` | Callsigns / codeplug channels that could not be matched |
 
@@ -204,8 +225,9 @@ Known site notes (portable, QRT, club pages, extra coordinates, `osm_id`) live i
 JOSM still shows other source nodes for comparison, but does not draw a
 disagreement way for that callsign. When an OSM mast/tower/node/way is known
 (from Overpass match, nearest landmark within ~75 m, or an explicit `osm_id`
-override), the review file downloads that object and merges amateur-radio /
-review tags onto it instead of inventing a duplicate node. Verify tags and local
+override), **one** callsign/band may merge amateur-radio tags onto that object;
+other co-located callsigns get their own review nodes at the same coordinates
+(see “OSM tagging: one feature per repeater” above). Verify tags and local
 knowledge before uploading to OSM.
 
 Gruppe names are mapped via [nrrl.no/grupper](https://nrrl.no/grupper/) to each
