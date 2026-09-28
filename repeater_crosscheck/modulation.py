@@ -134,7 +134,12 @@ def osm_amateur_tags(row: MergedRepeater) -> dict[str, str]:
     if tx is not None:
         tags["communication:amateur_radio:repeater:frequency_out"] = _format_mhz(tx)
         if rx is not None and abs(rx - tx) > 1e-6:
-            tags["communication:amateur_radio:repeater:shift"] = _format_shift(tx, rx)
+            # Crossband / dual-band links have a huge “shift”; that is not the
+            # usual ±600 kHz / ±1.6 MHz repeater offset. Prefer frequency_in.
+            if abs(rx - tx) > 30.0:
+                tags["communication:amateur_radio:repeater:frequency_in"] = _format_mhz(rx)
+            else:
+                tags["communication:amateur_radio:repeater:shift"] = _format_shift(tx, rx)
 
     tone = (row.tone or "").strip()
     if tone.upper().startswith("DCS"):

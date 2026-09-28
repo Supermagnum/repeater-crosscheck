@@ -3,6 +3,8 @@
 # osm_id (node/…, way/…, or OSM URL) merges review tags onto that existing object.
 # skip_osm = true ignores OSM callsign/QTH matches (use when OSM tags are wrong).
 # skip = true omits the callsign from CSV/JOSM outputs.
+# Callsigns with an APRS/D-STAR SSID (e.g. [LA2L-10], [LA7RRA-B]) keep that SSID.
+# Override-only entries (not in NRRL) with lat/lon or type/tx are still emitted.
 
 [LA2LRR]
 portable = true
@@ -161,6 +163,58 @@ skip = true
 qrt = true
 note = "No aprs.fi activity (https://aprs.fi/info/?call=LD4KD); treat as QRT and omit."
 
+# Innlandet LD digis not found on aprs.no / aprs.fi — QRT / inactive; omit.
+[LD2GC]
+skip = true
+qrt = true
+note = "Not found on aprs.no / aprs.fi; treat as QRT and omit."
+
+[LD2GM]
+skip = true
+qrt = true
+note = "Not found on aprs.no / aprs.fi; treat as QRT and omit."
+
+[LD2GQ]
+skip = true
+qrt = true
+note = "Not found on aprs.no / aprs.fi; treat as QRT and omit."
+
+[LD2GV]
+skip = true
+qrt = true
+note = "Not found on aprs.no / aprs.fi; treat as QRT and omit."
+
+[LD2HA]
+skip = true
+qrt = true
+note = "Not found on aprs.no / aprs.fi; treat as QRT and omit."
+
+[LD2LT]
+skip = true
+qrt = true
+note = "Not found on aprs.no / aprs.fi; treat as QRT and omit."
+
+# Active on aprs.no / aprs.fi (not in NRRL Relestasjoner). Positions from APRS.
+[LA2L-10]
+type = "APRS"
+qth = "Biri"
+group = "Gjøvik og Toten"
+lat = 60.94273
+lon = 10.61406
+tx = 144.8
+rx = 144.8
+note = "LoRa APRS digipeater heard on aprs.no / aprs.fi (not in NRRL)."
+
+[LA7RRA-B]
+type = "D-STAR"
+qth = "Hamar"
+group = "Hamar"
+lat = 60.817333
+lon = 11.346667
+tx = 433.575
+rx = 433.575
+note = "70cm D-STAR voice gateway heard on aprs.no / aprs.fi (not in NRRL). Locator JP50QT."
+
 [LA2TRR]
 qth = "Kråkhugukampen"
 lat = 61.007556
@@ -209,7 +263,9 @@ qth = "Rånåkollen"
 lat = 62.2497917
 lon = 8.1803318
 osm_id = "node/5576501719"
-note = "Rånåkollen"
+skip = true
+qrt = true
+note = "Rånåkollen. Not found on aprs.no / aprs.fi; treat as QRT and omit."
 
 [LD2GN]
 qth = "Nordhue"
@@ -217,6 +273,62 @@ lat = 60.9937379
 lon = 11.3393806
 osm_id = "node/5331403754"
 note = "Nordhue. OSM mast node/5331403754 (also hosts LD2WA)."
+
+[LD2WA]
+qth = "Nordhue"
+lat = 60.9937379
+lon = 11.3393806
+osm_id = "node/5331403754"
+note = "Nordhue / Ingerstua. Same mast as LD2GN (JOSM review position)."
+
+[LA2HRR]
+qth = "Geitberget"
+lat = 62.2125134
+lon = 9.5389151
+note = "Operator position from JOSM review (was NRRL locator centre)."
+
+[LA5JRR]
+qth = "Juvbreen"
+lat = 61.6613137
+lon = 8.3353893
+note = "Operator position from JOSM review (was NRRL locator centre)."
+
+[LA6ZR]
+qth = "Spåtind"
+lat = 61.0769918
+lon = 9.7883893
+note = "Operator position from JOSM review (was NRRL locator centre)."
+
+[LD2ER]
+qth = "Langberget/Elverum"
+lat = 60.7710818
+lon = 11.6846947
+note = "Operator position from JOSM review (was NRRL locator centre)."
+
+[LD2FN]
+qth = "Fagernes"
+lat = 61.0189720
+lon = 8.9748876
+note = "Operator position from JOSM review (was NRRL locator centre)."
+
+[LD2GB]
+qth = "Dombås"
+lat = 62.0885293
+lon = 9.1125116
+qrt = true
+note = "Operator position from JOSM review. NRRL QRT."
+
+[LD2GF]
+qth = "Folldal"
+lat = 62.1774478
+lon = 9.8118935
+note = "Operator position from JOSM review (was NRRL locator centre)."
+
+[LD2GR]
+qth = "Reinsvoll"
+lat = 60.6916676
+lon = 10.6828815
+note = "Operator position from JOSM review (was NRRL locator centre)."
 
 [LA5MR]
 qth = "Høykorset"

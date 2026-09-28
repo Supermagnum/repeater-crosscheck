@@ -10,6 +10,11 @@ from dataclasses import dataclass
 CALLSIGN_RE = re.compile(r"\b(?:L[A-N]|JW|JX)[0-9][A-Z]{1,4}\b", re.IGNORECASE)
 # Trailing channel / mode suffixes often seen in codeplugs and databases.
 SUFFIX_RE = re.compile(r"-(?:B|C|A|R|V|U|\d+)$", re.IGNORECASE)
+# Override table keys may keep an APRS/D-STAR SSID (e.g. LA2L-10, LA7RRA-B).
+OVERRIDE_CALL_RE = re.compile(
+    r"^(?:L[A-N]|JW|JX)[0-9][A-Z]{1,4}(?:-(?:B|C|A|R|V|U|\d+))?$",
+    re.IGNORECASE,
+)
 
 
 def normalize_callsign(raw: str | None) -> str:
@@ -24,6 +29,16 @@ def normalize_callsign(raw: str | None) -> str:
         cs = text.replace(" ", "")
     cs = SUFFIX_RE.sub("", cs)
     return cs
+
+
+def override_callsign_key(raw: str | None) -> str:
+    """Normalize an overrides.toml table name, keeping APRS/D-STAR SSIDs."""
+    if not raw:
+        return ""
+    text = raw.strip().upper().replace(" ", "")
+    if OVERRIDE_CALL_RE.match(text):
+        return text
+    return normalize_callsign(text)
 
 
 def extract_callsigns(text: str | None) -> list[str]:

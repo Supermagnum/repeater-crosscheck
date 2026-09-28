@@ -4,7 +4,7 @@ import tomllib
 from dataclasses import dataclass
 from pathlib import Path
 
-from .util import normalize_callsign
+from .util import override_callsign_key
 
 
 @dataclass
@@ -47,7 +47,7 @@ def load_overrides(path: Path | None) -> dict[str, LocalOverride]:
     for key, val in raw.items():
         if not isinstance(val, dict):
             continue
-        call = normalize_callsign(str(key))
+        call = override_callsign_key(str(key))
         if not call:
             continue
         lat_f = _optional_float(val.get("lat"))

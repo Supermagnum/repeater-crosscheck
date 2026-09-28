@@ -10,10 +10,10 @@ tags are not broken and that the data matches local knowledge.
 
 - [Source data](#source-data)
 - [OSM coverage](#osm-coverage)
+- [OSM tagging: one feature per repeater (Norway)](#osm-tagging-one-feature-per-repeater-norway)
 - [Setup](#setup)
 - [Usage](#usage)
   - [Reviewing in JOSM](#reviewing-in-josm)
-  - [OSM tagging: one feature per repeater (Norway)](#osm-tagging-one-feature-per-repeater-norway)
   - [What is `repeaters.joz`?](#what-is-repeatersjoz)
 - [Matching and best position](#matching-and-best-position)
 - [Terms of use](#terms-of-use)
@@ -90,6 +90,32 @@ Per fylke:
 extract (dedicated callsign tag or name/ref). Landmark/QTH matches that are not
 yet tagged with the callsign still count as missing.
 
+## OSM tagging: one feature per repeater (Norway)
+
+Clubs in Norway often mount several services on the **same physical mast**
+(for example an FM repeater and an APRS digipeater). That co-location is real,
+but OpenStreetMap practice outside Norway is still **one mapped feature per
+callsign/band**, not a semicolon stack of callsigns on a single object.
+
+This tool follows that convention:
+
+- Each NRRL callsign (and each TX band of that callsign) gets its **own** review
+  node, even when `overrides.toml` pins several callsigns to the same mast
+  coordinates or `osm_id`.
+- At most **one** callsign/band may have its tags merged onto an existing OSM
+  mast/tower object (voice repeaters preferred over APRS/packet digis). The
+  others are emitted as co-located synthetic nodes at the same site.
+- Do **not** upload `callsign=LA7GR;LD2GG`-style multi-value callsign tags.
+  Semicolon lists remain appropriate only where the OSM wiki already uses them
+  (for example multi-mode `modulation`).
+
+Shared mast → same coordinates; separate OSM elements → separate callsigns.
+
+When a site position is uncertain, consult the NRRL list
+(`Relestasjoner.csv` — the `QTH`, `Lokator`, and frequency columns) and move the
+object in JOSM to the position that fits best given local knowledge, imagery,
+and other sources. Do not upload a guess you cannot defend.
+
 ## Setup
 
 ```bash
@@ -150,32 +176,6 @@ Before upload, delete the review-only tag `best_source` (and its value) from
 every object that still has it. It records which source the tool preferred and
 must not be stored in OpenStreetMap. Do not upload until tags and positions
 have been verified.
-
-### OSM tagging: one feature per repeater (Norway)
-
-Clubs in Norway often mount several services on the **same physical mast**
-(for example an FM repeater and an APRS digipeater). That co-location is real,
-but OpenStreetMap practice outside Norway is still **one mapped feature per
-callsign/band**, not a semicolon stack of callsigns on a single object.
-
-This tool follows that convention:
-
-- Each NRRL callsign (and each TX band of that callsign) gets its **own** review
-  node, even when `overrides.toml` pins several callsigns to the same mast
-  coordinates or `osm_id`.
-- At most **one** callsign/band may have its tags merged onto an existing OSM
-  mast/tower object (voice repeaters preferred over APRS/packet digis). The
-  others are emitted as co-located synthetic nodes at the same site.
-- Do **not** upload `callsign=LA7GR;LD2GG`-style multi-value callsign tags.
-  Semicolon lists remain appropriate only where the OSM wiki already uses them
-  (for example multi-mode `modulation`).
-
-Shared mast → same coordinates; separate OSM elements → separate callsigns.
-
-When a site position is uncertain, consult the NRRL list
-(`Relestasjoner.csv` — the `QTH`, `Lokator`, and frequency columns) and move the
-object in JOSM to the position that fits best given local knowledge, imagery,
-and other sources. Do not upload a guess you cannot defend.
 
 ### What is `repeaters.joz`?
 

@@ -294,9 +294,41 @@ def build_merged(
         if ch.callsign:
             channels_by_call.setdefault(ch.callsign, []).append(ch)
 
+    overrides = overrides or {}
+    # Override-only stations (e.g. APRS SSIDs heard on aprs.no / aprs.fi but
+    # absent from the NRRL list) are synthesized into the NRRL-shaped loop.
+    nrrl_by_call = {r.callsign: r for r in nrrl}
+    extra_nrrl: list[NrrlRepeater] = []
+    for call, ov in overrides.items():
+        if ov.skip or call in nrrl_by_call:
+            continue
+        if ov.lat is None and ov.lon is None and not ov.type and ov.tx_mhz is None:
+            continue
+        status = ov.status
+        if not status and ov.qrt:
+            status = "QRT"
+        elif not status and ov.on_air:
+            status = "on-air"
+        extra_nrrl.append(
+            NrrlRepeater(
+                callsign=call,
+                callsign_raw=call,
+                type=ov.type or "APRS",
+                qth=ov.qth or "",
+                tx_mhz=ov.tx_mhz,
+                rx_mhz=ov.rx_mhz if ov.rx_mhz is not None else ov.tx_mhz,
+                group=ov.group or "",
+                locator="",
+                info=ov.note or "",
+                status=status,
+                tone=ov.tone,
+            )
+        )
+    if extra_nrrl:
+        nrrl = list(nrrl) + extra_nrrl
+
     nrrl_calls = {r.callsign for r in nrrl}
     merged: list[MergedRepeater] = []
-    overrides = overrides or {}
 
     for rep in nrrl:
         ov = overrides.get(rep.callsign)
