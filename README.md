@@ -116,6 +116,14 @@ When a site position is uncertain, consult the NRRL list
 object in JOSM to the position that fits best given local knowledge, imagery,
 and other sources. Do not upload a guess you cannot defend.
 
+It is a good idea to look for **misplaced nodes** that should sit on mountain
+peaks (or other high ground) with relevant infrastructure, and to check
+**nearby cellular masts** and similar towers on the map or imagery. For **LD**
+APRS / packet stations, check [aprs.fi](https://aprs.fi/) (and
+[aprs.no](https://aprs.no/)): if a callsign does not appear there, it is likely
+offline or **QRT** (dead). Mark those in `overrides.toml` (`qrt = true`, and
+`skip = true` when they should be omitted from the review outputs).
+
 ## Setup
 
 ```bash
@@ -171,6 +179,11 @@ alone. Portable stations are omitted from this layer (they are not fixed sites).
    **File → Download data…** (or the download button), select the bbox on the
    slippy map, and download. Keep the review layer and the downloaded OSM data
    as separate layers; copy tags only after checking local knowledge.
+6. **Sanity-check positions and activity** — look for misplaced nodes that
+   should be on mountain peaks with relevant infrastructure, and for nearby
+   cellular masts or similar towers. Check **LD** stations against
+   [aprs.fi](https://aprs.fi/); if they do not exist there, they are likely
+   offline or QRT.
 
 Before upload, delete the review-only tag `best_source` (and its value) from
 every object that still has it. It records which source the tool preferred and
