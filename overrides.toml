@@ -232,6 +232,20 @@ lon = 10.6018219
 osm_id = "node/1705107664"
 note = "Høykorset / Totenåsen. OSM node/1705107664 (LA5MR, LD2GI)."
 
+[LA5TRR]
+qth = "Trysilfjellet"
+lat = 61.319375
+lon = 12.1901472
+osm_id = "node/5576656903"
+note = "Trysilfjellet. OSM node/5576656903 (LA5TRR, LD2GO)."
+
+[LD2GO]
+qth = "Trysilfjellet"
+lat = 61.319375
+lon = 12.1901472
+osm_id = "node/5576656903"
+note = "Trysilfjellet. OSM node/5576656903 (LA5TRR, LD2GO)."
+
 [LA7GRR]
 qth = "Jetta"
 lat = 61.897565

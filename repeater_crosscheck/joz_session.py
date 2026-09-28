@@ -155,28 +155,41 @@ def split_review_osm_by_fylke(
 
 def _load_fylker_osm_bytes(joz_path: Path) -> bytes | None:
     """Reuse embedded Fylker boundaries from an existing .joz if present."""
-    if not joz_path.is_file():
-        return None
     # County polygons are multi-MB; reject stubs so a bad prior write cannot
     # permanently shrink the layer across regenerations.
     min_fylker_bytes = 100_000
-    try:
-        with zipfile.ZipFile(joz_path) as z:
-            preferred = ("layers/fylker/data.osm", "layers/02/data.osm")
-            for name in preferred:
-                try:
-                    data = z.read(name)
-                except KeyError:
-                    continue
-                if len(data) >= min_fylker_bytes:
-                    return data
-            for name in z.namelist():
-                if name.endswith("data.osm") and "fylker" in name.lower():
-                    data = z.read(name)
-                    if len(data) >= min_fylker_bytes:
-                        return data
-    except zipfile.BadZipFile:
+    cache_path = joz_path.parent / ".fylker_data.osm"
+
+    def _accept(data: bytes | None) -> bytes | None:
+        if data is not None and len(data) >= min_fylker_bytes:
+            return data
         return None
+
+    if joz_path.is_file():
+        try:
+            with zipfile.ZipFile(joz_path) as z:
+                preferred = ("layers/fylker/data.osm", "layers/02/data.osm")
+                for name in preferred:
+                    try:
+                        data = _accept(z.read(name))
+                    except KeyError:
+                        continue
+                    if data is not None:
+                        cache_path.write_bytes(data)
+                        return data
+                for name in z.namelist():
+                    if name.endswith("data.osm") and "fylker" in name.lower():
+                        data = _accept(z.read(name))
+                        if data is not None:
+                            cache_path.write_bytes(data)
+                            return data
+        except zipfile.BadZipFile:
+            pass
+
+    if cache_path.is_file():
+        data = _accept(cache_path.read_bytes())
+        if data is not None:
+            return data
     return None
 
 
