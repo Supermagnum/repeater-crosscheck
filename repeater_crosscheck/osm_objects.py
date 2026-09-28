@@ -197,6 +197,10 @@ PER_CALLSIGN_TAG_KEYS: tuple[str, ...] = (
     "flags",
     "qth",
     "locator",
+)
+
+# Club/site URLs: unique non-empty values only (no empty slots, no duplicates).
+SITE_UNIQUE_TAG_KEYS: tuple[str, ...] = (
     "group",
     "nrrl:group_page",
     "website",
@@ -209,7 +213,7 @@ PER_MEMBER_META_KEYS: tuple[str, ...] = (
     "note",
 )
 
-_PER_CALLSIGN_KEY_SET = set(PER_CALLSIGN_TAG_KEYS) | {
+_PER_CALLSIGN_KEY_SET = set(PER_CALLSIGN_TAG_KEYS) | set(SITE_UNIQUE_TAG_KEYS) | {
     "callsign",
     "communication:amateur_radio:callsign",
 }
@@ -270,6 +274,17 @@ def _collapse_or_join(slots: list[str]) -> str | None:
     return ";".join(slots)
 
 
+def _unique_nonempty(slots: list[str]) -> str | None:
+    """Stable unique join; drop empties and duplicates (for website/group_page)."""
+    parts: list[str] = []
+    for slot in slots:
+        for part in str(slot or "").split(";"):
+            part = part.strip()
+            if part and part not in parts:
+                parts.append(part)
+    return ";".join(parts) if parts else None
+
+
 def align_multi_callsign_tags(members: list[dict[str, str]]) -> dict[str, str]:
     """
     Build tags for a multi-callsign / multi-band review node.
@@ -278,6 +293,9 @@ def align_multi_callsign_tags(members: list[dict[str, str]]) -> dict[str, str]:
     Multi-band callsigns repeat the callsign once per band. Missing values are
     empty slots. Within a slot, multiple values use commas. Identical values
     across every slot collapse to a single value.
+
+    group / nrrl:group_page / website are unique non-empty unions (no leading
+    ';' or duplicated club URLs).
     """
     cleaned: list[dict[str, str]] = []
     for tags in members:
@@ -302,6 +320,12 @@ def align_multi_callsign_tags(members: list[dict[str, str]]) -> dict[str, str]:
     for key in PER_CALLSIGN_TAG_KEYS:
         slots = [_slot_value(t.get(key)) for t in cleaned]
         joined_val = _collapse_or_join(slots)
+        if joined_val is not None:
+            out[key] = joined_val
+
+    for key in SITE_UNIQUE_TAG_KEYS:
+        slots = [_slot_value(t.get(key)) for t in cleaned]
+        joined_val = _unique_nonempty(slots)
         if joined_val is not None:
             out[key] = joined_val
 
@@ -339,7 +363,10 @@ def align_multi_callsign_tags(members: list[dict[str, str]]) -> dict[str, str]:
 
 def strip_per_callsign_tags(tags: dict[str, str]) -> dict[str, str]:
     """Keep site/infrastructure tags; drop amateur per-repeater / callsign keys."""
-    return {k: v for k, v in tags.items() if k not in _PER_CALLSIGN_KEY_SET}
+    # communications_transponder:tone is not used for CTCSS — drop it so review
+    # exports use communication:amateur_radio:repeater:ctcss only.
+    drop = _PER_CALLSIGN_KEY_SET | {"communications_transponder:tone"}
+    return {k: v for k, v in tags.items() if k not in drop}
 
 
 _NOTE_META_PREFIXES = (

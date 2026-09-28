@@ -157,13 +157,24 @@ def _load_fylker_osm_bytes(joz_path: Path) -> bytes | None:
     """Reuse embedded Fylker boundaries from an existing .joz if present."""
     if not joz_path.is_file():
         return None
+    # County polygons are multi-MB; reject stubs so a bad prior write cannot
+    # permanently shrink the layer across regenerations.
+    min_fylker_bytes = 100_000
     try:
         with zipfile.ZipFile(joz_path) as z:
+            preferred = ("layers/fylker/data.osm", "layers/02/data.osm")
+            for name in preferred:
+                try:
+                    data = z.read(name)
+                except KeyError:
+                    continue
+                if len(data) >= min_fylker_bytes:
+                    return data
             for name in z.namelist():
-                if name.endswith("data.osm") and (
-                    "fylker" in name.lower() or name == "layers/02/data.osm"
-                ):
-                    return z.read(name)
+                if name.endswith("data.osm") and "fylker" in name.lower():
+                    data = z.read(name)
+                    if len(data) >= min_fylker_bytes:
+                        return data
     except zipfile.BadZipFile:
         return None
     return None

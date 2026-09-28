@@ -126,6 +126,14 @@ osm_id = "node/5576656337"
 note = "Rafjellet"
 
 
+[LD2HG]
+qth = "Hummelfjell"
+lat = 62.4300139
+lon = 11.2742500
+osm_id = "node/5576657735"
+qrt = true
+note = "Hummelfjell / Gråhøgda. OSM node/5576657735. QRT."
+
 [LD2HJ]
 qrt = true
 lat = 60.9416531
@@ -208,7 +216,81 @@ qth = "Nordhue"
 lat = 60.9937379
 lon = 11.3393806
 osm_id = "node/5331403754"
-note = "OSM mast node/5331403754 (also hosts LD2WA; OSM already had LA5MR)."
+note = "Nordhue. OSM mast node/5331403754 (also hosts LD2WA)."
+
+[LA5MR]
+qth = "Høykorset"
+lat = 60.4781659
+lon = 10.6018219
+osm_id = "node/1705107664"
+note = "Høykorset / Totenåsen. OSM node/1705107664 (LA5MR, LD2GI)."
+
+[LD2GI]
+qth = "Høykorset"
+lat = 60.4781659
+lon = 10.6018219
+osm_id = "node/1705107664"
+note = "Høykorset / Totenåsen. OSM node/1705107664 (LA5MR, LD2GI)."
+
+[LA7GRR]
+qth = "Jetta"
+lat = 61.897565
+lon = 9.284453
+note = "Jetta (LA7GRR, LA2JRR, LD2JB)."
+
+[LA2JRR]
+qth = "Jetta"
+lat = 61.897565
+lon = 9.284453
+note = "Jetta (LA7GRR, LA2JRR, LD2JB)."
+
+[LD2JB]
+qth = "Jetta"
+lat = 61.897565
+lon = 9.284453
+note = "Jetta (LA7GRR, LA2JRR, LD2JB)."
+
+[LA5ARR]
+qth = "Tverrberget"
+lat = 61.2803118
+lon = 10.3113599
+osm_id = "node/3115922468"
+note = "Tverrberget. OSM node/3115922468 (LA5ARR, LD2GS)."
+
+[LD2GS]
+qth = "Tverrberget"
+lat = 61.2803118
+lon = 10.3113599
+osm_id = "node/3115922468"
+note = "Tverrberget. OSM node/3115922468 (LA5ARR, LD2GS)."
+
+[LA7GR]
+qth = "Gålå"
+lat = 61.5138590
+lon = 9.7946565
+osm_id = "node/5810152676"
+note = "Gålå-tårnet. OSM node/5810152676 (LA7GR, LD2GG)."
+
+[LD2GG]
+qth = "Gålå"
+lat = 61.5138590
+lon = 9.7946565
+osm_id = "node/5810152676"
+note = "Gålå-tårnet. OSM node/5810152676 (LA7GR, LD2GG)."
+
+[LD2TR]
+qth = "Tronfjell"
+lat = 62.1741649
+lon = 10.6952741
+osm_id = "way/1005486272"
+note = "Tron hovedsender. OSM way/1005486272 (LA9AR, LD2TR, LD2WC)."
+
+[LD2WC]
+qth = "Tronfjell"
+lat = 62.1741649
+lon = 10.6952741
+osm_id = "way/1005486272"
+note = "Tron hovedsender. OSM way/1005486272 (LA9AR, LD2TR, LD2WC)."
 
 [LD9MM]
 lat = 68.874608
@@ -394,7 +476,7 @@ qth = "Tronfjell"
 lat = 62.1741649
 lon = 10.6952741
 osm_id = "way/1005486272"
-note = "Tron hovedsender. OSM way/1005486272 (not peak node/26864970)."
+note = "Tron hovedsender. OSM way/1005486272 (LA9AR, LD2TR, LD2WC)."
 
 [LD9AV]
 qth = "Altevann/Slåttmoberget"
