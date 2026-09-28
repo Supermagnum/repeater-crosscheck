@@ -639,7 +639,7 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="432.8 MHz;145.575 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E,7K60FXE" />
     <tag k="communication:amateur_radio:repeater:shift" v="2 MHz;-0.6 MHz" />
-    <tag k="dmr_id" v=";242220" />
+    <tag k="dmr_id" v="242220" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="432.8;145.575" />
     <tag k="group" v="STF Sauda" />
@@ -830,11 +830,11 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA6QR;LD5KH" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.6375 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;" />
-    <tag k="dmr_id" v="242324;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
+    <tag k="dmr_id" v="242324" />
     <tag k="fixme" v="operator_override" />
     <tag k="flags" v="missing_osm|qrt;missing_osm" />
     <tag k="frequency" v="434.6375;144.8" />
@@ -1483,11 +1483,11 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA8LRR;LD8LR" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.675 MHz;434.625 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;7K60FXE" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz" />
-    <tag k="dmr_id" v=";242911" />
+    <tag k="dmr_id" v="242911" />
     <tag k="flags" v="missing_osm|qrt;disagreement|missing_osm" />
     <tag k="frequency" v="145.675;434.625" />
     <tag k="group" v="Harstad" />
@@ -1527,11 +1527,11 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA8CRR;LA8NRR" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.85 MHz;145.625 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-0.6 MHz" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v=";1750" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.85;145.625" />
     <tag k="group" v="Narvik" />
@@ -1614,11 +1614,11 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA8CR;LA8RR" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v=";123" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7625 MHz;434.825 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.7625;434.825" />
     <tag k="group" v="Romerike" />
@@ -1724,7 +1724,7 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA4RRR;LA8YR" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.0125 MHz;432.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="0.6 MHz;2 MHz" />
@@ -1744,7 +1744,7 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA6ARR;LA9ARR" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="91.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="91.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.6 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
@@ -1954,11 +1954,11 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA4CRR;LA4MRR;LA9MR" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="77;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="77" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="144.65 MHz;434.9 MHz;145.675 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="290.175 MHz;-2 MHz;-0.6 MHz" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v=";1750;1750" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="144.65;434.9;145.675" />
     <tag k="group" v="Sandnes;Mandal" />
@@ -2138,7 +2138,7 @@
     <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="433.9875 MHz;145.2375 MHz;434.975 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="20K0F2D,11K2F3E;20K0F2D,11K2F3E;11K2F3E" />
-    <tag k="communication:amateur_radio:repeater:shift" v=";;-2 MHz" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="433.9875;145.2375;434.975" />
     <tag k="group" v="LA1TRF" />
@@ -2159,7 +2159,7 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7375 MHz;434.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E,7K60FXE;11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz" />
-    <tag k="dmr_id" v=";242301" />
+    <tag k="dmr_id" v="242301" />
     <tag k="flags" v="missing_osm|missing_radioid;missing_osm" />
     <tag k="frequency" v="145.7375;434.8" />
     <tag k="group" v="STF Sauda" />
@@ -2198,10 +2198,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA1XRR;LA5FR;LD1FE;LD1FL" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="110.9;123;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="110.9;123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="29.65 MHz;145.7875 MHz;144.8 MHz;433.775 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E,9K36F7W;20K0F2D;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.1 MHz;-0.6 MHz;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.1 MHz;-0.6 MHz" />
     <tag k="flags" v="missing_osm|qrt;missing_osm;missing_osm;missing_osm" />
     <tag k="frequency" v="29.65;145.7875;144.8;433.775" />
     <tag k="group" v="LA1TRF;Follo" />
@@ -2222,7 +2222,7 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="1297 MHz;144.925 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="1297;144.925" />
     <tag k="group" v="Follo" />
@@ -2241,11 +2241,11 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA7QR;LD1FA;LD1FR" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="100;;" />
-    <tag k="communication:amateur_radio:repeater:dcs" v=";;125" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="100" />
+    <tag k="communication:amateur_radio:repeater:dcs" v="125" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.25 MHz;144.8 MHz;145.6875 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D;11K2F3E,9K36F7W" />
-    <tag k="communication:amateur_radio:repeater:shift" v="288.15 MHz;;-0.6 MHz" />
+    <tag k="communication:amateur_radio:repeater:shift" v="288.15 MHz;-0.6 MHz" />
     <tag k="flags" v="missing_osm|qrt;missing_osm;missing_osm" />
     <tag k="frequency" v="145.25;144.8;145.6875" />
     <tag k="group" v="Fredrikstad" />
@@ -2388,10 +2388,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA7OR;LD1OE" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.775 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E,9K36F7W;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.775;144.8" />
     <tag k="group" v="Oslo" />
@@ -2450,7 +2450,7 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5OR;LD1OT;LD1OT" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;;123" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.6 MHz;434.8625 MHz;1297.1 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;6K00F7W;11K2F3E,6K00F7W" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz;-6 MHz" />
@@ -2520,10 +2520,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA2BRR;LD2BI" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.6375 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.6375;144.8" />
     <tag k="group" v="Ringerike" />
@@ -2544,8 +2544,8 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7375 MHz;145.575 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;6K00F7W" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
-    <tag k="dmr_id" v=";242104" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
+    <tag k="dmr_id" v="242104" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.7375;145.575" />
     <tag k="group" v="Gardermoen" />
@@ -2799,11 +2799,11 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA2JRR;LA7GRR;LD2JB" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;123;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.6625 MHz;434.8 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz;" />
-    <tag k="dmr_id" v=";242016;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz" />
+    <tag k="dmr_id" v="242016" />
     <tag k="fixme" v="operator_override" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.6625;434.8;144.8" />
@@ -2943,7 +2943,7 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.5625 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.5625;144.8" />
     <tag k="group" v="Tønsberg;Grenland" />
@@ -3082,8 +3082,8 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="144.8 MHz;434.65 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="20K0F2D;7K60FXE" />
-    <tag k="communication:amateur_radio:repeater:shift" v=";-2 MHz" />
-    <tag k="dmr_id" v=";242635" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
+    <tag k="dmr_id" v="242635" />
     <tag k="flags" v="missing_osm;disagreement|missing_osm" />
     <tag k="frequency" v="144.8;434.65" />
     <tag k="group" v="Hallingdal" />
@@ -3101,10 +3101,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA6YR;LD3GK" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.85 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.85;144.8" />
     <tag k="group" v="Grenland" />
@@ -3164,8 +3164,8 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.5875 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="7K60FXE;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;" />
-    <tag k="dmr_id" v="242702;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
+    <tag k="dmr_id" v="242702" />
     <tag k="flags" v="missing_osm|missing_radioid|qrt;missing_osm" />
     <tag k="frequency" v="434.5875;144.8" />
     <tag k="group" v="Tønsberg" />
@@ -3184,10 +3184,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA6NR;LD3HN" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.775 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.775;144.8" />
     <tag k="group" v="Hallingdal" />
@@ -3252,11 +3252,11 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5UR;LA7SR;LD3KF" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v=";74.4;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="51.81 MHz;434.8 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz;" />
-    <tag k="dmr_id" v=";242804;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz" />
+    <tag k="dmr_id" v="242804" />
     <tag k="flags" v="missing_osm|qrt;missing_osm;missing_osm" />
     <tag k="frequency" v="51.81;434.8;144.8" />
     <tag k="group" v="Sandefjord;Tønsberg" />
@@ -3275,10 +3275,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA3JRR;LD3JS;LD3KJ" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.675 MHz;144.8 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.675;144.8;144.8" />
     <tag k="group" v="Tønsberg;Sandefjord;Larvik" />
@@ -3297,11 +3297,11 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5JR;LA8KR;LD3KS" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;74.4;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123;74.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.625 MHz;145.7 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-0.6 MHz;" />
-    <tag k="dmr_id" v="242625;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-0.6 MHz" />
+    <tag k="dmr_id" v="242625" />
     <tag k="flags" v="disagreement|missing_osm;missing_osm;missing_osm" />
     <tag k="frequency" v="434.625;145.7;144.8" />
     <tag k="group" v="Kongsberg" />
@@ -3320,10 +3320,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA7LR;LA9JR;LD3BL;LD3LL" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4;74.4;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.925 MHz;145.05 MHz;144.8 MHz;433.775 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E;20K0F2D;12K5F1D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-0.375 MHz;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-0.375 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.925;145.05;144.8;433.775" />
     <tag k="group" v="Grenland;Notodden" />
@@ -3342,10 +3342,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LD3NF;LD3NM" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v=";123" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="144.8 MHz;145.5875 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="20K0F2D;11K2F3E,6K00F7W" />
-    <tag k="communication:amateur_radio:repeater:shift" v=";-0.6 MHz" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm|qrt;missing_osm" />
     <tag k="frequency" v="144.8;145.5875" />
     <tag k="group" v="Ringerike;Modum" />
@@ -3433,10 +3433,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA3XRR;LD3HV;LD3SH" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.225 MHz;144.8 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.225;144.8;144.8" />
     <tag k="group" v="Tønsberg" />
@@ -3539,10 +3539,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5ER;LD3TE" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7125 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.7125;144.8" />
     <tag k="group" v="Grenland" />
@@ -3579,10 +3579,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA3DRR;LA3KRR;LA3VRR;LA5GR;LD3VL" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4;;74.4;74.4;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.5875 MHz;434.5875 MHz;434.6125 MHz;145.65 MHz;433.775 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E;11K2F3E,9K36F7W;11K2F3E;12K5F1D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-2 MHz;-2 MHz;-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-2 MHz;-2 MHz;-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.5875;434.5875;434.6125;145.65;433.775" />
     <tag k="group" v="Tønsberg;Grenland" />
@@ -3642,7 +3642,7 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="144.8 MHz;145.7375 MHz;434.775 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="20K0F2D;6K00F7W;6K00F7W" />
-    <tag k="communication:amateur_radio:repeater:shift" v=";-0.6 MHz;-2 MHz" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="144.8;145.7375;434.775" />
     <tag k="group" v="Arendal" />
@@ -3718,10 +3718,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA6FR;LD4FF" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="77;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="77" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.625 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm;missing_osm|qrt" />
     <tag k="frequency" v="145.625;144.8" />
     <tag k="group" v="Mandal" />
@@ -3762,10 +3762,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA4FRR;LD4AI;LD4GF" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.725 MHz;144.8 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.725;144.8;144.8" />
     <tag k="group" v="Arendal" />
@@ -3805,10 +3805,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5CR;LA6ER;LD4EG;LD4ER;LD4GL" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="107.2;107.2;;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="107.2" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.675 MHz;145.725 MHz;144.8 MHz;434.625 MHz;433.725 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E;20K0F2D;7K60FXE;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-0.6 MHz;;-2 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-0.6 MHz;-2 MHz" />
     <tag k="flags" v="missing_osm;missing_osm;missing_osm;missing_osm|missing_radioid;missing_osm" />
     <tag k="frequency" v="434.675;145.725;144.8;434.625;433.725" />
     <tag k="group" v="Jæren" />
@@ -4052,10 +4052,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA6SR;LD4RH;LD4SH" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.775 MHz;434.5375 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;6K00F7W;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.775;434.5375;144.8" />
     <tag k="group" v="Arendal" />
@@ -4093,10 +4093,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA9PR;LD4ST" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="94.8;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="94.8" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="144.65 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="290.3375 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="290.3375 MHz" />
     <tag k="flags" v="missing_osm|qrt;missing_osm" />
     <tag k="frequency" v="144.65;144.8" />
     <tag k="group" v="Ryfylke;Jæren" />
@@ -4115,7 +4115,7 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA4LRR;LD4VF" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.6375 MHz;434.55 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;6K00F7W" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz" />
@@ -4237,8 +4237,8 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="144.8 MHz;434.55 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="20K0F2D;6K00F7W" />
-    <tag k="communication:amateur_radio:repeater:shift" v=";-2 MHz" />
-    <tag k="dmr_id" v=";242201" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
+    <tag k="dmr_id" v="242201" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="144.8;434.55" />
     <tag k="group" v="Bergen" />
@@ -4363,8 +4363,8 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.625 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.625;144.8" />
     <tag k="group" v="Nord-Hordland;Bergen" />
@@ -4423,10 +4423,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5VR;LA8WR;LD5SK" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;123;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.625 MHz;434.625 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz" />
     <tag k="flags" v="missing_osm;missing_osm|qrt;missing_osm" />
     <tag k="frequency" v="145.625;434.625;144.8" />
     <tag k="group" v="Haugaland/Sunnhordland;Bergen" />
@@ -4447,8 +4447,8 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.725 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
     <tag k="flags" v="missing_osm|qrt;missing_osm" />
     <tag k="frequency" v="434.725;144.8" />
     <tag k="group" v="Voss" />
@@ -4485,10 +4485,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA9BR;LD6BS" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.675 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E,9K36F7W;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.675;144.8" />
     <tag k="group" v="Måløy" />
@@ -4506,10 +4506,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5IR;LD6FD" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="82.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="82.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E,9K36F7W;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.7;144.8" />
     <tag k="group" v="Firda" />
@@ -4528,10 +4528,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA9CR;LD6FL" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="82.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="82.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.625 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.625;144.8" />
     <tag k="group" v="Florø" />
@@ -4587,10 +4587,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA6MRR;LD6LB" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="82.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="82.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.65 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.65;144.8" />
     <tag k="group" v="Ålesund" />
@@ -4629,10 +4629,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA8MR;LD6MD" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.775 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E,9K36F7W;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.775;144.8" />
     <tag k="group" v="Molde" />
@@ -4670,11 +4670,11 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA6XR;LA6YRR;LD6RF" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.6 MHz;434.6 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E,9K36F7W;11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz;" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v=";1750;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.6;434.6;144.8" />
     <tag k="group" v="Kristiansund" />
@@ -4873,8 +4873,8 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.675 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;7K60FXE,6K00F7W" />
     <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
-    <tag k="dmr_id" v=";242440" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
+    <tag k="dmr_id" v="242440" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.675" />
     <tag k="group" v="Stjørdal" />
@@ -4930,10 +4930,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA9WR;LD7GG" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.6 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.6;144.8" />
     <tag k="group" v="Namdal" />
@@ -4952,10 +4952,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA7NR;LD7NA" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="85.4;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="85.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.775 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.775;144.8" />
     <tag k="group" v="Namdal" />
@@ -4993,10 +4993,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA8QR;LD7TB" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="85.4;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="85.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7125 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.7125;144.8" />
     <tag k="group" v="Trondheim" />
@@ -5037,11 +5037,11 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA7LRR;LA7RR;LD7TG;LD7TL" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="85.4;;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="85.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.175 MHz;145.7 MHz;144.8 MHz;433.725 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E;20K0F2D;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="0.6 MHz;-0.6 MHz;;" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v=";1750;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="0.6 MHz;-0.6 MHz" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.175;145.7;144.8;433.725" />
     <tag k="group" v="Trondheim" />
@@ -5060,10 +5060,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA7ORR;LD7TO" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="85.4;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="85.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.775 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.775;144.8" />
     <tag k="group" v="Trondheim" />
@@ -5082,10 +5082,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA8TR;LD7TR" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="85.4;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="85.4" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.75 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.75;144.8" />
     <tag k="group" v="Trondheim" />
@@ -5164,10 +5164,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA7JR;LD7VD" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.575 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.575;144.8" />
     <tag k="group" v="Inntrøndelag" />
@@ -5187,9 +5187,9 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.6 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;7K60FXE" />
-    <tag k="communication:amateur_radio:repeater:shift" v=";-2 MHz" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
-    <tag k="dmr_id" v=";242444" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
+    <tag k="dmr_id" v="242444" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.6" />
     <tag k="group" v="Inntrøndelag" />
@@ -5227,10 +5227,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA8BR;LD6BK;LD8BK" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.625 MHz;144.8 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.625;144.8;144.8" />
     <tag k="group" v="Fauske;Bodø" />
@@ -5375,10 +5375,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA7MR;LA9GR;LD8HV" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;88.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.675 MHz;434.625 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.675;434.625;144.8" />
     <tag k="group" v="Mo i Rana" />
@@ -5399,8 +5399,8 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.75 MHz;145.225 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;287.925 MHz;" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v="1750;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;287.925 MHz" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.75;145.225;144.8" />
     <tag k="group" v="Bodø" />
@@ -5593,8 +5593,8 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7625 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.7625;144.8" />
     <tag k="group" v="Narvik" />
@@ -5613,7 +5613,7 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA8HRR;LD8NK" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="433.95 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="20K0F2D,11K2F3E;20K0F2D" />
     <tag k="flags" v="missing_osm" />
@@ -5657,8 +5657,8 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.775 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.775;144.8" />
     <tag k="group" v="Narvik" />
@@ -5796,10 +5796,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA6AR;LD8SS" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.725 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.725;144.8" />
     <tag k="group" v="Sandnessjøen" />
@@ -5969,7 +5969,7 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.7375 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.7375;144.8" />
     <tag k="group" v="Harstad" />
@@ -6008,7 +6008,7 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7875 MHz;144.8 MHz;70.3125 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D;20K0F2D;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.7875;144.8;70.3125;144.8" />
     <tag k="group" v="Harstad" />
@@ -6126,8 +6126,8 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7375 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="7K60FXE;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
-    <tag k="dmr_id" v="242019;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
+    <tag k="dmr_id" v="242019" />
     <tag k="flags" v="missing_osm|qrt;missing_osm" />
     <tag k="frequency" v="145.7375;144.8" />
     <tag k="group" v="Alta" />
@@ -6148,8 +6148,8 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.975 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="7K60FXE;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;" />
-    <tag k="dmr_id" v="242913;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
+    <tag k="dmr_id" v="242913" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.975;144.8" />
     <tag k="group" v="Harstad" />
@@ -6270,8 +6270,8 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.6875 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.6875;144.8" />
     <tag k="group" v="Narvik" />
@@ -6292,8 +6292,8 @@
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.775 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
-    <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
+    <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.775;144.8" />
     <tag k="group" v="Nordkapp" />
@@ -6663,10 +6663,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA6GR;LD2GU;LD2WD" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="71.9;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="71.9" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.75 MHz;144.8 MHz;144.925 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="description" v="Totenåsen" />
     <tag k="ele" v="841" />
@@ -6697,10 +6697,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5MR;LD2GI" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.625 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="communication:microwave" v="yes" />
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="ele" v="741" />
@@ -6733,10 +6733,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5ARR;LD2GS" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="71.9;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="71.9" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.775 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
     <tag k="fixme" v="operator_override" />
     <tag k="flags" v="locator_mismatch" />
     <tag k="frequency" v="434.775;144.8" />
@@ -6817,14 +6817,14 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA2RRR;LA5KR;LA7KR;LD2KS" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="71.9;71.9;71.9;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="71.9" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="51.83 MHz;145.65 MHz;434.625 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E;7K60FXE,6K00F7W,9K36F7W;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-0.6 MHz;-2 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-0.6 MHz;-2 MHz" />
     <tag k="communication:microwave" v="yes" />
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="communication:television" v="yes" />
-    <tag k="dmr_id" v=";242610;242611;" />
+    <tag k="dmr_id" v="242610;242611" />
     <tag k="ele" v="393" />
     <tag k="fixme" v="operator_override" />
     <tag k="flags" v=";;qrt;" />
@@ -6973,10 +6973,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA2TRR;LD2LK;LD2WB" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.2375 MHz;144.8 MHz;144.925 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="287.9375 MHz;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="287.9375 MHz" />
     <tag k="communication:microwave" v="yes" />
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="description" v="Kråkhugukampen" />
@@ -7005,10 +7005,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA2KRR;LA2XRR;LD2KF;LD2KR" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="71.9;71.9;;71.9" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="71.9" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.65 MHz;145.7125 MHz;144.8 MHz;434.5625 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E,9K36F7W;11K2F3E;20K0F2D;11K2F3E" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-0.6 MHz;;-2 MHz" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;-0.6 MHz;-2 MHz" />
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="description" v="Rafjell RL-repeater" />
     <tag k="ele" v="577" />
@@ -7035,10 +7035,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5TRR;LD2GO" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.725 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="ele" v="1012" />
     <tag k="fixme" v="operator_override" />
@@ -7095,10 +7095,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5HRR;LD2GP" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.65 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="communication:microwave" v="yes" />
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="ele" v="1030" />
@@ -7294,10 +7294,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA7GR;LD2GG" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="71.9;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="71.9" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.725 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="fixme" v="operator_override" />
     <tag k="frequency" v="145.725;144.8" />
     <tag k="group" v="Gudbrandsdal" />
@@ -7380,10 +7380,10 @@
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA9AR;LD2TR;LD2WC" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5;;" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="88.5" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.6 MHz;144.8 MHz;144.925 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;20K0F2D;20K0F2D" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;;" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="communication:microwave" v="yes" />
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="communication:television" v="yes" />

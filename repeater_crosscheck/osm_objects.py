@@ -266,13 +266,15 @@ def _member_best_source_slot(tags: dict[str, str]) -> str:
 
 
 def _collapse_or_join(slots: list[str]) -> str | None:
+    """Join positional slots; drop empties. One distinct value collapses to itself."""
     if not any(slots):
         return None
     nonempty = [s for s in slots if s]
-    # Collapse when every non-empty slot is the same (drop trailing/gap empties).
-    if nonempty and len(set(nonempty)) == 1:
+    if not nonempty:
+        return None
+    if len(set(nonempty)) == 1:
         return nonempty[0]
-    return ";".join(slots)
+    return ";".join(nonempty)
 
 
 def _unique_nonempty(slots: list[str]) -> str | None:
