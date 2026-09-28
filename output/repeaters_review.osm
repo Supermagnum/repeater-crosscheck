@@ -640,7 +640,7 @@
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E,7K60FXE" />
     <tag k="communication:amateur_radio:repeater:shift" v="2 MHz;-0.6 MHz" />
     <tag k="dmr_id" v=";242220" />
-    <tag k="flags" v="missing_osm;missing_osm|missing_radioid" />
+    <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="432.8;145.575" />
     <tag k="group" v="STF Sauda" />
     <tag k="locator" v="JO39NU" />
@@ -1136,6 +1136,7 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.65 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
+    <tag k="dmr_id" v="242915" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.65" />
     <tag k="group" v="Harstad" />
@@ -1331,7 +1332,7 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.975 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;7K60FXE,6K00F7W" />
     <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
-    <tag k="dmr_id" v=";242906" />
+    <tag k="dmr_id" v="242940;242906" />
     <tag k="flags" v="missing_osm|qrt;disagreement|missing_osm" />
     <tag k="frequency" v="434.975" />
     <tag k="group" v="Sandnessjøen" />
@@ -1850,6 +1851,7 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
+    <tag k="dmr_id" v="242916" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.7" />
     <tag k="group" v="Harstad" />
@@ -2024,7 +2026,6 @@
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
-    <tag k="dmr_id" v="242021" />
     <tag k="flags" v="disagreement|missing_osm" />
     <tag k="frequency" v="145.6" />
     <tag k="group" v="Ryfylke" />
@@ -2045,7 +2046,6 @@
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="communication:amateur_radio:repeater:toneburst" v="1750" />
-    <tag k="dmr_id" v="242021" />
     <tag k="flags" v="disagreement|missing_osm" />
     <tag k="frequency" v="145.6" />
     <tag k="group" v="Ryfylke" />
@@ -2159,6 +2159,7 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7375 MHz;434.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E,7K60FXE;11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz" />
+    <tag k="dmr_id" v=";242301" />
     <tag k="flags" v="missing_osm|missing_radioid;missing_osm" />
     <tag k="frequency" v="145.7375;434.8" />
     <tag k="group" v="STF Sauda" />
@@ -2544,6 +2545,7 @@
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;6K00F7W" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
     <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
+    <tag k="dmr_id" v=";242104" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.7375;145.575" />
     <tag k="group" v="Gardermoen" />
@@ -3254,6 +3256,7 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="51.81 MHz;434.8 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;11K2F3E;20K0F2D" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;-2 MHz;" />
+    <tag k="dmr_id" v=";242804;" />
     <tag k="flags" v="missing_osm|qrt;missing_osm;missing_osm" />
     <tag k="frequency" v="51.81;434.8;144.8" />
     <tag k="group" v="Sandefjord;Tønsberg" />
@@ -3517,7 +3520,8 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.5625 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="7K60FXE" />
     <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
-    <tag k="flags" v="missing_osm|missing_radioid" />
+    <tag k="dmr_id" v="242017" />
+    <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.5625" />
     <tag k="group" v="Tønsberg" />
     <tag k="locator" v="JO59FE" />
@@ -4234,6 +4238,7 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="144.8 MHz;434.55 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="20K0F2D;6K00F7W" />
     <tag k="communication:amateur_radio:repeater:shift" v=";-2 MHz" />
+    <tag k="dmr_id" v=";242201" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="144.8;434.55" />
     <tag k="group" v="Bergen" />
@@ -4298,7 +4303,7 @@
     <tag k="communication:amateur_radio:repeater:modulation" v="7K60FXE" />
     <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
     <tag k="dmr_id" v="242210" />
-    <tag k="flags" v="missing_osm|missing_radioid|qrt" />
+    <tag k="flags" v="missing_osm|qrt" />
     <tag k="frequency" v="434.6875" />
     <tag k="group" v="Bergen" />
     <tag k="locator" v="JP30BT" />
@@ -4869,7 +4874,7 @@
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;7K60FXE,6K00F7W" />
     <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
     <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
-    <tag k="dmr_id" v="242440" />
+    <tag k="dmr_id" v=";242440" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.675" />
     <tag k="group" v="Stjørdal" />
@@ -5184,7 +5189,7 @@
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E;7K60FXE" />
     <tag k="communication:amateur_radio:repeater:shift" v=";-2 MHz" />
     <tag k="communication:amateur_radio:repeater:toneburst" v="1750;" />
-    <tag k="dmr_id" v="242444" />
+    <tag k="dmr_id" v=";242444" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.6" />
     <tag k="group" v="Inntrøndelag" />
@@ -5861,7 +5866,8 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.675 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="7K60FXE" />
     <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
-    <tag k="flags" v="missing_osm|missing_radioid" />
+    <tag k="dmr_id" v="242020" />
+    <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.675" />
     <tag k="group" v="Vesterålen" />
     <tag k="locator" v="JP78QQ" />
@@ -6042,7 +6048,6 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="434.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="7K60FXE" />
     <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
-    <tag k="dmr_id" v="242910" />
     <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.8" />
     <tag k="group" v="Harstad" />
@@ -6122,7 +6127,8 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7375 MHz;144.8 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="7K60FXE;20K0F2D" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz;" />
-    <tag k="flags" v="missing_osm|missing_radioid|qrt;missing_osm" />
+    <tag k="dmr_id" v="242019;" />
+    <tag k="flags" v="missing_osm|qrt;missing_osm" />
     <tag k="frequency" v="145.7375;144.8" />
     <tag k="group" v="Alta" />
     <tag k="locator" v="KQ10BL" />
@@ -6144,7 +6150,7 @@
     <tag k="communication:amateur_radio:repeater:modulation" v="7K60FXE;20K0F2D" />
     <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz;" />
     <tag k="dmr_id" v="242913;" />
-    <tag k="flags" v="missing_osm|missing_radioid;missing_osm" />
+    <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="434.975;144.8" />
     <tag k="group" v="Harstad" />
     <tag k="locator" v="JP88BS" />
@@ -6839,7 +6845,7 @@
     <tag k="communication:microwave" v="yes" />
     <tag k="communication:mobile_phone" v="yes" />
     <tag k="communication:television" v="yes" />
-    <tag k="dmr_id" v=";;242611;" />
+    <tag k="dmr_id" v=";242610;242611;" />
     <tag k="ele" v="393" />
     <tag k="fixme" v="operator_override" />
     <tag k="flags" v=";;qrt;" />

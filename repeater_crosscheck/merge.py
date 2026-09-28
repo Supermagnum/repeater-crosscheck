@@ -603,38 +603,46 @@ def build_merged(
         rid, rid_method = match_source_records(
             rep, radioid_records, freq_tol=freq_tol, freq_max_m=freq_max_m
         )
-        if rid and rid.lat is not None:
-            row.radioid_lat = rid.lat
-            row.radioid_lon = rid.lon
+        if rid:
             row.match_methods["radioid"] = rid_method
-            positions.append(
-                Position(lat=rid.lat, lon=rid.lon, source_kind="radioid", source_id=rid.source_id)
-            )
-            if rid.dmr_id and not row.dmr_id:
+            if rid.lat is not None:
+                row.radioid_lat = rid.lat
+                row.radioid_lon = rid.lon
+                positions.append(
+                    Position(
+                        lat=rid.lat,
+                        lon=rid.lon,
+                        source_kind="radioid",
+                        source_id=rid.source_id,
+                    )
+                )
+            # DMR ID only from same-callsign hits. Frequency+distance fallback can
+            # land on a co-channel neighbour (e.g. LA7TR→LD7FF) and must not copy ID.
+            if rid.dmr_id and not row.dmr_id and rid_method == "callsign":
                 row.dmr_id = rid.dmr_id
-        else:
-            if _looks_dmr(rep) and radioid_records:
-                unmatched_notes.append(f"{rep.callsign}: not found in radioid")
-                row.flags.append("missing_radioid")
+        elif _looks_dmr(rep) and radioid_records:
+            unmatched_notes.append(f"{rep.callsign}: not found in radioid")
+            row.flags.append("missing_radioid")
 
         rb, rb_method = match_source_records(
             rep, rb_records, freq_tol=freq_tol, freq_max_m=freq_max_m
         )
-        if rb and rb.lat is not None:
-            row.repeaterbook_lat = rb.lat
-            row.repeaterbook_lon = rb.lon
+        if rb:
             row.match_methods["repeaterbook"] = rb_method
-            positions.append(
-                Position(
-                    lat=rb.lat,
-                    lon=rb.lon,
-                    source_kind="repeaterbook",
-                    source_id=rb.source_id,
+            if rb.lat is not None:
+                row.repeaterbook_lat = rb.lat
+                row.repeaterbook_lon = rb.lon
+                positions.append(
+                    Position(
+                        lat=rb.lat,
+                        lon=rb.lon,
+                        source_kind="repeaterbook",
+                        source_id=rb.source_id,
+                    )
                 )
-            )
-            if rb.dmr_id and not row.dmr_id:
+            if rb.dmr_id and not row.dmr_id and rb_method == "callsign":
                 row.dmr_id = rb.dmr_id
-            if rb.tone and not row.tone:
+            if rb.tone and not row.tone and rb_method == "callsign":
                 row.tone = rb.tone
         elif rb_records:
             unmatched_notes.append(f"{rep.callsign}: not found in RepeaterBook")
