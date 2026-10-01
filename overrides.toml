@@ -3,8 +3,19 @@
 # osm_id (node/…, way/…, or OSM URL) merges review tags onto that existing object.
 # skip_osm = true ignores OSM callsign/QTH matches (use when OSM tags are wrong).
 # skip = true omits the callsign from CSV/JOSM outputs.
+# detach_osm = true with osm_id: strip amateur tags from that object and emit the
+# callsign as a co-located synthetic node (one feature per repeater).
 # Callsigns with an APRS/D-STAR SSID (e.g. [LA2L-10], [LA7RRA-B]) keep that SSID.
 # Override-only entries (not in NRRL) with lat/lon or type/tx are still emitted.
+#
+# [scrub_osm] ids = [ "node/…", "way/…" ] — emit those objects infrastructure-only.
+
+[scrub_osm]
+ids = [
+  "node/2641537344",  # Bagn hovedsender — detach wrong LA5MR tags
+  "node/5576656903",  # Trysilfjellet — detach LA5TRR (and LD2GO)
+  "node/5576656416",  # Trysilfjellet neighbour mast — also had LA5TRR tags
+]
 
 [LA2LRR]
 portable = true
@@ -333,7 +344,7 @@ qth = "Høykorset"
 lat = 60.4781659
 lon = 10.6018219
 osm_id = "node/1705107664"
-note = "Høykorset / Totenåsen. OSM node/1705107664 (LA5MR, LD2GI)."
+note = "Høykorset / Totenåsen. OSM node/1705107664 (LA5MR, LD2GI). Not on Bagn node/2641537344."
 
 [LD2GI]
 qth = "Høykorset"
@@ -347,14 +358,14 @@ qth = "Trysilfjellet"
 lat = 61.319375
 lon = 12.1901472
 osm_id = "node/5576656903"
-note = "Trysilfjellet. OSM node/5576656903 (LA5TRR, LD2GO)."
+detach_osm = true
+note = "Trysilfjellet. Detached from mast node/5576656903 onto a separate node (name=LA5TRR)."
 
 [LD2GO]
 qth = "Trysilfjellet"
 lat = 61.319375
 lon = 12.1901472
-osm_id = "node/5576656903"
-note = "Trysilfjellet. OSM node/5576656903 (LA5TRR, LD2GO)."
+note = "Trysilfjellet. Co-located with LA5TRR (synthetic; not on mast node/5576656903)."
 
 [LA7GRR]
 qth = "Jetta"
@@ -406,15 +417,13 @@ note = "Gålå-tårnet. OSM node/5810152676 (LA7GR, LD2GG)."
 qth = "Tronfjell"
 lat = 62.1741649
 lon = 10.6952741
-osm_id = "way/1005486272"
-note = "Tron hovedsender. OSM way/1005486272 (LA9AR, LD2TR, LD2WC)."
+note = "Tron hovedsender. Co-located with LA9AR / LD2WC (synthetic; not on way/1005486272)."
 
 [LD2WC]
 qth = "Tronfjell"
 lat = 62.1741649
 lon = 10.6952741
-osm_id = "way/1005486272"
-note = "Tron hovedsender. OSM way/1005486272 (LA9AR, LD2TR, LD2WC)."
+note = "Tron hovedsender. Co-located with LA9AR / LD2TR (synthetic; not on way/1005486272)."
 
 [LD9MM]
 lat = 68.874608
@@ -600,7 +609,8 @@ qth = "Tronfjell"
 lat = 62.1741649
 lon = 10.6952741
 osm_id = "way/1005486272"
-note = "Tron hovedsender. OSM way/1005486272 (LA9AR, LD2TR, LD2WC)."
+detach_osm = true
+note = "Tron hovedsender. Detached from way/1005486272 onto a separate node (name=LA9AR)."
 
 [LD9AV]
 qth = "Altevann/Slåttmoberget"

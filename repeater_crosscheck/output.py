@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
@@ -152,21 +153,37 @@ def _network_merge_tags(
     member_cs = _member_callsigns(existing_tags)
     network_cs = (row.callsign or "").upper()
     foreign = bool(member_cs) and network_cs not in member_cs
+    member_primary = next(iter(sorted(member_cs)), "")
 
     if foreign:
+        # Preserve the site's own amateur identity; only mark network membership.
         tags = {
-            "source_kind": "osm_network",
-            "review": "repeater_crosscheck",
-            "network": str(rel_name),
+            k: v
+            for k, v in existing_tags.items()
+            if k == "callsign"
+            or k.startswith("communication:amateur_radio")
+            or k in {"frequency", "dmr_id"}
         }
+        tags.update(
+            {
+                "source_kind": "osm_network",
+                "review": "repeater_crosscheck",
+                "network": str(rel_name),
+            }
+        )
+        if member_primary:
+            tags["name"] = member_primary
+            tags.setdefault("callsign", member_primary)
+            tags.setdefault(
+                "communication:amateur_radio:callsign", member_primary
+            )
         if rel:
             tags["osm_relation"] = f"relation/{rel}"
         return {k: v for k, v in tags.items() if v}
 
     review = _review_tags(row, kind="osm_network", pos=pos)
-    # Keep existing OSM name on communications towers.
-    if existing_tags.get("name"):
-        review.pop("name", None)
+    # Relation members: name follows the callsign on the object.
+    review["name"] = row.callsign
     return review
 
 
@@ -270,6 +287,30 @@ def _set_elem_tags(el: ET.Element, tags: dict[str, str]) -> None:
     for child in list(el.findall("tag")):
         el.remove(child)
     _append_tags(el, tags)
+
+
+def _set_tag(el: ET.Element, key: str, value: str) -> None:
+    for t in el.findall("tag"):
+        if t.get("k") == key:
+            t.set("v", value)
+            return
+    ET.SubElement(el, "tag", {"k": key, "v": value})
+
+
+def _apply_callsign_as_name(root: ET.Element) -> None:
+    """Set name=<callsign> on every review feature that has a single callsign."""
+    for el in list(root.findall("node")) + list(root.findall("way")):
+        tags = _elem_tags(el)
+        raw = (
+            tags.get("callsign")
+            or tags.get("communication:amateur_radio:callsign")
+            or ""
+        ).strip()
+        if not raw or ";" in raw:
+            continue
+        if tags.get("name") == raw:
+            continue
+        _set_tag(el, "name", raw)
 
 
 def _merge_coincident_synthetics(root: ET.Element, *, max_m: float = 10.0) -> None:
@@ -464,6 +505,7 @@ def write_josm_osm(
     disagreement_m: float,
     session: RateLimitedSession | None = None,
     cache: ResponseCache | None = None,
+    scrub_osm: list[str] | None = None,
 ) -> None:
     """
     Write a JOSM review file.
@@ -472,6 +514,9 @@ def write_josm_osm(
 
     When an OSM mast/tower/node/way is known, download that object and merge
     amateur-radio / review tags onto it instead of inventing a duplicate node.
+
+    scrub_osm: existing OSM refs to emit with amateur/callsign tags removed
+    (infrastructure only), e.g. after detaching a repeater onto a synthetic node.
     """
     path.parent.mkdir(parents=True, exist_ok=True)
     root = ET.Element(
@@ -482,13 +527,57 @@ def write_josm_osm(
         },
     )
 
+    scrub_refs: set[str] = set()
+    for raw in scrub_osm or []:
+        parsed = parse_osm_ref(raw)
+        if parsed:
+            scrub_refs.add(format_osm_ref(*parsed))
+
+    # Innlandsnettet / LA5MR network — members should use callsign as name.
+    network_relation_refs = {"relation/18780801"}
+
     osm_elements: dict[str, dict] = {}
     if session is not None and cache is not None:
-        refs = collect_osm_refs_from_rows(rows)
+        refs = collect_osm_refs_from_rows(rows) | scrub_refs | network_relation_refs
         if refs:
             print(f"Fetching {len(refs)} existing OSM objects to merge tags...")
             osm_elements = fetch_osm_elements(session, cache, refs)
             print(f"  loaded {len(osm_elements)} objects")
+            # Pull relation member geometries into the fetch set (second pass).
+            extra: set[str] = set()
+            for rref in network_relation_refs:
+                rel = osm_elements.get(rref)
+                if not rel:
+                    continue
+                for mem in rel.get("members") or []:
+                    mtype = str(mem.get("type") or "")
+                    mid = mem.get("ref")
+                    if mtype and mid is not None:
+                        extra.add(format_osm_ref(mtype, int(mid)))
+            missing = extra - set(osm_elements)
+            if missing:
+                print(f"Fetching {len(missing)} LA5MR relation member objects...")
+                more = fetch_osm_elements(session, cache, missing)
+                osm_elements.update(more)
+                print(f"  loaded {len(more)} members")
+
+    # Seed scrubbed infrastructure objects (no amateur merge members).
+    pending_osm_base: dict[str, dict[str, str]] = {}
+    pending_osm_raw: dict[str, dict[str, str]] = {}
+    for ref in scrub_refs:
+        el = osm_elements.get(ref)
+        if not el:
+            continue
+        raw = {str(k): str(v) for k, v in dict(el.get("tags") or {}).items()}
+        pending_osm_raw[ref] = raw
+        base = strip_per_callsign_tags(raw)
+        note = base.get("note") or ""
+        # Drop notes that still list detached callsigns / osm_id boilerplate.
+        if re.search(r"\b(?:L[A-N]|JW|JX)\d", note, re.I) or re.search(
+            r"\bOSM\s+(?:node|way|relation)/", note, re.I
+        ):
+            base.pop("note", None)
+        pending_osm_base[ref] = base
 
     # osm_id overrides without local coords: snap CSV best_* onto the fetched object
     # so CSV and review geometry agree (e.g. LA9AR on Tron hovedsender way).
@@ -513,7 +602,6 @@ def write_josm_osm(
         row.osm_lat, row.osm_lon = clat, clon
 
     # Base OSM tags (site/infrastructure) + at most one repeater per mast object.
-    pending_osm_base: dict[str, dict[str, str]] = {}
     pending_osm_members: dict[str, list[dict[str, str]]] = defaultdict(list)
     pending_osm_move: dict[str, tuple[float, float]] = {}
     member_nodes_emitted: set[int] = set()
@@ -527,7 +615,7 @@ def write_josm_osm(
         if "portable" in row.flags:
             continue
         ref = _primary_osm_ref(row)
-        if not ref:
+        if not ref or ref in scrub_refs:
             continue
         prev = mast_owner.get(ref)
         if prev is None or _osm_mast_merge_priority(row) < _osm_mast_merge_priority(prev):
@@ -552,6 +640,8 @@ def write_josm_osm(
             continue
 
         primary_ref = _primary_osm_ref(row)
+        if primary_ref in scrub_refs:
+            primary_ref = None
         primary_el = osm_elements.get(primary_ref) if primary_ref else None
         owns_mast = (
             primary_ref is not None
@@ -624,19 +714,21 @@ def write_josm_osm(
             review["source_kind"] = "osm"
             if row.best_source:
                 review["best_source"] = row.best_source
-            # Do not invent a review "Name (best)" on real OSM objects.
-            review.pop("name", None)
+            # Single-callsign OSM features use the callsign as name.
+            review["name"] = row.callsign
             # OSM note: operator site note only — no "operator override position" stack.
             if row.notes:
                 review["note"] = row.notes
             else:
                 review.pop("note", None)
+            raw = {
+                str(k): str(v) for k, v in dict(primary_el.get("tags") or {}).items()
+            }
+            pending_osm_raw.setdefault(primary_ref, raw)
             if primary_ref not in pending_osm_base:
                 # Drop stale per-repeater / callsign tags from OSM; review members
                 # redefine who is on this object (e.g. Rafjellet LD2KF/LD2KR).
-                pending_osm_base[primary_ref] = strip_per_callsign_tags(
-                    {str(k): str(v) for k, v in dict(primary_el.get("tags") or {}).items()}
-                )
+                pending_osm_base[primary_ref] = strip_per_callsign_tags(raw)
             pending_osm_members[primary_ref].append(review)
             # Operator-local best position: move the OSM node to that coordinate.
             if (
@@ -654,6 +746,8 @@ def write_josm_osm(
             parsed = parse_osm_ref(pos.source_id)
             if parsed:
                 ref = format_osm_ref(*parsed)
+            if ref in scrub_refs:
+                continue
             el = osm_elements.get(ref) if ref else None
             if el is not None and ref and _mergeable_osm_element(el):
                 owner = mast_owner.get(ref)
@@ -661,13 +755,11 @@ def write_josm_osm(
                     continue
                 if ref not in mast_owner:
                     mast_owner[ref] = row
+                raw = {str(k): str(v) for k, v in dict(el.get("tags") or {}).items()}
+                pending_osm_raw.setdefault(ref, raw)
                 if ref not in pending_osm_base:
-                    pending_osm_base[ref] = strip_per_callsign_tags(
-                        {str(k): str(v) for k, v in dict(el.get("tags") or {}).items()}
-                    )
-                review = _network_merge_tags(
-                    row, pos, _pending_preview(ref) or pending_osm_base[ref]
-                )
+                    pending_osm_base[ref] = strip_per_callsign_tags(raw)
+                review = _network_merge_tags(row, pos, pending_osm_raw[ref])
                 pending_osm_members[ref].append(review)
                 network_merged += 1
 
@@ -764,6 +856,62 @@ def write_josm_osm(
             }.items():
                 ET.SubElement(way, "tag", {"k": k, "v": v})
 
+    # LA5MR / Innlandsnettet relation members: keep their callsign tags and set
+    # name=<callsign>. Scrubbed refs stay infrastructure-only.
+    for rref in network_relation_refs:
+        rel = osm_elements.get(rref)
+        if not rel:
+            continue
+        for mem in rel.get("members") or []:
+            mtype = str(mem.get("type") or "")
+            mid = mem.get("ref")
+            if not mtype or mid is None:
+                continue
+            ref = format_osm_ref(mtype, int(mid))
+            if ref in scrub_refs:
+                continue
+            el = osm_elements.get(ref)
+            if not el:
+                continue
+            raw = {str(k): str(v) for k, v in dict(el.get("tags") or {}).items()}
+            pending_osm_raw.setdefault(ref, raw)
+            member_cs = _member_callsigns(raw)
+            if not member_cs:
+                # Still emit untouched infrastructure if already pending.
+                continue
+            primary_cs = sorted(member_cs)[0]
+            if ref not in pending_osm_base:
+                pending_osm_base[ref] = strip_per_callsign_tags(raw)
+            # Preserve / restore the member's own callsign identity.
+            preserve = {
+                k: v
+                for k, v in raw.items()
+                if k == "callsign"
+                or k.startswith("communication:amateur_radio")
+                or k in {"frequency", "dmr_id"}
+            }
+            preserve["name"] = primary_cs
+            preserve.setdefault("callsign", primary_cs)
+            preserve.setdefault(
+                "communication:amateur_radio:callsign", primary_cs
+            )
+            preserve["source_kind"] = "osm_network"
+            preserve["network"] = "LA5MR"
+            preserve["osm_relation"] = rref
+            preserve["review"] = "repeater_crosscheck"
+            # Avoid duplicating if a prior merge already added this callsign.
+            existing_members = pending_osm_members.get(ref) or []
+            already = any(
+                (m.get("callsign") or m.get("communication:amateur_radio:callsign") or "")
+                .split(";")[0]
+                .strip()
+                .upper()
+                == primary_cs
+                for m in existing_members
+            )
+            if not already:
+                pending_osm_members[ref].append(preserve)
+
     # Emit merged OSM objects (nodes / ways + member nodes).
     for ref in sorted(set(pending_osm_base) | set(pending_osm_members)):
         el = osm_elements.get(ref)
@@ -777,12 +925,18 @@ def write_josm_osm(
                 aligned = dict(members[0])
             else:
                 aligned = align_multi_callsign_tags(members)
-            # Keep existing OSM name (e.g. Horta); synthetics still get callsign names.
-            if base.get("name"):
-                aligned.pop("name", None)
             tags = sanitize_existing_osm_tags({**base, **aligned})
         else:
             tags = sanitize_existing_osm_tags(base)
+        # LA5MR relation members (and other single-callsign sites): name = callsign.
+        cs_raw = (
+            tags.get("communication:amateur_radio:callsign")
+            or tags.get("callsign")
+            or ""
+        )
+        cs_primary = cs_raw.split(";")[0].strip()
+        if cs_primary and ";" not in cs_raw:
+            tags["name"] = cs_primary
         parsed_ref = parse_osm_ref(ref)
         etype = el.get("type") or (parsed_ref[0] if parsed_ref else "node")
         if etype == "node":
@@ -825,6 +979,7 @@ def write_josm_osm(
             _append_tags(rel, tags)
 
     _merge_coincident_synthetics(root)
+    _apply_callsign_as_name(root)
 
     tree = ET.ElementTree(root)
     ET.indent(tree, space="  ")

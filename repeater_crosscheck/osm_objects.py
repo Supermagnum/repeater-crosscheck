@@ -416,8 +416,16 @@ def strip_per_callsign_tags(tags: dict[str, str]) -> dict[str, str]:
     """Keep site/infrastructure tags; drop amateur per-repeater / callsign keys."""
     # communications_transponder:tone is not used for CTCSS — drop it so review
     # exports use communication:amateur_radio:repeater:ctcss only.
-    drop = _PER_CALLSIGN_KEY_SET | {"communications_transponder:tone"}
-    return {k: v for k, v in tags.items() if k not in drop}
+    drop = _PER_CALLSIGN_KEY_SET | {
+        "communications_transponder:tone",
+        "communication:amateur_radio",
+        "communication:amateur_radio:repeater",
+        "callsign",
+    }
+    return {k: v for k, v in tags.items() if k not in drop and not str(k).startswith(
+        "communication:amateur_radio:"
+    )}
+
 
 
 _NOTE_META_PREFIXES = (

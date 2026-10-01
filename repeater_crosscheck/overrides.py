@@ -27,6 +27,15 @@ class LocalOverride:
     osm_id: str = ""  # e.g. node/5588495799 — merge review tags onto this object
     skip_osm: bool = False  # do not attach / match any OSM object for this callsign
     skip: bool = False  # omit this callsign from merge/outputs entirely
+    # Emit osm_id as infrastructure-only; put this callsign on a co-located synthetic.
+    detach_osm: bool = False
+
+
+@dataclass
+class LoadedOverrides:
+    by_callsign: dict[str, LocalOverride]
+    # OSM refs to emit with amateur/callsign tags stripped (tower/mast only).
+    scrub_osm: list[str]
 
 
 def _optional_float(value) -> float | None:
@@ -38,13 +47,37 @@ def _optional_float(value) -> float | None:
         return None
 
 
-def load_overrides(path: Path | None) -> dict[str, LocalOverride]:
+def _parse_osm_id_list(val) -> list[str]:
+    if val is None:
+        return []
+    if isinstance(val, str):
+        parts = [val]
+    elif isinstance(val, list):
+        parts = val
+    else:
+        return []
+    out: list[str] = []
+    for raw in parts:
+        text = str(raw or "").strip()
+        if text and text not in out:
+            out.append(text)
+    return out
+
+
+def load_overrides(path: Path | None) -> LoadedOverrides:
     if path is None or not path.is_file():
-        return {}
+        return LoadedOverrides(by_callsign={}, scrub_osm=[])
     with path.open("rb") as fh:
         raw = tomllib.load(fh)
     out: dict[str, LocalOverride] = {}
+    scrub: list[str] = []
     for key, val in raw.items():
+        if key in {"scrub_osm", "scrub"}:
+            if isinstance(val, dict):
+                scrub.extend(_parse_osm_id_list(val.get("ids") or val.get("osm_id")))
+            else:
+                scrub.extend(_parse_osm_id_list(val))
+            continue
         if not isinstance(val, dict):
             continue
         call = override_callsign_key(str(key))
@@ -61,7 +94,8 @@ def load_overrides(path: Path | None) -> dict[str, LocalOverride]:
             qrt = None
         tone = str(val.get("tone") or val.get("ctcss") or "").strip()
         osm_raw = str(val.get("osm_id") or val.get("osm") or "").strip()
-        out[call] = LocalOverride(
+        detach = bool(val.get("detach_osm"))
+        ov = LocalOverride(
             callsign=call,
             lat=lat_f,
             lon=lon_f,
@@ -84,5 +118,9 @@ def load_overrides(path: Path | None) -> dict[str, LocalOverride]:
             osm_id=osm_raw,
             skip_osm=bool(val.get("skip_osm")),
             skip=bool(val.get("skip")),
+            detach_osm=detach,
         )
-    return out
+        out[call] = ov
+        if detach and osm_raw and osm_raw not in scrub:
+            scrub.append(osm_raw)
+    return LoadedOverrides(by_callsign=out, scrub_osm=scrub)

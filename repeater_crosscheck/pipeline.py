@@ -56,9 +56,15 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
     print(f"  {len(nrrl)} repeaters")
 
     overrides_path = resolve_path(paths.get("overrides") or "", base)
-    overrides = load_overrides(overrides_path)
-    if overrides:
-        print(f"Loaded {len(overrides)} local overrides from {overrides_path}")
+    loaded = load_overrides(overrides_path)
+    overrides = loaded.by_callsign
+    scrub_osm = list(loaded.scrub_osm)
+    if overrides or scrub_osm:
+        print(
+            f"Loaded {len(overrides)} local overrides"
+            + (f", {len(scrub_osm)} scrub OSM refs" if scrub_osm else "")
+            + f" from {overrides_path}"
+        )
 
     channels = []
     if channel_path and channel_path.is_file():
@@ -245,6 +251,7 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
         disagreement_m=float(cfg["thresholds"]["disagreement_m"]),
         session=session,
         cache=cache,
+        scrub_osm=scrub_osm,
     )
     write_merged_csv(csv_path, merged)
     write_unmatched(unmatched_path, unmatched)

@@ -445,15 +445,16 @@ def build_merged(
                 )
 
         # Explicit override OSM object wins (merge tags onto that mast/node/way).
+        # detach_osm keeps coordinates but leaves the infrastructure object alone.
         ov_osm_ref = None
-        if ov and ov.osm_id and not (ov and ov.skip_osm):
+        if ov and ov.osm_id and not (ov and ov.skip_osm) and not (ov and ov.detach_osm):
             parsed = parse_osm_ref(ov.osm_id)
             if parsed:
                 ov_osm_ref = format_osm_ref(*parsed)
 
         # Prefer a feature already tagged with this callsign over a QTH name guess
         # (avoids peak "Tron" beating tower "Tron hovedsender" for LA9AR).
-        skip_osm = bool(ov and ov.skip_osm)
+        skip_osm = bool(ov and (ov.skip_osm or ov.detach_osm))
         dedicated_call = (
             not skip_osm
             and osm_call is not None
@@ -461,7 +462,11 @@ def build_merged(
             and record_has_callsign(osm_call, rep.callsign)
         )
 
-        if skip_osm:
+        if ov and ov.detach_osm:
+            unmatched_notes.append(
+                f"{rep.callsign}: detached from {ov.osm_id} (synthetic node)"
+            )
+        elif skip_osm and ov and ov.skip_osm:
             if "missing_osm" not in row.flags:
                 row.flags.append("missing_osm")
             unmatched_notes.append(f"{rep.callsign}: OSM match skipped (skip_osm override)")
