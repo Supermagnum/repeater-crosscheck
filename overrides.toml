@@ -16,15 +16,14 @@ qth = "Rafjellet"
 lat = 60.3242222
 lon = 12.1383250
 osm_id = "node/5576656337"
-note = "Rafjellet"
-
+note = "Rafjellet mast. Restore amateur-radio tags for LA2KRR on node/5576656337 if missing (siblings are separate nodes)."
 
 [LA2XRR]
 qth = "Rafjellet"
 lat = 60.3242222
 lon = 12.1383250
-osm_id = "node/5576656337"
-note = "Rafjellet"
+osm_id = "node/14228508489"
+note = "Rafjellet. Co-located with mast node/5576656337."
 
 
 [LA2RRR]
@@ -116,16 +115,15 @@ note = "Mistberget."
 qth = "Rafjellet"
 lat = 60.3242222
 lon = 12.1383250
-osm_id = "node/5576656337"
-note = "Rafjellet"
-
+osm_id = "node/14228591010"
+note = "Rafjellet. Co-located with mast node/5576656337."
 
 [LD2KR]
 qth = "Rafjellet"
 lat = 60.3242222
 lon = 12.1383250
-osm_id = "node/5576656337"
-note = "Rafjellet"
+osm_id = "node/14228591011"
+note = "Rafjellet. Co-located with mast node/5576656337."
 
 
 [LD2HG]
