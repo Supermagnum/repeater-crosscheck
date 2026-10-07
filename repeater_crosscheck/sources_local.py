@@ -19,9 +19,16 @@ def _parse_mhz(value: str | None) -> float | None:
     if not text:
         return None
     try:
-        return float(text)
+        v = float(text)
     except ValueError:
         return None
+    # NRRL (and similar) sometimes drops the decimal (e.g. 4329375 -> 432.9375).
+    if v > 1300:
+        for div in (1_000_000.0, 10_000.0, 1_000.0):
+            cand = v / div
+            if 28.0 <= cand <= 1300.0:
+                return cand
+    return v
 
 
 def load_nrrl(path: Path) -> list[NrrlRepeater]:
@@ -228,6 +235,32 @@ def _dict_to_source(raw: dict, kind: str) -> SourceRecord:
     )
 
 
+def _rb_results_from_payload(payload) -> list[dict]:
+    if isinstance(payload, dict) and payload.get("status") == "error":
+        raise RuntimeError(f"RepeaterBook error: {payload.get('message')}")
+    if isinstance(payload, dict) and payload.get("ok") is False:
+        raise RuntimeError(
+            f"RepeaterBook auth/error: {payload.get('message') or payload}"
+        )
+    if isinstance(payload, dict):
+        results = payload.get("results")
+    else:
+        results = payload
+    if results is None:
+        return []
+    if not isinstance(results, list):
+        raise RuntimeError("RepeaterBook payload has no results list")
+    return results
+
+
+def load_repeaterbook_json(path: Path) -> list[SourceRecord]:
+    """Load a local exportROW / CHIRP RepeaterBook JSON ({count, results, ...})."""
+    import json
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return [_rb_to_source(r) for r in _rb_results_from_payload(payload)]
+
+
 def load_repeaterbook(
     session,
     cache,
@@ -236,39 +269,41 @@ def load_repeaterbook(
     country: str,
     api_token: str,
     user_agent: str,
+    local_json: Path | None = None,
 ) -> list[SourceRecord]:
-    if not api_token:
-        return []
+    """
+    Load Norway (ROW) repeaters from RepeaterBook.
 
+    Prefer the API when ``api_token`` is set. Otherwise use ``local_json``
+    (exportROW / CHIRP ``rb-*-all.json`` shape) so Maidenhead centres can still
+    be replaced with published lat/lon.
+    """
     cache_key = f"repeaterbook_row_{country}"
-    cached = cache.get_json(cache_key)
-    if cached is not None:
-        return [_rb_to_source(r) for r in cached]
 
-    url = f"{base_url.rstrip('/')}/api/exportROW.php"
-    headers = {
-        "X-RB-App-Token": api_token,
-        "User-Agent": user_agent,
-    }
-    resp = session.request(
-        "GET",
-        url,
-        params={"country": country},
-        headers=headers,
-    )
-    resp.raise_for_status()
-    payload = resp.json()
-    if isinstance(payload, dict) and payload.get("status") == "error":
-        raise RuntimeError(f"RepeaterBook error: {payload.get('message')}")
-    if isinstance(payload, dict) and payload.get("ok") is False:
-        raise RuntimeError(
-            f"RepeaterBook auth/error: {payload.get('message') or payload}"
+    if api_token:
+        cached = cache.get_json(cache_key)
+        if cached is not None:
+            return [_rb_to_source(r) for r in cached]
+
+        url = f"{base_url.rstrip('/')}/api/exportROW.php"
+        headers = {
+            "X-RB-App-Token": api_token,
+            "User-Agent": user_agent,
+        }
+        resp = session.request(
+            "GET",
+            url,
+            params={"country": country},
+            headers=headers,
         )
-    results = payload.get("results") if isinstance(payload, dict) else payload
-    if results is None:
-        results = []
-    cache.put_json(cache_key, results)
-    return [_rb_to_source(r) for r in results]
+        resp.raise_for_status()
+        results = _rb_results_from_payload(resp.json())
+        cache.put_json(cache_key, results)
+        return [_rb_to_source(r) for r in results]
+
+    if local_json is not None and local_json.is_file():
+        return load_repeaterbook_json(local_json)
+    return []
 
 
 def _rb_to_source(raw: dict) -> SourceRecord:

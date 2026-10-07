@@ -1,0 +1,5 @@
+Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,RxDtcsCode,CrossMode,Mode,TStep,Skip,Power,Comment,URCALL,RPT1CALL,RPT2CALL,DVCODE
+0,LA4ARR,434.937500,-,2.000000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA4ARR | Hestheia/Greipstad | LA6JR,,,,
+1,LA5AR,145.700000,-,0.600000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA5AR | Vaktårnheia/Arendal | LA6JR,,,,
+2,LA6JR,145.600000,-,0.600000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA6JR | Hovassfjell | LA6JR,,,,
+3,LA6KR,145.750000,-,0.600000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA6KR | Hestheia/Greipstad | LA6JR,,,,

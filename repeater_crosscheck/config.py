@@ -16,6 +16,8 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "overrides": "./overrides.toml",
         "cache_dir": "./cache",
         "output_dir": "./output",
+        # Local RepeaterBook exportROW / CHIRP rb-*-all.json (used when no API token).
+        "repeaterbook_json": "./data/repeaterbook_norway.json",
     },
     "thresholds": {
         "disagreement_m": 2000,
@@ -40,7 +42,8 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "api_token": "",
         "base_url": "https://www.repeaterbook.com",
         "country": "Norway",
-        "user_agent": "",
+        # App #114 (RepeaterBook Python Client) — must match registration literally.
+        "user_agent": "RepeaterBook Python Client/0.6.0 (+micael@jarniac.dev)",
     },
     "overpass": {
         "endpoint": "https://overpass-api.de/api/interpreter",

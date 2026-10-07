@@ -206,8 +206,9 @@ def choose_best_position(
       a0) OSM feature already tagged with this callsign
       a) OSM mast/tower/peak matching QTH inside locator square
       a2) OSM member of a same-callsign network relation inside/near the square
-      b) radioid or RepeaterBook if inside/near locator square
-      c) locator square centre
+      b) radioid if inside/near locator square
+      b2) RepeaterBook lat/lon (preferred over Maidenhead centre)
+      c) locator square centre (last resort — often kilometres off)
     """
     bbox = repeater.locator_bbox
 
@@ -235,12 +236,19 @@ def choose_best_position(
         south, west, north, east = bbox
         return point_in_bbox(lat, lon, south, west, north, east, margin_m=near_m)
 
-    # Prefer radioid then repeaterbook when both qualify (stable order).
     if not portable:
         if radioid and near_ok(radioid.lat, radioid.lon):
             return radioid.lat, radioid.lon, "radioid"
-        if repeaterbook and near_ok(repeaterbook.lat, repeaterbook.lon):
+        # Maidenhead centres are too coarse; prefer published RepeaterBook pins
+        # even when slightly outside the NRRL locator square.
+        if (
+            repeaterbook
+            and repeaterbook.lat is not None
+            and repeaterbook.lon is not None
+        ):
             return repeaterbook.lat, repeaterbook.lon, "repeaterbook"
+        if radioid and radioid.lat is not None and radioid.lon is not None:
+            return radioid.lat, radioid.lon, "radioid"
 
     # If no locator, still accept source coords as best with clear label.
     if bbox is None:
@@ -757,7 +765,8 @@ def build_merged(
 
         status_u = (row.status or "").upper()
         if qrt or status_u == "QRT":
-            row.flags.append("qrt")
+            # Off-air stations are omitted from CSV / OSM / HTCommander / .joz.
+            continue
 
         chs = channels_by_call.get(rep.callsign, [])
         row.codeplug_channels = sorted({c.name for c in chs})

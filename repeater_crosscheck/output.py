@@ -77,6 +77,13 @@ def write_merged_csv(path: Path, rows: list[MergedRepeater]) -> None:
         writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS)
         writer.writeheader()
         for row in rows:
+            if is_qrt_row(row):
+                continue
+            # Fold flags into notes (CSV keeps no separate flags semantics for QRT).
+            note = row.notes or ""
+            if row.flags:
+                flag_txt = "; ".join(row.flags)
+                note = f"{note}; {flag_txt}".strip("; ").strip() if note else flag_txt
             writer.writerow(
                 {
                     "callsign": row.callsign,
@@ -115,12 +122,12 @@ def write_merged_csv(path: Path, rows: list[MergedRepeater]) -> None:
                         if row.max_disagreement_m is not None
                         else ""
                     ),
-                    "flags": "|".join(row.flags),
+                    "flags": "",
                     "codeplug_channels": "|".join(row.codeplug_channels),
                     "codeplug_zones": "|".join(row.codeplug_zones),
                     "group_nrrl_url": row.group_nrrl_url,
                     "group_website": row.group_website,
-                    "notes": row.notes,
+                    "notes": note,
                 }
             )
 
@@ -162,15 +169,9 @@ def _network_merge_tags(
             for k, v in existing_tags.items()
             if k == "callsign"
             or k.startswith("communication:amateur_radio")
-            or k in {"frequency", "dmr_id"}
+            or k == "dmr_id"
         }
-        tags.update(
-            {
-                "source_kind": "osm_network",
-                "review": "repeater_crosscheck",
-                "network": str(rel_name),
-            }
-        )
+        tags["network"] = str(rel_name)
         if member_primary:
             tags["name"] = member_primary
             tags.setdefault("callsign", member_primary)
@@ -185,6 +186,13 @@ def _network_merge_tags(
     # Relation members: name follows the callsign on the object.
     review["name"] = row.callsign
     return review
+
+
+def is_qrt_row(row: MergedRepeater) -> bool:
+    """True when the repeater is off-air / QRT and must not appear in exports."""
+    if "qrt" in {f.lower() for f in row.flags}:
+        return True
+    return (row.status or "").strip().upper() == "QRT"
 
 
 def _review_tags(row: MergedRepeater, *, kind: str, pos: Position | None = None) -> dict[str, str]:
@@ -208,19 +216,16 @@ def _review_tags(row: MergedRepeater, *, kind: str, pos: Position | None = None)
         )
     elif kind in {"radioid", "repeaterbook", "osm"}:
         note_parts.append(f"position from {kind}")
+    # Fold former flags=* content into note; do not emit a flags tag.
+    note_parts.extend(f for f in row.flags if f)
 
     tags = {
-        "source_kind": kind,
         "callsign": row.callsign,
         "name": row.callsign,
-        "frequency": row.tx,
-        "flags": "|".join(row.flags),
         "qth": row.qth,
-        "locator": row.locator,
         "group": row.group,
         "nrrl:group_page": row.group_nrrl_url,
         "website": row.group_website,
-        "review": "repeater_crosscheck",
         "note": "; ".join(p for p in note_parts if p),
     }
     if kind == "local":
@@ -348,9 +353,7 @@ def _merge_coincident_synthetics(root: ET.Element, *, max_m: float = 10.0) -> No
     def _identity(tags: dict[str, str]) -> tuple[str, str]:
         cs = (tags.get("callsign") or "").split(";")[0].strip().upper()
         band = (
-            tags.get("frequency")
-            or tags.get("communication:amateur_radio:repeater:frequency_out")
-            or ""
+            tags.get("communication:amateur_radio:repeater:frequency_out") or ""
         ).strip()
         return cs, band
 
@@ -382,7 +385,11 @@ def _merge_coincident_synthetics(root: ET.Element, *, max_m: float = 10.0) -> No
             continue
         members.sort(
             key=lambda e: (
-                _SYNTHETIC_KIND_RANK.get(_elem_tags(e).get("source_kind", ""), 9),
+                _SYNTHETIC_KIND_RANK.get(
+                    _elem_tags(e).get("best_source")
+                    or _elem_tags(e).get("fixme", ""),
+                    9,
+                ),
                 int(e.get("id")),
             )
         )
@@ -581,6 +588,9 @@ def write_josm_osm(
             base.pop("note", None)
         pending_osm_base[ref] = base
 
+    # Drop QRT / off-air stations from the review layer entirely.
+    rows = [r for r in rows if not is_qrt_row(r)]
+
     # osm_id overrides without local coords: snap CSV best_* onto the fetched object
     # so CSV and review geometry agree (e.g. LA9AR on Tron hovedsender way).
     for row in rows:
@@ -713,14 +723,17 @@ def write_josm_osm(
             if row.best_source in {"osm", "local"}:
                 merge_kind = "best" if row.best_source == "osm" else "local"
             review = _review_tags(row, kind=merge_kind)
-            review["source_kind"] = "osm"
             if row.best_source:
                 review["best_source"] = row.best_source
             # Single-callsign OSM features use the callsign as name.
             review["name"] = row.callsign
-            # OSM note: operator site note only — no "operator override position" stack.
+            # OSM note: operator site note + folded flags (no review-process stack).
+            note_parts: list[str] = []
             if row.notes:
-                review["note"] = row.notes
+                note_parts.append(row.notes)
+            note_parts.extend(f for f in row.flags if f)
+            if note_parts:
+                review["note"] = "; ".join(note_parts)
             else:
                 review.pop("note", None)
             raw = {
@@ -850,11 +863,12 @@ def write_josm_osm(
                 ET.SubElement(way, "nd", {"ref": str(nid)})
             if len(primary_ids) >= 3:
                 ET.SubElement(way, "nd", {"ref": str(primary_ids[0])})
+            note_parts = [f"disagreement {row.max_disagreement_m:.1f} m"]
+            note_parts.extend(f for f in row.flags if f)
             for k, v in {
-                "review": "disagreement",
                 "callsign": row.callsign,
                 "max_disagreement_m": f"{row.max_disagreement_m:.1f}",
-                "flags": "|".join(row.flags),
+                "note": "; ".join(note_parts),
             }.items():
                 ET.SubElement(way, "tag", {"k": k, "v": v})
 
@@ -890,18 +904,16 @@ def write_josm_osm(
                 for k, v in raw.items()
                 if k == "callsign"
                 or k.startswith("communication:amateur_radio")
-                or k in {"frequency", "dmr_id"}
+                or k == "dmr_id"
             }
             preserve["name"] = primary_cs
             preserve.setdefault("callsign", primary_cs)
             preserve.setdefault(
                 "communication:amateur_radio:callsign", primary_cs
             )
-            preserve["source_kind"] = "osm_network"
             rel_tags = dict(rel.get("tags") or {})
             preserve["network"] = str(rel_tags.get("name") or rref)
             preserve["osm_relation"] = rref
-            preserve["review"] = "repeater_crosscheck"
             # Avoid duplicating if a prior merge already added this callsign.
             existing_members = pending_osm_members.get(ref) or []
             already = any(

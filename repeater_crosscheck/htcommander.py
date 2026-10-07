@@ -79,6 +79,19 @@ NETWORK_RELATIONS = {
             "LA3XRR",
         },
     },
+    # RepeaterBook LA6JR features: linked to LA6KR, LA9KR, LA5AR, LA4ARR.
+    "LA6JR": {
+        "relation": "",
+        "title": "LA6JR / Sørlandet linked",
+        "comment_tag": "LA6JR",
+        "callsigns": {
+            "LA6JR",
+            "LA6KR",
+            "LA5AR",
+            "LA4ARR",
+            "LA9KR",
+        },
+    },
 }
 
 # Members missing from NRRL (or listed under another callsign) — OSM / club nets.
@@ -446,11 +459,13 @@ def build_vr_n76_regions(dict_rows: list[dict[str, str]]) -> dict:
 
     Region 0 = LA5MR / Innlandsnettet
     Region 1 = Fylkesnettet
-    Regions 2-5 = empty (rename in HTCommander as needed)
+    Region 2 = LA6JR / Sørlandet linked
+    Regions 3-5 = empty (rename in HTCommander as needed)
     """
     region_specs: list[tuple[str, list[ChirpChannel]]] = [
         ("LA5MR", collect_network_channels(dict_rows, "LA5MR")),
         ("Fylkesnettet", collect_network_channels(dict_rows, "Fylkesnettet")),
+        ("LA6JR", collect_network_channels(dict_rows, "LA6JR")),
     ]
     while len(region_specs) < VR_N76_REGION_COUNT:
         idx = len(region_specs) + 1

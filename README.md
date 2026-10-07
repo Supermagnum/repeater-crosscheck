@@ -29,8 +29,9 @@ Primary inputs and comparison sources:
 - **[NRRL](https://nrrl.no/)** — official Norwegian repeater list (CSV:
   `Kallesignal`, `Type`, `QTH`, frequencies, `Gruppe`, `Lokator`, `Info`,
   `status`), plus [group pages](https://nrrl.no/grupper/) for club websites
-- **[RepeaterBook](https://www.repeaterbook.com/)** — rest-of-world export API
-  (Norway), when an approved API token is configured
+- **[RepeaterBook](https://www.repeaterbook.com/)** — Norway exportROW pins (API
+  App #114 token, or local JSON under `paths.repeaterbook_json`) preferred over
+  Maidenhead square centres
 - **AnyTone Norge** (Facebook group) — community codeplug / channel knowledge
   used together with optional AnyTone CPS exports (`channel.csv` / `zone.csv`)
   and local corrections in `overrides.toml`
@@ -123,8 +124,9 @@ peaks (or other high ground) with relevant infrastructure, and to check
 **nearby cellular masts** and similar towers on the map or imagery. For **LD**
 APRS / packet stations, check [aprs.fi](https://aprs.fi/) (and
 [aprs.no](https://aprs.no/)): if a callsign does not appear there, it is likely
-offline or **QRT** (dead). Mark those in `overrides.toml` (`qrt = true`, and
-`skip = true` when they should be omitted from the review outputs).
+offline or **QRT** (dead). Mark those in `overrides.toml` (`qrt = true`).
+QRT / off-air stations are omitted from CSV, OSM, `.joz`, and HTCommander
+exports automatically.
 
 ## Setup
 
@@ -140,9 +142,13 @@ Edit `config.toml`:
 
 - `paths.nrrl_csv` — NRRL repeater list CSV (`Kallesignal`, `Type`, `QTH`, …)
 - `paths.channel_csv` / `zone_csv` — optional AnyTone CPS exports
-- `http.user_agent` — identify yourself (required by radioid / RepeaterBook)
-- `repeaterbook.api_token` — optional; leave empty to skip RepeaterBook until you
-  have an approved token ([request form](https://www.repeaterbook.com/api/token_request.php))
+- `http.user_agent` — identify yourself (required by radioid / Overpass)
+- `repeaterbook.api_token` — optional `rbuapp_…` from [API Applications](https://www.repeaterbook.com/user/api_apps.php)
+  for **App #114** (RepeaterBook Python Client). Without a token, set
+  `paths.repeaterbook_json` instead.
+- `repeaterbook.user_agent` — must be exactly
+  `RepeaterBook Python Client/0.6.0 (+micael@jarniac.dev)` for App #114 tokens
+  (literal match; do not substitute your own contact).
 - `radioid.api_token` — optional `X-API-Token` (recommended for future-proofing)
 
 ## Usage
@@ -166,7 +172,8 @@ writes [`output/htcommander/`](output/htcommander/):
 | `norway_analog.csv` | All exportable analog channels (CHIRP CSV) |
 | `LA5MR.csv` | Innlandsnettet linked sites (CHIRP) |
 | `Fylkesnettet.csv` | Vestfold/Telemark linked VHF sites (CHIRP) |
-| `norway_regions.json` | VR-N76 channel groups (6×32): region 0 = LA5MR, region 1 = Fylkesnettet |
+| `LA6JR.csv` | Sørlandet linked sites (LA6JR / LA6KR / LA9KR / LA5AR / LA4ARR) |
+| `norway_regions.json` | VR-N76 channel groups (6×32): LA5MR, Fylkesnettet, LA6JR, … |
 
 Import `norway_regions.json` in HTCommander (all-regions / full backup), or import
 a CHIRP CSV and drag channels into radio slots. `--htcommander-only` rebuilds
@@ -186,7 +193,7 @@ a zone/channel from stored repeater coordinates + radius).
 
 Open [`output/repeaters.joz`](output/repeaters.joz) in JOSM (from the `output/`
 folder), or open [`output/repeaters_review.osm`](output/repeaters_review.osm)
-alone. Portable stations are omitted from this layer (they are not fixed sites).
+alone. Portable and QRT / off-air stations are omitted from this layer.
 
 ### Reviewing in JOSM
 
@@ -217,10 +224,11 @@ alone. Portable stations are omitted from this layer (they are not fixed sites).
    [aprs.fi](https://aprs.fi/); if they do not exist there, they are likely
    offline or QRT.
 
-Before upload, delete the review-only tag `best_source` (and its value) from
-every object that still has it. It records which source the tool preferred and
-must not be stored in OpenStreetMap. Do not upload until tags and positions
-have been verified.
+Before upload, delete review-only tags that must not go into OpenStreetMap:
+`best_source`, `fixme`, and any leftover process chatter in `note`. The tool
+does **not** emit `flags`, `locator`, `review`, `source_kind`, or bare
+`frequency` tags — former flag text is folded into `note` instead. Do not
+upload until tags and positions have been verified.
 
 ### What is `repeaters.joz`?
 
@@ -246,8 +254,8 @@ Outputs (under `paths.output_dir`, default `./output/`):
 
 | File | Purpose |
 |------|---------|
-| `repeaters_merged.csv` | One row per NRRL repeater, all source coords + flags, plus `elevation_m` (ground ASL from Mapterhorn; for tools such as [SPLAT!](https://github.com/hoche/splat)) |
-| `repeaters_review.osm` | JOSM review: at most one callsign/band merged onto an existing OSM mast; co-located siblings are separate nodes. Disagreement ways when sources diverge. Rows with the `portable` flag are omitted. Verify before upload; delete `best_source`. |
+| `repeaters_merged.csv` | One row per on-air NRRL repeater (QRT omitted), all source coords, process notes in `notes`, plus `elevation_m` (Mapterhorn ASL; for [SPLAT!](https://github.com/hoche/splat)) |
+| `repeaters_review.osm` | JOSM review: at most one callsign/band merged onto an existing OSM mast; co-located siblings are separate nodes. Disagreement ways when sources diverge. Portable and QRT omitted. Verify before upload; delete `best_source` / `fixme`. |
 | `repeaters.joz` | Compressed JOSM session: one review layer per fylkesnavn + Fylker boundaries + Kartverket topo. Open from `output/`. |
 | `htcommander/` | Optional (`--htcommander`): CHIRP CSVs + VR-N76 regions JSON for HTCommander |
 | `unmatched.txt` | Callsigns / codeplug channels that could not be matched |
@@ -263,11 +271,17 @@ dump under `./cache/`.
 3. Parse CTCSS / DCS / DMR ID from NRRL `Info`.
 4. Match other sources by callsign, else frequency + distance.
 5. Best position priority:
-   1. Local override coordinates in `overrides.toml` (operator knowledge)
-   2. OSM mast/tower/peak/hill matching QTH name inside the locator square
-   3. OSM member of a same-callsign network/site relation inside/near the square
-   4. radioid or RepeaterBook if inside/near the locator square
-   5. locator square centre
+   1. Local override coordinates in `overrides.toml` (operator knowledge) — never overwritten
+   2. OSM feature already tagged with the callsign
+   3. OSM mast/tower/peak/hill matching QTH name inside the locator square
+   4. OSM member of a same-callsign network/site relation inside/near the square
+   5. radioid.net if inside/near the locator square
+   6. **RepeaterBook** lat/lon (preferred over Maidenhead; local JSON or API)
+   7. Maidenhead locator square centre (last resort — often kilometres off)
+
+Without a RepeaterBook API token, set `paths.repeaterbook_json` to a Norway
+export (CHIRP `rb-norway-all.json` / exportROW shape). A copy ships as
+[`data/repeaterbook_norway.json`](data/repeaterbook_norway.json).
 
 After positions are resolved, ground elevation at `best_lat`/`best_lon` is
 sampled from [Mapterhorn](https://mapterhorn.com/) Terrarium tiles
@@ -276,12 +290,13 @@ metres above mean sea level and can feed path-loss tools such as
 [SPLAT!](https://github.com/hoche/splat). Attribution:
 [mapterhorn.com/attribution](https://mapterhorn.com/attribution).
 
-Flags include `disagreement` (default > 2 km; suppressed when a local
-coordinate override is set), `outside_locator:*`, `qrt`,
-`portable`, `locator_mismatch`, `osm_network:*`, and `missing_*` when a source
-has no match.
+Process markers (`disagreement`, `outside_locator:*`, `portable`,
+`locator_mismatch`, `osm_network:*`, `missing_*`, …) are folded into the OSM
+`note` / CSV `notes` field — there is no separate `flags` tag on the review
+layer. QRT stations are dropped from exports entirely (override with
+`on_air = true` / `qrt = false` when NRRL is stale).
 
-Known site notes (portable, QRT, club pages, extra coordinates, `osm_id`) live in
+Known site notes (portable, club pages, extra coordinates, `osm_id`) live in
 `overrides.toml`. A local `lat`/`lon` there is treated as the resolved site:
 JOSM still shows other source nodes for comparison, but does not draw a
 disagreement way for that callsign. When an OSM mast/tower/node/way is known
@@ -312,7 +327,7 @@ codes (e.g. `11K2F3E` FM, `7K60FXE` DMR, `6K00F7W` D-STAR, `9K36F7W` C4FM,
   before uploading to OSM.
 - **radioid.net**: personal lookup use; do not mirror as a public directory. Send a
   clear User-Agent. See their [API policy](https://radioid.net/api/).
-- **RepeaterBook**: approved clients only; token + User-Agent with contact email.
+- **RepeaterBook**: App #114 token + that app's registered User-Agent (see above).
   Personal use; do not redistribute. See their
   [API wiki](https://www.repeaterbook.com/wiki/doku.php?id=api).
 - **AnyTone Norge (Facebook)**: community discussion only; do not republish

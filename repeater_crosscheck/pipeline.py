@@ -27,6 +27,7 @@ from .sources_local import (
     load_nrrl,
     load_radioid,
     load_repeaterbook,
+    load_repeaterbook_json,
 )
 
 
@@ -181,17 +182,21 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
     rb_records = []
     if not args.skip_repeaterbook:
         token = (cfg["repeaterbook"].get("api_token") or "").strip()
-        if not token:
-            print(
-                "RepeaterBook: no api_token in config — skipping "
-                "(request a token at https://www.repeaterbook.com/api/token_request.php)."
-            )
-        else:
-            try:
-                ua = (cfg["repeaterbook"].get("user_agent") or "").strip() or http_cfg[
-                    "user_agent"
-                ]
+        rb_json = resolve_path(paths.get("repeaterbook_json") or "", base)
+        try:
+            ua = (cfg["repeaterbook"].get("user_agent") or "").strip() or http_cfg[
+                "user_agent"
+            ]
+            if token:
                 print("Fetching RepeaterBook exportROW for Norway...")
+            elif rb_json and rb_json.is_file():
+                print(f"Loading RepeaterBook from local JSON {rb_json}...")
+            else:
+                print(
+                    "RepeaterBook: no api_token and no paths.repeaterbook_json — "
+                    "skipping (token: https://www.repeaterbook.com/api/token_request.php)."
+                )
+            if token or (rb_json and rb_json.is_file()):
                 rb_records = load_repeaterbook(
                     session,
                     cache,
@@ -199,15 +204,24 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
                     country=cfg["repeaterbook"]["country"],
                     api_token=token,
                     user_agent=ua,
+                    local_json=rb_json,
                 )
                 print(f"  {len(rb_records)} records")
-            except Exception as exc:
-                print(f"RepeaterBook failed: {exc}", file=sys.stderr)
-                traceback.print_exc()
+        except Exception as exc:
+            print(f"RepeaterBook failed: {exc}", file=sys.stderr)
+            traceback.print_exc()
+            if rb_json and rb_json.is_file():
+                try:
+                    print(f"Falling back to {rb_json}...")
+                    rb_records = load_repeaterbook_json(rb_json)
+                    print(f"  {len(rb_records)} records")
+                except Exception as exc2:
+                    print(f"Local RepeaterBook JSON failed: {exc2}", file=sys.stderr)
+                    print("Continuing without RepeaterBook data.", file=sys.stderr)
+            else:
                 print("Continuing without RepeaterBook data.", file=sys.stderr)
     else:
         print("Skipping RepeaterBook (--skip-repeaterbook)")
-
     group_lookup: dict = {}
     try:
         print("Fetching NRRL group directory and club websites...")

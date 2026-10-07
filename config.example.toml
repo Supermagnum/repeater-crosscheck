@@ -7,6 +7,9 @@ zone_csv = "/home/haaken/anytone/export/zone.csv"
 overrides = "./overrides.toml"
 cache_dir = "./cache"
 output_dir = "./output"
+# Local RepeaterBook Norway JSON (exportROW / CHIRP rb-norway-all.json).
+# Used when [repeaterbook].api_token is empty so pins replace Maidenhead centres.
+repeaterbook_json = "./data/repeaterbook_norway.json"
 
 [thresholds]
 # Flag when any two source positions disagree by more than this (metres).
@@ -38,14 +41,14 @@ base_url = "https://radioid.net"
 country = "Norway"
 
 [repeaterbook]
-# Required for exportROW once your app/token is approved.
-# Prefer X-RB-App-Token (app_... or rbuapp_...). Leave empty to skip this source.
+# Prefer an rbuapp_ token from API Applications for App #114
+# (RepeaterBook Python Client). Leave empty to use paths.repeaterbook_json.
 api_token = ""
 base_url = "https://www.repeaterbook.com"
 country = "Norway"
-# Must match the User-Agent approved for your token when bound.
-# Falls back to [http].user_agent when empty.
-user_agent = ""
+# App #114 binds the token to this User-Agent literally — do not change it.
+# Falls back to [http].user_agent when empty (that will 403 with an App #114 token).
+user_agent = "RepeaterBook Python Client/0.6.0 (+micael@jarniac.dev)"
 
 [overpass]
 endpoint = "https://overpass-api.de/api/interpreter"
