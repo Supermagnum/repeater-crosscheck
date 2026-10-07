@@ -172,6 +172,18 @@ Import `norway_regions.json` in HTCommander (all-regions / full backup), or impo
 a CHIRP CSV and drag channels into radio slots. `--htcommander-only` rebuilds
 these from an existing `repeaters_merged.csv` without fetching online sources.
 
+#### GPS vs GPS roaming
+
+Do not confuse **GPS position** (where *you* are) with **GPS roaming** (auto-select
+a zone/channel from stored repeater coordinates + radius).
+
+| Platform | Own GPS / APRS map | GPS roaming (lat/lon per zone or channel) |
+|----------|--------------------|-------------------------------------------|
+| Vero VR-N76 (and other Benshi radios used with HTCommander: UV-Pro, GA-5WB, VR-N75, VR-N7500, …) | Yes — radio GPS + HTCommander map / APRS share | **No** — channel memories have no site coordinates |
+| HTCommander channel / regions import | N/A | **No** — CHIRP / regions JSON carry RF only |
+| AnyTone AT578UV, D868UV, D878UV / D878UV II (and similar CPS GPS Roaming tables) | Yes | **Yes** — CPS *GPS Roaming*: centre + radius switches zone |
+| This repo’s AnyTone `channel.csv` / `zone.csv` inputs | N/A | Positions live in `repeaters_merged.csv` (`best_lat` / `best_lon`); not written as AnyTone GPS-roam rows yet |
+
 Open [`output/repeaters.joz`](output/repeaters.joz) in JOSM (from the `output/`
 folder), or open [`output/repeaters_review.osm`](output/repeaters_review.osm)
 alone. Portable stations are omitted from this layer (they are not fixed sites).
