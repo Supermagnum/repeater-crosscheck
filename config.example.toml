@@ -60,3 +60,8 @@ enabled = true
 zoom = 14
 tile_url = "https://tiles.mapterhorn.com/{z}/{x}/{y}.webp"
 
+[htcommander]
+# Write CHIRP CSV + VR-N76 regions JSON under output/htcommander/.
+# Can also be enabled with --htcommander / --htcommander-only.
+enabled = false
+

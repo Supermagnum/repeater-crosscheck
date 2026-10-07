@@ -13,6 +13,7 @@ tags are not broken and that the data matches local knowledge.
 - [OSM tagging: one feature per repeater (Norway)](#osm-tagging-one-feature-per-repeater-norway)
 - [Setup](#setup)
 - [Usage](#usage)
+  - [HTCommander / VR-N76](#htcommander--vr-n76)
   - [Reviewing in JOSM](#reviewing-in-josm)
   - [What is `repeaters.joz`?](#what-is-repeatersjoz)
 - [Matching and best position](#matching-and-best-position)
@@ -49,6 +50,7 @@ Published review artefacts in this repository:
 - [`output/repeaters_merged.csv`](output/repeaters_merged.csv)
 - [`output/repeaters_review.osm`](output/repeaters_review.osm) (JOSM review layer)
 - [`output/repeaters.joz`](output/repeaters.joz) (JOSM session bundle)
+- [`output/htcommander/`](output/htcommander/) (HTCommander / VR-N76 channel groups)
 
 ## OSM coverage
 
@@ -150,7 +152,25 @@ python -m repeater_crosscheck -c config.toml
 python -m repeater_crosscheck -c config.toml --refresh   # re-download caches
 python -m repeater_crosscheck -c config.toml --skip-osm  # offline-ish debug
 python -m repeater_crosscheck -c config.toml --skip-elevation  # skip Mapterhorn ASL
+python -m repeater_crosscheck -c config.toml --htcommander  # also write HTCommander exports
+python -m repeater_crosscheck -c config.toml --htcommander-only  # CSV -> HTCommander only
 ```
+
+### HTCommander / VR-N76
+
+With `--htcommander` (or `[htcommander] enabled = true` in config), the pipeline
+writes [`output/htcommander/`](output/htcommander/):
+
+| File | Purpose |
+|------|---------|
+| `norway_analog.csv` | All exportable analog channels (CHIRP CSV) |
+| `LA5MR.csv` | Innlandsnettet linked sites (CHIRP) |
+| `Fylkesnettet.csv` | Vestfold/Telemark linked VHF sites (CHIRP) |
+| `norway_regions.json` | VR-N76 channel groups (6×32): region 0 = LA5MR, region 1 = Fylkesnettet |
+
+Import `norway_regions.json` in HTCommander (all-regions / full backup), or import
+a CHIRP CSV and drag channels into radio slots. `--htcommander-only` rebuilds
+these from an existing `repeaters_merged.csv` without fetching online sources.
 
 Open [`output/repeaters.joz`](output/repeaters.joz) in JOSM (from the `output/`
 folder), or open [`output/repeaters_review.osm`](output/repeaters_review.osm)
@@ -217,6 +237,7 @@ Outputs (under `paths.output_dir`, default `./output/`):
 | `repeaters_merged.csv` | One row per NRRL repeater, all source coords + flags, plus `elevation_m` (ground ASL from Mapterhorn; for tools such as [SPLAT!](https://github.com/hoche/splat)) |
 | `repeaters_review.osm` | JOSM review: at most one callsign/band merged onto an existing OSM mast; co-located siblings are separate nodes. Disagreement ways when sources diverge. Rows with the `portable` flag are omitted. Verify before upload; delete `best_source`. |
 | `repeaters.joz` | Compressed JOSM session: one review layer per fylkesnavn + Fylker boundaries + Kartverket topo. Open from `output/`. |
+| `htcommander/` | Optional (`--htcommander`): CHIRP CSVs + VR-N76 regions JSON for HTCommander |
 | `unmatched.txt` | Callsigns / codeplug channels that could not be matched |
 
 Coordinates for radioid.net come from the published `map.json` dump (the

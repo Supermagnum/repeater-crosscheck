@@ -1,0 +1,7 @@
+Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,RxDtcsCode,CrossMode,Mode,TStep,Skip,Power,Comment,URCALL,RPT1CALL,RPT2CALL,DVCODE
+0,LA2KRR,434.650000,-,2.000000,Tone,71.9,71.9,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA2KRR | Rafjellet | LA5MR | Rafjellet mast,,,,
+1,LA5MR,145.625000,-,0.600000,Tone,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA5MR | Høykorset | LA5MR | Høykorset / Totenåsen,,,,
+2,LA5TRR,145.725000,-,0.600000,Tone,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA5TRR | Trysilfjellet | LA5MR | Trysilfjellet,,,,
+3,LA6GR,434.750000,-,2.000000,Tone,71.9,71.9,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA6GR | Torseterkampen | LA5MR | Torseterkampen,,,,
+4,LA6NR,145.775000,-,0.600000,Tone,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA6NR | Syningen | LA5MR,,,,
+5,LA9AR,145.600000,-,0.600000,Tone,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA9AR | Tronfjell | LA5MR | Tron hovedsender,,,,

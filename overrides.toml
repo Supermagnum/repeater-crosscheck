@@ -90,8 +90,70 @@ osm_id = "node/13003985929"
 note = "OSM mast node/13003985929 (Skolten)."
 
 [LA3SRR]
-lat = 59.17920
-lon = 10.20830
+qth = "Korpås/Brunlanes"
+lat = 59.031323
+lon = 9.963454
+tx = 145.275
+rx = 144.675
+tone = "74.4"
+type = "FM Repeater"
+osm_id = "node/11540556760"
+note = "Fylkesnettet. OSM node/11540556760 (LA3SRR). NRRL still listed this as crossband."
+
+[LA3XRR]
+qth = "Hvittingen/Sande"
+lat = 59.5464681
+lon = 10.1963562
+osm_id = "node/1964429111"
+note = "Fylkesnettet. OSM tower node/1964429111 (Hvittingen)."
+
+[LA3BRR]
+qth = "Bronane/Drangedal"
+lat = 59.2219841
+lon = 8.9776441
+tx = 145.5625
+rx = 144.9625
+tone = "74.4"
+type = "FM Repeater"
+group = "Grenland"
+osm_id = "node/5417275137"
+note = "Fylkesnettet. OSM tower node/5417275137 (Bronane)."
+
+[LA3GRR]
+qth = "Gaustatoppen"
+lat = 59.8569683
+lon = 8.6486478
+tx = 145.6125
+rx = 145.0125
+tone = "74.4"
+type = "FM Repeater"
+group = "Grenland"
+osm_id = "node/12640560650"
+note = "Fylkesnettet. OSM mast node/12640560650 (LA3GRR)."
+
+[LA5ER]
+qth = "Eirefjell/Tokke"
+lat = 59.4896971
+lon = 8.0901345
+on_air = true
+osm_id = "node/5008797918"
+note = "Fylkesnettet. Eirefjell communications tower node/5008797918."
+
+[LA5GR]
+qth = "Vealøs/Skien"
+lat = 59.2360000
+lon = 9.6993900
+note = "Fylkesnettet. Co-located at Vealøs with LA3DRR (operator position)."
+
+[LA3DRR]
+qth = "Vealøs/Skien"
+lat = 59.2360000
+lon = 9.6993900
+tx = 434.6125
+rx = 432.6125
+tone = "74.4"
+osm_id = "node/4904156635"
+note = "Vealøs mast. Operator position 59.2360000, 9.6993900. OSM node/4904156635 (LA3DRR)."
 
 [LD3ST]
 lat = 59.28250

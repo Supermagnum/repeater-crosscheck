@@ -296,27 +296,28 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-15" visible="true" lat="59.229167" lon="9.708333">
-    <tag k="best_source" v="nrrl_locator" />
+  <node id="-15" visible="true" lat="59.2360000" lon="9.6993900">
+    <tag k="best_source" v="local" />
     <tag k="callsign" v="LA3DRR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA3DRR" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:ctcss" v="74.4" />
-    <tag k="communication:amateur_radio:repeater:frequency_out" v="434.5875 MHz" />
+    <tag k="communication:amateur_radio:repeater:frequency_out" v="434.6125 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-2 MHz" />
-    <tag k="flags" v="missing_osm" />
-    <tag k="frequency" v="434.5875" />
+    <tag k="frequency" v="434.6125" />
     <tag k="group" v="Tønsberg" />
     <tag k="locator" v="JO49UF" />
     <tag k="name" v="LA3DRR" />
-    <tag k="note" v="best position from nrrl_locator" />
+    <tag k="note" v="operator override position" />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/vestfold/tonsberggruppen/" />
     <tag k="qth" v="Vealøs/Skien" />
     <tag k="review" v="repeater_crosscheck" />
-    <tag k="source_kind" v="best" />
+    <tag k="source_kind" v="local" />
     <tag k="website" v="http://la1t.no/" />
+      <tag k="fixme" v="operator_override" />
+      <tag k="osm_id" v="node/4904156635" />
   </node>
   <node id="-16" visible="true" lat="59.187500" lon="10.291667">
     <tag k="best_source" v="nrrl_locator" />
@@ -487,27 +488,29 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-24" visible="true" lat="59.179200" lon="10.208300">
+  <node id="-24" visible="true" lat="59.031323" lon="9.963454">
     <tag k="best_source" v="local" />
     <tag k="callsign" v="LA3SRR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA3SRR" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="communication:amateur_radio:repeater:ctcss" v="74.4" />
-    <tag k="communication:amateur_radio:repeater:frequency_in" v="433.175 MHz" />
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.275 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="fixme" v="operator_override" />
-    <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.275" />
     <tag k="group" v="Sandefjord" />
     <tag k="locator" v="JO59CE" />
     <tag k="name" v="LA3SRR" />
     <tag k="note" v="operator override position" />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/vestfold/sandefjordgruppen/" />
-    <tag k="qth" v="Sandefjord" />
+    <tag k="qth" v="Korpås/Brunlanes" />
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="local" />
+      <tag k="osm_id" v="node/11540556760" />
+      <tag k="network" v="Fylkesnettet" />
+      <tag k="osm_relation" v="relation/18788322" />
+      <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
   </node>
   <node id="-25" visible="true" lat="59.229167" lon="9.708333">
     <tag k="best_source" v="nrrl_locator" />
@@ -530,8 +533,8 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-26" visible="true" lat="59.562500" lon="10.208333">
-    <tag k="best_source" v="nrrl_locator" />
+  <node id="-26" visible="true" lat="59.5464681" lon="10.1963562">
+    <tag k="best_source" v="local" />
     <tag k="callsign" v="LA3XRR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA3XRR" />
@@ -540,17 +543,20 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.225 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
-    <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.225" />
     <tag k="group" v="Tønsberg" />
     <tag k="locator" v="JO59CN" />
     <tag k="name" v="LA3XRR" />
-    <tag k="note" v="best position from nrrl_locator" />
+    <tag k="note" v="operator override position" />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/vestfold/tonsberggruppen/" />
     <tag k="qth" v="Hvittingen/Sande" />
     <tag k="review" v="repeater_crosscheck" />
-    <tag k="source_kind" v="best" />
+    <tag k="source_kind" v="local" />
     <tag k="website" v="http://la1t.no/" />
+      <tag k="fixme" v="operator_override" />
+      <tag k="osm_id" v="node/1964429111" />
+      <tag k="network" v="Fylkesnettet" />
+      <tag k="osm_relation" v="relation/18788322" />
   </node>
   <node id="-27" visible="true" lat="58.229167" lon="7.875000">
     <tag k="best_source" v="nrrl_locator" />
@@ -939,8 +945,8 @@
     <tag k="review" v="repeater_crosscheck" />
     <tag k="source_kind" v="best" />
   </node>
-  <node id="-45" visible="true" lat="59.479167" lon="8.125000">
-    <tag k="best_source" v="nrrl_locator" />
+  <node id="-45" visible="true" lat="59.4896971" lon="8.0901345">
+    <tag k="best_source" v="local" />
     <tag k="callsign" v="LA5ER" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5ER" />
@@ -949,16 +955,19 @@
     <tag k="communication:amateur_radio:repeater:frequency_out" v="145.7125 MHz" />
     <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
     <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
-    <tag k="flags" v="missing_osm" />
     <tag k="frequency" v="145.7125" />
     <tag k="group" v="Grenland" />
     <tag k="locator" v="JO49BL" />
     <tag k="name" v="LA5ER" />
-    <tag k="note" v="best position from nrrl_locator" />
+    <tag k="note" v="operator override position" />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/telemark/grenlandgruppen/" />
     <tag k="qth" v="Eirefjell/Tokke" />
     <tag k="review" v="repeater_crosscheck" />
-    <tag k="source_kind" v="best" />
+    <tag k="source_kind" v="local" />
+      <tag k="fixme" v="operator_override" />
+      <tag k="osm_id" v="node/5008797918" />
+      <tag k="network" v="Fylkesnettet" />
+      <tag k="osm_relation" v="relation/18788322" />
   </node>
   <node id="-46" visible="true" lat="59.770833" lon="11.041667">
     <tag k="best_source" v="nrrl_locator" />
@@ -982,8 +991,8 @@
     <tag k="source_kind" v="best" />
     <tag k="website" v="https://la3f.no/" />
   </node>
-  <node id="-47" visible="true" lat="59.229167" lon="9.708333">
-    <tag k="best_source" v="nrrl_locator" />
+  <node id="-47" visible="true" lat="59.2360000" lon="9.6993900">
+    <tag k="best_source" v="local" />
     <tag k="callsign" v="LA5GR" />
     <tag k="communication:amateur_radio" v="yes" />
     <tag k="communication:amateur_radio:callsign" v="LA5GR" />
@@ -997,11 +1006,14 @@
     <tag k="group" v="Grenland" />
     <tag k="locator" v="JO49UF" />
     <tag k="name" v="LA5GR" />
-    <tag k="note" v="best position from nrrl_locator" />
+    <tag k="note" v="operator override position" />
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/telemark/grenlandgruppen/" />
     <tag k="qth" v="Vealøs/Skien" />
     <tag k="review" v="repeater_crosscheck" />
-    <tag k="source_kind" v="best" />
+    <tag k="source_kind" v="local" />
+      <tag k="fixme" v="operator_override" />
+      <tag k="network" v="Fylkesnettet" />
+      <tag k="osm_relation" v="relation/18788322" />
   </node>
   <node id="-48" visible="true" lat="59.395833" lon="10.375000">
     <tag k="best_source" v="nrrl_locator" />
@@ -10218,4 +10230,50 @@
     <tag k="nrrl:group_page" v="https://nrrl.no/grupper/rogaland/sandnesgruppen/" />
     <tag k="website" v="https://la9s.no/" />
   </way>
+  <node id="-459" visible="true" lat="59.2219841" lon="8.9776441">
+    <tag k="best_source" v="local" />
+    <tag k="callsign" v="LA3BRR" />
+    <tag k="communication:amateur_radio" v="yes" />
+    <tag k="communication:amateur_radio:callsign" v="LA3BRR" />
+    <tag k="communication:amateur_radio:repeater" v="yes" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4" />
+    <tag k="communication:amateur_radio:repeater:frequency_out" v="145.5625 MHz" />
+    <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
+    <tag k="fixme" v="operator_override" />
+    <tag k="frequency" v="145.5625" />
+    <tag k="group" v="Grenland" />
+    <tag k="name" v="LA3BRR" />
+    <tag k="note" v="operator override position" />
+    <tag k="nrrl:group_page" v="https://nrrl.no/grupper/telemark/grenlandgruppen/" />
+    <tag k="osm_id" v="node/5417275137" />
+    <tag k="network" v="Fylkesnettet" />
+    <tag k="osm_relation" v="relation/18788322" />
+    <tag k="qth" v="Bronane/Drangedal" />
+    <tag k="review" v="repeater_crosscheck" />
+    <tag k="source_kind" v="local" />
+  </node>
+  <node id="-460" visible="true" lat="59.8569683" lon="8.6486478">
+    <tag k="best_source" v="local" />
+    <tag k="callsign" v="LA3GRR" />
+    <tag k="communication:amateur_radio" v="yes" />
+    <tag k="communication:amateur_radio:callsign" v="LA3GRR" />
+    <tag k="communication:amateur_radio:repeater" v="yes" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="74.4" />
+    <tag k="communication:amateur_radio:repeater:frequency_out" v="145.6125 MHz" />
+    <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
+    <tag k="fixme" v="operator_override" />
+    <tag k="frequency" v="145.6125" />
+    <tag k="group" v="Grenland" />
+    <tag k="name" v="LA3GRR" />
+    <tag k="note" v="operator override position" />
+    <tag k="nrrl:group_page" v="https://nrrl.no/grupper/telemark/grenlandgruppen/" />
+    <tag k="osm_id" v="node/12640560650" />
+    <tag k="network" v="Fylkesnettet" />
+    <tag k="osm_relation" v="relation/18788322" />
+    <tag k="qth" v="Gaustatoppen" />
+    <tag k="review" v="repeater_crosscheck" />
+    <tag k="source_kind" v="local" />
+  </node>
 </osm>

@@ -19,6 +19,7 @@ from .osm import (
 from .nrrl_groups import build_group_lookup, load_nrrl_groups
 from .elevation import enrich_elevations
 from .joz_session import write_repeaters_joz
+from .htcommander import load_merged_csv, write_htcommander_exports
 from .output import write_josm_osm, write_merged_csv, write_unmatched
 from .overrides import load_overrides
 from .sources_local import (
@@ -27,6 +28,20 @@ from .sources_local import (
     load_radioid,
     load_repeaterbook,
 )
+
+
+def run_htcommander_only(cfg: dict, *, base: Path) -> int:
+    """Convert existing repeaters_merged.csv to HTCommander formats."""
+    paths = cfg["paths"]
+    output_dir = resolve_path(paths["output_dir"], base) or (base / "output")
+    csv_path = output_dir / "repeaters_merged.csv"
+    if not csv_path.is_file():
+        print(f"Merged CSV not found: {csv_path}", file=sys.stderr)
+        return 2
+    rows = load_merged_csv(csv_path)
+    print(f"Loaded {len(rows)} rows from {csv_path}")
+    write_htcommander_exports(output_dir, rows)
+    return 0
 
 
 def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> int:
@@ -255,6 +270,10 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
     )
     write_merged_csv(csv_path, merged)
     write_unmatched(unmatched_path, unmatched)
+    if cfg.get("htcommander", {}).get("enabled") or getattr(
+        args, "htcommander", False
+    ):
+        write_htcommander_exports(output_dir, merged)
 
     joz_path = output_dir / "repeaters.joz"
     try:

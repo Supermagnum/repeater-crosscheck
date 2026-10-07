@@ -52,6 +52,10 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "zoom": 14,
         "tile_url": "https://tiles.mapterhorn.com/{z}/{x}/{y}.webp",
     },
+    "htcommander": {
+        # Write CHIRP CSV + VR-N76 regions JSON under output/htcommander/.
+        "enabled": False,
+    },
 }
 
 
@@ -99,6 +103,8 @@ def apply_cli_overrides(cfg: dict[str, Any], args: argparse.Namespace) -> dict[s
         paths["output_dir"] = args.output_dir
     if args.disagreement_m is not None:
         cfg["thresholds"]["disagreement_m"] = args.disagreement_m
+    if getattr(args, "htcommander", False):
+        cfg.setdefault("htcommander", {})["enabled"] = True
     return cfg
 
 
@@ -151,13 +157,32 @@ def build_arg_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Skip Mapterhorn ground elevation (CSV elevation_m)",
     )
+    p.add_argument(
+        "--htcommander",
+        action="store_true",
+        help=(
+            "Write HTCommander exports under output/htcommander/ "
+            "(CHIRP CSV + VR-N76 regions JSON with LA5MR / Fylkesnettet groups)"
+        ),
+    )
+    p.add_argument(
+        "--htcommander-only",
+        action="store_true",
+        help=(
+            "Only convert existing repeaters_merged.csv to HTCommander formats "
+            "(implies --htcommander; skips online sources)"
+        ),
+    )
     return p
 
 
 def main(argv: list[str] | None = None) -> int:
-    from .pipeline import run
+    from .pipeline import run, run_htcommander_only
 
     args = build_arg_parser().parse_args(argv)
+    if args.htcommander_only:
+        args.htcommander = True
+
     config_path = Path(args.config).expanduser()
     if not config_path.is_file():
         example = Path("config.example.toml")
@@ -170,4 +195,6 @@ def main(argv: list[str] | None = None) -> int:
 
     cfg = apply_cli_overrides(load_config(config_path), args)
     base = config_path.resolve().parent
+    if args.htcommander_only:
+        return run_htcommander_only(cfg, base=base)
     return run(cfg, base=base, refresh=args.refresh, args=args)

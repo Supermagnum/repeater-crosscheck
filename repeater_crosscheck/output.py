@@ -533,8 +533,10 @@ def write_josm_osm(
         if parsed:
             scrub_refs.add(format_osm_ref(*parsed))
 
-    # Innlandsnettet / LA5MR network — members should use callsign as name.
-    network_relation_refs = {"relation/18780801"}
+    # Linked repeater networks (OSM type=network) — members keep own callsign name.
+    # LA5MR / Innlandsnettet: relation/18780801
+    # Fylkesnettet Vestfold/Telemark: relation/18788322
+    network_relation_refs = {"relation/18780801", "relation/18788322"}
 
     osm_elements: dict[str, dict] = {}
     if session is not None and cache is not None:
@@ -556,7 +558,7 @@ def write_josm_osm(
                         extra.add(format_osm_ref(mtype, int(mid)))
             missing = extra - set(osm_elements)
             if missing:
-                print(f"Fetching {len(missing)} LA5MR relation member objects...")
+                print(f"Fetching {len(missing)} network relation member objects...")
                 more = fetch_osm_elements(session, cache, missing)
                 osm_elements.update(more)
                 print(f"  loaded {len(more)} members")
@@ -896,7 +898,8 @@ def write_josm_osm(
                 "communication:amateur_radio:callsign", primary_cs
             )
             preserve["source_kind"] = "osm_network"
-            preserve["network"] = "LA5MR"
+            rel_tags = dict(rel.get("tags") or {})
+            preserve["network"] = str(rel_tags.get("name") or rref)
             preserve["osm_relation"] = rref
             preserve["review"] = "repeater_crosscheck"
             # Avoid duplicating if a prior merge already added this callsign.

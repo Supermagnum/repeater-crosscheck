@@ -1,0 +1,7 @@
+Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,RxDtcsCode,CrossMode,Mode,TStep,Skip,Power,Comment,URCALL,RPT1CALL,RPT2CALL,DVCODE
+0,LA3BRR,145.562500,-,0.600000,Tone,74.4,74.4,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA3BRR | Bronane/Drangedal | Fylkesnettet | Fylkesnettet,,,,
+1,LA3GRR,145.612500,-,0.600000,Tone,74.4,74.4,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA3GRR | Gaustatoppen | Fylkesnettet | Fylkesnettet,,,,
+2,LA3SRR,145.275000,-,0.600000,Tone,74.4,74.4,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA3SRR | Korpås/Brunlanes | Fylkesnettet | Fylkesnettet,,,,
+3,LA3XRR,145.225000,-,0.600000,Tone,74.4,74.4,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA3XRR | Hvittingen/Sande | Fylkesnettet | Fylkesnettet,,,,
+4,LA5ER,145.712500,-,0.600000,Tone,74.4,74.4,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA5ER | Eirefjell/Tokke | Fylkesnettet | Fylkesnettet,,,,
+5,LA5GR,145.650000,-,0.600000,Tone,74.4,74.4,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA5GR | Vealøs/Skien | Fylkesnettet | Fylkesnettet,,,,
