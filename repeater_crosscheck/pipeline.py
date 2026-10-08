@@ -22,6 +22,11 @@ from .joz_session import write_repeaters_joz
 from .htcommander import load_merged_csv, write_htcommander_exports
 from .output import write_josm_osm, write_merged_csv, write_unmatched
 from .overrides import load_overrides
+from .sources_aprsfi import (
+    is_aprs_only_type,
+    load_aprsfi_locations,
+    load_aprsfi_web_json,
+)
 from .sources_local import (
     load_anytone_channels,
     load_nrrl,
@@ -222,6 +227,65 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
                 print("Continuing without RepeaterBook data.", file=sys.stderr)
     else:
         print("Skipping RepeaterBook (--skip-repeaterbook)")
+
+    aprsfi_by_call: dict = {}
+    aprsfi_queried = False
+    if not getattr(args, "skip_aprsfi", False):
+        aprs_cfg_pre = cfg.get("aprsfi") or {}
+        aprs_key = (aprs_cfg_pre.get("api_key") or "").strip()
+        aprs_json = resolve_path(paths.get("aprsfi_json") or "", base)
+        if aprs_key:
+            aprs_calls = sorted(
+                {
+                    r.callsign
+                    for r in nrrl
+                    if r.callsign and is_aprs_only_type(r.type)
+                }
+                | {
+                    cs
+                    for cs, ov in overrides.items()
+                    if is_aprs_only_type(ov.type or "APRS")
+                }
+            )
+            print(
+                f"Fetching aprs.fi API locations for {len(aprs_calls)} APRS-only callsigns..."
+            )
+            try:
+                aprsfi_by_call = load_aprsfi_locations(
+                    session,
+                    cache,
+                    aprs_calls,
+                    api_key=aprs_key,
+                    base_url=str(
+                        aprs_cfg_pre.get("base_url") or "https://api.aprs.fi/api"
+                    ),
+                )
+                aprsfi_queried = True
+                print(
+                    f"  {len(aprsfi_by_call)} found on aprs.fi "
+                    f"({len(aprs_calls) - len(aprsfi_by_call)} missing)"
+                )
+            except Exception as exc:
+                print(f"aprs.fi API failed: {exc}", file=sys.stderr)
+                traceback.print_exc()
+                print("Continuing without aprs.fi API data.", file=sys.stderr)
+        if not aprsfi_queried and aprs_json and aprs_json.is_file():
+            print(f"Loading aprs.fi web lookup from {aprs_json}...")
+            try:
+                aprsfi_by_call = load_aprsfi_web_json(aprs_json)
+                aprsfi_queried = True
+                print(f"  {len(aprsfi_by_call)} stations with positions")
+            except Exception as exc:
+                print(f"aprs.fi JSON failed: {exc}", file=sys.stderr)
+                traceback.print_exc()
+        elif not aprsfi_queried:
+            print(
+                "aprs.fi: no api_key and no paths.aprsfi_json — skipping "
+                "(https://aprs.fi/page/api)."
+            )
+    else:
+        print("Skipping aprs.fi (--skip-aprsfi)")
+
     group_lookup: dict = {}
     try:
         print("Fetching NRRL group directory and club websites...")
@@ -235,16 +299,20 @@ def run(cfg: dict, *, base: Path, refresh: bool, args: argparse.Namespace) -> in
         print("Continuing without group website mapping.", file=sys.stderr)
 
     print("Merging...")
+    aprs_cfg = cfg.get("aprsfi") or {}
     merged, unmatched = build_merged(
         nrrl,
         osm_records=osm_records,
         landmarks_by_locator=landmarks_by_locator,
         radioid_records=radioid_records,
         rb_records=rb_records,
+        aprsfi_by_call=aprsfi_by_call,
         channels=channels,
         thresholds=cfg["thresholds"],
         overrides=overrides,
         group_lookup=group_lookup,
+        omit_aprs_missing=bool(aprs_cfg.get("omit_missing", True)),
+        aprsfi_queried=aprsfi_queried,
     )
 
     mh = cfg.get("mapterhorn") or {}

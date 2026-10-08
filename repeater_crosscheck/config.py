@@ -18,6 +18,8 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "output_dir": "./output",
         # Local RepeaterBook exportROW / CHIRP rb-*-all.json (used when no API token).
         "repeaterbook_json": "./data/repeaterbook_norway.json",
+        # Optional aprs.fi web-lookup export (info pages) when no API key.
+        "aprsfi_json": "./data/aprsfi_ld_web.json",
     },
     "thresholds": {
         "disagreement_m": 2000,
@@ -44,6 +46,14 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "country": "Norway",
         # App #114 (RepeaterBook Python Client) — must match registration literally.
         "user_agent": "RepeaterBook Python Client/0.6.0 (+micael@jarniac.dev)",
+    },
+    "aprsfi": {
+        # From https://aprs.fi/ — My account → API key. Used only for APRS digis.
+        # Without a key, paths.aprsfi_json (web info-page export) is used if present.
+        "api_key": "",
+        "base_url": "https://api.aprs.fi/api",
+        # Omit APRS-only stations with no aprs.fi hit (likely QRT).
+        "omit_missing": True,
     },
     "overpass": {
         "endpoint": "https://overpass-api.de/api/interpreter",
@@ -154,6 +164,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--skip-repeaterbook",
         action="store_true",
         help="Skip RepeaterBook",
+    )
+    p.add_argument(
+        "--skip-aprsfi",
+        action="store_true",
+        help="Skip aprs.fi location checks (APRS digis only)",
     )
     p.add_argument(
         "--skip-elevation",

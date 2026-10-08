@@ -150,6 +150,13 @@ Edit `config.toml`:
   `RepeaterBook Python Client/0.6.0 (+micael@jarniac.dev)` for App #114 tokens
   (literal match; do not substitute your own contact).
 - `radioid.api_token` — optional `X-API-Token` (recommended for future-proofing)
+- `aprsfi.api_key` — optional key from [aprs.fi](https://aprs.fi/) (My account),
+  **or** `paths.aprsfi_json` (web info-page export, e.g.
+  [`data/aprsfi_ld_web.json`](data/aprsfi_ld_web.json) from
+  `https://aprs.fi/info/a/<call>`). Used **only** for APRS digi / IGate
+  callsigns; missing stations are omitted when `aprsfi.omit_missing = true`.
+  Local overrides still win. FM/DMR/D-STAR etc. are never changed. Credit
+  [aprs.fi](https://aprs.fi/).
 
 ## Usage
 
@@ -275,9 +282,10 @@ dump under `./cache/`.
    2. OSM feature already tagged with the callsign
    3. OSM mast/tower/peak/hill matching QTH name inside the locator square
    4. OSM member of a same-callsign network/site relation inside/near the square
-   5. radioid.net if inside/near the locator square
-   6. **RepeaterBook** lat/lon (preferred over Maidenhead; local JSON or API)
-   7. Maidenhead locator square centre (last resort — often kilometres off)
+   5. **aprs.fi** live position (APRS digi / IGate rows only)
+   6. radioid.net if inside/near the locator square
+   7. **RepeaterBook** lat/lon (preferred over Maidenhead; local JSON or API)
+   8. Maidenhead locator square centre (last resort — often kilometres off)
 
 Without a RepeaterBook API token, set `paths.repeaterbook_json` to a Norway
 export (CHIRP `rb-norway-all.json` / exportROW shape). A copy ships as
@@ -330,6 +338,8 @@ codes (e.g. `11K2F3E` FM, `7K60FXE` DMR, `6K00F7W` D-STAR, `9K36F7W` C4FM,
 - **RepeaterBook**: App #114 token + that app's registered User-Agent (see above).
   Personal use; do not redistribute. See their
   [API wiki](https://www.repeaterbook.com/wiki/doku.php?id=api).
+- **aprs.fi**: free API with attribution; each user needs their own key.
+  See [aprs.fi API terms](https://aprs.fi/page/api). Used only for APRS digis.
 - **AnyTone Norge (Facebook)**: community discussion only; do not republish
   members' private posts without permission.
 

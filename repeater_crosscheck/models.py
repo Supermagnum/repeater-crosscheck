@@ -84,6 +84,8 @@ class MergedRepeater:
     radioid_lon: float | None = None
     repeaterbook_lat: float | None = None
     repeaterbook_lon: float | None = None
+    aprsfi_lat: float | None = None
+    aprsfi_lon: float | None = None
     local_lat: float | None = None
     local_lon: float | None = None
     notes: str = ""

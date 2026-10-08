@@ -1,0 +1,1215 @@
+{
+  "source": "aprs.fi web info pages",
+  "fetched": "2026-10-08",
+  "credit": "https://aprs.fi/",
+  "entries": [
+    {
+      "call": "LD1BK",
+      "found": true,
+      "lat": 59.919,
+      "lon": 10.516,
+      "last": "",
+      "title": "Stasjonsinfo for LD1BK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD1FA",
+      "found": true,
+      "lat": 59.22866666666667,
+      "lon": 10.941166666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD1FA – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD1FE",
+      "found": true,
+      "lat": 59.78033333333333,
+      "lon": 11.003333333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD1FE – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD1FL",
+      "found": true,
+      "lat": 59.7805,
+      "lon": 11.003666666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD1FL – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD1KO",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD1MD",
+      "found": true,
+      "lat": 59.528666666666666,
+      "lon": 11.3985,
+      "last": "",
+      "title": "Stasjonsinfo for LD1MD – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD1OE",
+      "found": true,
+      "lat": 59.897666666666666,
+      "lon": 10.774833333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD1OE – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD1OS",
+      "found": true,
+      "lat": 59.9145,
+      "lon": 10.734166666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD1OS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2BI",
+      "found": true,
+      "lat": 60.229166666666664,
+      "lon": 10.6065,
+      "last": "",
+      "title": "Stasjonsinfo for LD2BI – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2ER",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2FN",
+      "found": true,
+      "lat": 61,
+      "lon": 9,
+      "last": "",
+      "title": "Stasjonsinfo for LD2FN – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2GF",
+      "found": true,
+      "lat": 62.172666666666665,
+      "lon": 9.807333333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD2GF – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2GG",
+      "found": true,
+      "lat": 61.51383333333333,
+      "lon": 9.794666666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD2GG – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2GI",
+      "found": true,
+      "lat": 60.478,
+      "lon": 10.602,
+      "last": "",
+      "title": "Stasjonsinfo for LD2GI – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2GN",
+      "found": true,
+      "lat": 60.993833333333335,
+      "lon": 11.338166666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD2GN – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2GO",
+      "found": true,
+      "lat": 61.3125,
+      "lon": 12.184333333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD2GO – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2GP",
+      "found": true,
+      "lat": 61.38333333333333,
+      "lon": 11.1,
+      "last": "",
+      "title": "Stasjonsinfo for LD2GP – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2GR",
+      "found": true,
+      "lat": 60.6915,
+      "lon": 10.685833333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD2GR – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2GS",
+      "found": true,
+      "lat": 60.848,
+      "lon": 9.400666666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD2GS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2JB",
+      "found": true,
+      "lat": 61.89783333333333,
+      "lon": 9.2835,
+      "last": "",
+      "title": "Stasjonsinfo for LD2JB – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2KF",
+      "found": true,
+      "lat": 60.32416666666666,
+      "lon": 12.138333333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD2KF – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2KS",
+      "found": true,
+      "lat": 60.17283333333334,
+      "lon": 11.991166666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD2KS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2LH",
+      "found": true,
+      "lat": 61.148833333333336,
+      "lon": 10.481666666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD2LH – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2LK",
+      "found": true,
+      "lat": 61.0075,
+      "lon": 10.191166666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD2LK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2OH",
+      "found": true,
+      "lat": 60.367333333333335,
+      "lon": 11.072666666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD2OH – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2RK",
+      "found": true,
+      "lat": 60.2185,
+      "lon": 11.2515,
+      "last": "",
+      "title": "Stasjonsinfo for LD2RK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD2TR",
+      "found": true,
+      "lat": 62.174,
+      "lon": 10.6955,
+      "last": "",
+      "title": "Stasjonsinfo for LD2TR – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3BD",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3BL",
+      "found": true,
+      "lat": 59.4625,
+      "lon": 9.035,
+      "last": "",
+      "title": "Stasjonsinfo for LD3BL – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3DN",
+      "found": true,
+      "lat": 59.718833333333336,
+      "lon": 10.0865,
+      "last": "",
+      "title": "Stasjonsinfo for LD3DN – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3GB",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3GD",
+      "found": true,
+      "lat": 60.433,
+      "lon": 8.4245,
+      "last": "",
+      "title": "Stasjonsinfo for LD3GD – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3GE",
+      "found": true,
+      "lat": 60.54083333333333,
+      "lon": 8.195833333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD3GE – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3GK",
+      "found": true,
+      "lat": 58.86783333333333,
+      "lon": 9.379833333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD3GK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3GO",
+      "found": true,
+      "lat": 60.714,
+      "lon": 8.968833333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD3GO – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3GT",
+      "found": true,
+      "lat": 59.85433333333334,
+      "lon": 8.651833333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD3GT – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3HN",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3HS",
+      "found": true,
+      "lat": 60.71816666666667,
+      "lon": 7.6355,
+      "last": "",
+      "title": "Stasjonsinfo for LD3HS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3HV",
+      "found": true,
+      "lat": 59.54683333333333,
+      "lon": 10.197,
+      "last": "",
+      "title": "Stasjonsinfo for LD3HV – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3JS",
+      "found": true,
+      "lat": 59.192,
+      "lon": 9.948,
+      "last": "",
+      "title": "Stasjonsinfo for LD3JS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3KF",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3KJ",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3KS",
+      "found": true,
+      "lat": 59.6705,
+      "lon": 9.576666666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD3KS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3LL",
+      "found": true,
+      "lat": 59.480333333333334,
+      "lon": 9.008666666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD3LL – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3SA",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3SH",
+      "found": true,
+      "lat": 59.54516666666667,
+      "lon": 10.196666666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD3SH – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3SK",
+      "found": true,
+      "lat": 59.25183333333333,
+      "lon": 9.651833333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD3SK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3TB",
+      "found": true,
+      "lat": 59.283,
+      "lon": 10.406,
+      "last": "",
+      "title": "Stasjonsinfo for LD3TB – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3TE",
+      "found": true,
+      "lat": 59.48983333333334,
+      "lon": 8.0905,
+      "last": "",
+      "title": "Stasjonsinfo for LD3TE – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3TO",
+      "found": true,
+      "lat": 60.41266666666667,
+      "lon": 9.995333333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD3TO – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3VL",
+      "found": true,
+      "lat": 59.236,
+      "lon": 9.699333333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD3VL – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD3VM",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4AA",
+      "found": true,
+      "lat": 58.765,
+      "lon": 8.506833333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD4AA – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4AI",
+      "found": true,
+      "lat": 58.39,
+      "lon": 8.583666666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD4AI – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4AK",
+      "found": true,
+      "lat": 58.475833333333334,
+      "lon": 8.765333333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD4AK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4AT",
+      "found": true,
+      "lat": 58.4575,
+      "lon": 8.8105,
+      "last": "",
+      "title": "Stasjonsinfo for LD4AT – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4BO",
+      "found": true,
+      "lat": 58.21516666666667,
+      "lon": 8.347166666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD4BO – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4EG",
+      "found": true,
+      "lat": 58.62,
+      "lon": 6.293833333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD4EG – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4EI",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4GF",
+      "found": true,
+      "lat": 58.38283333333333,
+      "lon": 8.567666666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD4GF – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4GS",
+      "found": true,
+      "lat": 58.4475,
+      "lon": 8.461,
+      "last": "",
+      "title": "Stasjonsinfo for LD4GS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4KA",
+      "found": true,
+      "lat": 58.18066666666667,
+      "lon": 7.976166666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD4KA – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4LF",
+      "found": true,
+      "lat": 58.20783333333333,
+      "lon": 8.347166666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD4LF – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4NB",
+      "found": true,
+      "lat": 58.6635,
+      "lon": 5.714166666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD4NB – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4RP",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4SH",
+      "found": true,
+      "lat": 58.7175,
+      "lon": 9.2195,
+      "last": "",
+      "title": "Stasjonsinfo for LD4SH – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4SJ",
+      "found": true,
+      "lat": 58.8425,
+      "lon": 5.714166666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD4SJ – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4ST",
+      "found": true,
+      "lat": 59.04516666666667,
+      "lon": 5.9845,
+      "last": "",
+      "title": "Stasjonsinfo for LD4ST – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4VK",
+      "found": true,
+      "lat": 58.35666666666667,
+      "lon": 6.503333333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD4VK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD4VS",
+      "found": true,
+      "lat": 58.6745,
+      "lon": 8.7845,
+      "last": "",
+      "title": "Stasjonsinfo for LD4VS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD5AG",
+      "found": true,
+      "lat": 60.473333333333336,
+      "lon": 5.293333333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD5AG – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD5AV",
+      "found": true,
+      "lat": 59.42283333333334,
+      "lon": 5.329,
+      "last": "",
+      "title": "Stasjonsinfo for LD5AV – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD5BE",
+      "found": true,
+      "lat": 60.34016666666667,
+      "lon": 5.094666666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD5BE – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD5BF",
+      "found": true,
+      "lat": 60.598,
+      "lon": 7.506666666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD5BF – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD5BH",
+      "found": true,
+      "lat": 60.5525,
+      "lon": 7.473833333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD5BH – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD5GU",
+      "found": true,
+      "lat": 61.04,
+      "lon": 5.1585,
+      "last": "",
+      "title": "Stasjonsinfo for LD5GU – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD5KH",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD5KS",
+      "found": true,
+      "lat": 60.18983333333333,
+      "lon": 6.0888333333333335,
+      "last": "",
+      "title": "Stasjonsinfo for LD5KS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD5MT",
+      "found": true,
+      "lat": 60.38916666666667,
+      "lon": 6.247333333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD5MT – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD5SK",
+      "found": true,
+      "lat": 59.875,
+      "lon": 5.4925,
+      "last": "",
+      "title": "Stasjonsinfo for LD5SK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD5VO",
+      "found": true,
+      "lat": 60.694,
+      "lon": 6.412166666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD5VO – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6BE",
+      "found": true,
+      "lat": 62.2665,
+      "lon": 7.134166666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD6BE – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6BK",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6BS",
+      "found": true,
+      "lat": 61.873333333333335,
+      "lon": 4.986666666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD6BS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6FD",
+      "found": true,
+      "lat": 61.437,
+      "lon": 5.859166666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD6FD – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6FL",
+      "found": true,
+      "lat": 61.594,
+      "lon": 5.020333333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD6FL – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6HO",
+      "found": true,
+      "lat": 61.93816666666667,
+      "lon": 6.5120000000000005,
+      "last": "",
+      "title": "Stasjonsinfo for LD6HO – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6KN",
+      "found": true,
+      "lat": 63.111666666666665,
+      "lon": 7.765833333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD6KN – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6LB",
+      "found": true,
+      "lat": 62.44716666666667,
+      "lon": 6.282166666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD6LB – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6LF",
+      "found": true,
+      "lat": 62.51583333333333,
+      "lon": 6.873,
+      "last": "",
+      "title": "Stasjonsinfo for LD6LF – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6MD",
+      "found": true,
+      "lat": 62.779,
+      "lon": 7.2491666666666665,
+      "last": "",
+      "title": "Stasjonsinfo for LD6MD – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6NT",
+      "found": true,
+      "lat": 62.352666666666664,
+      "lon": 5.586,
+      "last": "",
+      "title": "Stasjonsinfo for LD6NT – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6RF",
+      "found": true,
+      "lat": 62.931333333333335,
+      "lon": 7.926333333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD6RF – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6SA",
+      "found": true,
+      "lat": 61.890166666666666,
+      "lon": 6.110333333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD6SA – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6SB",
+      "found": true,
+      "lat": 62.715666666666664,
+      "lon": 8.494833333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD6SB – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6SD",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6SG",
+      "found": true,
+      "lat": 62.59616666666667,
+      "lon": 8.905833333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD6SG – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6SO",
+      "found": true,
+      "lat": 61.16733333333333,
+      "lon": 7.120166666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD6SO – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD6VS",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD7FB",
+      "found": true,
+      "lat": 64.22033333333333,
+      "lon": 10.371,
+      "last": "",
+      "title": "Stasjonsinfo for LD7FB – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD7FO",
+      "found": true,
+      "lat": 63.78933333333333,
+      "lon": 9.3865,
+      "last": "",
+      "title": "Stasjonsinfo for LD7FO – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD7FS",
+      "found": true,
+      "lat": 63.53333333333333,
+      "lon": 9.95,
+      "last": "",
+      "title": "Stasjonsinfo for LD7FS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD7GG",
+      "found": true,
+      "lat": 64.40916666666666,
+      "lon": 12.208666666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD7GG – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD7ST",
+      "found": true,
+      "lat": 63.992,
+      "lon": 11.5285,
+      "last": "",
+      "title": "Stasjonsinfo for LD7ST – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD7TB",
+      "found": true,
+      "lat": 63.064,
+      "lon": 11.146,
+      "last": "",
+      "title": "Stasjonsinfo for LD7TB – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD7TH",
+      "found": true,
+      "lat": 62.901666666666664,
+      "lon": 11.798,
+      "last": "",
+      "title": "Stasjonsinfo for LD7TH – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD7TO",
+      "found": true,
+      "lat": 62.5715,
+      "lon": 9.716666666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD7TO – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD7TR",
+      "found": true,
+      "lat": 63.172666666666665,
+      "lon": 9.140666666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD7TR – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD7TS",
+      "found": true,
+      "lat": 63.041,
+      "lon": 10.302666666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD7TS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD7TT",
+      "found": true,
+      "lat": 63.422333333333334,
+      "lon": 10.432,
+      "last": "",
+      "title": "Stasjonsinfo for LD7TT – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD7VD",
+      "found": true,
+      "lat": 63.86033333333334,
+      "lon": 11.5245,
+      "last": "",
+      "title": "Stasjonsinfo for LD7VD – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8BK",
+      "found": true,
+      "lat": 67.17416666666666,
+      "lon": 15.027166666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD8BK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8FS",
+      "found": true,
+      "lat": 67.4335,
+      "lon": 15.4545,
+      "last": "",
+      "title": "Stasjonsinfo for LD8FS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8FT",
+      "found": true,
+      "lat": 67.26433333333334,
+      "lon": 15.383,
+      "last": "",
+      "title": "Stasjonsinfo for LD8FT – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8HV",
+      "found": true,
+      "lat": 66.20666666666666,
+      "lon": 13.740333333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD8HV – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8KV",
+      "found": true,
+      "lat": 67.31483333333334,
+      "lon": 14.477333333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD8KV – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8MB",
+      "found": true,
+      "lat": 65.76683333333334,
+      "lon": 13.316166666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD8MB – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8NB",
+      "found": true,
+      "lat": 68.4325,
+      "lon": 18.07133333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD8NB – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8NK",
+      "found": true,
+      "lat": 66.21266666666666,
+      "lon": 13.053666666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD8NK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8NO",
+      "found": true,
+      "lat": 68.46583333333334,
+      "lon": 17.240833333333335,
+      "last": "",
+      "title": "Stasjonsinfo for LD8NO – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8NV",
+      "found": true,
+      "lat": 68.45016666666666,
+      "lon": 17.46,
+      "last": "",
+      "title": "Stasjonsinfo for LD8NV – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8RA",
+      "found": true,
+      "lat": 66.42566666666667,
+      "lon": 15.217166666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD8RA – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8RH",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8RS",
+      "found": true,
+      "lat": 67.17916666666666,
+      "lon": 15.979,
+      "last": "",
+      "title": "Stasjonsinfo for LD8RS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8SH",
+      "found": true,
+      "lat": 67.14,
+      "lon": 16.136666666666667,
+      "last": "",
+      "title": "Stasjonsinfo for LD8SH – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD8SS",
+      "found": true,
+      "lat": 66.00633333333333,
+      "lon": 12.618,
+      "last": "",
+      "title": "Stasjonsinfo for LD8SS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9AF",
+      "found": true,
+      "lat": 69.12783333333333,
+      "lon": 18.518666666666668,
+      "last": "",
+      "title": "Stasjonsinfo for LD9AF – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9AT",
+      "found": true,
+      "lat": 70.11316666666667,
+      "lon": 22.9335,
+      "last": "",
+      "title": "Stasjonsinfo for LD9AT – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9AV",
+      "found": true,
+      "lat": 68.58133333333333,
+      "lon": 19.3625,
+      "last": "",
+      "title": "Stasjonsinfo for LD9AV – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9BA",
+      "found": true,
+      "lat": 69.21633333333334,
+      "lon": 19.3795,
+      "last": "",
+      "title": "Stasjonsinfo for LD9BA – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9BK",
+      "found": true,
+      "lat": 69.05416666666666,
+      "lon": 16.525,
+      "last": "",
+      "title": "Stasjonsinfo for LD9BK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9HA",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9HH",
+      "found": true,
+      "lat": 68.75033333333333,
+      "lon": 16.1685,
+      "last": "",
+      "title": "Stasjonsinfo for LD9HH – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9HK",
+      "found": true,
+      "lat": 68.781,
+      "lon": 16.205833333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD9HK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9HN",
+      "found": true,
+      "lat": 70.691,
+      "lon": 23.6715,
+      "last": "",
+      "title": "Stasjonsinfo for LD9HN – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9HO",
+      "found": true,
+      "lat": 68.80633333333333,
+      "lon": 16.376833333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD9HO – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9HS",
+      "found": true,
+      "lat": 70.47383333333333,
+      "lon": 22.159,
+      "last": "",
+      "title": "Stasjonsinfo for LD9HS – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9KK",
+      "found": true,
+      "lat": 68.75033333333333,
+      "lon": 16.1685,
+      "last": "",
+      "title": "Stasjonsinfo for LD9KK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9LY",
+      "found": true,
+      "lat": 69.64483333333334,
+      "lon": 20.326833333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD9LY – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9NG",
+      "found": true,
+      "lat": 68.6505,
+      "lon": 17.762666666666668,
+      "last": "",
+      "title": "Stasjonsinfo for LD9NG – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9NK",
+      "found": true,
+      "lat": 70.995,
+      "lon": 25.895333333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD9NK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9SH",
+      "found": true,
+      "lat": 68.54433333333333,
+      "lon": 14.871666666666666,
+      "last": "",
+      "title": "Stasjonsinfo for LD9SH – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9SJ",
+      "found": true,
+      "lat": 69.322,
+      "lon": 17.724,
+      "last": "",
+      "title": "Stasjonsinfo for LD9SJ – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9SK",
+      "found": false,
+      "lat": null,
+      "lon": null,
+      "last": "",
+      "title": "Stasjonsinfo – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9SV",
+      "found": true,
+      "lat": 68.16883333333334,
+      "lon": 14.660333333333334,
+      "last": "",
+      "title": "Stasjonsinfo for LD9SV – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9TD",
+      "found": true,
+      "lat": 69.62016666666666,
+      "lon": 18.999,
+      "last": "",
+      "title": "Stasjonsinfo for LD9TD – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9TF",
+      "found": true,
+      "lat": 69.43333333333334,
+      "lon": 20.153333333333332,
+      "last": "",
+      "title": "Stasjonsinfo for LD9TF – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9TK",
+      "found": true,
+      "lat": 69.7335,
+      "lon": 18.785833333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD9TK – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9TT",
+      "found": true,
+      "lat": 69.71833333333333,
+      "lon": 19.128833333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD9TT – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9TU",
+      "found": true,
+      "lat": 69.68633333333334,
+      "lon": 19.78783333333333,
+      "last": "",
+      "title": "Stasjonsinfo for LD9TU – aprs.fi – live APRS map"
+    },
+    {
+      "call": "LD9VN",
+      "found": true,
+      "lat": 70.18816666666666,
+      "lon": 19.731333333333332,
+      "last": "",
+      "title": "Stasjonsinfo for LD9VN – aprs.fi – live APRS map"
+    }
+  ]
+}

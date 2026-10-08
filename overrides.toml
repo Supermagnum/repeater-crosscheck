@@ -374,7 +374,9 @@ note = "Operator position from JOSM review (was NRRL locator centre)."
 qth = "Langberget/Elverum"
 lat = 60.7710818
 lon = 11.6846947
-note = "Operator position from JOSM review (was NRRL locator centre)."
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD2ER); treat as QRT and omit."
 
 [LD2FN]
 qth = "Fagernes"
@@ -680,3 +682,156 @@ lat = 68.581333
 lon = 19.362500
 type = "APRS"
 note = "Position 68°34.88'N 19°21.75'E."
+
+# APRS-only digis with no aprs.fi station page (https://aprs.fi/info/a/<call>) — omit.
+[LD1KO]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD1KO); treat as QRT and omit."
+
+[LD3BD]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD3BD); treat as QRT and omit."
+
+[LD3GB]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD3GB); treat as QRT and omit."
+
+[LD3HN]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD3HN); treat as QRT and omit."
+
+[LD3KF]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD3KF); treat as QRT and omit."
+
+[LD3KJ]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD3KJ); treat as QRT and omit."
+
+[LD3SA]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD3SA); treat as QRT and omit."
+
+[LD3VM]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD3VM); treat as QRT and omit."
+
+[LD4EI]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD4EI); treat as QRT and omit."
+
+[LD4RP]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD4RP); treat as QRT and omit."
+
+[LD5KH]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD5KH); treat as QRT and omit."
+
+[LD5KN]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+[LD6BK]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD6BK); treat as QRT and omit."
+
+[LD6SD]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD6SD); treat as QRT and omit."
+
+[LD6VS]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD6VS); treat as QRT and omit."
+
+[LD8RH]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD8RH); treat as QRT and omit."
+
+[LD9HA]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD9HA); treat as QRT and omit."
+
+[LD9SK]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi (https://aprs.fi/info/a/LD9SK); treat as QRT and omit."
+
+# Earlier joz removals (also absent on aprs.fi) — omit from exports.
+
+[LD7NA]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+[LD7TG]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+[LD8DF]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+[LD8GS]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+[LD8HB]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+[LD9DM]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+[LD9KA]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+[LD9KR]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+[LD9KS]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+[LD9PS]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+[LD9SM]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+[LD9VG]
+skip = true
+qrt = true
+note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."

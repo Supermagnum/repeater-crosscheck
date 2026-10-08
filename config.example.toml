@@ -10,6 +10,8 @@ output_dir = "./output"
 # Local RepeaterBook Norway JSON (exportROW / CHIRP rb-norway-all.json).
 # Used when [repeaterbook].api_token is empty so pins replace Maidenhead centres.
 repeaterbook_json = "./data/repeaterbook_norway.json"
+# Optional aprs.fi web info-page export for LD APRS digis (no API key needed).
+aprsfi_json = "./data/aprsfi_ld_web.json"
 
 [thresholds]
 # Flag when any two source positions disagree by more than this (metres).
@@ -49,6 +51,14 @@ country = "Norway"
 # App #114 binds the token to this User-Agent literally — do not change it.
 # Falls back to [http].user_agent when empty (that will 403 with an App #114 token).
 user_agent = "RepeaterBook Python Client/0.6.0 (+micael@jarniac.dev)"
+
+[aprsfi]
+# API key from https://aprs.fi/ (My account). Used only for APRS digi / IGate rows.
+# Credit: https://aprs.fi/ — see https://aprs.fi/page/api
+api_key = ""
+base_url = "https://api.aprs.fi/api"
+# Drop APRS-only stations with no aprs.fi hit (likely QRT). Does not affect FM/DMR/etc.
+omit_missing = true
 
 [overpass]
 endpoint = "https://overpass-api.de/api/interpreter"

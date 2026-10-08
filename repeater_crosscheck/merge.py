@@ -21,6 +21,7 @@ from .osm import (
 from .osm_objects import format_osm_ref, parse_osm_ref
 from .overrides import LocalOverride
 from .nrrl_groups import NrrlGroup, match_gruppe
+from .sources_aprsfi import is_aprs_only_type
 from .util import haversine_m, point_in_bbox
 
 
@@ -74,6 +75,8 @@ def _merge_duplicate_row(keep: MergedRepeater, other: MergedRepeater) -> MergedR
         "radioid_lon",
         "repeaterbook_lat",
         "repeaterbook_lon",
+        "aprsfi_lat",
+        "aprsfi_lon",
         "local_lat",
         "local_lon",
         "elevation_m",
@@ -195,10 +198,12 @@ def choose_best_position(
     osm_relation_pos: Position | None,
     radioid: SourceRecord | None,
     repeaterbook: SourceRecord | None,
+    aprsfi: SourceRecord | None,
     osm_call: SourceRecord | None,
     near_m: float,
     portable: bool,
     dedicated_osm_call: bool = False,
+    aprs_only: bool = False,
 ) -> tuple[float | None, float | None, str]:
     """
     Priority:
@@ -206,6 +211,7 @@ def choose_best_position(
       a0) OSM feature already tagged with this callsign
       a) OSM mast/tower/peak matching QTH inside locator square
       a2) OSM member of a same-callsign network relation inside/near the square
+      a3) aprs.fi live position (APRS-only digis)
       b) radioid if inside/near locator square
       b2) RepeaterBook lat/lon (preferred over Maidenhead centre)
       c) locator square centre (last resort — often kilometres off)
@@ -229,6 +235,15 @@ def choose_best_position(
 
     if osm_relation_pos is not None:
         return osm_relation_pos.lat, osm_relation_pos.lon, "osm"
+
+    # Live APRS digi position — only applied to APRS-only rows.
+    if (
+        aprs_only
+        and aprsfi is not None
+        and aprsfi.lat is not None
+        and aprsfi.lon is not None
+    ):
+        return aprsfi.lat, aprsfi.lon, "aprsfi"
 
     def near_ok(lat: float | None, lon: float | None) -> bool:
         if lat is None or lon is None or bbox is None:
@@ -285,10 +300,13 @@ def build_merged(
     landmarks_by_locator: dict[str, list[dict]],
     radioid_records: list[SourceRecord],
     rb_records: list[SourceRecord],
+    aprsfi_by_call: dict[str, SourceRecord] | None = None,
     channels: list[CodeplugChannel],
     thresholds: dict,
     overrides: dict[str, LocalOverride] | None = None,
     group_lookup: dict[str, NrrlGroup] | None = None,
+    omit_aprs_missing: bool = True,
+    aprsfi_queried: bool = False,
 ) -> tuple[list[MergedRepeater], list[str]]:
     unmatched_notes: list[str] = []
     disagreement_m = float(thresholds["disagreement_m"])
@@ -296,6 +314,7 @@ def build_merged(
     freq_tol = float(thresholds["freq_tolerance_mhz"])
     freq_max_m = float(thresholds["freq_match_max_m"])
     fuzzy_min = int(thresholds["qth_fuzzy_min"])
+    aprsfi_by_call = aprsfi_by_call or {}
 
     channels_by_call: dict[str, list[CodeplugChannel]] = {}
     for ch in channels:
@@ -693,6 +712,31 @@ def build_merged(
             unmatched_notes.append(f"{rep.callsign}: not found in RepeaterBook")
             row.flags.append("missing_repeaterbook")
 
+        aprs_only = is_aprs_only_type(row.type)
+        af: SourceRecord | None = None
+        if aprs_only and aprsfi_queried:
+            af = aprsfi_by_call.get(rep.callsign)
+            if af and af.lat is not None:
+                row.match_methods["aprsfi"] = "callsign"
+                row.aprsfi_lat = af.lat
+                row.aprsfi_lon = af.lon
+                positions.append(
+                    Position(
+                        lat=af.lat,
+                        lon=af.lon,
+                        source_kind="aprsfi",
+                        source_id=af.source_id,
+                    )
+                )
+            elif local_pos is None:
+                # No live aprs.fi hit and no operator pin — treat as QRT/dead digi.
+                unmatched_notes.append(
+                    f"{rep.callsign}: not found on aprs.fi (APRS-only)"
+                )
+                if omit_aprs_missing:
+                    continue
+                row.flags.append("missing_aprsfi")
+
         osm_call_for_best = osm_call
         best_lat, best_lon, best_source = choose_best_position(
             rep,
@@ -701,10 +745,12 @@ def build_merged(
             osm_relation_pos=osm_relation_pos,
             radioid=rid,
             repeaterbook=rb,
+            aprsfi=af,
             osm_call=osm_call_for_best,
             near_m=near_m,
             portable=portable,
             dedicated_osm_call=bool(dedicated_call),
+            aprs_only=aprs_only,
         )
         row.best_lat = best_lat
         row.best_lon = best_lon
