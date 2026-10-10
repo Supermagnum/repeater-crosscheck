@@ -71,7 +71,7 @@ NETWORK_RELATIONS: dict[str, NetworkDef] = {
             "LA4ORR": "node/14266724834",
             "LA6JR": "node/14266724838",
             "LA5AR": "node/14266724836",
-            # LA6SR: local/RepeaterBook pin until an OSM node exists
+            "LA6SR": "node/14270013283",
         },
     },
     "Sandnes net": {

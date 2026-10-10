@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <osm version="0.6" generator="repeater-crosscheck/1.0.0">
   <node id="-1" visible="true" lat="59.104198" lon="11.375000">
     <tag k="best_source" v="repeaterbook" />
@@ -1456,24 +1456,6 @@
     <tag k="note" v="disagreement 2506.3 m; disagreement; missing_osm" />
     <tag k="name" v="LA6RR" />
   </way>
-  <node id="-99" visible="true" lat="58.770802" lon="9.125000">
-    <tag k="best_source" v="local" />
-    <tag k="callsign" v="LA6SR" />
-    <tag k="communication:amateur_radio" v="yes" />
-    <tag k="communication:amateur_radio:callsign" v="LA6SR" />
-    <tag k="communication:amateur_radio:repeater" v="yes" />
-    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
-    <tag k="communication:amateur_radio:repeater:frequency_out" v="145.775 MHz" />
-    <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
-    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
-    <tag k="fixme" v="operator_override" />
-    <tag k="group" v="Arendal" />
-    <tag k="name" v="LA6SR" />
-    <tag k="network" v="Agder net" />
-    <tag k="note" v="Agder net member. Position from RepeaterBook (no dedicated OSM node yet).; operator override position" />
-    <tag k="nrrl:group_page" v="https://nrrl.no/grupper/agder/arendalsgruppen/" />
-    <tag k="qth" v="Heiberg" />
-  </node>
   <node id="-100" visible="true" lat="61.891890" lon="6.105970">
     <tag k="best_source" v="radioid" />
     <tag k="callsign" v="LA6SRR" />
@@ -9880,7 +9862,7 @@
     <member type="node" ref="14266724836" role="" />
     <member type="node" ref="14266724838" role="" />
     <member type="node" ref="14266724839" role="" />
-    <member type="node" ref="-99" role="" />
+    <member type="node" ref="14270013283" role="" />
     <tag k="communication:amateur_radio:repeater" v="yes" />
     <tag k="name" v="Agder net" />
     <tag k="source" v="local knowledge / repeater-crosscheck" />
@@ -9904,4 +9886,20 @@
     <tag k="source" v="local knowledge / repeater-crosscheck" />
     <tag k="type" v="network" />
   </relation>
-</osm>
+<node id="14270013283" timestamp="2026-10-10T08:42:54Z" uid="237638" user="Visaman" visible="true" version="1" changeset="190288395" lat="58.770802" lon="9.125">
+    <tag k="best_source" v="local" />
+    <tag k="callsign" v="LA6SR" />
+    <tag k="communication:amateur_radio" v="yes" />
+    <tag k="communication:amateur_radio:callsign" v="LA6SR" />
+    <tag k="communication:amateur_radio:repeater" v="yes" />
+    <tag k="communication:amateur_radio:repeater:ctcss" v="123" />
+    <tag k="communication:amateur_radio:repeater:frequency_out" v="145.775 MHz" />
+    <tag k="communication:amateur_radio:repeater:modulation" v="11K2F3E" />
+    <tag k="communication:amateur_radio:repeater:shift" v="-0.6 MHz" />
+    <tag k="group" v="Arendal" />
+    <tag k="name" v="LA6SR" />
+    <tag k="network" v="Agder net" />
+    <tag k="note" v="Agder net member. Position from RepeaterBook (no dedicated OSM node yet).; operator override position" />
+    <tag k="website" v="https://nrrl.no/grupper/agder/arendalsgruppen/" />
+  </node>
+  </osm>

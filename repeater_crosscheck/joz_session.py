@@ -11,6 +11,7 @@ from copy import deepcopy
 from . import __version__
 from .fylke import FYLKE_LAYER_ORDER, callsign_fylke_map, fylke_slug
 from .models import MergedRepeater
+from .networks import NETWORK_RELATIONS
 
 # Kartverket topo imagery layer (from the hand-built session).
 _KARTVERKET_LAYER_XML = """        <layer index="{index}" name="Kartverket topo" type="imagery" version="0.1" visible="true">
@@ -67,6 +68,118 @@ def _pretty_osm(root: ET.Element) -> bytes:
     )
 
 
+def _is_network_relation(el: ET.Element) -> bool:
+    t = _tags(el)
+    return t.get("type") == "network" and (
+        t.get("name") in NETWORK_RELATIONS
+        or t.get("name") in {m["comment_tag"] for m in NETWORK_RELATIONS.values()}
+    )
+
+
+def _layer_has_id(root: ET.Element, kind: str, eid: str) -> bool:
+    return any(el.tag == kind and el.get("id") == eid for el in root)
+
+
+def _inject_network_relations_into_layers(
+    layer_roots: dict[str, ET.Element],
+    network_rels: list[ET.Element],
+    nodes_by_id: dict[str, ET.Element],
+    ways_by_id: dict[str, ET.Element],
+) -> ET.Element:
+    """
+    Ensure each type=network relation is a real OSM relation with members.
+
+    - Builds a self-contained Networks overview layer (relation + member copies).
+    - Also embeds each relation into every fylke layer that already holds at least
+      one member, copying any cross-fylke members in so the relation is complete
+      inside that layer (network=* tags alone are not enough in JOSM).
+    """
+    # Index which fylke layers already contain which element ids.
+    layer_ids: dict[str, set[tuple[str, str]]] = {
+        name: {(el.tag, el.get("id", "")) for el in root}
+        for name, root in layer_roots.items()
+    }
+
+    for rel in network_rels:
+        members: list[tuple[str, str, ET.Element]] = []
+        for mem in rel.findall("member"):
+            mtype = mem.get("type") or ""
+            mid = mem.get("ref") or ""
+            if mtype == "node":
+                el = nodes_by_id.get(mid)
+            elif mtype == "way":
+                el = ways_by_id.get(mid)
+            else:
+                el = None
+            if el is None:
+                continue
+            members.append((mtype, mid, el))
+        if not members:
+            continue
+
+        # Fylke layers that already contain at least one member.
+        host_fylker = [
+            name
+            for name, ids in layer_ids.items()
+            if any((mtype, mid) in ids for mtype, mid, _ in members)
+        ]
+        for fylke in host_fylker:
+            root = layer_roots[fylke]
+            # Copy any missing members into this layer (same OSM ids).
+            for mtype, mid, el in members:
+                if (mtype, mid) in layer_ids[fylke]:
+                    continue
+                root.append(deepcopy(el))
+                layer_ids[fylke].add((mtype, mid))
+                if mtype == "way":
+                    for nd in el.findall("nd"):
+                        ref = nd.get("ref") or ""
+                        if ref and ("node", ref) not in layer_ids[fylke]:
+                            node = nodes_by_id.get(ref)
+                            if node is not None:
+                                root.append(deepcopy(node))
+                                layer_ids[fylke].add(("node", ref))
+            # Drop any prior copy of this relation id, then append.
+            rid = rel.get("id")
+            for old in list(root.findall("relation")):
+                if old.get("id") == rid:
+                    root.remove(old)
+            root.append(deepcopy(rel))
+
+    # Networks overview layer: all network relations + every member (once).
+    net_root = ET.Element(
+        "osm",
+        {
+            "version": "0.6",
+            "generator": f"repeater-crosscheck/{__version__}",
+        },
+    )
+    seen: set[tuple[str, str]] = set()
+    for rel in network_rels:
+        for mem in rel.findall("member"):
+            mtype = mem.get("type") or ""
+            mid = mem.get("ref") or ""
+            key = (mtype, mid)
+            if key in seen:
+                continue
+            el = nodes_by_id.get(mid) if mtype == "node" else ways_by_id.get(mid)
+            if el is None:
+                continue
+            net_root.append(deepcopy(el))
+            seen.add(key)
+            if mtype == "way":
+                for nd in el.findall("nd"):
+                    ref = nd.get("ref") or ""
+                    nkey = ("node", ref)
+                    if ref and nkey not in seen:
+                        node = nodes_by_id.get(ref)
+                        if node is not None:
+                            net_root.append(deepcopy(node))
+                            seen.add(nkey)
+        net_root.append(deepcopy(rel))
+    return net_root
+
+
 def split_review_osm_by_fylke(
     review_osm: Path,
     cs_fylke: dict[str, str],
@@ -74,8 +187,10 @@ def split_review_osm_by_fylke(
     """
     Split repeaters_review.osm into one OSM document per fylkesnavn.
 
-    Ways pull in their member nodes. Elements without callsigns that are not
-    referenced by a kept way are dropped.
+    Ways pull in their member nodes. Declared type=network relations are embedded
+    into member fylke layers (with cross-fylke member copies) and also emitted as
+    a dedicated Networks overview layer. Elements without callsigns that are not
+    referenced by a kept way/relation are dropped.
     """
     root = ET.parse(review_osm).getroot()
     nodes_by_id: dict[str, ET.Element] = {}
@@ -88,6 +203,9 @@ def split_review_osm_by_fylke(
             ways.append(el)
         elif el.tag == "relation":
             relations.append(el)
+
+    network_rels = [r for r in relations if _is_network_relation(r)]
+    other_rels = [r for r in relations if not _is_network_relation(r)]
 
     fylke_nodes: dict[str, set[str]] = defaultdict(set)
     fylke_ways: dict[str, set[str]] = defaultdict(set)
@@ -102,7 +220,7 @@ def split_review_osm_by_fylke(
         fylke = _primary_fylke_for_element(way, cs_fylke)
         if fylke:
             fylke_ways[fylke].add(wid)
-    for rel in relations:
+    for rel in other_rels:
         rid = rel.get("id", "")
         fylke = _primary_fylke_for_element(rel, cs_fylke)
         if fylke:
@@ -120,7 +238,7 @@ def split_review_osm_by_fylke(
                 if ref:
                     fylke_nodes[fylke].add(ref)
 
-    out: dict[str, bytes] = {}
+    layer_roots: dict[str, ET.Element] = {}
     all_fylker = sorted(
         set(fylke_nodes) | set(fylke_ways) | set(fylke_rels),
         key=lambda n: (
@@ -145,11 +263,21 @@ def split_review_osm_by_fylke(
             if way is not None:
                 layer_root.append(deepcopy(way))
         for rid in sorted(fylke_rels[fylke], key=lambda x: int(x)):
-            for rel in relations:
+            for rel in other_rels:
                 if rel.get("id") == rid:
                     layer_root.append(deepcopy(rel))
                     break
-        out[fylke] = _pretty_osm(layer_root)
+        layer_roots[fylke] = layer_root
+
+    net_root = _inject_network_relations_into_layers(
+        layer_roots, network_rels, nodes_by_id, ways_by_id
+    )
+
+    out: dict[str, bytes] = {
+        fylke: _pretty_osm(layer_roots[fylke]) for fylke in all_fylker
+    }
+    if list(net_root):
+        out["Networks"] = _pretty_osm(net_root)
     return out
 
 
@@ -253,8 +381,10 @@ def write_repeaters_joz(
     ]
     index = 1
     for arc, layer_name, _data in layer_entries:
-        # Innlandet visible; others hidden so the panel is usable.
-        visible = "true" if layer_name == "Innlandet" else "false"
+        # Innlandet + Networks visible; other fylker hidden so the panel is usable.
+        visible = (
+            "true" if layer_name in {"Innlandet", "Networks"} else "false"
+        )
         lines.append(
             f'        <layer index="{index}" name="{layer_name}" '
             f'type="osm-data" version="0.1" visible="{visible}">'

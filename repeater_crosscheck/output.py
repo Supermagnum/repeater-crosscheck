@@ -1160,16 +1160,14 @@ def _emit_declared_network_relations(
             tags["source"] = "local knowledge / repeater-crosscheck"
         _append_tags(rel_el, tags)
 
-        # Ensure member features in this file carry network / osm_relation tags.
-        rel_osm = (
-            format_osm_ref(*parsed)
-            if parsed
-            else f"relation/{attrs['id']}"
-        )
-        for mtype, mid in members:
-            for el in root.findall(mtype):
-                if el.get("id") != str(mid):
-                    continue
-                _set_tag(el, "network", meta["comment_tag"])
-                if parsed:
+        # Membership is the relation itself (see LA5MR relation/18780801).
+        # Only stamp network=/osm_relation= for already-published OSM relations —
+        # never write osm_relation=relation/-N (that is not a real OSM relation).
+        if parsed:
+            rel_osm = format_osm_ref(*parsed)
+            for mtype, mid in members:
+                for el in root.findall(mtype):
+                    if el.get("id") != str(mid):
+                        continue
+                    _set_tag(el, "network", meta["comment_tag"])
                     _set_tag(el, "osm_relation", rel_osm)

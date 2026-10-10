@@ -900,7 +900,8 @@ note = "Agder net member. OSM node/14266724838."
 qth = "Heiberg"
 lat = 58.770802
 lon = 9.125000
-note = "Agder net member. Position from RepeaterBook (no dedicated OSM node yet)."
+osm_id = "node/14270013283"
+note = "Agder net member. OSM node/14270013283 (Heiberg)."
 
 [LA5AR]
 qth = "Vaktårnheia/Arendal"
