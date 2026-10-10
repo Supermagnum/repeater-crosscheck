@@ -11,6 +11,7 @@ tags are not broken and that the data matches local knowledge.
 - [Source data](#source-data)
 - [OSM coverage](#osm-coverage)
 - [OSM tagging: one feature per repeater (Norway)](#osm-tagging-one-feature-per-repeater-norway)
+- [OSM tagging: linked repeaters (type=network)](#osm-tagging-linked-repeaters-typenetwork)
 - [Setup](#setup)
 - [Usage](#usage)
   - [HTCommander / VR-N76](#htcommander--vr-n76)
@@ -127,6 +128,77 @@ APRS / packet stations, check [aprs.fi](https://aprs.fi/) (and
 offline or **QRT** (dead). Mark those in `overrides.toml` (`qrt = true`).
 QRT / off-air stations are omitted from CSV, OSM, `.joz`, and HTCommander
 exports automatically.
+
+## OSM tagging: linked repeaters (type=network)
+
+Some Norwegian systems are **linked**: several fixed sites share a common
+analogue network (same tone plan / linked coverage). On OpenStreetMap that is
+modelled as a **`type=network` relation**, not by stacking callsigns on one
+object and not by a `network=*` tag alone.
+
+Reference (already on OSM):
+[relation/18780801](https://www.openstreetmap.org/relation/18780801) (LA5MR /
+Innlandsnettet). Open a member node there — it appears under **Relations**
+because it is listed as a **member** of that relation.
+
+### Relation tags
+
+| Key | Value | Notes |
+|-----|-------|-------|
+| `type` | `network` | Required |
+| `name` | Network name | e.g. `LA5MR`, `Fylkesnettet`, `Agder net` |
+| `communication:amateur_radio:repeater` | `yes` | Marks it as an amateur repeater network |
+| `operator` | Club / service | Optional |
+| `website` | URL | Optional |
+| `source` | Short provenance | Optional for new relations |
+
+### Members
+
+1. Create or open the `type=network` relation in JOSM.
+2. Add each linked site as a **member** (role empty): the node or way that
+   carries that callsign’s amateur-radio tags.
+3. Membership is the ground truth. A `network=…` tag on the node is optional
+   documentation only; **without the relation member, OSM does not treat the
+   site as part of the network**.
+
+After the relation has a real OSM id (positive), members may also carry:
+
+- `network=<name>` (same as the relation `name`)
+- `osm_relation=relation/<id>` (optional convenience tag used in this project)
+
+Do **not** upload `osm_relation=relation/-123` (temporary JOSM ids). Create and
+upload the relation first; only then add `osm_relation` pointing at the new id
+if you want that tag.
+
+### Declared Norwegian linked systems
+
+Configured in [`repeater_crosscheck/networks.py`](repeater_crosscheck/networks.py)
+and emitted in [`output/repeaters.joz`](output/repeaters.joz) (per-fylke layers
+plus a **Networks** overview layer):
+
+| Network | OSM relation | Members (callsigns) |
+|---------|--------------|---------------------|
+| LA5MR / Innlandsnettet | [18780801](https://www.openstreetmap.org/relation/18780801) | LA5MR, LA5TRR, LA6NR, LA6GR, LA9AR, LA2KRR |
+| Fylkesnettet | [18788322](https://www.openstreetmap.org/relation/18788322) | LA3XRR, LA3SRR, LA3BRR, LA3GRR, LA5ER, LA5GR, LA6HR |
+| Agder net | create / upload from review | LA6KR, LA4ARR, LA4ORR, LA6JR, LA6SR, LA5AR |
+| Sandnes net | create / upload from review | LA4WRR, LA4SRR, LA4ERR |
+| Bergen-voss | create / upload from review | LA5CRR, LA5LRR, LA6WR |
+
+### How to upload from the review session
+
+1. Open [`output/repeaters.joz`](output/repeaters.joz) in JOSM.
+2. Enable the relevant fylke layer (e.g. Vestland) and/or **Networks**.
+3. Select the `type=network` relation (e.g. Bergen-voss). Confirm every
+   callsign appears under **Members** with the correct node/way id.
+4. Download the surrounding OSM data if needed, resolve conflicts, then upload
+   **the relation** (and any new member nodes that are not on OSM yet).
+5. After upload, verify on openstreetmap.org that a member node lists the
+   relation under **Relations** — the same way
+   [LA5MR members](https://www.openstreetmap.org/relation/18780801) do.
+
+Do not regenerate disagreement lines or rewrite positions when you only need
+to fix network membership. Edit the relation members in JOSM, or adjust
+`networks.py` / `overrides.toml` and rebuild review artefacts carefully.
 
 ## Setup
 
@@ -265,7 +337,7 @@ Outputs (under `paths.output_dir`, default `./output/`):
 |------|---------|
 | `repeaters_merged.csv` | One row per on-air NRRL repeater (QRT omitted), all source coords, process notes in `notes`, plus `elevation_m` (Mapterhorn ASL; for [SPLAT!](https://github.com/hoche/splat)) |
 | `repeaters_review.osm` | JOSM review: at most one callsign/band merged onto an existing OSM mast; co-located siblings are separate nodes. Disagreement ways when sources diverge. Portable and QRT omitted. Verify before upload; delete `best_source` / `fixme`. |
-| `repeaters.joz` | Compressed JOSM session: one review layer per fylkesnavn + Fylker boundaries + Kartverket topo. Open from `output/`. |
+| `repeaters.joz` | Compressed JOSM session: one review layer per fylkesnavn + Networks (type=network relations) + Fylker boundaries + Kartverket topo. Open from `output/`. |
 | `htcommander/` | Optional (`--htcommander`): CHIRP CSVs + VR-N76 regions JSON for HTCommander |
 | `unmatched.txt` | Callsigns / codeplug channels that could not be matched |
 
