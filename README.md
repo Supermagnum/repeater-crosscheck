@@ -178,11 +178,24 @@ plus a **Networks** overview layer):
 
 | Network | OSM relation | Members (callsigns) |
 |---------|--------------|---------------------|
-| LA5MR / Innlandsnettet | [18780801](https://www.openstreetmap.org/relation/18780801) | LA5MR, LA5TRR, LA6NR, LA6GR, LA9AR, LA2KRR |
-| Fylkesnettet | [18788322](https://www.openstreetmap.org/relation/18788322) | LA3XRR, LA3SRR, LA3BRR, LA3GRR, LA5ER, LA5GR, LA6HR |
-| Agder net | create / upload from review | LA6KR, LA4ARR, LA4ORR, LA6JR, LA6SR, LA5AR |
-| Sandnes net | create / upload from review | LA4WRR, LA4SRR, LA4ERR |
-| Bergen-voss | create / upload from review | LA5CRR, LA5LRR, LA6WR |
+| LA5MR / Innlandsnettet | [relation/18780801](https://www.openstreetmap.org/relation/18780801) | LA5MR, LA5TRR, LA6NR, LA6GR, LA9AR, LA2KRR |
+| Fylkesnettet | [relation/18788322](https://www.openstreetmap.org/relation/18788322) | LA3XRR, LA3SRR, LA3BRR, LA3GRR, LA5ER, LA5GR, LA6HR |
+| Agder net | [relation/21604185](https://www.openstreetmap.org/relation/21604185) | LA6KR, LA4ARR, LA4ORR, LA6JR, LA6SR, LA5AR |
+| Sandnes net | [relation/21604188](https://www.openstreetmap.org/relation/21604188) | LA4WRR, LA4SRR, LA4ERR |
+| Bergen-voss | [relation/21603234](https://www.openstreetmap.org/relation/21603234) | LA5CRR, LA5LRR, LA6WR |
+
+Overpass (all amateur `type=network` relations in Norway) — paste into
+[Overpass Turbo](https://overpass-turbo.eu/):
+
+```
+[out:json][timeout:60];
+area["ISO3166-1"="NO"][admin_level=2]->.no;
+relation["type"="network"]["communication:amateur_radio:repeater"="yes"](area.no);
+out body;
+>;
+out skel qt;
+```
+
 
 ### How to upload from the review session
 
@@ -191,9 +204,9 @@ plus a **Networks** overview layer):
 3. Select the `type=network` relation (e.g. Bergen-voss). Confirm every
    callsign appears under **Members** with the correct node/way id.
 4. Download the surrounding OSM data if needed, resolve conflicts, then upload
-   **the relation** (and any new member nodes that are not on OSM yet).
-5. After upload, verify on openstreetmap.org that a member node lists the
-   relation under **Relations** — the same way
+   member or relation edits (and any new member nodes that are not on OSM yet).
+5. Verify on openstreetmap.org that a member node lists the relation under
+   **Relations** — the same way
    [LA5MR members](https://www.openstreetmap.org/relation/18780801) do.
 
 Do not regenerate disagreement lines or rewrite positions when you only need

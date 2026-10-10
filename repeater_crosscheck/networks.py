@@ -54,7 +54,7 @@ NETWORK_RELATIONS: dict[str, NetworkDef] = {
         },
     },
     "Agder net": {
-        "relation": "",  # create in review until uploaded
+        "relation": "relation/21604185",
         "title": "Agder net",
         "comment_tag": "Agder net",
         "callsigns": {
@@ -75,7 +75,7 @@ NETWORK_RELATIONS: dict[str, NetworkDef] = {
         },
     },
     "Sandnes net": {
-        "relation": "",  # create in review until uploaded
+        "relation": "relation/21604188",
         "title": "Sandnes net",
         "comment_tag": "Sandnes net",
         "callsigns": {
@@ -90,7 +90,7 @@ NETWORK_RELATIONS: dict[str, NetworkDef] = {
         },
     },
     "Bergen-voss": {
-        "relation": "",  # create in review until uploaded
+        "relation": "relation/21603234",
         "title": "Bergen-voss",
         "comment_tag": "Bergen-voss",
         "callsigns": {
