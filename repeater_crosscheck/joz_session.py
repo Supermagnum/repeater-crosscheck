@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import xml.etree.ElementTree as ET
 import zipfile
 from collections import defaultdict
@@ -196,10 +197,20 @@ def split_review_osm_by_fylke(
     nodes_by_id: dict[str, ET.Element] = {}
     ways: list[ET.Element] = []
     relations: list[ET.Element] = []
+
+    def _is_disagreement_way(el: ET.Element) -> bool:
+        t = _tags(el)
+        if t.get("max_disagreement_m"):
+            return True
+        return bool(re.search(r"disagreement\s+\d", (t.get("note") or ""), re.I))
+
     for el in list(root):
         if el.tag == "node":
             nodes_by_id[el.get("id", "")] = el
         elif el.tag == "way":
+            # Never carry review disagreement lines into the .joz session.
+            if _is_disagreement_way(el):
+                continue
             ways.append(el)
         elif el.tag == "relation":
             relations.append(el)
