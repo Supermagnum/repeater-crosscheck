@@ -17,6 +17,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .models import MergedRepeater
+from .networks import NETWORK_RELATIONS
 
 # VR-N76: 6 editable channel groups, 32 channels each.
 VR_N76_REGION_COUNT = 6
@@ -49,50 +50,6 @@ CHIRP_HEADER = [
     "DVCODE",
 ]
 
-# OSM type=network relations for Norwegian linked repeater systems.
-NETWORK_RELATIONS = {
-    "LA5MR": {
-        "relation": "relation/18780801",
-        "title": "LA5MR / Innlandsnettet",
-        "comment_tag": "LA5MR",
-        # Voice sites in the LA5MR OSM relation + NRRL Innlandsnettet FM.
-        "callsigns": {
-            "LA5MR",
-            "LA5TRR",
-            "LA6NR",
-            "LA6GR",
-            "LA9AR",
-            "LA2KRR",
-        },
-    },
-    "Fylkesnettet": {
-        "relation": "relation/18788322",
-        "title": "Fylkesnettet Vestfold/Telemark",
-        "comment_tag": "Fylkesnettet",
-        # Linked VHF sites (LA3DRR is the UHF hub at Vealøs, not in this group).
-        "callsigns": {
-            "LA3GRR",
-            "LA5ER",
-            "LA3BRR",
-            "LA5GR",
-            "LA3SRR",
-            "LA3XRR",
-        },
-    },
-    # RepeaterBook LA6JR features: linked to LA6KR, LA9KR, LA5AR, LA4ARR.
-    "LA6JR": {
-        "relation": "",
-        "title": "LA6JR / Sørlandet linked",
-        "comment_tag": "LA6JR",
-        "callsigns": {
-            "LA6JR",
-            "LA6KR",
-            "LA5AR",
-            "LA4ARR",
-            "LA9KR",
-        },
-    },
-}
 
 # Members missing from NRRL (or listed under another callsign) — OSM / club nets.
 SUPPLEMENTAL_CHANNELS: dict[str, dict[str, str]] = {
@@ -459,13 +416,17 @@ def build_vr_n76_regions(dict_rows: list[dict[str, str]]) -> dict:
 
     Region 0 = LA5MR / Innlandsnettet
     Region 1 = Fylkesnettet
-    Region 2 = LA6JR / Sørlandet linked
-    Regions 3-5 = empty (rename in HTCommander as needed)
+    Region 2 = Agder net
+    Region 3 = Sandnes net
+    Region 4 = Bergen-voss
+    Region 5 = empty (rename in HTCommander as needed)
     """
     region_specs: list[tuple[str, list[ChirpChannel]]] = [
         ("LA5MR", collect_network_channels(dict_rows, "LA5MR")),
         ("Fylkesnettet", collect_network_channels(dict_rows, "Fylkesnettet")),
-        ("LA6JR", collect_network_channels(dict_rows, "LA6JR")),
+        ("Agder net", collect_network_channels(dict_rows, "Agder net")),
+        ("Sandnes net", collect_network_channels(dict_rows, "Sandnes net")),
+        ("Bergen-voss", collect_network_channels(dict_rows, "Bergen-voss")),
     ]
     while len(region_specs) < VR_N76_REGION_COUNT:
         idx = len(region_specs) + 1

@@ -21,6 +21,7 @@ from .osm_objects import (
     strip_per_callsign_tags,
 )
 from .util import fmt_coord, haversine_m
+from .networks import NETWORK_RELATIONS, all_network_relation_refs, network_for_callsign
 
 
 CSV_FIELDS = [
@@ -232,6 +233,12 @@ def _review_tags(row: MergedRepeater, *, kind: str, pos: Position | None = None)
         "website": row.group_website,
         "note": "; ".join(p for p in note_parts if p),
     }
+    net = network_for_callsign(row.callsign)
+    if net:
+        _key, meta = net
+        tags["network"] = meta["comment_tag"]
+        if meta.get("relation"):
+            tags["osm_relation"] = meta["relation"]
     if kind == "local":
         tags["fixme"] = "operator_override"
         tags["best_source"] = row.best_source or "local"
@@ -545,13 +552,22 @@ def write_josm_osm(
             scrub_refs.add(format_osm_ref(*parsed))
 
     # Linked repeater networks (OSM type=network) — members keep own callsign name.
-    # LA5MR / Innlandsnettet: relation/18780801
-    # Fylkesnettet Vestfold/Telemark: relation/18788322
-    network_relation_refs = {"relation/18780801", "relation/18788322"}
+    network_relation_refs = all_network_relation_refs()
+    declared_member_refs: set[str] = set()
+    for meta in NETWORK_RELATIONS.values():
+        for ref in (meta.get("member_osm") or {}).values():
+            parsed = parse_osm_ref(ref)
+            if parsed:
+                declared_member_refs.add(format_osm_ref(*parsed))
 
     osm_elements: dict[str, dict] = {}
     if session is not None and cache is not None:
-        refs = collect_osm_refs_from_rows(rows) | scrub_refs | network_relation_refs
+        refs = (
+            collect_osm_refs_from_rows(rows)
+            | scrub_refs
+            | network_relation_refs
+            | declared_member_refs
+        )
         if refs:
             print(f"Fetching {len(refs)} existing OSM objects to merge tags...")
             osm_elements = fetch_osm_elements(session, cache, refs)
@@ -915,9 +931,16 @@ def write_josm_osm(
             preserve.setdefault(
                 "communication:amateur_radio:callsign", primary_cs
             )
-            rel_tags = dict(rel.get("tags") or {})
-            preserve["network"] = str(rel_tags.get("name") or rref)
-            preserve["osm_relation"] = rref
+            net = network_for_callsign(primary_cs)
+            if net:
+                _key, meta = net
+                preserve["network"] = meta["comment_tag"]
+                if meta.get("relation"):
+                    preserve["osm_relation"] = meta["relation"]
+            else:
+                rel_tags = dict(rel.get("tags") or {})
+                preserve["network"] = str(rel_tags.get("name") or rref)
+                preserve["osm_relation"] = rref
             # Avoid duplicating if a prior merge already added this callsign.
             existing_members = pending_osm_members.get(ref) or []
             already = any(
@@ -999,9 +1022,154 @@ def write_josm_osm(
 
     _merge_coincident_synthetics(root)
     _apply_callsign_as_name(root)
+    _emit_declared_network_relations(root, osm_elements, rows)
 
     tree = ET.ElementTree(root)
     ET.indent(tree, space="  ")
     tmp = path.with_suffix(path.suffix + ".tmp")
     tree.write(tmp, encoding="utf-8", xml_declaration=True)
     tmp.replace(path)
+
+
+def _callsign_to_element(root: ET.Element) -> dict[str, tuple[str, int]]:
+    """Map callsign -> (element_type, id), preferring positive OSM ids."""
+    out: dict[str, tuple[str, int]] = {}
+    for el in list(root.findall("node")) + list(root.findall("way")):
+        tags = _elem_tags(el)
+        raw = (
+            tags.get("callsign")
+            or tags.get("communication:amateur_radio:callsign")
+            or ""
+        ).strip()
+        if not raw or ";" in raw:
+            continue
+        try:
+            eid = int(el.get("id") or 0)
+        except ValueError:
+            continue
+        if not eid:
+            continue
+        prev = out.get(raw.upper())
+        if prev is None or (prev[1] < 0 <= eid):
+            out[raw.upper()] = (el.tag, eid)
+    return out
+
+
+def _emit_declared_network_relations(
+    root: ET.Element,
+    osm_elements: dict[str, dict],
+    rows: list[MergedRepeater],
+) -> None:
+    """
+    Emit / rewrite declared linked-repeater network relations with the configured
+    member callsigns (Fylkesnettet, Agder net, LA5MR, …).
+    """
+    by_cs = _callsign_to_element(root)
+    # Fall back to configured member_osm refs when the callsign node was scrubbed
+    # or not yet emitted as a synthetic.
+    for meta in NETWORK_RELATIONS.values():
+        for cs, ref in (meta.get("member_osm") or {}).items():
+            if cs.upper() in by_cs:
+                continue
+            parsed = parse_osm_ref(ref)
+            if not parsed:
+                continue
+            kind, eid = parsed
+            by_cs[cs.upper()] = (kind, eid)
+
+    # Next synthetic relation id (below any existing negative ids).
+    min_id = 0
+    for el in root:
+        try:
+            eid = int(el.get("id") or 0)
+        except ValueError:
+            continue
+        if eid < min_id:
+            min_id = eid
+    next_rel_id = min_id - 1 if min_id < 0 else -1
+
+    # Remove any previously emitted copy of these relations so we can rewrite.
+    existing_rel_ids = {
+        int(parse_osm_ref(meta["relation"])[1])
+        for meta in NETWORK_RELATIONS.values()
+        if meta.get("relation") and parse_osm_ref(meta["relation"])
+    }
+    for el in list(root.findall("relation")):
+        try:
+            eid = int(el.get("id") or 0)
+        except ValueError:
+            continue
+        if eid in existing_rel_ids:
+            root.remove(el)
+        tags = _elem_tags(el)
+        if tags.get("name") in NETWORK_RELATIONS and eid < 0:
+            root.remove(el)
+
+    for key, meta in NETWORK_RELATIONS.items():
+        members: list[tuple[str, int]] = []
+        for cs in sorted(meta["callsigns"]):
+            hit = by_cs.get(cs.upper())
+            if hit:
+                members.append(hit)
+        if not members:
+            continue
+
+        rel_ref = meta.get("relation") or ""
+        parsed = parse_osm_ref(rel_ref) if rel_ref else None
+        if parsed:
+            kind, rid = parsed
+            live = osm_elements.get(format_osm_ref(kind, rid))
+            attrs = {
+                "id": str(rid),
+                "version": str((live or {}).get("version") or "1"),
+                "visible": "true",
+                "action": "modify",
+            }
+            for k in ("changeset", "timestamp", "user", "uid"):
+                if live and live.get(k) is not None:
+                    attrs[k] = str(live[k])
+        else:
+            attrs = {
+                "id": str(next_rel_id),
+                "visible": "true",
+                "action": "modify",
+            }
+            next_rel_id -= 1
+
+        rel_el = ET.SubElement(root, "relation", attrs)
+        for mtype, mid in members:
+            ET.SubElement(
+                rel_el,
+                "member",
+                {"type": mtype, "ref": str(mid), "role": ""},
+            )
+        live_tags = {}
+        if parsed:
+            live = osm_elements.get(format_osm_ref(*parsed))
+            live_tags = dict((live or {}).get("tags") or {})
+        tags = {
+            "type": "network",
+            "name": meta["comment_tag"],
+            "communication:amateur_radio:repeater": "yes",
+        }
+        # Keep useful live tags (operator / website / source) when rewriting.
+        for k in ("operator", "website", "source"):
+            if live_tags.get(k):
+                tags[k] = str(live_tags[k])
+        if not rel_ref and not live_tags:
+            tags["source"] = "local knowledge / repeater-crosscheck"
+        _append_tags(rel_el, tags)
+
+        # Ensure member features in this file carry network / osm_relation tags.
+        rel_osm = (
+            format_osm_ref(*parsed)
+            if parsed
+            else f"relation/{attrs['id']}"
+        )
+        for mtype, mid in members:
+            for el in root.findall(mtype):
+                if el.get("id") != str(mid):
+                    continue
+                _set_tag(el, "network", meta["comment_tag"])
+                if parsed:
+                    _set_tag(el, "osm_relation", rel_osm)

@@ -179,8 +179,10 @@ writes [`output/htcommander/`](output/htcommander/):
 | `norway_analog.csv` | All exportable analog channels (CHIRP CSV) |
 | `LA5MR.csv` | Innlandsnettet linked sites (CHIRP) |
 | `Fylkesnettet.csv` | Vestfold/Telemark linked VHF sites (CHIRP) |
-| `LA6JR.csv` | Sørlandet linked sites (LA6JR / LA6KR / LA9KR / LA5AR / LA4ARR) |
-| `norway_regions.json` | VR-N76 channel groups (6×32): LA5MR, Fylkesnettet, LA6JR, … |
+| `Agder net.csv` | Agder linked sites (LA6KR / LA4ARR / LA4ORR / LA6JR / LA6SR / LA5AR) |
+| `Sandnes net.csv` | Sandnes linked sites (LA4WRR / LA4SRR / LA4ERR) |
+| `Bergen-voss.csv` | Bergen–Voss linked sites (LA5CRR / LA5LRR / LA6WR) |
+| `norway_regions.json` | VR-N76 channel groups (6×32): LA5MR, Fylkesnettet, Agder net, Sandnes net, Bergen-voss, … |
 
 Import `norway_regions.json` in HTCommander (all-regions / full backup), or import
 a CHIRP CSV and drag channels into radio slots. `--htcommander-only` rebuilds

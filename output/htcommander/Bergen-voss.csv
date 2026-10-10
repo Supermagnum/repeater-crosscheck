@@ -1,0 +1,4 @@
+Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,RxDtcsCode,CrossMode,Mode,TStep,Skip,Power,Comment,URCALL,RPT1CALL,RPT2CALL,DVCODE
+0,LA5CRR,144.650000,split,433.050000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA5CRR | Østre Nattlansfjell | Bergen-voss | Bergen-voss member,,,,
+1,LA5LRR,145.125000,+,0.600000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,"LA5LRR | Rong, Øygarden | Bergen-voss | Bergen-voss member",,,,
+2,LA6WR,145.725000,-,0.600000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA6WR | Lønahorgi | Bergen-voss | Bergen-voss member,,,,

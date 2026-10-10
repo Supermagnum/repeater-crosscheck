@@ -65,7 +65,7 @@ lat = 60.512071
 lon = 4.913333
 osm_id = "node/5583842945"
 url = "https://www.la1b.no/la5lrr/"
-note = "Crossband link. Club page: Rong i Øygarden. OSM mast node/5583842945."
+note = "Bergen-voss member. Crossband link. Club page: Rong i Øygarden. OSM mast node/5583842945."
 
 [LA9QR]
 lat = 69.7337219
@@ -73,9 +73,11 @@ lon = 18.7872526
 note = "Kjølen / Kvaløya."
 
 [LA6WR]
-lat = 60.69400
-lon = 6.41400
-note = "Lønahorgi."
+qth = "Lønahorgi"
+lat = 60.6940567
+lon = 6.4139664
+osm_id = "node/12666540760"
+note = "Bergen-voss member. OSM node/12666540760 (Lønahorgi)."
 
 [LA7CR]
 lat = 59.93086
@@ -143,7 +145,15 @@ note = "Fylkesnettet. Eirefjell communications tower node/5008797918."
 qth = "Vealøs/Skien"
 lat = 59.2360000
 lon = 9.6993900
-note = "Fylkesnettet. Co-located at Vealøs with LA3DRR (operator position)."
+note = "Fylkesnettet member. Co-located at Vealøs with LA3DRR (operator position)."
+
+[LA6HR]
+qth = "Hvittingen/Holmestrand"
+lat = 59.5464656
+lon = 10.1963617
+osm_id = "node/14266675291"
+tone = "74.4"
+note = "Fylkesnettet member. OSM node/14266675291 (co-located Hvittingen with LA3XRR)."
 
 [LA3DRR]
 qth = "Vealøs/Skien"
@@ -626,7 +636,28 @@ qth = "Bogafjell"
 lat = 58.8101403
 lon = 5.7447815
 osm_id = "way/628543477"
-note = "OSM way/628543477 (Bogafjell)."
+note = "Sandnes net member. OSM way/628543477 (Bogafjell)."
+
+[LA4SRR]
+qth = "Bjerkreim"
+lat = 58.6331472
+lon = 5.9547389
+osm_id = "node/14266618786"
+note = "Sandnes net member. OSM node/14266618786 (Bjerkreim)."
+
+[LA4ERR]
+qth = "Egerøy"
+lat = 58.4351932
+lon = 5.8723500
+osm_id = "node/14266618782"
+note = "Sandnes net member. OSM node/14266618782 (Egerøy)."
+
+[LA5CRR]
+qth = "Østre Nattlansfjell"
+lat = 60.3456669
+lon = 5.3755633
+osm_id = "node/14262214693"
+note = "Bergen-voss member. OSM node/14262214693 (Østre Nattlansfjell)."
 
 [LA8DR]
 qth = "Laland"
@@ -835,3 +866,45 @@ note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omi
 skip = true
 qrt = true
 note = "APRS digi not on aprs.fi; removed from review .joz; treat as QRT and omit."
+
+# Agder net (OSM type=network — create/upload from review until relation id exists)
+[LA6KR]
+qth = "Hestheia/Greipstad"
+lat = 58.2190000
+lon = 7.8519700
+osm_id = "node/14266724839"
+note = "Agder net member. OSM node/14266724839."
+
+[LA4ARR]
+qth = "Hestheia/Greipstad"
+lat = 58.2190000
+lon = 7.8519700
+osm_id = "node/14266724832"
+note = "Agder net member. OSM node/14266724832."
+
+[LA4ORR]
+qth = "Odderøya"
+lat = 58.1327250
+lon = 8.0065540
+osm_id = "node/14266724834"
+note = "Agder net member. OSM node/14266724834."
+
+[LA6JR]
+qth = "Hovassfjell"
+lat = 58.9950221
+lon = 7.7347827
+osm_id = "node/14266724838"
+note = "Agder net member. OSM node/14266724838."
+
+[LA6SR]
+qth = "Heiberg"
+lat = 58.770802
+lon = 9.125000
+note = "Agder net member. Position from RepeaterBook (no dedicated OSM node yet)."
+
+[LA5AR]
+qth = "Vaktårnheia/Arendal"
+lat = 58.4636990
+lon = 8.7667000
+osm_id = "node/14266724836"
+note = "Agder net member. OSM node/14266724836."

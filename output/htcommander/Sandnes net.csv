@@ -1,0 +1,4 @@
+Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,RxDtcsCode,CrossMode,Mode,TStep,Skip,Power,Comment,URCALL,RPT1CALL,RPT2CALL,DVCODE
+0,LA4ERR,434.875000,-,2.000000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA4ERR | Egerøy | Sandnes net | Sandnes net member,,,,
+1,LA4SRR,145.712500,-,0.600000,Tone,79.7,79.7,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA4SRR | Bjerkreim | Sandnes net | Sandnes net member,,,,
+2,LA4WRR,434.850000,-,2.000000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA4WRR | Bogafjell | Sandnes net | Sandnes net member,,,,

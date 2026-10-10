@@ -1,0 +1,7 @@
+Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,RxDtcsCode,CrossMode,Mode,TStep,Skip,Power,Comment,URCALL,RPT1CALL,RPT2CALL,DVCODE
+0,LA4ARR,434.937500,-,2.000000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA4ARR | Hestheia/Greipstad | Agder net | Agder net member,,,,
+1,LA4ORR,145.612500,-,0.600000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA4ORR | Odderøya | Agder net | Agder net member,,,,
+2,LA5AR,145.700000,-,0.600000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA5AR | Vaktårnheia/Arendal | Agder net | Agder net member,,,,
+3,LA6JR,145.600000,-,0.600000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA6JR | Hovassfjell | Agder net | Agder net member,,,,
+4,LA6KR,145.750000,-,0.600000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA6KR | Hestheia/Greipstad | Agder net | Agder net member,,,,
+5,LA6SR,145.775000,-,0.600000,Tone,123.0,123.0,023,NN,023,Tone->Tone,NFM,12.50,,5W,LA6SR | Heiberg | Agder net | Agder net member,,,,
